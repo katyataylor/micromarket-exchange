@@ -1,7 +1,7 @@
-/* ── MicroMarket Homepage Styles ── */
+/* - - MicroMarket Homepage Styles - - */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Onest:wght@400;500;700&family=Red+Hat+Text:wght@400;500&display=swap');
 
-/* ── CSS Variables ── */
+/* - - CSS Variables - - */
 :root {
   --turq:        #5E9E96;
   --turq-dark:   #3D7870;
@@ -28,7 +28,7 @@
   --shadow-md:   0 4px 20px rgba(42,92,86,0.10);
 }
 
-/* ── Reset ── */
+/* - - Reset - - */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -42,7 +42,7 @@ a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 button, input, select { font-family: var(--fb); }
 
-/* ── NAV ── */
+/* - - NAV - - */
 .nav {
   position: sticky;
   top: 0;
@@ -179,7 +179,7 @@ button, input, select { font-family: var(--fb); }
 }
 .btn-primary-nav:hover { background: var(--turq-dark); }
 
-/* ── HERO ── */
+/* - - HERO - - */
 .hero {
   position: relative;
   height: 440px;
@@ -261,7 +261,7 @@ button, input, select { font-family: var(--fb); }
 }
 .btn-hero:hover { background: var(--sand-dark); }
 
-/* ── CONTENT SECTIONS ── */
+/* - - CONTENT SECTIONS - - */
 .content-wrap {
   background: var(--surface);
   padding: 64px 0 48px;
@@ -402,7 +402,7 @@ button, input, select { font-family: var(--fb); }
   margin: 0 auto 56px;
 }
 
-/* ── CURRENT STOCK ── */
+/* - - CURRENT STOCK - - */
 .stock-section {
   background: var(--page);
   padding: 56px 40px;
@@ -565,7 +565,7 @@ button, input, select { font-family: var(--fb); }
 }
 .btn-watchlist:hover { background: #d4ebe8; }
 
-/* ── TAGLINE BANNER ── */
+/* - - TAGLINE BANNER - - */
 .tagline-banner {
   background: var(--turq-deep);
   padding: 36px 40px;
@@ -584,7 +584,7 @@ button, input, select { font-family: var(--fb); }
   color: var(--turq-mid);
 }
 
-/* ── FOOTER ── */
+/* - - FOOTER - - */
 footer {
   background: var(--turq-deep);
   padding: 36px 40px 22px;
@@ -704,7 +704,7 @@ footer {
 .footer-social a:hover { background: rgba(255,255,255,0.14); }
 .footer-social a svg { width: 13px; height: 13px; }
 
-/* ── RESPONSIVE ── */
+/* - - RESPONSIVE - - */
 @media (max-width: 900px) {
   .nav { padding: 0 20px; }
   .nav-links { display: none; }
