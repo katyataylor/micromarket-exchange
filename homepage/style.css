@@ -1,1 +1,28 @@
 /* micromarket homepage styles */
+:root {
+    --brandSlate: #2D3748;
+    --brandLightSlate: #9197A0;
+    --brandDarkSand: #8A7A5A;
+    --brandSand: #E8DFC8;
+    --brandLightSand: #FDF6DC;
+    --brandGold: #F0C142;
+    --surfacePg: #F7F4EF;
+    --textLeadIntro: #555;
+    --textEyebrowGold: #F0C142;
+    --textMutedCaptions: #777;
+    --textBody: #3A3A3A;
+    --textHeadings: #1C1C1C;
+    --textWhite: #FFF;
+    --textEyebrowBlue: #91ACB6;
+    --textBullets: #81A1A9;
+    --textLightGray: #E9E8E8;
+    --textDarkBackground: #F3F6F7;
+    --border:var(0,0,0,0.08);
+    --flogo:       'Space Grotesk', sans-serif;
+    --fh:          'Onest', sans-serif;
+    --fb:          'Red Hat Text', sans-serif;
+    --radius:      10px;
+    --radius-lg:   14px;
+    --shadow-sm:   0 1px 4px rgba(0,0,0,0.06);
+    --shadow-md:   0 4px 20px rgba(42,92,86,0.10);
+}
