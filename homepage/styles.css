@@ -82,6 +82,11 @@ nav {
   height: 45px;
 }
 
+.nav-content img:hover {
+  transform: scale(105%);
+  opacity: 80%;
+}
+
 /* This container must stay visible on desktop */
 .nav-right {
   display: flex;
@@ -553,6 +558,11 @@ footer {
 
 .footer-top img[alt*="logo"] {
   height: 40px;
+}
+
+.footer-top img[alt*="logo"]:hover {
+  transform: scale(105%);
+  opacity: 80%;
 }
 
 .footer-top p {
