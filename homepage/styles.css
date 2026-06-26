@@ -61,6 +61,7 @@ h3{
   font-size: 26px;
   letter-spacing: 0.02em;
   opacity: 80%;
+  line-height: 1.6;
 }
 
 img {
@@ -126,14 +127,9 @@ nav {
   transition: color 0.2s ease;
 }
 
-.nav-links li:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
 .nav-links li:hover {
   color: var(--brandSlate);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .contact-button {
@@ -166,7 +162,7 @@ nav {
 }
 
 /* ==========================================
-   8. MOBILE RESPONSIVE MEDIA QUERY
+    MOBILE RESPONSIVE MEDIA QUERY
    ========================================== */
 @media (max-width: 768px) {
   .menu-toggle {
