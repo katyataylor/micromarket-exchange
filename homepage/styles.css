@@ -283,22 +283,26 @@ nav {
   margin-bottom: 30px;
 }
 
-.info-button, .about-button, .shop-button {
+.hero-info-button {
   background-color: var(--brandGold);
   color: var(--brandSlate);
-  border: none;
+  border: transparent;
+  border-style: solid;
   padding: 12px 28px;
   font-family: var(--fh);
   font-weight: 600;
   font-size: 15px;
   border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  /* transition: transform 0.2s ease, background-color 0.2s ease;   Not sure about this delay*/
 }
 
-.info-button:hover, .about-button:hover, .shop-button:hover {
-  background-color: #e0b034;
-  transform: translateY(-1px);
+.hero-info-button:hover {
+  background-color: var(--brandSlate);
+  opacity: 80%;
+  transform: scale(102%);
+  color: rgba(255, 255, 255, 0.85);
+  mix-blend-mode: overlay;
 }
 
 /* ==========================================
@@ -357,9 +361,27 @@ nav {
 }
 
 /* Text link/button variant tweaks based on wireframe setup */
-.about-button, .shop-button {
+.about-button, .shop-button, .info-button{
   align-self: flex-start;
   padding: 8px 20px;
+  background-color: transparent;
+  color: var(--brandGold);
+  border: 1px;
+  border-color: var(--brandGold);
+  border-style: solid;
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.info-button:hover, .about-button:hover, .shop-button:hover {
+  background-color: #e0b034;
+  transform: scale(102%);
+  color: rgba(255, 255, 255, 0.85);
+  border-color: transparent;
+  opacity: 80%;
 }
 
 /* ==========================================
