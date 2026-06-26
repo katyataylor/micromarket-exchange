@@ -3,48 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MicroMarket Store</title>
+  <title>MicroMarket Exchange Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=Red+Hat+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   </head>
 <body>
 
-<!-- NAV -->
+<!-- nav -->
 <nav>
-  <a href="#" class="logo">
-    <div class="logo-icon">m</div>
-    <div class="logo-text">
-      micro<br><span>market</span>
+  <div class="nav-content">
+    <img src="../images/mme logo.png" alt="Small yellow MicroMarket logo.">
+    
+    <!-- Added: Hamburger Toggle Button for Mobile -->
+    <button class="menu-toggle" aria-label="Toggle navigation menu">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" y1="12" x2="20" y2="12" class="line-mid"></line>
+        <line x1="4" y1="6" x2="20" y2="6" class="line-top"></line>
+        <line x1="4" y1="18" x2="20" y2="18" class="line-bottom"></line>
+      </svg>
+    </button>
+
+    <div class="nav-right">
+      <div class="nav-links">
+        <ul>
+          <li>Buy</li>
+          <li>Sell</li>
+          <li>About Us</li>
+          <li>Login/My Account</li>
+        </ul>
+      </div>
+      <button class="contact-button">Contact Us</button>
     </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#">Buy</a></li>
-    <li><a href="#">Sell</a></li>
-    <li><a href="#" class="has-arrow">My Account</a></li>
-    <li><a href="#">Sign Up / Login</a></li>
-    <li><a href="#" class="btn-contact">Contact Us</a></li>
-  </ul>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-label">Current Stock</div>
-  <h1>Verified ingredients from verified sources.</h1>
-  <p>Every listing is from an FDA-licensed operation or licensed feed mill.<br>All ingredients are reviewed and approved before going live.</p>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">142</div>
-      <div class="stat-label">Active Listings</div>
+<!-- Hero -->
+ <section class="hero">
+  <div class="hero-bg">
+    <div class="hero-content">
+    <div class="hero-text">
+      <h1>Verified ingredients from verified sources.</h1>
+      <p>Every listing is from an FDA-licensed operation or licensed feed mill.<br>All ingredients are reviewed and approved before going live.</p>
+      <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">142</div>
+        <div class="stat-label">Active Listings</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">38</div>
+        <div class="stat-label">Verified sellers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Auctions ending today</div>
+      </div>
+      <button class="btn-learn">Learn more</button>
     </div>
-    <div class="stat">
-      <div class="stat-num">38</div>
-      <div class="stat-label">Verified sellers</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">15</div>
-      <div class="stat-label">Auctions ending today</div>
-    </div>
-    <button class="btn-learn">Learn more</button>
+  </div>
   </div>
 </section>
 
@@ -360,35 +375,30 @@
   </main>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-logo">
-      <div class="footer-logo-icon">m</div>
-      <div class="footer-logo-text">
-        micro<br><span>market</span>
-      </div>
-    </div>
-    <div class="footer-icons">
-      <a href="#" class="footer-icon" title="Email">✉</a>
-      <a href="#" class="footer-icon" title="Facebook">f</a>
-    </div>
-  </div>
+<!-- Footer -->
+      <footer>
 
-  <div class="footer-links">
-    <a href="#" class="footer-link">Link 1</a>
-    <a href="#" class="footer-link">Link 2</a>
-    <a href="#" class="footer-link">Link 3</a>
-    <a href="#" class="footer-link">Link 1</a>
-    <a href="#" class="footer-link">Link 2</a>
-    <a href="#" class="footer-link">Link 3</a>
-    <a href="#" class="footer-link">Link 1</a>
-    <a href="#" class="footer-link">Link 2</a>
-    <a href="#" class="footer-link">Link 3</a>
-  </div>
+        <section class="footer">
+          <div class="footer-top">
+            <img src="../images/small high-contrast mme logo.png" alt="white micromarket exchange logo.">
+            <p>©2026 MicroMarket Exchange Inc.</p>
+            <div class="icons">
+              <img src="../images/email icon.png" alt="link to email.">
+              <img src="../images/2023_Facebook_icon.svg.png" alt="facebook link.">
+            </div>
+          </div>
+          <hr>
+          <div class="footer-bottom">
+            <ul>
+              <li>Login/Sign Up</li>
+              <li>List Your Products</li>
+              <li>Account Portal</li>
+              <li>Contact Us</li>
+            </ul>
+          </div>
+        </section>
 
-  <div class="footer-copy">© 2024 CompanyName Inc.</div>
-</footer>
+      </footer>
 
 </body>
 </html>
