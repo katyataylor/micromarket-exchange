@@ -108,26 +108,28 @@ nav {
 
 .nav-links li {
   font-family: var(--fh);
-  font-size: 14px;
-  color: var(--textBody);
+  font-size: 16px;
+  color: rgba(45, 55, 72, 0.6);
+  opacity: 80%;
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .nav-links li:hover {
-  color: var(--brandGold);
+  color: var(--brandSlate);
+  font-weight: 400;
 }
 
 .contact-button {
   background: transparent;
   border: 1px solid var(--brandSlate);
   color: var(--brandSlate);
-  padding: 6px 16px;
-  border-radius: var(--radius);
+  padding: 8px 16px;
+  border-radius: 6px;
   font-family: var(--fh);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -135,6 +137,17 @@ nav {
 .contact-button:hover {
   background-color: var(--brandSlate);
   color: var(--textWhite);
+  opacity: 60%;
+}
+
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: var(--brandSlate);
+  cursor: pointer;
+  padding: 5px;
+  z-index: 100;
 }
 
 /* ==========================================================================
