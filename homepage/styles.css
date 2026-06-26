@@ -43,10 +43,24 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+h1 {
   font-family: var(--fh);
   color: var(--textHeadings);
+  font-weight: 900;
+  font-size: 48px;
+}
+
+h2 {
+  font-family: var(--fh);
   font-weight: 700;
+  font-size: 28px;
+}
+
+h3{
+  font-family: var(--fb);
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  opacity: 80%;
 }
 
 img {
@@ -105,8 +119,9 @@ nav {
 
 .nav-links li {
   font-family: var(--fh);
-  font-size: 15px;
+  font-size: 16px;
   color: var(--brandSlate);
+  opacity: 80%;
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -133,6 +148,7 @@ nav {
   border-radius: 6px;
   font-family: var(--fh);
   font-weight: 500;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
