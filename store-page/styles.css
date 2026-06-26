@@ -69,17 +69,16 @@ img {
   display: block;
 }
 
-/* ==========================================
-   2. NAVIGATION BAR (DESKTOP & BASE)
-   ========================================== */
+/* ==========================================================================
+   2. NAVIGATION
+   ========================================================================== */
 nav {
-  background-color: rgba(244, 243, 240, 0.6); /* 60% transparent */
-  padding: 15px 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);   Not sure about the blur*/
 }
 
 .nav-content {
@@ -92,22 +91,13 @@ nav {
 }
 
 .nav-content img {
-  height: 45px;
+  height: 40px;
 }
 
-.nav-content img:hover {
-  transform: scale(105%);
-  opacity: 80%;
-}
-
-/* This container must stay visible on desktop */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 30px;
-  opacity: 1;           /* Forces visibility on desktop */
-  visibility: visible;   /* Forces visibility on desktop */
-  transform: none;       /* Resets any mobile offsets */
+  gap: 32px;
 }
 
 .nav-links ul {
@@ -118,33 +108,26 @@ nav {
 
 .nav-links li {
   font-family: var(--fh);
-  font-size: 16px;
-  color: rgba(45, 55, 72, 0.6);
-  opacity: 80%;
+  font-size: 14px;
+  color: var(--textBody);
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.nav-links li:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
 .nav-links li:hover {
-  color: var(--brandSlate);
-  font-weight: 400;
+  color: var(--brandGold);
 }
 
 .contact-button {
   background: transparent;
   border: 1px solid var(--brandSlate);
   color: var(--brandSlate);
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 6px 16px;
+  border-radius: var(--radius);
   font-family: var(--fh);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -152,168 +135,390 @@ nav {
 .contact-button:hover {
   background-color: var(--brandSlate);
   color: var(--textWhite);
-  opacity: 60%;
 }
 
-.menu-toggle {
-  display: none; /* Hidden on desktop */
-  background: none;
-  border: none;
-  color: var(--brandSlate);
-  cursor: pointer;
-  padding: 5px;
-  z-index: 100;
-}
-
-/* ==========================================
-   8. MOBILE RESPONSIVE MEDIA QUERY
-   ========================================== */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* Show hamburger only on mobile screen widths */
-  }
-
-  /* Re-defining nav-right specifically for mobile view dropdown */
-  .nav-content .nav-right {
-    display: flex;
-    position: absolute;
-    top: 76px; 
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* More solid on mobile for text readability */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-    padding: 30px;
-    border-bottom: 2px solid var(--brandSand);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-    z-index: 99;
-    
-    /* Hidden by default on mobile screens until toggle script activates it */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-  }
-
-  .nav-links ul {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-
-  .nav-links li {
-    font-size: 18px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-  }
-
-  /* Reset hover line animation for touch screens so it doesn't look buggy */
-  .nav-links li::after {
-    display: none;
-  }
-
-  .contact-button {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-  }
-
-  /* This active helper class is what your JS toggles */
-  .nav-content .nav-right.is-active {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-  }
-}
-
-/* ==========================================
+/* ==========================================================================
    3. HERO SECTION
-   ========================================== */
+   ========================================================================== */
 .hero {
-  position: relative;
-  height: 480px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.hero > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  opacity: 80%;
-}
-
-.hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
-  z-index: 2;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  padding: 40px 0;
 }
 
 .hero-content {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  z-index: 3;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  width: 100%;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
-}
-
-.hero-text {
-  max-width: 650px;
 }
 
 .hero-text h1 {
+  font-size: 32px;
+  font-weight: 600;
   color: var(--textWhite);
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .hero-text h3 {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 400;
-  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 24px;
+  line-height: 1.4;
 }
 
-.hero-info-button {
-  background-color: var(--brandGold);
-  color: var(--brandSlate);
-  border: transparent;
-  border-style: solid;
-  padding: 12px 28px;
+/* Hero Stats Bar Row */
+.hero-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 60px;
+  margin-top: 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--fh);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+}
+
+.info-button {
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--textWhite);
+  padding: 8px 20px;
+  font-family: var(--fh);
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-left: auto; /* Pushes the button to the far right side */
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.info-button:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* ==========================================================================
+   4. MAIN WORKSPACE WRAPPER (SIDEBAR + MAIN GRID)
+   ========================================================================== */
+.main-layout {
+  max-width: 1200px;
+  margin: 30px auto 60px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Sidebar width vs content field */
+  gap: 30px;
+}
+
+/* Left Sidebar Filter Section */
+.filters-sidebar {
+  background-color: var(--surfaceCard);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius);
+  padding: 20px;
+  align-self: start;
+}
+
+.filter-group {
+  margin-bottom: 24px;
+}
+
+.filter-group h4 {
+  font-family: var(--fh);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--brandDarkSand);
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: var(--textBody);
+}
+
+.filter-option input {
+  margin-right: 8px;
+}
+
+.filter-count {
+  margin-left: auto;
+  color: var(--textMuted);
+  font-size: 11px;
+}
+
+/* Price range inline inputs */
+.price-inputs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.price-inputs input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.btn-apply, .btn-clear {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.btn-apply {
+  background: #FFFFFF;
+  border: 1px solid var(--textBody);
+}
+
+.btn-clear {
+  background: transparent;
+  border: none;
+  color: var(--textMuted);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   5. MAIN STOCK DISPLAY (FEATURED CARD & GRID ELEMENTS)
+   ========================================================================== */
+.content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Listing Meta Header Bar */
+.listing-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.search-dropdown {
+  background: #FFF;
+  border: 1px solid #CBD5E1;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+/* Featured Spotlight Premium Listing Banner */
+.featured-listing-card {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.featured-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 4px;
+}
+
+.featured-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.featured-title h2 {
+  font-size: 24px;
+  color: var(--textWhite);
+}
+
+.featured-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+}
+
+.featured-price {
+  text-align: right;
+}
+
+.featured-price .price-amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.featured-price .price-unit {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+}
+
+.featured-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-featured-watchlist, .btn-featured-bid {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius);
   font-family: var(--fh);
   font-weight: 600;
-  font-size: 15px;
-  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
-  transition: transform 0.1s ease, background-color 0.1s ease;   /*Not sure about this delay*/
 }
 
-.hero-info-button:hover {
-  background-color: var(--brandSlate);
-  opacity: 80%;
-  transform: scale(102%);
-  color: rgba(255, 255, 255, 0.85);
-  mix-blend-mode: overlay;
+.btn-featured-watchlist {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--textWhite);
+}
+
+.btn-featured-bid {
+  background-color: var(--brandBlueHeader);
+  border: none;
+  color: var(--textWhite);
+}
+
+/* ==========================================================================
+   6. THREE-COLUMN PRODUCT GRID SYSTEM
+   ========================================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Matching the 3-column UI exactly */
+  gap: 20px;
+}
+
+.product-card {
+  background-color: var(--surfaceCard);
+  border-radius: var(--radius-lg);
+  border: 1px solid #E2E8F0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Custom styled micro badging elements */
+.card-badge {
+  align-self: flex-start;
+  border: 1px solid var(--brandSand);
+  background-color: var(--brandLightGold);
+  color: var(--brandDarkSand);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.card-img {
+  background-color: #F1F5F9;
+  height: 140px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--textHeadings);
+}
+
+.card-seller, .card-meta {
+  font-size: 12px;
+  color: var(--textMuted);
+  margin-top: 2px;
+}
+
+.card-price {
+  font-family: var(--fh);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--textPrice);
+  margin: 12px 0;
+}
+
+/* Card Button Execution Links */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-bid {
+  background-color: var(--brandBlueHeader);
+  color: var(--textWhite);
+  border: none;
+  padding: 8px;
+  font-family: var(--fh);
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.btn-watchlist {
+  background-color: #FFFFFF;
+  color: var(--textBody);
+  border: 1px solid #CBD5E1;
+  padding: 8px;
+  font-family: var(--fh);
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* Return to top link structural spacer node */
+.return-top-container {
+  text-align: center;
+  margin: 40px 0 10px 0;
+}
+
+.return-top-container a {
+  font-size: 13px;
+  color: var(--textMuted);
+  text-decoration: none;
 }
 
 /* ==========================================
