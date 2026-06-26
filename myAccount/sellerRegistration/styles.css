@@ -1,0 +1,414 @@
+/* ==========================================
+   1. CORE VARIABLES & BASE STYLES
+   ========================================== */
+:root {
+  --brandSlate: #2D3748;
+  --brandLightSlate: #9197A0;
+  --brandDarkSand: #8A7A5A;
+  --brandSand: #E8DFC8;
+  --brandLightSand: #FDF6DC;
+  --brandGold: #F0C142;
+  --surfacePg: #F4F3F0;
+  --textLeadIntro: #555;
+  --textEyebrowGold: #F0C142;
+  --textMutedCaptions: #777;
+  --textBody: #4A4A4A;
+  --textHeadings: #1C1C1C;
+  --textWhite: #FFF;
+  --textEyebrowBlue: #91ACB6;
+  --textBullets: #81A1A9;
+  --textLightGray: #E9E8E8;
+  --textDarkBackground: #F3F6F7;
+  
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+  
+  --fh: 'Onest', sans-serif;
+  --fb: 'Red Hat Text', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fb);
+  color: var(--textBody);
+  background-color: #ffffff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--fh);
+  color: var(--textHeadings);
+  font-weight: 900;
+  font-size: 48px;
+}
+
+h2 {
+  font-family: var(--fh);
+  font-weight: 700;
+  font-size: 28px;
+}
+
+h3{
+  font-family: var(--fb);
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  opacity: 80%;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================
+   2. NAVIGATION BAR (DESKTOP & BASE)
+   ========================================== */
+nav {
+  background-color: rgba(244, 243, 240, 0.6); /* 60% transparent */
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);   Not sure about the blur*/
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-content img {
+  height: 45px;
+}
+
+.nav-content img:hover {
+  transform: scale(105%);
+  opacity: 80%;
+}
+
+/* This container must stay visible on desktop */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 1;           /* Forces visibility on desktop */
+  visibility: visible;   /* Forces visibility on desktop */
+  transform: none;       /* Resets any mobile offsets */
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+
+.nav-links li {
+  font-family: var(--fh);
+  font-size: 16px;
+  color: rgba(45, 55, 72, 0.6);
+  opacity: 80%;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-links li:hover {
+  color: var(--brandSlate);
+  font-weight: 500;
+}
+
+.contact-button {
+  background: transparent;
+  border: 1px solid var(--brandSlate);
+  color: var(--brandSlate);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: var(--fh);
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-button:hover {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  opacity: 60%;
+}
+
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: var(--brandSlate);
+  cursor: pointer;
+  padding: 5px;
+  z-index: 100;
+}
+
+/* ==========================================
+    MOBILE RESPONSIVE MEDIA QUERY
+   ========================================== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show hamburger only on mobile screen widths */
+  }
+
+  /* Re-defining nav-right specifically for mobile view dropdown */
+  .nav-content .nav-right {
+    display: flex;
+    position: absolute;
+    top: 76px; 
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* More solid on mobile for text readability */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 30px;
+    border-bottom: 2px solid var(--brandSand);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    z-index: 99;
+    
+    /* Hidden by default on mobile screens until toggle script activates it */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .nav-links li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  /* Reset hover line animation for touch screens so it doesn't look buggy */
+  .nav-links li::after {
+    display: none;
+  }
+
+  .contact-button {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* This active helper class is what your JS toggles */
+  .nav-content .nav-right.is-active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+}
+
+
+
+/* ==========================================
+   6. FOOTER
+   ========================================== */
+footer {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  padding: 40px 0;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-top img[alt*="logo"] {
+  height: 40px;
+}
+
+.footer-top img[alt*="logo"]:hover {
+  transform: scale(105%);
+  opacity: 80%;
+}
+
+.footer-top p {
+  font-size: 13px;
+  color: var(--brandLightSlate);
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 12px;
+}
+
+/* Container alignment for social nodes if text matches icons */
+.footer-top img:not([alt*="logo"]) {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  margin-left: 10px;
+}
+
+.footer-top img:not([alt*="logo"]):hover {
+  opacity: 1;
+}
+
+footer hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 25px 0;
+}
+
+.footer-bottom ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-bottom li {
+  font-size: 13px;
+  color: var(--brandLightSlate);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-bottom li:hover {
+  color: var(--brandGold);
+}
+
+/* ==========================================
+   7. RESPONSIVE DESIGN (MOBILE FIXES)
+   ========================================== */
+@media (max-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-right {
+    display: none; /* Simple implementation; can expand to burger menu later */
+  }
+  
+  .hero-text h1 {
+    font-size: 32px;
+  }
+  
+  .card-content {
+    flex-direction: column !important; /* Stack items vertically */
+    gap: 20px;
+  }
+  
+  .card-content:nth-child(even) {
+    flex-direction: column-reverse !important; /* Retain text hierarchy */
+  }
+  
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   8. MOBILE MENU INTERACTION
+   ========================================== */
+
+/* Hide the hamburger button by default on desktop screens */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--brandSlate);
+  cursor: pointer;
+  padding: 5px;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  /* Show the hamburger icon on mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Transform the nav container into a full-width dropdown */
+  .nav-right {
+    display: flex; /* Override the previous 'display: none' */
+    position: absolute;
+    top: 76px; /* Adjust based on your exact header height */
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 30px;
+    border-bottom: 2px solid var(--brandSand);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    z-index: 99;
+    
+    /* Hidden state by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  /* Stack menu items vertically with better touch targets */
+  .nav-links ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .nav-links li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .contact-button {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* Active state class (triggered via JavaScript) */
+  .nav-right.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
