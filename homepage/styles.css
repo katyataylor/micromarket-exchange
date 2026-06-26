@@ -62,6 +62,9 @@ nav {
   background-color: #ffffff;
   padding: 15px 0;
   border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .nav-content {
@@ -529,3 +532,75 @@ footer hr {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================
+   8. MOBILE MENU INTERACTION
+   ========================================== */
+
+/* Hide the hamburger button by default on desktop screens */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--brandSlate);
+  cursor: pointer;
+  padding: 5px;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  /* Show the hamburger icon on mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Transform the nav container into a full-width dropdown */
+  .nav-right {
+    display: flex; /* Override the previous 'display: none' */
+    position: absolute;
+    top: 76px; /* Adjust based on your exact header height */
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 30px;
+    border-bottom: 2px solid var(--brandSand);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    z-index: 99;
+    
+    /* Hidden state by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  /* Stack menu items vertically with better touch targets */
+  .nav-links ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .nav-links li {
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .contact-button {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* Active state class (triggered via JavaScript) */
+  .nav-right.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
