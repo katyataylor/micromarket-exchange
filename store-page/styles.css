@@ -254,7 +254,6 @@ nav {
 .hero-text h1 {
   font-weight: 700;
   color: var(--textWhite);
-  margin-bottom: 8px;
 }
 
 .hero-text h3 {
@@ -269,17 +268,27 @@ nav {
 .hero-stats-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .hero-stats {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  gap: 120px;
-  margin-top: 20px;
+  gap: auto;
+  height: 100px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  display: flex;
+  width: 1px;
+  height: 100%;
+  margin: 0 62px;
+  /* background-color: rgba(145, 172, 182, 0.7);   This is not working yet*/
 }
 
 .stat-label {
@@ -288,7 +297,6 @@ nav {
   font-style: italic;
   font-weight: 100;
   color: rgba(145, 172, 182, 0.7);
-  margin-top: 4px;
 }
 
 .info-button {
@@ -296,6 +304,7 @@ nav {
   border: 1px solid var(--brandGold);
   color: var(--brandGold);
   padding: 12px 20px;
+  margin: auto;
   font-family: var(--fh);
   font-size: 20px;
   font-weight: 700;
