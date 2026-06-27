@@ -238,7 +238,7 @@ nav {
    3. HERO SECTION
    ========================================================================== */
 .hero {
-  background-color: var(--brandSlate);
+  background-image: linear-gradient(#2D3748,#6D85AE);
   color: var(--textWhite);
   padding: 96px 0;
 }
