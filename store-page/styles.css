@@ -70,6 +70,13 @@ h6 {
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 100;
 }
 
 img {
@@ -462,61 +469,65 @@ hr {
 }
 
 /* Featured Spotlight Premium Listing Banner */
-.featured-listing-card {
+.featured-card {
   background-color: var(--brandSlate);
   color: var(--textWhite);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 32px;
   box-shadow: var(--shadow-md);
 }
 
-.featured-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.6);
+.featured-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.featured-seller-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-eyebrow {
+  font-size: 16px;
   margin-bottom: 4px;
 }
 
-.featured-main-info {
+.featured-small-text {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.featured-title h2 {
-  font-size: 24px;
-  color: var(--textWhite);
-}
-
-.featured-sub {
-  font-size: 13px;
+  flex-direction: row;
+  gap: 28px;
   color: rgba(255, 255, 255, 0.7);
-  margin-top: 4px;
 }
 
-.featured-price {
-  text-align: right;
-}
-
-.featured-price .price-amount {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.featured-price .price-unit {
+.featured-seller, .seller-location, .featured-unit {
   font-size: 12px;
+}
+
+.seller-location {
+  font-style: italic;
+}
+
+.featured-price-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-unit {
   color: rgba(255, 255, 255, 0.6);
   display: block;
+  text-align: right;
 }
 
 .featured-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 20px;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 16px;
 }
 
-.btn-featured-watchlist, .btn-featured-bid {
+#btn-watchlist, #btn-bid {
   flex: 1;
   padding: 10px;
   border-radius: var(--radius);
@@ -526,16 +537,17 @@ hr {
   cursor: pointer;
 }
 
-.btn-featured-watchlist {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
+#btn-watchlist {
+  border-width: none;
+  border-style: none;
+  background-color: rgba(255,255,255,0.3);
   color: var(--textWhite);
 }
 
-.btn-featured-bid {
-  background-color: var(--brandBlueHeader);
-  border: none;
-  color: var(--textWhite);
+#btn-bid {
+  background: transparent;
+  border: 1px solid var(--brandGold);
+  color: var(--brandGold);
 }
 
 /* ==========================================================================
