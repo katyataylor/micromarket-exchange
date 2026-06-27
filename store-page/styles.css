@@ -544,10 +544,23 @@ hr {
   color: var(--textWhite);
 }
 
+#btn-watchlist:hover {
+  border-width: none;
+  border-style: none;
+  background-color: var(--brandSand);
+  color: var(--brandDarkSand);
+}
+
 #btn-bid {
   background: transparent;
   border: 1px solid var(--brandGold);
   color: var(--brandGold);
+}
+
+#btn-bid:hover {
+  border: 1px solid var(--brandGold);
+  background-color: var(--brandGold);
+  color: var(--textWhite);
 }
 
 /* ==========================================================================
