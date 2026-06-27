@@ -68,7 +68,7 @@ h6 {
   font-family: var(--fb);
   color: rgba(145, 172, 182, 1);
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -240,13 +240,13 @@ nav {
 .hero {
   background-color: var(--brandSlate);
   color: var(--textWhite);
-  padding: 40px 0;
+  padding: 96px 0;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 1152px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -302,11 +302,13 @@ nav {
   border-radius: var(--radius);
   cursor: pointer;
   margin-left: auto; /* Pushes the button to the far right side */
-  transition: background 0.2s;
+  transition: background 0.1s;
 }
 
 .info-button:hover {
-  background-color: rgba(255,255,255,0.1);
+  color: var(--brandLightSand);
+  background-color: var(--brandGold);
+  border: none;
 }
 
 /* ==========================================================================
