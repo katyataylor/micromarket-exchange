@@ -265,7 +265,29 @@ nav {
   }
 }
 
+/* ==========================================
+   4. MAIN
+   ========================================== */
+.doc-icon {
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 18px 21px;
+gap: 10px;
+isolation: isolate;
 
+width: 74px;
+height: 74px;
+
+background: #FDF6DC;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+}
 
 /* ==========================================
    6. FOOTER
