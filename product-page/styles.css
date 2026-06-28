@@ -70,6 +70,12 @@ h4 {
   font-weight: 600;
 }
 
+h5 {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 200;
+}
+
 h6 {
   font-family: var(--fb);
   color: rgba(145, 172, 182, 1);
@@ -93,6 +99,15 @@ img {
 
 .italic {
   font-style: italic;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.subtext {
+  font-size: 14px;
+  text-transform: capitalize;
 }
 
 /* ==========================================
