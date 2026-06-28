@@ -105,6 +105,10 @@ img {
   font-weight: 800;
 }
 
+.gold {
+  color: var(--brandGold);
+}
+
 .subtext {
   font-size: 14px;
   text-transform: capitalize;
