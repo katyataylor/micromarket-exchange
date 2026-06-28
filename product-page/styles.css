@@ -56,12 +56,18 @@ h2 {
   font-size: 28px;
 }
 
-h3{
+h3 {
   font-family: var(--fb);
   font-size: 26px;
   letter-spacing: 0.02em;
   opacity: 80%;
   line-height: 1.6;
+}
+
+h4 {
+  font-family: var(--fh);
+  font-size: 22px;
+  font-weight: 600;
 }
 
 h6 {
@@ -83,6 +89,10 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.italic {
+  font-style: italic;
 }
 
 /* ==========================================
