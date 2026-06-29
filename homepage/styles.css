@@ -56,7 +56,7 @@ h2 {
   font-size: 28px;
 }
 
-h3{
+h3 {
   font-family: var(--fb);
   font-size: 26px;
   letter-spacing: 0.02em;
@@ -64,10 +64,60 @@ h3{
   line-height: 1.6;
 }
 
+h4 {
+  font-family: var(--fh);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h5 {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 200;
+}
+
+h6 {
+  font-family: var(--fb);
+  color: rgba(145, 172, 182, 1);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 100;
+}
+
 img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.gold {
+  color: var(--brandGold);
+}
+
+.subtext {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.l-subtext {
+  font-family: var(--fb);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* ==========================================
@@ -420,7 +470,7 @@ nav {
 
 .product-card {
   background-color: var(--textWhite);
-  border-radius: var(--radius-lg);
+  border-radius: 35px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   border: 1px solid rgba(0,0,0,0.04);
@@ -437,7 +487,9 @@ nav {
 /* Image frame simulation from graphic design */
 .card-img {
   background-color: #EAEAEA;
-  height: 180px;
+  height: 156px;
+  margin: 12px;
+  border-radius: 35px;
   position: relative;
   display: flex;
   align-items: center;
@@ -445,7 +497,13 @@ nav {
 }
 
 .card-img-alt {
-  background-color: #DFDFDF;
+  height: 156px;
+  margin: 12px;
+  border-radius: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-badge {
@@ -460,14 +518,9 @@ nav {
   letter-spacing: 0.5px;
   padding: 4px 10px;
   border-radius: 20px;
-  border: 1px solid var(--brandSand);
+  border: 1px solid var(--brandDarkSand);
 }
 
-.card-img-icon svg {
-  width: 45px;
-  height: 45px;
-  opacity: 0.7;
-}
 
 /* Card Metadata styling */
 .card-body {
@@ -479,7 +532,6 @@ nav {
 
 .card-category {
   font-size: 11px;
-  text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--brandLightSlate);
   font-weight: 600;
@@ -489,8 +541,11 @@ nav {
 .card-name {
   font-family: var(--fh);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 1.2;
   color: var(--textHeadings);
+  text-align: left;
 }
 
 .card-seller {
