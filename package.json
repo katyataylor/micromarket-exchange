@@ -1,0 +1,14 @@
+{
+  "name": "micromarket-exchange",
+  "version": "1.0.0",
+  "description": "B2B Agricultural Microingredient Marketplace",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ejs": "^3.1.10"
+  }
+}
