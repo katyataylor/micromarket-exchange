@@ -1,0 +1,341 @@
+/* ==========================================
+   3. HERO SECTION
+   ========================================== */
+.hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 80%;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+  z-index: 2;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
+}
+
+.hero-text {
+  max-width: 650px;
+}
+
+.hero-text h1 {
+  color: var(--textWhite);
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero-text h3 {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.hero-info-button {
+  background-color: var(--brandGold);
+  color: var(--brandSlate);
+  border: transparent;
+  border-style: solid;
+  padding: 12px 28px;
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.1s ease;   /*Not sure about this delay*/
+}
+
+.hero-info-button:hover {
+  background-color: var(--brandSlate);
+  opacity: 80%;
+  transform: scale(102%);
+  color: rgba(255, 255, 255, 0.85);
+  mix-blend-mode: overlay;
+}
+
+/* ==========================================
+   4. INFO / FEATURE CARDS
+   ========================================== */
+.info {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Base layouts for split halves */
+.card-left, .card-right {
+  flex: 1;
+}
+
+.card-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.card-text h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--textLeadIntro);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.card-left img, .card-right img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* Make sure the text/image elements stay inline neatly */
+.card-content .card-left, 
+.card-content .card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Text link/button variant tweaks based on wireframe setup */
+.about-button, .shop-button, .info-button{
+  align-self: flex-start;
+  padding: 8px 20px;
+  background-color: transparent;
+  color: var(--brandGold);
+  border: 1px;
+  border-color: var(--brandGold);
+  border-style: solid;
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.info-button:hover, .about-button:hover, .shop-button:hover {
+  background-color: #e0b034;
+  transform: scale(102%);
+  color: rgba(255, 255, 255, 0.85);
+  border-color: transparent;
+  opacity: 80%;
+}
+
+/* ==========================================
+   5. FEATURED STOCK SECTION
+   ========================================== */
+.featured-stock {
+  background-color: var(--surfacePg);
+  padding: 60px 0 80px 0;
+}
+
+.featured-stock-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.featured-stock h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background-color: var(--textWhite);
+  border-radius: 35px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Image frame simulation from graphic design */
+.card-img {
+  background-color: #EAEAEA;
+  height: 156px;
+  margin: 12px;
+  border-radius: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-img-alt {
+  height: 156px;
+  margin: 12px;
+  border-radius: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--brandLightSand);
+  color: var(--brandDarkSand);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--brandDarkSand);
+}
+
+
+/* Card Metadata styling */
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-category {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--brandLightSlate);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-name {
+  font-family: var(--fh);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: var(--textHeadings);
+  text-align: left;
+}
+
+.card-seller {
+  font-size: 13px;
+  color: var(--textMutedCaptions);
+  margin-bottom: 10px;
+}
+
+.card-meta {
+  font-size: 12px;
+  color: var(--textBody);
+  background-color: var(--textDarkBackground);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.card-price {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brandDarkSand);
+  margin-bottom: 15px;
+  margin-top: auto; /* Pushes price and actions to bottom */
+}
+
+.card-price span {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+}
+
+/* Interactive Card Buttons */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-bid {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  border: none;
+  padding: 10px;
+  font-family: var(--fh);
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-bid:hover {
+  background-color: #1a222d;
+}
+
+.btn-watchlist {
+  background-color: transparent;
+  color: var(--brandSlate);
+  border: 1px solid #D1D5DB;
+  padding: 9px;
+  font-family: var(--fh);
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-watchlist:hover {
+  background-color: #F9FAFB;
+  border-color: var(--brandSlate);
+}
