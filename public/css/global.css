@@ -269,6 +269,7 @@ nav {
 
   /* This active helper class is what your JS toggles */
   .nav-content .nav-right.is-active {
+    display: flex;
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateY(0) !important;
