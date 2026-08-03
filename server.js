@@ -17,11 +17,52 @@ const mockListings = [
     { id: 103, name: "Pure Ascorbic Acid (Vitamin C)", qty: "600 lbs", price: 4100, expires: "2027-01-15" }
 ];
 
-// 4. ROUTE: Render the Marketplace Gallery
+// ROUTE: Render the Marketplace Gallery
 app.get('/marketplace', (req, res) => {
     // Passes the array of bulk microingredients into your marketplace.ejs template
     res.render('marketplace', { listings: mockListings }); 
 });
+
+// ROUTE: Homepage
+app.get('/homepage', (req, res) => {
+    res.render('homepage'); // Looks for views/homepage.ejs
+});
+
+// ROUTE: Product Detail Page (Dynamic ID)
+app.get('/product/:id', (req, res) => {
+    // Later we will fetch this specific ingredient ID from PostgreSQL
+    res.render('product-page', { productId: req.params.id }); 
+});
+
+// ROUTE: List a Product (Seller Form)
+app.get('/sell/list', (req, res) => {
+    res.render('productListing'); 
+});
+
+// ROUTE: User Account Dashboard
+app.get('/account', (req, res) => {
+    res.render('account'); 
+});
+
+// ROUTE: Shopping Cart / Order Commit View
+app.get('/cart', (req, res) => {
+    res.render('cart'); 
+});
+
+// ROUTE: B2B Seller Onboarding Registration
+app.get('/registration', (req, res) => {
+    res.render('registration'); 
+});
+
+// ROUTE: Contact & Information Pages
+app.get('/contact', (req, res) => {
+    res.render('contactpage'); 
+});
+
+app.get('/infopage', (req, res) => {
+    res.render('infoPage'); 
+});
+
 
 // 5. Start the local server
 app.listen(PORT, () => {

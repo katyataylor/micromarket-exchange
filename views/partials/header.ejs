@@ -4,8 +4,9 @@
 </head>
 <nav>
   <div class="nav-content">
-    <img src="/images/small-mme-logo.png" alt="Small yellow MicroMarket logo.">
-    
+    <a href="/homepage" class="logo-link">
+      <img src="images/small-mme-logo.png" alt="Small yellow MicroMarket logo.">
+    </a>
     <!-- Hamburger Toggle Button for Mobile -->
     <button class="menu-toggle" aria-label="Toggle navigation menu">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -18,13 +19,13 @@
     <div class="nav-right">
       <div class="nav-links">
         <ul>
-          <li>Buy</li>
-          <li>Sell</li>
-          <li>About Us</li>
-          <li>Login/My Account</li>
+          <li><a href="/marketplace">Buy</a></li>
+          <li><a href="/infoPage">Sell</a></li>
+          <li><a href="/account">My Account</a></li>
+          <li><a href="/registration">Sign Up/Login</a></li>
         </ul>
       </div>
-      <button class="contact-button">Contact Us</button>
+      <button class="contact-button" onclick="window.location.href='/contact'">Contact Us</button>
     </div>
   </div>
 </nav>

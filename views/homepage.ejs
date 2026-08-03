@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MicroMarket Exchange</title>
-  <link rel="stylesheet" href="/public/css/global.css">
+  <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/homepage.css">
   <script src="/js/main.js" defer></script>
 </head>
 <body>
   
-<% include('partials/header') %>
+<%- include('partials/header') %>
 
 
    <!-- Hero -->
     <section class="hero">
-      <img src="./img/ag-warehouse.jpg" alt="Photo of the inside of a large agricultural warehouse. Lots of rows of stacked canvas bags.">
+      <img src="/images/ag-warehouse.jpg" alt="Photo of the inside of a large agricultural warehouse. Lots of rows of stacked canvas bags.">
       <div class="hero-bg"></div>
       <div class="hero-content">
         <div class="hero-text">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="card-right">
-            <img src="./img/Hay-Missouri.webp" alt="Hay bale in the forefront of a green field.">
+            <img src="/images/Hay-Missouri.webp" alt="Hay bale in the forefront of a green field.">
           </div>
 
         </div>
@@ -50,7 +50,7 @@
         <div class="card-content">
 
           <div class="card-left">
-            <img src="./img/Grain.jpg" alt="Hands holding unprocessed grain in front of a bag full of grain.">
+            <img src="/images/Grain.jpg" alt="Hands holding unprocessed grain in front of a bag full of grain.">
           </div>
 
           <div class="card-right">
@@ -74,7 +74,7 @@
           </div>
             
           <div class="card-left">
-            <img src="./img//Cattle-feedlot-south-africa-beef-industry.webp" alt="Cattle eating at a large, outoor trough.">
+            <img src="/images/Cattle-feedlot-south-africa-beef-industry.webp" alt="Cattle eating at a large, outoor trough.">
           </div>
 
         </div>
@@ -95,7 +95,7 @@
       <div class="product-card">
         <div class="card-img">
           <span class="card-badge">Auction</span>
-          <img class="card-img-icon" src="../images/IMG_9098.jpeg" alt="Product photo">
+          <img class="card-img-icon" src="/images/IMG_9098.jpeg" alt="Product photo">
         </div>
         <div class="card-body">
           <h6 class="card-category">Amino acid</h6>
@@ -186,7 +186,7 @@
         </div>
       </section>
 
-    <% include('partials/footer') %>
+    <%- include('partials/footer') %>
 
 </body>
 </html>
