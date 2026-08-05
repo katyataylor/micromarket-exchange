@@ -1,0 +1,19 @@
+<!-- views/partials/productCard.ejs -->
+<div class="product-card">
+  <div class="card-header">
+    <h3><%= item.name %></h3>
+    <span class="badge">ID: <%= item.id %></span>
+  </div>
+  
+  <div class="card-body">
+    <p><strong>Quantity Available:</strong> <%= item.qty %></p>
+    <p class="price"><strong>Price:</strong> $<%= item.price.toLocaleString() %></p>
+    <p class="expiry"><strong>Expires:</strong> <%= item.expires %></p>
+  </div>
+  
+  <div class="card-footer">
+    <!-- Links dynamically to the unique product route -->
+    <a href="/product/<%= item.id %>" class="view-details-btn">View Details</a>
+    <button class="add-to-cart-btn">Commit to Order</button>
+  </div>
+</div>
