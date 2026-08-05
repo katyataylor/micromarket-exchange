@@ -1,19 +1,32 @@
-<!-- views/partials/productCard.ejs -->
 <div class="product-card">
-  <div class="card-header">
-    <h3><%= item.name %></h3>
-    <span class="badge">ID: <%= item.id %></span>
+  <!-- image container houses both the image and the absolute badge -->
+  <div class="card-image-wrapper">
+    <span class="auction-badge">
+      <span class="dot"></span> AUCTION
+    </span>
+    <img src="/images/probios-precise.jpg" alt="<%= item.name %>" class="product-img">
   </div>
   
-  <div class="card-body">
-    <p><strong>Quantity Available:</strong> <%= item.qty %></p>
-    <p class="price"><strong>Price:</strong> $<%= item.price.toLocaleString() %></p>
-    <p class="expiry"><strong>Expires:</strong> <%= item.expires %></p>
+  <div class="card-details">
+    <h3 class="product-title">Product</h3>
+    <p class="company-name">General Feed Co.</p>
+    <p class="location">Location, USA</p>
+    
+    <!-- meta grid for Vol and Pkg -->
+    <div class="meta-row">
+      <span>Vol: <strong class="meta-val">55lbs</strong></span>
+      <span>Pkg: <strong class="meta-val">Bulk</strong></span>
+    </div>
+
+    <!-- price Section -->
+    <div class="price-display">
+      <span class="amount">$00.00</span><span class="unit">/lbs</span>
+    </div>
   </div>
   
-  <div class="card-footer">
-    <!-- Links dynamically to the unique product route -->
-    <a href="/product/<%= item.id %>" class="view-details-btn">View Details</a>
-    <button class="add-to-cart-btn">Commit to Order</button>
+  <div class="card-actions">
+    <button class="bid-btn">Bid Now</button>
+    <button class="watchlist-btn">Add to Watchlist</button>
   </div>
 </div>
+

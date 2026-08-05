@@ -184,7 +184,7 @@
   margin-bottom: 40px;
 }
 
-.product-grid {
+/* .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -207,7 +207,7 @@
 }
 
 /* Image frame simulation from graphic design */
-.card-img {
+/* .card-img {
   background-color: #EAEAEA;
   height: 156px;
   margin: 12px;
@@ -241,11 +241,11 @@
   padding: 4px 10px;
   border-radius: 20px;
   border: 1px solid var(--brandDarkSand);
-}
+} */
 
 
 /* Card Metadata styling */
-.card-body {
+/* .card-body {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -292,16 +292,16 @@
   color: var(--brandDarkSand);
   margin-bottom: 15px;
   margin-top: auto; /* Pushes price and actions to bottom */
-}
+/* }
 
 .card-price span {
   font-size: 13px;
   font-weight: 400;
   color: var(--textMutedCaptions);
-}
+} */ 
 
 /* Interactive Card Buttons */
-.card-actions {
+/* .card-actions {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -338,4 +338,4 @@
 .btn-watchlist:hover {
   background-color: #F9FAFB;
   border-color: var(--brandSlate);
-}
+} */
