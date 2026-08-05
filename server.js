@@ -17,15 +17,15 @@ const mockListings = [
     { id: 103, name: "Pure Ascorbic Acid (Vitamin C)", qty: "600 lbs", price: 4100, expires: "2027-01-15" }
 ];
 
+// ROUTE: Homepage
+app.get('/homepage', (req, res) => {
+    res.render('homepage'); // Looks for views/homepage.ejs
+});
+
 // ROUTE: Render the Marketplace Gallery
 app.get('/marketplace', (req, res) => {
     // Passes the array of bulk microingredients into your marketplace.ejs template
     res.render('marketplace', { listings: mockListings }); 
-});
-
-// ROUTE: Homepage
-app.get('/homepage', (req, res) => {
-    res.render('homepage'); // Looks for views/homepage.ejs
 });
 
 // ROUTE: Product Detail Page (Dynamic ID)
@@ -67,5 +67,5 @@ app.get('/infopage', (req, res) => {
 // 5. Start the local server
 app.listen(PORT, () => {
     console.log(`\n🚀 Ag Marketplace Platform Live!`);
-    console.log(`🔗 Access locally at: http://localhost:${PORT}/marketplace\n`);
+    console.log(`🔗 Access locally at: http://localhost:${PORT}/homepage\n`);
 });

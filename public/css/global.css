@@ -167,6 +167,11 @@ nav {
   gap: 24px;
 }
 
+.nav-links a {
+    text-decoration: none; /* Removes default underline */
+    color: inherit; /* Prevents the default browser link blue color */
+}
+
 .nav-links li {
   font-family: var(--fh);
   font-size: 16px;
