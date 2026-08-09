@@ -5,12 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
   <link rel="stylesheet" href="/css/global.css">
-  <!-- <link rel="stylesheet" href="/css/info-page.css"> -->
   <script src="/js/main.js" defer></script>
 </head>
 <body>
   <%- include('partials/header') %>
+<div class="page-body">
 
+  <!-- Marketplace Info -->
+   <section class="info-container">
+    <h6>who can trade on micromarket exchange</h6>
+    <h1>A verified marketplace for the industry</h1>
+    <h3>Micromarket Exchange is built exclusively for licensed feed manufacturers.</h3>
+    <h3>Every buyer and seller on our platform is verified before they can list, so you always know who you're dealing with</h3>
+    <div class="bubble-container">
+      <div class="membership-types-container">
+        <div class="callout-bubble">
+          <h6>account registration</h6>
+          <h1>Join Micromarket Exchange</h1>
+          <h3>Micromarket Exchange is a marketplace for licensed agricultural operations. 
+            <span style="font-weight: 800;">Select the option below that descripbes your operation to sign up.</span> 
+            Only FDA-licensed operations and licensed feed mills may buy ot sell. 
+            A third party memebrship is available for viewing products only.</h3>
+        </div>
+
+        <div class="full-membership">
+          <h6>full membership</h6>
+          <h2>FDA-licensed operations</h2>
+          <p>FDA-licensed farms and operations approved to list feed ingredients for sale on the platform.</p>
+          <div class="type-tag">Buy & Sell</div>
+        </div>
+
+        <div class="full-membership">
+          <h6>full membership</h6>
+          <h2>Verified businesses</h2>
+          <p>Licensed feed mills and brick-and-mortar operations who need to source verified ingredients.</p>
+          <div class="type-tag">Buy & Sell</div>
+        </div>
+
+        <div class="third-party-membership">
+          <h6>third-party members</h6>
+          <h2>Industry Experts</h2>
+          <p>Consultants, researchers and industry professionals can view the marketplace.</p>
+          <div class="type-tag">View Only</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subtext">No traders. No middlemen. Only licensed operations whith a physical presence can buy or sell.</div>
+   </section>
+
+   <hr>
+
+   <!-- Listing Process Section -->
+    <section class="info-container">
+      <h6>listing process</h6>
+      <h1 class="lightweight">Every listing is reviewed before it goes live</h1>
+      <h3>We manually approve all submissions, including photos, to keep listing quality high and the marketplace trustworthy.</h3>
+
+      <div class="list-container">
+
+        <div class="list-item">
+          <div class="number">1</div>
+          <div class="text-container">
+            <h2>Submit your listing</h2>
+            <p>Provide product details, quantity, asking price, and clear photos of what you're selling.</p>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="list-item">
+          <div class="number">2</div>
+          <div class="text-container">
+            <h2>Review & approval</h2>
+            <p>Our team reviews your submission for accuracy and quality.
+              We check photos too - blurry, misleading, or low quality images won't make it through.
+            </p>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="list-item">
+          <div class="number">3</div>
+          <div class="text-container">
+            <h2>Listing goes live</h2>
+            <p>Once approved, your listing is visible to all qualified buyers on the marketplace.</p>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="list-item">
+          <div class="number">4</div>
+          <div class="text-container">
+            <h2>Sale completes or listing expires</h2>
+            <p>If your item sells, the commission is deducted from your final payout - nothing to pay upfront.
+              If it doesn't sell in the 14-day period, you can relist.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+
+    <section class="info-container">
+
+      <h6>fees & pricing</h6>
+      <h1 class="lightweight">Simple, seller-side fees</h1>
+      <h3>Buyers pay only listing price + sales tax. 
+        Sellers pay an initial listing fee and a percentage of the completed sale.
+        No hidden platform fees.
+      </h3>
+
+      <div class="bubble-list-container">
+        <h2>Marketplace fee structure</h2>
+
+        <div class="list-item">
+          <div class="text-container">
+            <h2 class="bold">Listing fee</h2>
+            <p class="gold">Charged when your listing is approved and goes live.</p>
+            <h2>Per listing</h2>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="list-item">
+          <div class="text-container">
+            <h2 class="bold">Sale commission</h2>
+            <p class="gold">Deducted from seller's payout when a sale completes. Buyers pay the listed price + tax.</p>
+            <h2>% of final sale</h2>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="list-item">
+          <div class="text-container">
+            <h2 class="bold">Relisting</h2>
+            <p class="gold">Unsold listings that are unlisted after 14 days in the marketplace can be resubmitted.</p>
+            <h2>After 14 days</h2>
+          </div>
+        </div>
+        
+      </div>
+
+    </section>
+
+    <div id="infopage-cta">
+      <div class="text-container">
+        <p class="bold">Ready to list an ingredient?</p>
+        <p>Fill out the product listing form. 
+          Our team will review all submissions within 1-2 business days.
+        </p>
+        <button>List Product</button>
+      </div>
+    </div>
+
+</div>
   <%- include('partials/footer') %>
 </body>
 </html>
