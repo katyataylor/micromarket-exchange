@@ -9,6 +9,7 @@
   --brandLightSand: #FDF6DC;
   --brandGold: #F0C142;
   --surfacePg: #F4F3F0;
+
   --textLeadIntro: #555;
   --textEyebrowGold: #F0C142;
   --textMutedCaptions: #777;
@@ -43,37 +44,48 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.display {
+  font-family: var(--fb);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.05%;
+}
+
 h1 {
   font-family: var(--fh);
   color: var(--textHeadings);
-  font-weight: 900;
-  font-size: 48px;
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 0.02%;
 }
 
 h2 {
   font-family: var(--fh);
   font-weight: 700;
   font-size: 28px;
+  letter-spacing: 0.01%;
 }
 
 h3 {
   font-family: var(--fb);
-  font-size: 26px;
-  letter-spacing: 0.02em;
-  opacity: 80%;
-  line-height: 1.6;
+  font-size: 30px;
+  letter-spacing: 0.02%;
+  font-weight: 500;
+  /* opacity: 80%; */
+  /* line-height: 1.6; */
 }
 
 h4 {
   font-family: var(--fh);
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: 0.01%;
 }
 
 h5 {
   font-family: var(--fb);
-  font-size: 20px;
-  font-weight: 200;
+  font-size: 48px;
+  font-weight: 400;
 }
 
 h6 {
@@ -87,8 +99,58 @@ h6 {
 
 p {
   font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 200;
+}
+
+.p2 {
+  font-family: var(--fh);
+  font-size: 26px;
+  font-weight: 200;
+}
+
+.p3 {
+  font-family: var(--fb);
+  font-size: 20;
+  font-weight: 400;
+}
+
+.p4 {
+  font-family: var(--fb);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.03%;
+}
+
+.p5 {
+  font-family: var(--fh);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.02%;
+}
+
+.eyebrow {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.09%;
+}
+
+.lead {
+  font-family: var(--fh);
   font-size: 16px;
-  font-weight: 100;
+}
+
+.caption {
+  font-family: var(--fh);
+  font-size: 11px;
+}
+
+button {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 600;
 }
 
 img {
@@ -114,10 +176,19 @@ img {
   text-transform: capitalize;
 }
 
+.subH1 {
+  font-family: var(--fh);
+  font-size: 24px;
+  font-style: italic;
+  letter-spacing: 2%;
+}
+
 .l-subtext {
   font-family: var(--fb);
-  font-size: 18px;
-  font-weight: 500;
+  color: var(--textMutedCaptions);
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 5%;
 }
 
 /* ==========================================
@@ -214,6 +285,485 @@ nav {
   cursor: pointer;
   padding: 5px;
   z-index: 100;
+}
+
+/* ==========================================
+   3. HERO SECTION
+   ========================================== */
+.hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 80%;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+  z-index: 2;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
+}
+
+.hero-text {
+  max-width: 650px;
+}
+
+.hero-text h1 {
+  color: var(--textWhite);
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero-text h3 {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.hero-info-button {
+  background-color: var(--brandGold);
+  color: var(--brandSlate);
+  border: transparent;
+  border-style: solid;
+  padding: 12px 28px;
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.1s ease;   /*Not sure about this delay*/
+}
+
+.hero-info-button:hover {
+  background-color: var(--brandSlate);
+  opacity: 80%;
+  transform: scale(102%);
+  color: rgba(255, 255, 255, 0.85);
+  mix-blend-mode: overlay;
+}
+
+/* ==========================================
+   4. INFO / FEATURE CARDS
+   ========================================== */
+.info {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Base layouts for split halves */
+.card-left, .card-right {
+  flex: 1;
+}
+
+.card-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.card-text h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--textLeadIntro);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.card-left img, .card-right img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* Make sure the text/image elements stay inline neatly */
+.card-content .card-left, 
+.card-content .card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Text link/button variant tweaks based on wireframe setup */
+.about-button, .shop-button, .info-button{
+  align-self: flex-start;
+  padding: 8px 20px;
+  background-color: transparent;
+  color: var(--brandGold);
+  border: 1px;
+  border-color: var(--brandGold);
+  border-style: solid;
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.info-button:hover, .about-button:hover, .shop-button:hover {
+  background-color: #e0b034;
+  transform: scale(102%);
+  color: rgba(255, 255, 255, 0.85);
+  border-color: transparent;
+  opacity: 80%;
+}
+
+/* ==========================================
+   5. FEATURED STOCK SECTION
+   ========================================== */
+.featured-stock {
+  background-color: var(--surfacePg);
+  padding: 60px 0 80px 0;
+}
+
+.featured-stock-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.featured-stock h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* ==========================================
+    INFO PAGE LAYOUT & CONTAINER
+   ========================================== */
+
+  .page-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+/* Base Headings Polish */
+.info-container h1 {
+  font-size: 38px;
+  margin: 10px 0 20px;
+  line-height: 1.2;
+}
+
+.info-container h1.lightweight {
+  font-weight: 500;
+}
+
+.info-container h3 {
+  font-size: 18px;
+  color: #555555;
+  font-weight: 400;
+  max-width: 800px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.info-container h6 {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #B2A282; /* Muted gold/sand tone for eyebrows */
+}
+
+/* Sections Divider */
+hr {
+  border: none;
+  border-top: 1px solid #EAEAEA;
+  margin: 60px 0;
+}
+
+/* ==========================================================================
+   SECTION 1: MARKETPLACE INFO & MEMBERSHIP BUBBLES
+   ========================================================================== */
+.info-container {
+  margin-bottom: 40px;
+}
+
+.membership-types-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 40px 0 20px;
+}
+
+/* Callout Bubble spanning full layout width above grids */
+.bubble-container {
+  width: 100%;
+}
+
+.callout-bubble {
+  grid-column: span 3;
+  background-color: var(--brandSlate);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  color: var(--textWhite);
+  margin-bottom: 10px;
+}
+
+.callout-bubble h6 {
+  color: var(--brandGold);
+  font-size: 11px;
+  margin-bottom: 15px;
+}
+
+.callout-bubble h1 {
+  color: var(--textWhite);
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.callout-bubble h3 {
+  color: #E2E8F0;
+  font-size: 16px;
+  font-weight: 300;
+  max-width: 100%;
+}
+
+/* Individual Cards */
+.full-membership, 
+.third-party-membership {
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandSand);
+  border-radius: var(--radius-lg);
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.third-party-membership {
+  background-color: #FAFAFA;
+  border-color: #E5E7EB;
+}
+
+.full-membership h6,
+.third-party-membership h6 {
+  font-size: 10px;
+  color: #718096;
+  margin-bottom: 10px;
+}
+
+.full-membership h2,
+.third-party-membership h2 {
+  font-size: 20px;
+  color: #1A202C;
+  margin-bottom: 15px;
+}
+
+.full-membership p,
+.third-party-membership p {
+  color: #4A5568;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: auto; /* Pushes action tag to the bottom */
+}
+
+/* Badges / Action Tags */
+.type-tag {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 25px;
+  padding: 6px 16px;
+  font-family: var(--fb);
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid #CBD5E0;
+  border-radius: 6px;
+  color: #4A5568;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   SECTION 2: LISTING PROCESS LIST
+   ========================================================================== */
+.list-container {
+  margin-top: 40px;
+  border-top: 1px solid #EAEAEA;
+}
+
+.list-container .list-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 25px 0;
+}
+
+.list-container hr {
+  margin: 0;
+  border-top: 1px solid #F0F0F0;
+}
+
+.list-container .number {
+  background-color: var(--brandGold);
+  color: #1A202C;
+  font-family: var(--fh);
+  font-weight: 700;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+  flex-shrink: 0;
+}
+
+.list-container .text-container h2 {
+  font-size: 18px;
+  color: #1A202C;
+  margin-bottom: 5px;
+}
+
+.list-container .text-container p {
+  font-size: 14px;
+  color: #718096;
+}
+
+/* ==========================================================================
+   SECTION 3: FEES & PRICING CONTAINER
+   ========================================================================== */
+.bubble-list-container {
+  background-color: #8D7F60; /* Deep muted sand/olive tone from the UI picture */
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  color: var(--textWhite);
+  margin-top: 40px;
+}
+
+.bubble-list-container > h2 {
+  font-size: 22px;
+  color: var(--textWhite);
+  margin-bottom: 30px;
+}
+
+.bubble-list-container .list-item .text-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.bubble-list-container .list-item h2 {
+  font-size: 18px;
+  color: var(--textWhite);
+  font-weight: 500;
+}
+
+.bubble-list-container .list-item h2.bold {
+  font-weight: 700;
+}
+
+.bubble-list-container .list-item h2:last-child {
+  text-align: right;
+  font-size: 16px;
+}
+
+.bubble-list-container .list-item p.gold {
+  color: #F7E7C4; /* Soft readable variant of sand over dark background */
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.bubble-list-container hr {
+  margin: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   SECTION 4: LOWER BOTTOM CTA
+   ========================================================================== */
+#infopage-cta {
+  border: 1px solid #EAEAEA;
+  border-radius: var(--radius-lg);
+  padding: 30px 40px;
+  margin-top: 60px;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+#infopage-cta .text-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+#infopage-cta p.bold {
+  font-size: 16px;
+  color: #1A202C;
+  width: 100%;
+  margin-bottom: -10px;
+}
+
+#infopage-cta p {
+  font-size: 14px;
+  color: #718096;
+  max-width: 70%;
+}
+
+.list-button {
+  background-color: transparent;
+  border: 1px solid var(--brandGold);
+  color: #C69A27;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  font-family: var(--fb);
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.list-button:hover {
+  background-color: var(--brandGold);
+  color: var(--textWhite);
 }
 
 /* ==========================================
