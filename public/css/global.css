@@ -191,6 +191,8 @@ img {
   letter-spacing: 5%;
 }
 
+.page-body
+
 /* ==========================================
    2. NAVIGATION BAR (DESKTOP & BASE)
    ========================================== */
@@ -478,10 +480,10 @@ nav {
    ========================================== */
 
   .page-body {
-  max-width: 1100px;
+  max-width: 1152px;
   margin: 0 auto;
-  padding: 60px 20px;
-  background-color: #ffffff;
+  padding: 62px 48px 48px;
+  background-color: var(--surfacePg);
 }
 
 /* Base Headings Polish */
