@@ -272,7 +272,6 @@ nav {
   font-weight: 500;
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .contact-button:hover {
@@ -296,7 +295,7 @@ nav {
    ========================================== */
 .hero {
   position: relative;
-  height: 480px;
+  height: 574px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -319,10 +318,7 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
   z-index: 2;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
 }
 
 .hero-content {
@@ -334,12 +330,11 @@ nav {
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);  /*Safari blur support*/
 }
 
 .hero-text {
-  max-width: 650px;
+  max-width: 800px;
+  gap: 24px;
 }
 
 .hero-text h1 {
@@ -349,25 +344,18 @@ nav {
   margin-bottom: 15px;
 }
 
-.hero-text h3 {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 30px;
-}
-
 .hero-info-button {
   background-color: var(--brandGold);
-  color: var(--brandSlate);
+  color: var(--surfacePg);
   border: transparent;
   border-style: solid;
-  padding: 12px 28px;
+  margin-top: 24px;
+  padding: 16px 20px;
   font-family: var(--fh);
   font-weight: 600;
-  font-size: 15px;
-  border-radius: 6px;
+  font-size: 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.1s ease, background-color 0.1s ease;   /*Not sure about this delay*/
 }
 
 .hero-info-button:hover {
