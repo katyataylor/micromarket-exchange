@@ -46,6 +46,7 @@ body {
 
 .display {
   font-family: var(--fb);
+  color: var(--textWhite);
   font-size: 48px;
   font-weight: 900;
   letter-spacing: -0.05%;
@@ -107,6 +108,7 @@ p {
   font-family: var(--fh);
   font-size: 26px;
   font-weight: 200;
+  letter-spacing: 0.02%;
 }
 
 .p3 {
@@ -191,14 +193,16 @@ img {
   letter-spacing: 5%;
 }
 
-.page-body
+.page-body {
+  background-color: var(--surfacePg);
+}
 
 /* ==========================================
    2. NAVIGATION BAR (DESKTOP & BASE)
    ========================================== */
 nav {
   background-color: rgba(244, 243, 240, 0.6); /* 60% transparent */
-  padding: 15px 0;
+  padding: 20px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -207,16 +211,15 @@ nav {
 }
 
 .nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  min-width: 1440px;
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .nav-content img {
-  height: 45px;
+  height: 60px;
 }
 
 .nav-content img:hover {
@@ -224,11 +227,10 @@ nav {
   opacity: 80%;
 }
 
-/* This container must stay visible on desktop */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 12px;
   opacity: 1;           /* Forces visibility on desktop */
   visibility: visible;   /* Forces visibility on desktop */
   transform: none;       /* Resets any mobile offsets */
@@ -237,7 +239,6 @@ nav {
 .nav-links ul {
   display: flex;
   list-style: none;
-  gap: 24px;
 }
 
 .nav-links a {
@@ -247,12 +248,13 @@ nav {
 
 .nav-links li {
   font-family: var(--fh);
-  font-size: 16px;
+  font-size: 20px;
   color: rgba(45, 55, 72, 0.6);
   opacity: 80%;
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease;
+  padding: 16px 20px; 
 }
 
 .nav-links li:hover {
@@ -262,13 +264,13 @@ nav {
 
 .contact-button {
   background: transparent;
-  border: 1px solid var(--brandSlate);
-  color: var(--brandSlate);
-  padding: 8px 16px;
-  border-radius: 6px;
+  border: 1px solid rgba(45, 55, 72, 0.8);
+  color: rgba(45, 55, 72, 0.6);
+  padding: 16px 20px;
+  border-radius: 8px;
   font-family: var(--fh);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
