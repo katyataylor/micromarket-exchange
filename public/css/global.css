@@ -473,10 +473,13 @@ img.card-img-icon {
 }
 
 /* ==========================================
-    INFO PAGE LAYOUT & CONTAINER
+    INFOPAGE LAYOUT & CONTAINER
    ========================================== */
 
   .page-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
   padding: 62px 48px 48px;
   background-color: var(--surfacePg);
@@ -485,12 +488,13 @@ img.card-img-icon {
 /* Sections Divider */
 hr {
   border: none;
-  border-top: 1px solid #EAEAEA;
-  margin: 60px 0;
+  border-top: 1px solid var(--brandSlate);
+  opacity: 40%;
+  margin-top: 62px;
 }
 
 /* ==========================================================================
-   SECTION 1: MARKETPLACE INFO & MEMBERSHIP BUBBLES
+   INFOPAGE SECTION 1: MARKETPLACE INFO & MEMBERSHIP BUBBLES
    ========================================================================== */
 .info-container {
   display: flex;
@@ -499,7 +503,7 @@ hr {
   align-content: center;
   justify-content: center;
   width: 1152px;
-  margin-bottom: 40px;
+  margin: 62px 0 48px;
 }
 
 .membership-types-container {
@@ -521,6 +525,7 @@ hr {
   padding: 40px;
   color: var(--textWhite);
   margin-bottom: 10px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
 }
 
 .callout-bubble h6 {
@@ -548,10 +553,11 @@ hr {
   background-color: var(--brandLightSand);
   border: 1px solid var(--textHeadings);
   border-radius: var(--radius-lg);
-  padding: 30px 25px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
 }
 
 .third-party-membership {
@@ -562,13 +568,19 @@ hr {
 .full-membership h2,
 .third-party-membership h2 {
   color: #1A202C;
+  padding-top: 16px;
 }
+
+.full-membership h4,
+.third-party-membership h4 {
+  padding: 16px 0;
+} 
 
 /* Badges / Action Tags */
 .type-tag {
   display: inline-block;
   align-self: flex-start;
-  margin-top: 10px;
+  margin-top: auto;
   padding: 4px 15px;
   font-family: var(--fb);
   font-size: 20px;
@@ -586,7 +598,7 @@ hr {
 }
 
 .l-subtext {
-  text-align: center;
+  text-align: left;
 }
 
 /* ==========================================================================
