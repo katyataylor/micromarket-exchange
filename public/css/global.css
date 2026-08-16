@@ -485,7 +485,6 @@ img.card-img-icon {
   background-color: var(--surfacePg);
 }
 
-/* Sections Divider */
 hr {
   border: none;
   border-top: 1px solid var(--brandSlate);
@@ -503,7 +502,7 @@ hr {
   align-content: center;
   justify-content: center;
   width: 1152px;
-  margin: 62px 0 48px;
+  margin: 62px 0;
 }
 
 .membership-types-container {
@@ -513,7 +512,6 @@ hr {
   margin: 40px 0 20px;
 }
 
-/* Callout Bubble spanning full layout width above grids */
 .bubble-container {
   width: 100%;
 }
@@ -547,7 +545,6 @@ hr {
   max-width: 100%;
 }
 
-/* Individual Cards */
 .full-membership, 
 .third-party-membership {
   background-color: var(--brandLightSand);
@@ -576,7 +573,6 @@ hr {
   padding: 16px 0;
 } 
 
-/* Badges / Action Tags */
 .type-tag {
   display: inline-block;
   align-self: flex-start;
@@ -640,104 +636,86 @@ hr {
 }
 
 /* ==========================================================================
-   SECTION 3: FEES & PRICING CONTAINER
+   INFOPAGE SECTION 3: FEES & PRICING CONTAINER
    ========================================================================== */
 .bubble-list-container {
-  background-color: #8D7F60; /* Deep muted sand/olive tone from the UI picture */
+  background-color: var(--brandDarkSand); 
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 48px 30px;
   color: var(--textWhite);
   margin-top: 40px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
 }
 
-.bubble-list-container > h2 {
-  font-size: 22px;
+.bubble-list-container h3 {
+  margin-bottom: 24px;
+}
+
+.bubble-list-container h2 {
   color: var(--textWhite);
-  margin-bottom: 30px;
-}
-
-.bubble-list-container .list-item .text-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  align-items: center;
-  gap: 20px;
-}
-
-.bubble-list-container .list-item h2 {
-  font-size: 18px;
-  color: var(--textWhite);
-  font-weight: 500;
-}
-
-.bubble-list-container .list-item h2.bold {
-  font-weight: 700;
-}
-
-.bubble-list-container .list-item h2:last-child {
-  text-align: right;
-  font-size: 16px;
-}
-
-.bubble-list-container .list-item p.gold {
-  color: #F7E7C4; /* Soft readable variant of sand over dark background */
-  font-size: 14px;
   font-weight: 300;
+}
+
+.bubble-list-container .list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 10px 5px 10px;
+  margin: 0;
+  gap: 0;
+}
+
+.bubble-list-container .list-item .p2 {
+  text-align: right;
 }
 
 .bubble-list-container hr {
   margin: 20px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--brandSand);
+  border-top: 1px solid var(--brandSand);
 }
 
 /* ==========================================================================
-   SECTION 4: LOWER BOTTOM CTA
+   INFOPAGE SECTION 4: LOWER BOTTOM CTA
    ========================================================================== */
-#infopage-cta {
-  border: 1px solid #EAEAEA;
+.infopage-cta {
+  display: flex;
+  justify-content: center;
+  width: 1152px;
+  border: none;
   border-radius: var(--radius-lg);
-  padding: 30px 40px;
-  margin-top: 60px;
+  padding: 48px 0;
   background-color: #ffffff;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
 }
 
-#infopage-cta .text-container {
+.infopage-cta .text-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 15px;
-}
-
-#infopage-cta p.bold {
-  font-size: 16px;
-  color: #1A202C;
-  width: 100%;
-  margin-bottom: -10px;
-}
-
-#infopage-cta p {
-  font-size: 14px;
-  color: #718096;
-  max-width: 70%;
+  width: 955px;
+  gap: 8px;
 }
 
 .list-button {
   background-color: transparent;
   border: 1px solid var(--brandGold);
-  color: #C69A27;
+  color: var(--brandGold);
   padding: 16px 20px;
   border-radius: var(--radius);
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-weight: 600;
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .list-button:hover {
-  background-color: var(--brandGold);
-  color: var(--textWhite);
+  background-color: #e0b034cc;
+  transform: scale(102%);
+  color: var(--surfacePg);
+  border-color: transparent;
+  opacity: 80%;
 }
 
 /* ==========================================
