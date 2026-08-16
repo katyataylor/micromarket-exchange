@@ -154,12 +154,6 @@ button {
   font-weight: 600;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 .italic {
   font-style: italic;
 }
@@ -384,8 +378,8 @@ nav {
 .card-content {
   display: flex;
   align-items: center;
-  gap: 24px;
-  width: 955px;
+  gap: 48px;
+  width: 1000px;
   height: fit-content;
 }
 
@@ -404,7 +398,7 @@ nav {
 }
 
 .card-text .p2 {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 20px;
 }
 
@@ -417,7 +411,7 @@ nav {
 
 .card-right img{
   width: 467px;
-  height: 330px;
+  height: 370px;
   object-fit: cover;
   border-radius: 15px;
 }
@@ -470,6 +464,12 @@ nav {
   text-align: center;
   font-size: 32px;
   margin-bottom: 40px;
+}
+
+img.card-img-icon {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ==========================================
