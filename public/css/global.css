@@ -17,12 +17,11 @@
   --textHeadings: #1C1C1C;
   --textWhite: #FFF;
   --textEyebrowBlue: #91ACB6;
-  --textBullets: #81A1A9;
   --textLightGray: #E9E8E8;
   --textDarkBackground: #F3F6F7;
   
-  --radius: 10px;
-  --radius-lg: 14px;
+  --radius: 8px;
+  --radius-lg: 30px;
   --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
   
@@ -105,9 +104,9 @@ p {
 }
 
 .p2 {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 26px;
-  font-weight: 200;
+  font-weight: 100;
   letter-spacing: 0.02%;
 }
 
@@ -478,36 +477,9 @@ nav {
    ========================================== */
 
   .page-body {
-  max-width: 1152px;
   margin: 0 auto;
   padding: 62px 48px 48px;
   background-color: var(--surfacePg);
-}
-
-/* Base Headings Polish */
-.info-container h1 {
-  font-size: 38px;
-  margin: 10px 0 20px;
-  line-height: 1.2;
-}
-
-.info-container h1.lightweight {
-  font-weight: 500;
-}
-
-.info-container h3 {
-  font-size: 18px;
-  color: #555555;
-  font-weight: 400;
-  max-width: 800px;
-  margin-bottom: 12px;
-  line-height: 1.5;
-}
-
-.info-container h6 {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: #B2A282; /* Muted gold/sand tone for eyebrows */
 }
 
 /* Sections Divider */
@@ -521,6 +493,12 @@ hr {
    SECTION 1: MARKETPLACE INFO & MEMBERSHIP BUBBLES
    ========================================================================== */
 .info-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 1152px;
   margin-bottom: 40px;
 }
 
@@ -568,7 +546,7 @@ hr {
 .full-membership, 
 .third-party-membership {
   background-color: var(--brandLightSand);
-  border: 1px solid var(--brandSand);
+  border: 1px solid var(--textHeadings);
   border-radius: var(--radius-lg);
   padding: 30px 25px;
   display: flex;
@@ -577,46 +555,38 @@ hr {
 }
 
 .third-party-membership {
-  background-color: #FAFAFA;
-  border-color: #E5E7EB;
-}
-
-.full-membership h6,
-.third-party-membership h6 {
-  font-size: 10px;
-  color: #718096;
-  margin-bottom: 10px;
+  background-color: var(--surfacePg);
+  border-color: var(--textHeadings);
 }
 
 .full-membership h2,
 .third-party-membership h2 {
-  font-size: 20px;
   color: #1A202C;
-  margin-bottom: 15px;
-}
-
-.full-membership p,
-.third-party-membership p {
-  color: #4A5568;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: auto; /* Pushes action tag to the bottom */
 }
 
 /* Badges / Action Tags */
 .type-tag {
   display: inline-block;
   align-self: flex-start;
-  margin-top: 25px;
-  padding: 6px 16px;
+  margin-top: 10px;
+  padding: 4px 15px;
   font-family: var(--fb);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 800;
   background: transparent;
-  border: 1px solid #CBD5E0;
-  border-radius: 6px;
-  color: #4A5568;
+  border: 1px solid;
+  border-radius: 18px;
   cursor: pointer;
+}
+
+.full-membership .type-tag {
+  background-color: var(--brandSand);
+  border-color: var(--brandSand);
+  color: var(--brandDarkSand);
+}
+
+.l-subtext {
+  text-align: center;
 }
 
 /* ==========================================================================
