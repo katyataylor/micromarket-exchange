@@ -682,14 +682,15 @@ hr {
   display: flex;
   justify-content: center;
   width: 1152px;
+  gap: 36px;
   border: none;
   border-radius: var(--radius-lg);
-  padding: 48px 0;
+  padding: 48px;
   background-color: #ffffff;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
 }
 
-.infopage-cta .text-container {
+.cta-text-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -699,10 +700,12 @@ hr {
 }
 
 .list-button {
+  width: 157px;
+  height: 58px;
+  align-self: center;
   background-color: transparent;
   border: 1px solid var(--brandGold);
   color: var(--brandGold);
-  padding: 16px 20px;
   border-radius: var(--radius);
   font-family: var(--fh);
   font-weight: 600;
