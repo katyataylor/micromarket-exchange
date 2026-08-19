@@ -191,7 +191,7 @@ button {
 }
 
 /* ==========================================
-   2. NAVIGATION BAR (DESKTOP & BASE)
+  NAVIGATION BAR (GLOBAL)
    ========================================== */
 nav {
   background-color: rgba(244, 243, 240, 0.6); /* 60% transparent */
@@ -284,7 +284,7 @@ nav {
 }
 
 /* ==========================================
-   3. HERO SECTION
+   HERO SECTION (GLOBAL)
    ========================================== */
 .hero {
   position: relative;
@@ -325,9 +325,20 @@ nav {
   width: 100%;
 }
 
+.store-hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 96px auto;
+}
+
 .hero-text {
   max-width: 800px;
   gap: 24px;
+}
+
+.store-hero-text {
+  gap: 36px;
 }
 
 .hero-text h1 {
@@ -335,6 +346,10 @@ nav {
   font-size: 42px;
   line-height: 1.2;
   margin-bottom: 15px;
+}
+
+.stat-number {
+  color: var(--textWhite);
 }
 
 .hero-info-button {
