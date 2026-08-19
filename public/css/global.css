@@ -149,9 +149,17 @@ p {
 }
 
 button {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
   font-family: var(--fb);
   font-size: 20px;
   font-weight: 600;
+  padding: 16px 20px;
+  height: 58px;
+  width: fit-content;
+  border-radius: var(--radius);
+  cursor: pointer;
 }
 
 .italic {
@@ -319,17 +327,10 @@ nav {
   display: flex;
   justify-content: center;
   z-index: 3;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
-}
-
-.store-hero-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 96px auto;
 }
 
 .hero-text {
@@ -337,19 +338,8 @@ nav {
   gap: 24px;
 }
 
-.store-hero-text {
-  gap: 36px;
-}
-
-.hero-text h1 {
-  color: var(--textWhite);
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 15px;
-}
-
-.stat-number {
-  color: var(--textWhite);
+.hero-stats-container {
+  margin-top: 36px;
 }
 
 .hero-info-button {
@@ -370,7 +360,7 @@ nav {
   background-color: var(--brandSlate);
   opacity: 80%;
   transform: scale(102%);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--surfacePg);
   mix-blend-mode: overlay;
 }
 
@@ -485,6 +475,320 @@ img.card-img-icon {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* ==========================================
+    MARKETPLACE HERO SECTION
+   ========================================== */
+
+.store-hero-bg {
+  display: flex;
+  width: 100%;
+  background-image: linear-gradient(#2D3748,#6D85AE);
+  color: var(--textWhite);
+  padding: 96px 0;
+}
+
+.store-hero-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.store-hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 96px auto;
+}
+
+.store-hero-text {
+  gap: 36px;
+}
+
+.hero-stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.hero-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: auto;
+  height: 100px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  display: flex;
+  width: 1px;
+  height: 100%;
+  margin: 0 62px;
+  /* background-color: rgba(145, 172, 182, 0.7);   This is not working yet*/
+}
+
+.stat-number {
+  color: var(--textWhite);
+}
+
+.stat-label {
+  font-family: var(--fb);
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 100;
+  color: rgba(145, 172, 182, 0.7);
+}
+
+.store-hero-button {
+  background-color: transparent;
+  border: 1px solid var(--brandGold);
+  color: var(--brandGold);
+  padding: 12px 20px;
+  margin: auto;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-left: auto; /* Pushes the button to the far right side */
+  transition: background 0.1s;
+}
+
+.store-hero-button:hover {
+  color: var(--brandLightSand);
+  background-color: var(--brandGold);
+  border: none;
+}
+
+/* ==========================================
+    MARKETPLACE WORKSPACE WRAPPER
+   ========================================== */
+
+.store-page-body {
+  max-width: 1152px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Sidebar width vs content field */
+  gap: 30px;
+  background-color: var(--surfacePg);
+}
+
+.sidebar {
+  margin: 12px auto 12px auto;
+  padding: 48px 20px 0 20px;
+  background-color: white;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius);
+}
+
+.filter-group {
+  margin-bottom: 32px;
+  gap: 12px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: var(--textBody);
+}
+
+.filter-option input {
+  margin-right: 8px;
+}
+
+.filter-count {
+  margin-left: auto;
+  color: var(--textMuted);
+  font-size: 11px;
+}
+
+/* Price range inline inputs */
+.price-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.price-inputs input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.btn-apply, .btn-clear {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.btn-apply {
+  background: #FFFFFF;
+  border: 1px solid var(--textBody);
+}
+
+.btn-clear {
+  background: transparent;
+  border: none;
+  color: var(--textMuted);
+  text-decoration: underline;
+}
+
+/* ===============================================================
+    MARKETPLACE MAIN STOCK DISPLAY (FEATURED CARD & GRID ELEMENTS)
+   =============================================================== */
+
+.store-main {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 20px 0;
+}
+
+.store-results-count {
+  font-size: 14px;
+}
+
+.store-search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+#store-search-input {
+  border-radius: 4px;
+  border: 1px solid #CBD5E1;
+}
+
+#store-search-dropdown {
+  background: #FFF;
+  border: 1px solid #CBD5E1;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.store-filter-tags {
+  display: flex;
+  margin: 16px auto 16px 0;
+  padding: 2px 8px;
+  font-size: 14px;
+  background-color: var(--brandSand);
+  border-color: var(--brandDarkSand);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 16px;
+}
+
+.featured-card {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.featured-seller-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-eyebrow {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.featured-small-text {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.featured-seller, .seller-location, .featured-unit {
+  font-size: 12px;
+}
+
+.seller-location {
+  font-style: italic;
+}
+
+.featured-price-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-unit {
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  text-align: right;
+}
+
+.featured-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 16px;
+}
+
+#btn-watchlist, #btn-bid {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius);
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#btn-watchlist {
+  border-width: none;
+  border-style: none;
+  background-color: rgba(255,255,255,0.3);
+  color: var(--textWhite);
+}
+
+#btn-watchlist:hover {
+  border-width: none;
+  border-style: none;
+  background-color: var(--brandSand);
+  color: var(--brandDarkSand);
+}
+
+#btn-bid {
+  background: transparent;
+  border: 1px solid var(--brandGold);
+  color: var(--brandGold);
+}
+
+#btn-bid:hover {
+  border: 1px solid var(--brandGold);
+  background-color: var(--brandGold);
+  color: var(--textWhite);
 }
 
 /* ==========================================

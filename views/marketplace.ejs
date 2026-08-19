@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MicroMarket Exchange Store</title>
   <link rel="stylesheet" href="/css/global.css">
-  <link rel="stylesheet" href="/css/marketplace.css">
   <script src="/js/main.js" defer></script>
   </head>
 <body>
@@ -13,8 +12,8 @@
 <%- include('partials/header') %>
 
 <!-- Hero -->
- <section class="hero">
-  <div class="hero-bg">
+ <section class="hero-page-body">
+  <div class="store-hero-bg">
     <div class="store-hero-content">
     <div class="store-hero-text">
       <h6>CURRENT STOCK</h6>
@@ -37,41 +36,41 @@
           <div class="stat-label">Auctions ending today</div>
         </div>
       </div>
-      <button class="info-button">Learn more</button>
+      <button id="store-hero-button">Learn more</button>
       </div>
   </div>
   </div>
 </section>
 
 <!-- PAGE BODY -->
-<div class="page-body">
+<div class="store-page-body">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="store-sidebar">
 
     <!-- Listing Type -->
-    <div class="filter-group">
-      <div class="filter-label">Listing Type</div>
-      <div class="filter-item">
-        <label><input type="checkbox"  /> All Listings</label>
-        <span class="filter-count">142</span>
+    <div class="store-filter-group">
+      <div class="store-filter-label">Listing Type</div>
+      <div class="store-filter-item">
+        <label><input type="store-checkbox"  /> All Listings</label>
+        <span class="store-filter-count">142</span>
       </div>
-      <div class="filter-item">
-        <label><input type="checkbox" /> Auctions</label>
-        <span class="filter-count">115</span>
+      <div class="store-filter-item">
+        <label><input type="store-checkbox" /> Auctions</label>
+        <span class="store-filter-count">115</span>
       </div>
-      <div class="filter-item">
-        <label><input type="checkbox" /> Fixed price</label>
-        <span class="filter-count">27</span>
+      <div class="store-filter-item">
+        <label><input type="store-checkbox" /> Fixed price</label>
+        <span class="store-filter-count">27</span>
       </div>
     </div>
 
-    <div class="filter-divider"></div>
+    <div class="store-filter-divider"></div>
 
     <!-- Price Range -->
-    <div class="filter-group">
-      <div class="filter-label">Price Range</div>
-      <div class="price-row">
+    <div class="store-filter-group">
+      <div class="store-filter-label">Price Range</div>
+      <div class="store-price-row">
         <input class="price-input" type="text" placeholder="$ Min" />
         <input class="price-input" type="text" placeholder="$ Max" />
       </div>
@@ -79,55 +78,55 @@
       <button id="btn-clear">Clear filters</button>
     </div>
 
-    <div class="filter-divider"></div>
+    <div class="store-filter-divider"></div>
 
     <!-- Seller State -->
-    <div class="filter-group">
-      <div class="filter-label">Seller State</div>
-      <div class="filter-item">
+    <div class="store-filter-group">
+      <div class="store-filter-label">Seller State</div>
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Texas</label>
         <span class="filter-count">42</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Iowa</label>
         <span class="filter-count">29</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Kansas</label>
         <span class="filter-count">19</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Nebraska</label>
         <span class="filter-count">17</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Minnesota</label>
         <span class="filter-count">14</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> California</label>
         <span class="filter-count">12</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Washington</label>
         <span class="filter-count">9</span>
       </div>
     </div>
 
-    <div class="filter-divider"></div>
+    <div class="store-filter-divider"></div>
 
     <!-- Unit of Measure -->
-    <div class="filter-group">
-      <div class="filter-label">Unit of Measure</div>
-      <div class="filter-item">
+    <div class="store-filter-group">
+      <div class="store-filter-label">Unit of Measure</div>
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Pounds</label>
         <span class="filter-count">52</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Kilograms</label>
         <span class="filter-count">34</span>
       </div>
-      <div class="filter-item">
+      <div class="store-filter-item">
         <label><input type="checkbox" /> Grand</label>
         <span class="filter-count">27</span>
       </div>
@@ -136,14 +135,14 @@
   </aside>
 
   <!-- MAIN -->
-  <main class="main">
+  <main class="store-main">
 
     <!-- Results bar -->
-    <div class="results-bar">
-      <div class="results-count">Showing 142 listings</div>
-      <div class="search-bar">
-        <input id="search-input" type="text" placeholder="Search" />
-        <select id="search-dropdown">
+    <div class="store-results-bar">
+      <div class="store-results-count">Showing 142 listings</div>
+      <div class="store-search-bar">
+        <input id="store-search-input" type="text" placeholder="Search" />
+        <select id="store-search-dropdown">
           <option>Sort by</option>
           <option>Price: Low-High</option>
           <option>Price: High-Low</option>
@@ -154,7 +153,7 @@
     </div>
 
     <!-- Filter pills -->
-    <div class="filter-tags">
+    <div class="store-filter-tags">
       <div class="active tag">All listings ✕</div>
     </div>
 

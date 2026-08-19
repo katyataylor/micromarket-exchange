@@ -1,13 +1,13 @@
 /* ==========================================================================
    1. HERO SECTION
    ========================================================================== */
-.hero {
+.store-hero-bg {
   background-image: linear-gradient(#2D3748,#6D85AE);
   color: var(--textWhite);
   padding: 96px 0;
 }
 
-.hero-content {
+.store-hero-content {
   display: flex;
   flex-direction: column;
   max-width: 1152px;
@@ -15,20 +15,17 @@
   padding: 0 20px;
 }
 
-.hero-text h1 {
-  font-weight: 700;
-  color: var(--textWhite);
+.store-hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 96px auto;
 }
 
-.hero-text h3 {
-  font-size: 26px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 24px;
-  line-height: 1.4;
+.store-hero-text {
+  gap: 36px;
 }
 
-/* Hero Stats Bar Row */
 .hero-stats-container {
   display: flex;
   flex-direction: row;
@@ -55,6 +52,10 @@ hr {
   /* background-color: rgba(145, 172, 182, 0.7);   This is not working yet*/
 }
 
+.stat-number {
+  color: var(--textWhite);
+}
+
 .stat-label {
   font-family: var(--fb);
   font-size: 24px;
@@ -63,7 +64,7 @@ hr {
   color: rgba(145, 172, 182, 0.7);
 }
 
-.info-button {
+.store-hero-button {
   background-color: transparent;
   border: 1px solid var(--brandGold);
   color: var(--brandGold);
@@ -78,7 +79,7 @@ hr {
   transition: background 0.1s;
 }
 
-.info-button:hover {
+.store-hero-button:hover {
   color: var(--brandLightSand);
   background-color: var(--brandGold);
   border: none;
@@ -87,7 +88,7 @@ hr {
 /* ==========================================================================
    2. MAIN WORKSPACE WRAPPER (SIDEBAR + MAIN GRID)
    ========================================================================== */
-.page-body {
+.store-page-body {
   max-width: 1152px;
   padding: 0 20px;
   margin: 0 auto;
@@ -97,7 +98,6 @@ hr {
   background-color: var(--surfacePg);
 }
 
-/* Left Sidebar Filter Section */
 .sidebar {
   margin: 12px auto 12px auto;
   padding: 48px 20px 0 20px;
@@ -171,29 +171,29 @@ hr {
 /* ==========================================================================
    3. MAIN STOCK DISPLAY (FEATURED CARD & GRID ELEMENTS)
    ========================================================================== */
-.main {
+.store-main {
   display: flex;
   flex-direction: column;
   margin: 10px 0 20px 0;
 }
 
-.results-count {
+.store-results-count {
   font-size: 14px;
 }
 
-.search-bar {
+.store-search-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
 }
 
-#search-input {
+#store-search-input {
   border-radius: 4px;
   border: 1px solid #CBD5E1;
 }
 
-#search-dropdown {
+#store-search-dropdown {
   background: #FFF;
   border: 1px solid #CBD5E1;
   padding: 6px 12px;
@@ -201,7 +201,7 @@ hr {
   font-size: 13px;
 }
 
-.filter-tags {
+.store-filter-tags {
   display: flex;
   margin: 16px auto 16px 0;
   padding: 2px 8px;
@@ -213,7 +213,6 @@ hr {
   border-radius: 16px;
 }
 
-/* Featured Spotlight Premium Listing Banner */
 .featured-card {
   background-color: var(--brandSlate);
   color: var(--textWhite);
