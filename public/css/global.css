@@ -152,6 +152,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
   font-family: var(--fb);
   font-size: 20px;
   font-weight: 600;
@@ -581,7 +582,7 @@ hr {
   background-color: var(--surfacePg);
 }
 
-.sidebar {
+.store-sidebar {
   margin: 12px auto 12px auto;
   padding: 48px 20px 0 20px;
   background-color: white;
@@ -629,7 +630,7 @@ hr {
 }
 
 .btn-apply, .btn-clear {
-  width: 100%;
+  width: fill;
   padding: 8px;
   border-radius: 4px;
   font-family: var(--fh);
@@ -639,16 +640,9 @@ hr {
   margin-bottom: 8px;
 }
 
-.btn-apply {
-  background: #FFFFFF;
-  border: 1px solid var(--textBody);
-}
-
-.btn-clear {
+.btn-apply .btn-clear {
   background: transparent;
-  border: none;
-  color: var(--textMuted);
-  text-decoration: underline;
+  border: 1px solid var(--textBody);
 }
 
 /* ===============================================================
