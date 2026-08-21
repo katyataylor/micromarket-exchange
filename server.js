@@ -63,6 +63,10 @@ app.get('/infopage', (req, res) => {
     res.render('infoPage'); 
 });
 
+// Dummy playground
+app.get('/test-product', (req, res) => {
+    res.render('product-page', { /* add dummy data here if needed */ });
+});
 
 // 5. Start the local server
 app.listen(PORT, () => {
