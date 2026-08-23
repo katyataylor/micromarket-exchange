@@ -217,6 +217,46 @@ button {
 }
 
 /* ==========================================
+  GLOBAL ASSET STYLING
+   ========================================== */
+
+.blue-bubble {
+  display: flex;
+  flex-flow: column wrap;
+  width: fit-content;
+  background-color: rgba(155, 184, 191, 0.4);
+  border: 1px solid var(--brandSlate);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  gap: 24px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
+}
+
+.sand-bubble {
+  display: flex;
+  flex-flow: column wrap;
+  width: fit-content;
+  background-color: rgba(232, 223, 200, 0.6);
+  border: 1px solid var(--brandSlate);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  gap: 24px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
+}
+
+.membership-type {
+  width: 368px;
+  height: fit-content;
+}
+
+.membership-type.sand-bubble:focus { 
+  background-color: rgba(155, 184, 191, 0.4); 
+  border: 2px solid var(--brandSlate);        
+  outline: none;                             
+}
+
+
+/* ==========================================
   NAVIGATION BAR (GLOBAL)
    ========================================== */
 nav {
