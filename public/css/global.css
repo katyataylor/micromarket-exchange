@@ -180,11 +180,28 @@ button {
   text-transform: capitalize;
 }
 
+.subp1 {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  color: var(--textMutedCaptions);
+}
+
+.input-subp1 {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  color: var(--textEyebrowBlue);
+}
+
 .subH1 {
   font-family: var(--fh);
+  color: var(--textMutedCaptions);
   font-size: 24px;
   font-style: italic;
-  letter-spacing: 2%;
+  letter-spacing: 0.02em;
 }
 
 .l-subtext {
