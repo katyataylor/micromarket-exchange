@@ -65,7 +65,7 @@ app.get('/infopage', (req, res) => {
 
 // Dummy playground
 app.get('/test-product', (req, res) => {
-    res.render('product-page', { /* add dummy data here if needed */ });
+    res.render('registration', { /* add dummy data here if needed */ });
 });
 
 // 5. Start the local server
