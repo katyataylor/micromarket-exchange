@@ -10,7 +10,7 @@
 </head>
 <body>
   <%- include('partials/header') %>
-
+ 
  <!-- Hero -->
   <section class="hero-page-body">
     <div class="store-hero-bg">
@@ -26,21 +26,26 @@
     </div>
   </section>
 
+ <div class="page-body">
+
   <!-- Sign in & Disclosure -->
-  <div class="p2">Already have an account? <a href="account.ejs">Sign in</a></div>
+  <div class="p2 page-text">Already have an account? <a href="account.ejs">Sign in</a></div>
 
   <section class="disclosure-container">
-    <h4>• All trading accounts require verification before activation. Our team will review
+    <ul class="h4">
+      <li>
+      All trading accounts require verification before activation. Our team will review
       documentation and approve or follow up within 2 business days. Third-party memberships
       are approved automatically upon email confirmation.
-    </h4>
+      </li>
+    </ul>
   </section>
 
   <!-- Membership Type -->
   <section class="w-bubble-container">
 
-    <div class="list-item">
-      <h2 class="blue">1</h2>
+    <div class="list-item registration">
+      <h2 class="blue number">1</h2>
       <div class="text-container">
         <h3>Membership type</h3>
         <div class="subp1">Select the membership that matches your operation. This determines 
@@ -51,32 +56,34 @@
 
     <hr>
 
-    <div class="membership-type sand-bubble" tabindex="0">
-      <h2>Licensed Operation</h2>
-      <h4>FDA-licensed farms, operations, and licensed feed mills with a physical location.</h4>
-      <h4 class="blue">• List & sell products <br>
+    <div class="bubble-container">
+      <div class="membership-type sand-bubble" tabindex="0">
+        <h2>Licensed Operation</h2>
+        <h4>FDA-licensed farms, operations, and licensed feed mills with a physical location.</h4>
+        <h4 class="blue">• List & sell products <br>
           • Bid on listings <br>
           • Full marketplace access
-      </h4>
-      <div class="type-tag">Trade</div>
-    </div>
+        </h4>
+      <div class="membership-type type-tag">Trade</div>
+     </div>
     
-    <div class="membership-type sand-bubble" tabindex="0">
-      <h2>Industry Experts</h2>
-      <h4>Industry consultants, researchers, and observers who need marketplace visibility.</h4>
-      <h4> <s>• List & sell products</s> <br>
+     <div class="membership-type sand-bubble" tabindex="0">
+        <h2>Industry Experts</h2>
+        <h4>Industry consultants, researchers, and observers who need marketplace visibility.</h4>
+        <h4> <s>• List & sell products</s> <br>
           <s>• Bid on listings</s> <br>
           • Full marketplace access
-      </h4>
-      <div class="type-tag">View Only</div>
+        </h4>
+        <div class="membership-type type-tag">View Only</div>
+      </div>
     </div>
       
   </section>
 
   <!-- Contact Info -->
    <section class="w-bubble-container">
-    <div class="list-item">
-      <h2 class="blue">2</h2>
+    <div class="list-item registration">
+      <h2 class="blue number">2</h2>
       <div class="text-container">
         <h3>Contact information</h3>
         <div class="subp1">The primary contact for this account. This person will receive all notifications.</div>
@@ -107,8 +114,8 @@
 
   <!-- Business Info -->
   <section class="w-bubble-container">
-    <div class="list-item">
-      <h2 class="blue">3</h2>
+    <div class="list-item registration">
+      <h2 class="blue number">3</h2>
       <div class="text-container">
         <h3>Business information</h3>
         <div class="subp1">Details about your operation. Must match your FDA or state license records.</div>
@@ -146,6 +153,8 @@
 
   <!-- Submit -->
 
+
+ </div>
   <%- include('partials/footer') %>
 </body>
 </html>
