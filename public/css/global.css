@@ -1144,14 +1144,41 @@ img.card-img-icon {
   padding-top: 48px;
 }
 
+.blue-bubble.registration {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: self-start;
+  margin-top: 20px;
+}
+
 .blue.number {
   background-color: var(--textEyebrowBlue);
 }
 
 .user-inputs-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   width: 956px;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-column {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.subH1.large {
+  width: 956px;
+}
+
+.subH1.medium {
+  min-width: 468px;
 }
 
 /* ==========================================
