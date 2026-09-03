@@ -1,7 +1,23 @@
 /* ==========================================
    1. CORE VARIABLES & BASE STYLES
    ========================================== */
-:root {
+@font-face {
+  font-family: 'Onest';
+  src: url('../fonts/Onest/Onest-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  src: url('../fonts/Red_Hat_Text/RedHatText-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+   :root {
   --brandSlate: #2D3748;
   --brandLightSlate: #9197A0;
   --brandSoftGraphite: #707070;
