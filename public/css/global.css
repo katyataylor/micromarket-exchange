@@ -4,6 +4,7 @@
 :root {
   --brandSlate: #2D3748;
   --brandLightSlate: #9197A0;
+  --brandSoftGraphite: #707070;
   --brandDarkSand: #8A7A5A;
   --brandSand: #E8DFC8;
   --brandLightSand: #FDF6DC;
@@ -596,6 +597,7 @@ img.card-img-icon {
 .store-hero-bg {
   display: flex;
   width: 100%;
+  justify-content: center;
   background-image: linear-gradient(#2D3748,#6D85AE);
   color: var(--textWhite);
   padding: 96px 0;
@@ -613,11 +615,13 @@ img.card-img-icon {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
   margin: 96px auto;
 }
 
 .store-hero-text {
   gap: 36px;
+  width: 1152px;
 }
 
 .hero-stats-container {
