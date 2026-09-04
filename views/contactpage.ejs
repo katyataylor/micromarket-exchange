@@ -3,13 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
+  <title>Contact</title>
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/contactpage.css">
   <script src="/js/main.js" defer></script>
 </head>
 <body>
   <%- include('partials/header') %>
+
+  <main class="contact-page">
+    <div class="eyebrow gold">contact us</div>
+    <h1>We’re here to help</h1>
+
+    <section class="contact-shell">
+      <aside class="contact-panel">
+        <h2>Reach a specialist</h2>
+        <div class="stack">
+          <p><span class="font-strong">Email:</span> hello@micromarketexchange.com</p>
+          <p><span class="font-strong">Phone:</span> (800) 555-0148</p>
+          <p><span class="font-strong">Hours:</span> Mon–Fri · 8am–5pm CST</p>
+        </div>
+      </aside>
+
+      <div class="form-panel">
+        <form class="contact-form">
+          <div class="form-row">
+            <input type="text" placeholder="First name" aria-label="First name">
+            <input type="text" placeholder="Last name" aria-label="Last name">
+          </div>
+          <input type="email" placeholder="Business email" aria-label="Business email">
+          <input type="text" placeholder="Company name" aria-label="Company name">
+          <textarea placeholder="Tell us how we can help"></textarea>
+          <button class="btn btn-primary" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <%- include('partials/footer') %>
 </body>
