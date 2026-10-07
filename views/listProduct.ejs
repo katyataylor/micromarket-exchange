@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>List a Product</title>
+  <title>Sign Up</title>
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/product-listing.css">
   <script src="/js/main.js" defer></script>
@@ -11,49 +11,11 @@
 <body>
   <%- include('partials/header') %>
 
-  <main class="listing-page">
-    <section class="listing-panel">
-      <div class="eyebrow gold">new listing</div>
-      <h1>List an ingredient</h1>
+<div class="page-body">
 
-      <form class="listing-form">
-        <div class="form-row">
-          <label>
-            <span class="caption">Product name</span>
-            <input type="text" placeholder="e.g. Lysine-L 98.5%">
-          </label>
-          <label>
-            <span class="caption">Category</span>
-            <select>
-              <option>Amino acid</option>
-              <option>Vitamin</option>
-              <option>Mineral</option>
-              <option>Enzyme</option>
-            </select>
-          </label>
-        </div>
-        <div class="form-row">
-          <label>
-            <span class="caption">Quantity</span>
-            <input type="text" placeholder="e.g. 550 lbs">
-          </label>
-          <label>
-            <span class="caption">Price</span>
-            <input type="text" placeholder="e.g. $0.52 /lb">
-          </label>
-        </div>
-        <label>
-          <span class="caption">Description</span>
-          <textarea placeholder="Describe the product, storage, packaging and handling"></textarea>
-        </label>
-        <label>
-          <span class="caption">Upload documentation</span>
-          <input type="file">
-        </label>
-        <button class="btn btn-primary" type="submit">Submit listing</button>
-      </form>
-    </section>
-  </main>
+
+  
+</div>
 
   <%- include('partials/footer') %>
 </body>
