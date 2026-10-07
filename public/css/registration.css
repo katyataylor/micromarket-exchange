@@ -1,0 +1,61 @@
+.page-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: min(100%, 72rem);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.registration-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.w-bubble-container {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(45, 55, 72, 0.12);
+  border-radius: 2rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.list-item.registration {
+  padding: 2rem 2rem 0;
+}
+
+.user-inputs-container {
+  padding: 0 2rem 2rem;
+}
+
+.user-inputs-container input {
+  width: 100%;
+  min-height: 3.125rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(45, 55, 72, 0.2);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.membership-type.sand-bubble {
+  min-height: 15rem;
+}
+
+@media (max-width: 768px) {
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .user-inputs-container,
+  .list-item.registration {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
