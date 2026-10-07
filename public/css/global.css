@@ -61,7 +61,7 @@ body {
 }
 
 .display {
-  font-family: var(--fb);
+  font-family: var(--fh);
   color: var(--textWhite);
   font-size: 48px;
   font-weight: 900;
