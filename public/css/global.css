@@ -42,8 +42,8 @@
   --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
   
-  --fh: 'Onest', sans-serif;
-  --fb: 'Red Hat Text', sans-serif;
+  --fh: 'Onest', 'Segoe UI', sans-serif;
+  --fb: 'Red Hat Text', 'Segoe UI', sans-serif;
 }
 
 * {
@@ -52,12 +52,20 @@
   padding: 0;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
 body {
   font-family: var(--fb);
   color: var(--textBody);
   background-color: #ffffff;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .display {
