@@ -129,14 +129,14 @@ h1 {
 }
 
 h2 {
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-weight: 600;
   font-size: 28px;
   letter-spacing: 0.01%;
 }
 
 h3 {
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-size: 30px;
   letter-spacing: 0.02%;
   font-weight: 500;
@@ -145,14 +145,14 @@ h3 {
 }
 
 h4 {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 22px;
   font-weight: 400;
   letter-spacing: 0.01%;
 }
 
 h5 {
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-size: 48px;
   font-weight: 400;
 }
@@ -167,7 +167,7 @@ h6 {
 }
 
 p {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 13px;
   font-weight: 200;
 }
@@ -180,27 +180,27 @@ p {
 }
 
 .p3 {
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-size: 20;
   font-weight: 400;
 }
 
 .p4 {
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.03%;
 }
 
 .p5 {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 26px;
   font-weight: 400;
   letter-spacing: 0.02%;
 }
 
 .eyebrow {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 20px;
   font-weight: 300;
   text-transform: uppercase;
@@ -208,12 +208,12 @@ p {
 }
 
 .lead {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 16px;
 }
 
 .caption {
-  font-family: var(--fh);
+  font-family: var(--fb);
   font-size: 11px;
 }
 
@@ -222,7 +222,7 @@ button {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  font-family: var(--fb);
+  font-family: var(--fh);
   font-size: 20px;
   font-weight: 600;
   padding: 16px 20px;
@@ -266,7 +266,7 @@ button {
 }
 
 .subH1 {
-  font-family: var(--fh);
+  font-family: var(--fb);
   color: var(--textMutedCaptions);
   font-size: 24px;
   font-style: italic;
@@ -331,7 +331,7 @@ button {
 
 .membership-type {
   width: 368px;
-  height: fit-content;
+  height: 100;
 }
 
 .membership-type.sand-bubble:focus { 
@@ -378,6 +378,7 @@ hr {
   opacity: 40%;
   margin-top: 62px;
 }
+
 
 /* ==========================================
   NAVIGATION BAR (GLOBAL)
