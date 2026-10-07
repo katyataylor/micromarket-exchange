@@ -3,77 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Member Portal</title>
+  <title>Sign Up</title>
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/account.css">
   <script src="/js/main.js" defer></script>
 </head>
 <body>
   <%- include('partials/header') %>
-
-  <main class="account-page">
-    <section class="account-hero">
-      <div>
-        <div class="eyebrow gold">member portal</div>
-        <h1>Welcome back, Lone Star Grain Co.</h1>
-      </div>
-      <button class="btn btn-secondary">Log out</button>
-    </section>
-
-    <section class="summary-grid">
-      <article class="metric-card">
-        <span class="caption">Active listings</span>
-        <strong>18</strong>
-        <p>Across feed ingredients and vitamins.</p>
-      </article>
-      <article class="metric-card">
-        <span class="caption">Pending bids</span>
-        <strong>5</strong>
-        <p>Awaiting seller confirmation.</p>
-      </article>
-      <article class="metric-card">
-        <span class="caption">Verified status</span>
-        <strong>Good</strong>
-        <p>License and facility records current.</p>
-      </article>
-    </section>
-
-    <section class="account-lists">
-      <div class="account-panel">
-        <h2>Recent activity</h2>
-        <div class="list-item-row">
-          <div>
-            <p class="font-strong">Lysine-L 98.5% - Grade A</p>
-            <p class="caption">Bid placed · 2 hours ago</p>
-          </div>
-          <span class="text-muted">$0.52/lb</span>
-        </div>
-        <div class="list-item-row">
-          <div>
-            <p class="font-strong">Vitamin A premix</p>
-            <p class="caption">Listing updated · Today</p>
-          </div>
-          <span class="text-muted">Draft</span>
-        </div>
-        <div class="list-item-row">
-          <div>
-            <p class="font-strong">Mineral blend batch</p>
-            <p class="caption">Sale completed · Yesterday</p>
-          </div>
-          <span class="text-muted">Closed</span>
-        </div>
-      </div>
-
-      <aside class="account-panel">
-        <h2>Quick actions</h2>
-        <div class="stack">
-          <button class="btn btn-primary">List a product</button>
-          <button class="btn btn-secondary">Update account</button>
-          <button class="btn btn-secondary">View documents</button>
-        </div>
-      </aside>
-    </section>
-  </main>
 
   <%- include('partials/footer') %>
 </body>

@@ -3,48 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart</title>
+  <title>Sign Up</title>
   <link rel="stylesheet" href="/css/global.css">
-  <link rel="stylesheet" href="/css/cart.css">
+  <link rel="stylesheet" href="/css/registration.css">
   <script src="/js/main.js" defer></script>
 </head>
 <body>
   <%- include('partials/header') %>
-
-  <main class="cart-page">
-    <div class="eyebrow gold">shopping cart</div>
-    <h1>Cart summary</h1>
-
-    <section class="cart-shell">
-      <div class="cart-panel">
-        <div class="cart-item">
-          <div class="product-thumb"></div>
-          <div>
-            <p class="font-strong">Lysine-L 98.5% - Grade A</p>
-            <p class="caption">Lone Star Grain Co. · 55 lbs</p>
-          </div>
-          <p class="font-strong">$28.60</p>
-        </div>
-        <div class="cart-item">
-          <div class="product-thumb"></div>
-          <div>
-            <p class="font-strong">Vitamin C feed additive</p>
-            <p class="caption">AgroSource · 120 lbs</p>
-          </div>
-          <p class="font-strong">$61.20</p>
-        </div>
-      </div>
-
-      <aside class="summary-box">
-        <h2>Order summary</h2>
-        <div class="summary-row"><span>Subtotal</span><span>$89.80</span></div>
-        <div class="summary-row"><span>Shipping</span><span>$18.00</span></div>
-        <div class="summary-row"><span>Tax</span><span>$7.20</span></div>
-        <div class="summary-row font-strong"><span>Total</span><span>$115.00</span></div>
-        <button class="btn btn-primary" style="width:100%; margin-top:1rem;">Checkout</button>
-      </aside>
-    </section>
-  </main>
 
   <%- include('partials/footer') %>
 </body>

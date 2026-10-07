@@ -36,7 +36,7 @@ app.get('/product/:id', (req, res) => {
 
 // ROUTE: List a Product (Seller Form)
 app.get('/sell/list', (req, res) => {
-    res.render('listProduct'); 
+    res.render('productListing'); 
 });
 
 // ROUTE: User Account Dashboard
