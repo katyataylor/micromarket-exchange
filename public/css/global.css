@@ -44,6 +44,22 @@
   
   --fh: 'Onest', 'Segoe UI', sans-serif;
   --fb: 'Red Hat Text', 'Segoe UI', sans-serif;
+
+  --type-xs: 0.75rem;
+  --type-sm: 0.875rem;
+  --type-base: 1rem;
+  --type-lg: 1.125rem;
+  --type-xl: 1.5rem;
+  --type-2xl: 1.875rem;
+  --type-3xl: 2.5rem;
+  --type-4xl: clamp(2.5rem, 5vw, 4rem);
+  --type-5xl: clamp(3rem, 6vw, 4.5rem);
+
+  --line-tight: 1.15;
+  --line-base: 1.6;
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
 }
 
 * {
@@ -59,34 +75,62 @@ select {
   font: inherit;
 }
 
+html {
+ font-size: 16px;
+}
+
 body {
-  font-family: var(--fb);
-  color: var(--textBody);
-  background-color: #ffffff;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+ font-family: var(--font-body);
+ color: var(--textBody);
+ background-color: var(--surfacePg);
+ line-height: var(--line-base);
+ -webkit-font-smoothing: antialiased;
+ text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+ display: block;
+ max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.display,
+.eyebrow,
+.section-label,
+.section-heading,
+.section-subheading,
+.meta,
+.caption,
+.lead {
+ margin: 0;
 }
 
 .display {
-  font-family: var(--fb);
+  font-family: var(--fh);
   color: var(--textWhite);
   font-size: 48px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.05%;
 }
 
 h1 {
   font-family: var(--fh);
   color: var(--textHeadings);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 46px;
   letter-spacing: 0.02%;
 }
 
 h2 {
-  font-family: var(--fh);
-  font-weight: 700;
+  font-family: var(--fb);
+  font-weight: 600;
   font-size: 28px;
   letter-spacing: 0.01%;
 }
