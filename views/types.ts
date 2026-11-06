@@ -5,6 +5,8 @@ export type Listing = {
   price: number;
   expires: string;
 };
+
+
 export type PageName =
   | 'homepage'
   | 'marketplace'
@@ -15,6 +17,8 @@ export type PageName =
   | 'registration'
   | 'contact'
   | 'infopage';
+
+
 export type PagePropsMap = {
   homepage: Record<string, never>;
   marketplace: { listings: Listing[] };

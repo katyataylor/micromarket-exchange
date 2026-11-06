@@ -9,6 +9,7 @@ import { Marketplace } from './marketplace';
 import { ProductPage } from './product-page';
 import { Registration } from './registration';
 import type { PageName, PagePropsMap } from './types';
+
 export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
   homepage: Homepage,
   marketplace: Marketplace,
@@ -20,6 +21,7 @@ export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
   contact: ContactPage,
   infopage: InfoPage,
 };
+
 export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   homepage: { title: 'MicroMarket Exchange', styles: ['/css/homepage.css'] },
   marketplace: { title: 'MicroMarket Exchange Store', styles: ['/css/productCard'] },

@@ -1,9 +1,11 @@
 import { createElement, type ComponentType } from 'react';
 import { hydrateRoot } from 'react-dom/client';
-import { pages } from './views/registry';
-import type { PageName, PagePropsMap } from './views/types';
+import { pages } from './registry';
+import type { PageName, PagePropsMap } from './types';
+
 const root = document.getElementById('root');
 const propsEl = document.getElementById('page-props');
+
 if (root && propsEl) {
   const page = root.dataset.page as PageName | undefined;
   const props = JSON.parse(propsEl.textContent || '{}') as PagePropsMap[PageName];
