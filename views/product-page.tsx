@@ -1,3 +1,67 @@
+import { Footer } from './partials/footer';
+import { Header } from './partials/header';
+import { StockCard } from './partials/stockCard';
+
+const documents = [
+  ['Specification sheet', 'PDF-284KB-Uploaded Jan. 02, 2026'],
+  ['Safety data sheet (SDS)', 'PDF-512KB-Uploaded Jan. 02, 2026'],
+  ['Certificate of analysis (COA)', 'PDF-198KB-Uploaded Jan. 02, 2026'],
+] as const;
+
+const sellerFacts = [
+  ['Business name', 'Lone Star Grain Co.'],
+  ['Location', 'Amarillo, TX'],
+  ['FDA Registration', '00000000000'],
+  ['State feed license', 'ST-LS-000000'],
+  ['Member since', 'December 2025'],
+  ['Completed sales', '14 transactions'],
+] as const;
+
+export function ProductPage({ productId }: { productId: string }) {
+  return (
+    <>
+      <Header />
+
+      <div className="page-container" data-product-id={productId}>
+        <div className="page-contents">
+          <div className="product-content">
+            <div className="photos-container">
+              <img src="/images/IMG_9098.jpeg" alt="Photo of product tag" />
+              <div className="photos-group">
+                <img src="/images/IMG_9097.jpeg" alt="Product photo" />
+                <img src="/images/IMG_9099.jpeg" alt="Product photo" />
+                <img src="/images/IMG_9100.jpeg" alt="Product photo" />
+                <img src="/images/IMG_9102.jpeg" alt="Product photo" />
+                <img src="/images/IMG_9102.jpeg" alt="Product photo" />
+              </div>
+            </div>
+
+            <div className="info-container">
+              <h6>featured listing</h6>
+              <div className="header-section">
+                <h2>Lysine-L 98.5% - Grade A</h2>
+                <div className="header-section-subheader">
+                  <div className="avatar">LS</div>
+                  <div className="company-location">
+                    <p>Lone Star Grain Co.</p>
+                    <p className="italic">Amarillo, TX</p>
+                  </div>
+                  <div className="seller-tag">Verified Trader</div>
+                </div>
+              </div>
+
+              <hr />
+
+              <div className="info-grid">
+                <div className="grid-box">
+                  <p>Total volume</p>
+                  <h4>55</h4><p className="italic">lbs.</p>
+                </div>
+                <div className="grid-box">
+                  <p>packaging</p>
+                  <h4>Pneumatic</h4><p className="italic" />
+                </div>
+                <div className="grid-box">
                   <p>lot number</p>
                   <h4>1</h4><p className="italic">lot</p>
                 </div>
@@ -14,6 +78,7 @@
                   <h4>Jan. 2027</h4><p className="italic" />
                 </div>
               </div>
+
               <div className="description-section">
                 <h5 className="bold">Product description</h5>
                 <h5>
@@ -25,12 +90,15 @@
                   as a recommended carrier.
                 </h5>
               </div>
+
               <hr />
+
               <p className="subtext">Included lot numbers</p>
               <div className="lot-tag">
                 <p>LOT-2025-0441</p>
               </div>
             </div>
+
             <div className="docs-container">
               <h5 className="bold">Listing documents</h5>
               <hr />
@@ -48,6 +116,7 @@
                 </div>
               ))}
             </div>
+
             <div className="about-seller-container">
               <h5 className="bold">About the seller</h5>
               <hr />
@@ -62,6 +131,7 @@
               ))}
             </div>
           </div>
+
           <div className="sidebar">
             <div className="actions-container">
               <h6 className="gold">Live auction</h6>
@@ -78,6 +148,7 @@
               <button className="btn-watchlist">Add to Watchlist</button>
               <p className="italic">Commission deducted from seller’s final payout. Taxes may apply.</p>
             </div>
+
             <div className="listing-details-container">
               <h6 className="gold">Listing details</h6>
               {Array.from({ length: 6 }, (_, index) => (
@@ -93,6 +164,7 @@
             <button id="seller-question">Ask the seller a question</button>
           </div>
         </div>
+
         <section className="featured-stock">
           <div className="featured-stock-container">
             <h5>Similar listings</h5>
@@ -105,6 +177,7 @@
           </div>
         </section>
       </div>
+
       <Footer />
     </>
   );

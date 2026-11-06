@@ -1,9 +1,11 @@
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
+
 export function InfoPage() {
   return (
     <>
       <Header />
+
       <div className="page-body">
         <section className="info-container">
           <div className="eyebrow" style={{ color: 'var(--brandGold)' }}>who can trade on micromarket exchange</div>
@@ -20,18 +22,21 @@ export function InfoPage() {
                   Only FDA-licensed operations and licensed feed mills may buy ot sell.
                   A third party memebrship is available for viewing products only.</div>
               </div>
+
               <div className="full-membership">
                 <div className="eyebrow" style={{ color: 'var(--textEyebrowBlue)' }}>full membership</div>
                 <h2>FDA-licensed operations</h2>
                 <h4>FDA-licensed farms and operations approved to list feed ingredients for sale on the platform.</h4>
                 <div className="type-tag">Buy & Sell</div>
               </div>
+
               <div className="full-membership">
                 <div className="eyebrow" style={{ color: 'var(--textEyebrowBlue)' }}>full membership</div>
                 <h2>Verified businesses</h2>
                 <h4>Licensed feed mills and brick-and-mortar operations who need to source verified ingredients.</h4>
                 <div className="type-tag">Buy & Sell</div>
               </div>
+
               <div className="third-party-membership">
                 <div className="eyebrow" style={{ color: 'var(--textEyebrowBlue)' }}>third-party members</div>
                 <h2>Industry Experts</h2>
@@ -40,13 +45,16 @@ export function InfoPage() {
               </div>
             </div>
           </div>
+
           <div className="l-subtext">No traders. No middlemen. Only licensed operations whith a physical presence can buy or sell.</div>
           <hr />
         </section>
+
         <section className="info-container">
           <div className="eyebrow" style={{ color: 'var(--brandGold)' }}>listing process</div>
           <h5>Every listing is reviewed before it goes live</h5>
           <div className="p2">We manually approve all submissions, including photos, to keep listing quality high and the marketplace trustworthy.</div>
+          
           <div className="list-container">
             <div className="list-item infopage">
               <h2 className="number">1</h2>
@@ -86,6 +94,7 @@ export function InfoPage() {
             <hr />
           </div>
         </section>
+
         <section className="info-container">
           <div className="eyebrow" style={{ color: 'var(--brandGold)' }}>fees & pricing</div>
           <h5>Simple, seller-side fees</h5>
@@ -93,6 +102,7 @@ export function InfoPage() {
             Sellers pay an initial listing fee and a percentage of the completed sale.
             No hidden platform fees.
           </div>
+
           <div className="bubble-list-container">
             <h3>Marketplace fee structure</h3>
             <div className="list-item infopage">
@@ -120,6 +130,7 @@ export function InfoPage() {
             </div>
           </div>
         </section>
+        
         <div className="infopage-cta">
           <div className="cta-text-container">
             <div className="p2">Ready to list an ingredient?</div>

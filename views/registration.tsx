@@ -1,3 +1,130 @@
+import { Footer } from './partials/footer';
+import { Header } from './partials/header';
+
+export function Registration() {
+  return (
+    <>
+      <Header />
+
+      <section className="hero-page-body">
+        <div className="store-hero-bg">
+          <div className="store-hero-text">
+            <h6 className="gold">account registration</h6>
+            <div className="display">Join Micromarket Exchange</div>
+            <div className="p2">Micromarket Exchange is a marketplace for licensed agricultural operations.
+              Choose your membership type below. Only FDA-licensed operations and licensed
+              feed mills may buy or sell. A third-party observer membership is available for
+              viewing products only.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="page-body">
+        <div className="p2 page-text">Already have an account? <a href="/account">Sign in</a></div>
+        <section className="disclosure-container">
+          <ul className="h4">
+            <li>
+              All trading accounts require verification before activation. Our team will review
+              documentation and approve or follow up within 2 business days. Third-party memberships
+              are approved automatically upon email confirmation.
+            </li>
+          </ul>
+        </section>
+
+        <section className="w-bubble-container">
+          <div className="list-item registration">
+            <h2 className="blue number">1</h2>
+            <div className="text-container">
+              <h3>Membership type</h3>
+              <div className="subp1">Select the membership that matches your operation. This determines
+                what actions you can take on Micromarket Exchange.
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="bubble-container">
+            <div className="membership-type sand-bubble" tabIndex={0}>
+              <h2>Licensed Operation</h2>
+              <h4 style={{ color: 'var(--brandSoftGraphite)' }}>FDA-licensed farms, operations, and licensed feed mills with a physical location.</h4>
+              <h4 style={{ color: 'var(--textEyebrowBlue)' }}>• List & sell products <br />
+                • Bid on listings <br />
+                • Full marketplace access
+              </h4>
+              <div className="membership-type type-tag">Trade</div>
+            </div>
+
+            <div className="membership-type sand-bubble" tabIndex={0}>
+              <h2>Industry Experts</h2>
+              <h4 style={{ color: 'var(--brandSoftGraphite)' }}>Industry consultants, researchers, and observers who need marketplace visibility.</h4>
+              <h4 style={{ color: 'var(--textEyebrowBlue)' }}> <s>• List & sell products</s> <br />
+                <s>• Bid on listings</s> <br />
+                • Full marketplace access
+              </h4>
+              <div className="membership-type type-tag">View Only</div>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-bubble-container">
+          <div className="list-item registration">
+            <h2 className="blue number">2</h2>
+            <div className="text-container">
+              <h3>Contact information</h3>
+              <div className="subp1">The primary contact for this account. This person will receive all notifications.</div>
+            </div>
+          </div>
+          <hr />
+          <div className="user-inputs-container">
+            <div className="input-row">
+              <div className="input-column">
+                <h4>First name *</h4>
+                <input className="subH1 medium" type="text" placeholder="e.g. John" />
+              </div>
+              <div className="input-column">
+                <h4>Last name *</h4>
+                <input className="subH1 medium" type="text" placeholder="e.g. Smith" />
+              </div>
+            </div>
+            <div className="input-row">
+              <div className="input-column">
+                <h4>Business email *</h4>
+                <input className="subH1 medium" type="text" placeholder="you@yourcompany.com" />
+              </div>
+              <div className="input-column">
+                <h4>First name *</h4>
+                <input className="subH1 medium" type="number" placeholder="(000)000-0000" />
+              </div>
+            </div>
+            <div className="subp1">Use your business email when possible - personal addresses may delay verification.</div>
+            <h4>Job title/role</h4>
+            <input className="subH1 medium" type="text" placeholder="e.g. Owner, Operations Manager" />
+          </div>
+        </section>
+
+        <section className="w-bubble-container">
+          <div className="list-item registration">
+            <h2 className="blue number">3</h2>
+            <div className="text-container">
+              <h3>Business information</h3>
+              <div className="subp1">Details about your operation. Must match your FDA or state license records.</div>
+            </div>
+          </div>
+          <hr />
+          <div className="user-inputs-container">
+            <h4>Business name *</h4>
+            <input className="subH1 large" type="text" placeholder="As it appears on your license" />
+            <div className="input-row">
+              <div className="input-column">
+                <h4>Business type *</h4>
+                <input className="subH1 medium" type="text" placeholder="Input type" />
+              </div>
+              <div className="input-column">
+                <h4>State issuing license *</h4>
+                <input className="subH1 medium" type="text" placeholder="Select state" />
+              </div>
+            </div>
+            <h4>Address *</h4>
             <input className="subH1 large" type="text" placeholder="Street address" />
             <div className="input-row">
               <input className="subH1" type="text" placeholder="City" />
@@ -9,6 +136,7 @@
             <input className="subH1 large" type="text" placeholder="www.yourcompany.com" />
           </div>
         </section>
+
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">4</h2>
@@ -55,6 +183,7 @@
             </div>
           </div>
         </section>
+
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">5</h2>
@@ -80,6 +209,7 @@
             <div className="subp1">Use at least 8 characters including a number and a symbol.</div>
           </div>
         </section>
+
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">6</h2>
@@ -110,6 +240,7 @@
             </div>
           </div>
         </section>
+
         <section className="w-bubble-container">
           <div className="cta-text-container">
             <div className="p2">Submit your application</div>
@@ -121,6 +252,7 @@
           <button className="list-button">Submit</button>
         </section>
       </div>
+      
       <Footer />
     </>
   );
