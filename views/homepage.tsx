@@ -1,10 +1,12 @@
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 import { StockCard } from './partials/stockCard';
+
 export function Homepage() {
   return (
     <>
       <Header />
+
       <section className="hero">
         <img src="/images/ag-warehouse.jpg" alt="Photo of the inside of a large agricultural warehouse. Lots of rows of stacked canvas bags." />
         <div className="hero-bg" />
@@ -18,6 +20,7 @@ export function Homepage() {
           </div>
         </div>
       </section>
+
       <section className="info">
         <div className="info-grid">
           <div className="card-content">
@@ -32,6 +35,7 @@ export function Homepage() {
               <img id="hay-bales" src="/images/Hay-Missouri.webp" alt="Hay bale in the forefront of a green field." />
             </div>
           </div>
+
           <div className="card-content">
             <div className="card-right">
               <img id="grain" src="/images/Grain.jpg" alt="Hands holding unprocessed grain in front of a bag full of grain." />
@@ -44,6 +48,7 @@ export function Homepage() {
               </div>
             </div>
           </div>
+
           <div className="card-content">
             <div className="card-left">
               <div className="card-text">
@@ -58,6 +63,7 @@ export function Homepage() {
           </div>
         </div>
       </section>
+
       <section className="featured-stock">
         <div className="featured-stock-container">
           <h2>Current Stock</h2>
@@ -69,6 +75,7 @@ export function Homepage() {
           </div>
         </div>
       </section>
+      
       <Footer />
     </>
   );
