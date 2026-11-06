@@ -1,9 +1,11 @@
 // Header
 import { useEffect, useRef, useState } from 'react';
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
       const target = event.target as Node;
@@ -11,9 +13,11 @@ export function Header() {
       const isClickInside = navRef.current.contains(target) || toggleRef.current.contains(target);
       if (!isClickInside) setOpen(false);
     };
+
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
   }, []);
+  
   return (
     <nav>
       <div className="nav-content">

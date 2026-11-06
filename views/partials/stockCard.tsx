@@ -7,6 +7,7 @@ function IngredientMark() {
     </svg>
   );
 }
+
 type StockCardProps = {
   category: string;
   name: string;
@@ -15,6 +16,7 @@ type StockCardProps = {
   imageSrc?: string;
   categoryTag?: 'h6' | 'div';
 };
+
 export function StockCard({ category, name, price, alt = false, imageSrc, categoryTag = 'div' }: StockCardProps) {
   return (
     <div className="product-card">
