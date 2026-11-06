@@ -1,0 +1,33 @@
+import type { ComponentType } from 'react';
+import { Account } from './account';
+import { Cart } from './cart';
+import { ContactPage } from './contactpage';
+import { Homepage } from './homepage';
+import { InfoPage } from './infoPage';
+import { ListProduct } from './listProduct';
+import { Marketplace } from './marketplace';
+import { ProductPage } from './product-page';
+import { Registration } from './registration';
+import type { PageName, PagePropsMap } from './types';
+export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
+  homepage: Homepage,
+  marketplace: Marketplace,
+  product: ProductPage,
+  listProduct: ListProduct,
+  account: Account,
+  cart: Cart,
+  registration: Registration,
+  contact: ContactPage,
+  infopage: InfoPage,
+};
+export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
+  homepage: { title: 'MicroMarket Exchange', styles: ['/css/homepage.css'] },
+  marketplace: { title: 'MicroMarket Exchange Store', styles: ['/css/productCard'] },
+  product: { title: 'Product Detail Page', styles: ['/css/registration.css'] },
+  listProduct: { title: 'Sign Up', styles: ['/css/product-listing.css'] },
+  account: { title: 'Sign Up', styles: ['/css/account.css'] },
+  cart: { title: 'Sign Up', styles: ['/css/registration.css'] },
+  registration: { title: 'Sign Up', styles: ['/css/registration.css'] },
+  contact: { title: 'Sign Up', styles: ['/css/contactpage.css'] },
+  infopage: { title: 'Sign Up', styles: [] },
+};
