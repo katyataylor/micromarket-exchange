@@ -7,11 +7,12 @@ import { pageMeta, pages } from './views/registry';
 import type { Listing, PageName, PagePropsMap } from './views/types';
 
 const PORT = 3000;
-const root = process.cwd();
+// const root = process.cwd();
+const root = __dirname;
 
 async function main() {
 await esbuild.build({
-  entryPoints: [path.join(root, 'client.tsx')],
+  entryPoints: [path.join(root, 'views','client.tsx')],
   bundle: true,
   outfile: path.join(root, 'public/js/app.js'),
   format: 'iife',
