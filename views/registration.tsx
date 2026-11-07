@@ -289,25 +289,29 @@ export function Registration() {
 
         {/* Submit — copy swaps between membership types */}
         <section className="w-bubble-container">
-          <div className="cta-text-container">
-            {isTrade ? (
-              <>
-                <div className="p2">Submit your application</div>
-                <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Trading accounts are reviewed
-                  within 2 business days. You'll receive a confirmation email once approved.
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="p2">Create your account</div>
-                <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Third party accounts are created
-                  instantly upon email verification.
-                </div>
-              </>
-            )}
+          <div className="submit-row">
+            <div className="cta-text-container">
+              {isTrade ? (
+                <>
+                  <div className="p2">Submit your application</div>
+                  <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Trading accounts are reviewed
+                    within 2 business days. You'll receive a confirmation email once approved.
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="p2">Create your account</div>
+                  <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Third party accounts are created
+                    instantly upon email verification.
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="button-group">
+              <button className="list-button">Save Draft</button>
+              <button className="list-button">Submit</button>
+            </div>
           </div>
-          <button className="list-button">Save Draft</button>
-          <button className="list-button">Submit</button>
         </section>
       </div>
 

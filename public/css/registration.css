@@ -193,6 +193,43 @@
 /* Agreement text uses global h4 (22px Red Hat Text) — no override needed */
 
 /* ==========================================
+   SUBMIT SECTION
+   Figma: single row, items-end, gap-20px,
+   956px wide. Text block on the left (flex-col),
+   button group on the right (flex-row, gap-20px).
+   ========================================== */
+
+/* Row wrapper — aligns text block and buttons on the same baseline */
+.submit-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 20px;
+  width: 956px;
+}
+
+/* Override the global cta-text-container which spreads children
+   horizontally with space-between — stack them vertically instead */
+.submit-row .cta-text-container {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: auto;
+  gap: 4px;
+}
+
+/* Two buttons side by side */
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================
    TRADE-ONLY AGREEMENT WRAPPER
    Both trade-only bubbles flow as a column
    with 20px gap (matches user-inputs-container
