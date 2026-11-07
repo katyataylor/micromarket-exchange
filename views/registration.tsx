@@ -70,7 +70,7 @@ export function Registration() {
               <h2>Licensed operation</h2>
               <h4 style={{ color: 'var(--brandSoftGraphite)' }}>FDA-licensed farms, operations, and licensed feed mills with a physical location.</h4>
               <h4 style={{ color: 'var(--textEyebrowBlue)' }}>• List &amp; sell products <br />
-                • Bid on listings <br />
+                • Purchase listings <br />
                 • Full marketplace access
               </h4>
               <div className="membership-type type-tag">Seller/Buyer</div>
@@ -82,10 +82,10 @@ export function Registration() {
               onClick={() => setMembership('viewonly')}
               onKeyDown={(e) => handleCardKey(e, 'viewonly')}
             >
-              <h2>Third-party member</h2>
+              <h2>Industry Experts</h2>
               <h4 style={{ color: 'var(--brandSoftGraphite)' }}>Industry consultants, researchers, and observers who need marketplace visibility.</h4>
               <h4 style={{ color: 'var(--textEyebrowBlue)' }}><s>• List &amp; sell products</s> <br />
-                <s>• Bid on listings</s> <br />
+                <s>• Purchase listings</s> <br />
                 • Browse marketplace
               </h4>
               <div className="membership-type type-tag">View only</div>
@@ -236,6 +236,7 @@ export function Registration() {
           <div className="user-inputs-container">
             <h4>Username *</h4>
             <input className="subH1 medium" type="text" placeholder="e.g. johnsmith1" />
+            <div className="subp1">11-digit FDA Food Facility Registration number.</div>
             <div className="input-row">
               <div className="input-column">
                 <h4>Password *</h4>

@@ -24549,7 +24549,7 @@
                   /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
                     "\u2022 List & sell products ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                    "\u2022 Bid on listings ",
+                    "\u2022 Purchase listings ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
                     "\u2022 Full marketplace access"
                   ] }),
@@ -24565,13 +24565,13 @@
                 onClick: () => setMembership("viewonly"),
                 onKeyDown: (e) => handleCardKey(e, "viewonly"),
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Third-party member" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Industry Experts" }),
                   /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "Industry consultants, researchers, and observers who need marketplace visibility." }),
                   /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 List & sell products" }),
                     " ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Bid on listings" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Purchase listings" }),
                     " ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
                     "\u2022 Browse marketplace"
@@ -24718,6 +24718,7 @@
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Username *" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. johnsmith1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Password *" }),
