@@ -32,6 +32,7 @@ export function Registration() {
           </ul>
         </section>
 
+        {/* Step 1: Membership type — always visible */}
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">1</h2>
@@ -44,28 +45,29 @@ export function Registration() {
           </div>
           <hr />
           <div className="bubble-container">
-            <div className="membership-type sand-bubble" tabIndex={0}>
-              <h2>Licensed Operation</h2>
+            <div className="membership-type sand-bubble" tabIndex={0} data-membership="trade">
+              <h2>Licensed operation</h2>
               <h4 style={{ color: 'var(--brandSoftGraphite)' }}>FDA-licensed farms, operations, and licensed feed mills with a physical location.</h4>
-              <h4 style={{ color: 'var(--textEyebrowBlue)' }}>• List & sell products <br />
+              <h4 style={{ color: 'var(--textEyebrowBlue)' }}>• List &amp; sell products <br />
                 • Bid on listings <br />
                 • Full marketplace access
               </h4>
-              <div className="membership-type type-tag">Trade</div>
+              <div className="membership-type type-tag">Seller/Buyer</div>
             </div>
 
-            <div className="membership-type sand-bubble" tabIndex={0}>
-              <h2>Industry Experts</h2>
+            <div className="membership-type sand-bubble" tabIndex={0} data-membership="viewonly">
+              <h2>Third-party member</h2>
               <h4 style={{ color: 'var(--brandSoftGraphite)' }}>Industry consultants, researchers, and observers who need marketplace visibility.</h4>
-              <h4 style={{ color: 'var(--textEyebrowBlue)' }}> <s>• List & sell products</s> <br />
+              <h4 style={{ color: 'var(--textEyebrowBlue)' }}><s>• List &amp; sell products</s> <br />
                 <s>• Bid on listings</s> <br />
-                • Full marketplace access
+                • Browse marketplace
               </h4>
-              <div className="membership-type type-tag">View Only</div>
+              <div className="membership-type type-tag">View only</div>
             </div>
           </div>
         </section>
 
+        {/* Step 2: Contact information — always visible, some fields swap labels */}
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">2</h2>
@@ -88,21 +90,37 @@ export function Registration() {
             </div>
             <div className="input-row">
               <div className="input-column">
-                <h4>Business email *</h4>
-                <input className="subH1 medium" type="text" placeholder="you@yourcompany.com" />
+                <h4
+                  id="email-label"
+                  data-trade-label="Business email *"
+                  data-viewonly-label="Email *"
+                >Business email *</h4>
+                <input className="subH1 medium" type="email" placeholder="you@yourcompany.com" />
               </div>
               <div className="input-column">
-                <h4>First name *</h4>
-                <input className="subH1 medium" type="number" placeholder="(000)000-0000" />
+                <h4>Phone number *</h4>
+                <input className="subH1 medium" type="tel" placeholder="(000) 000-0000" />
               </div>
             </div>
-            <div className="subp1">Use your business email when possible - personal addresses may delay verification.</div>
-            <h4>Job title/role</h4>
-            <input className="subH1 medium" type="text" placeholder="e.g. Owner, Operations Manager" />
+            <div className="subp1 trade-only">Use your business email when possible — personal addresses may delay verification.</div>
+            <h4
+              id="occupation-label"
+              data-trade-label="Job title/role"
+              data-viewonly-label="Occupation"
+            >Job title/role</h4>
+            <input
+              id="occupation-input"
+              className="subH1 medium"
+              type="text"
+              placeholder="e.g. Owner, Operations Manager"
+              data-trade-placeholder="e.g. Owner, Operations Manager"
+              data-viewonly-placeholder="e.g. Consultant, Researcher"
+            />
           </div>
         </section>
 
-        <section className="w-bubble-container">
+        {/* Step 3: Business information — trade only */}
+        <section className="w-bubble-container trade-only" id="section-business-info">
           <div className="list-item registration">
             <h2 className="blue number">3</h2>
             <div className="text-container">
@@ -137,11 +155,12 @@ export function Registration() {
           </div>
         </section>
 
-        <section className="w-bubble-container">
+        {/* Step 4: License & registration — trade only */}
+        <section className="w-bubble-container trade-only" id="section-license">
           <div className="list-item registration">
             <h2 className="blue number">4</h2>
             <div className="text-container">
-              <h3>License & registration</h3>
+              <h3>License &amp; registration</h3>
               <div className="subp1">Your FDA and state license details. Our team verifies all trading accounts against these records before activation.</div>
             </div>
           </div>
@@ -184,6 +203,7 @@ export function Registration() {
           </div>
         </section>
 
+        {/* Step 5 (trade) / Step 3 (view only): Create your login — always visible */}
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">5</h2>
@@ -199,17 +219,18 @@ export function Registration() {
             <div className="input-row">
               <div className="input-column">
                 <h4>Password *</h4>
-                <input className="subH1 medium" type="text" placeholder="Minimum 8 characters" />
+                <input className="subH1 medium" type="password" placeholder="Minimum 8 characters" />
               </div>
               <div className="input-column">
                 <h4>Confirm password *</h4>
-                <input className="subH1 medium" type="text" placeholder="Re-enter password" />
+                <input className="subH1 medium" type="password" placeholder="Re-enter password" />
               </div>
             </div>
             <div className="subp1">Use at least 8 characters including a number and a symbol.</div>
           </div>
         </section>
 
+        {/* Step 6 (trade) / Step 4 (view only): Agreements — always visible, trade has extra checkboxes */}
         <section className="w-bubble-container">
           <div className="list-item registration">
             <h2 className="blue number">6</h2>
@@ -224,35 +245,46 @@ export function Registration() {
               <input type="checkbox" className="blue-check" id="termsOfServiceAndPrivacy" />
               <h4>I have read and agree to the Micromarket Exchange Terms of Service and Privacy Policy.</h4>
             </div>
-            <div className="blue-bubble registration">
-              <input type="checkbox" className="blue-check" id="licensingConfirmation" />
-              <h4>I certify that my operation holds a valid FDA registration and/or state feed license and that all
-                information provided is accurate. I understand that providing false information will result in
-                account termination.
-              </h4>
-            </div>
-            <div className="blue-bubble registration">
-              <input type="checkbox" className="blue-check" id="accountReview" />
-              <h4>I understand that my trading account must be verified by Micromarket Exchange before I can buy
-                or sell, and that Micromarket Exchange reserves the right to suspend accounts found to be operating
-                outside their licensed scope.
-              </h4>
+            <div className="trade-only">
+              <div className="blue-bubble registration">
+                <input type="checkbox" className="blue-check" id="licensingConfirmation" />
+                <h4>I certify that my operation holds a valid FDA registration and/or state feed license and that all
+                  information provided is accurate. I understand that providing false information will result in
+                  account termination.
+                </h4>
+              </div>
+              <div className="blue-bubble registration">
+                <input type="checkbox" className="blue-check" id="accountReview" />
+                <h4>I understand that my trading account must be verified by Micromarket Exchange before I can buy
+                  or sell, and that Micromarket Exchange reserves the right to suspend accounts found to be operating
+                  outside their licensed scope.
+                </h4>
+              </div>
             </div>
           </div>
         </section>
 
+        {/* Submit — copy swaps between membership types */}
         <section className="w-bubble-container">
           <div className="cta-text-container">
-            <div className="p2">Submit your application</div>
-            <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Trading accounts are reviewed
-              within 2 business days. You'll receive a confirmation email once approved.
+            <div className="trade-only">
+              <div className="p2">Submit your application</div>
+              <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Trading accounts are reviewed
+                within 2 business days. You'll receive a confirmation email once approved.
+              </div>
+            </div>
+            <div className="viewonly-only">
+              <div className="p2">Create your account</div>
+              <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>Third party accounts are created
+                instantly upon email verification.
+              </div>
             </div>
           </div>
           <button className="list-button">Save Draft</button>
           <button className="list-button">Submit</button>
         </section>
       </div>
-      
+
       <Footer />
     </>
   );
