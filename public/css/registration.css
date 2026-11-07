@@ -9,29 +9,132 @@
 }
 
 /* ==========================================
+   SECTION HEADER TYPOGRAPHY
+   global.css h3 = 30px / h4 = 22px — both
+   are too large for the registration design.
+   ========================================== */
+
+/* Section titles: "Membership type", "Contact information", etc. */
+.w-bubble-container h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Subtext below the section title */
+.list-item.registration .subp1 {
+  font-size: 13px;
+}
+
+/* Form field labels: "First name *", "Email *", etc. */
+.user-inputs-container h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--textBody);
+}
+
+/* Hint text below inputs */
+.user-inputs-container .subp1 {
+  font-size: 12px;
+}
+
+/* ==========================================
+   SECTION HEADER LAYOUT (NUMBER + TITLE ROW)
+   ========================================== */
+
+.list-item.registration {
+  width: 956px;
+  gap: 20px;
+  align-items: flex-start;
+  padding-top: 36px;
+}
+
+/* global.css gives .number margin-right: 25px; gap above handles
+   spacing so we zero the margin to prevent double-spacing. */
+.list-item.registration .number {
+  margin-right: 0;
+  /* Reduce circle from 55×55px to match the design */
+  width: 38px;
+  height: 38px;
+  /* h2 inside the circle is 28px by default — override here */
+  font-size: 16px;
+}
+
+/* ==========================================
    MEMBERSHIP TYPE CARDS
    ========================================== */
 
-/* Make cards interactive with a pointer and smooth transition */
-.membership-type.sand-bubble {
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, border-width 0.1s ease;
+/* Stretch both cards to equal height */
+.bubble-container {
+  align-items: stretch;
 }
 
-/* Selected state — mirrors the :focus style but persists on click */
-.membership-type.sand-bubble.selected {
-  background-color: rgba(155, 184, 191, 0.4);
-  border: 2px solid var(--brandSlate);
+/* Make cards interactive and reduce internal gap */
+.membership-type.sand-bubble {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Pin the type-tag to the bottom of the card */
+.membership-type.sand-bubble .type-tag {
+  margin-top: auto;
+}
+
+/* Card title: global h2 = 28px bold → design is ~18px */
+.membership-type.sand-bubble h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Card description and bullet list text: global h4 = 22px → design ~13px */
+.membership-type.sand-bubble h4 {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* Type tag: global is 20px / weight 800 → design is ~12px / weight 600 */
+.membership-type.type-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background-color: var(--brandLightSand);
+  color: var(--brandDarkSand);
+  border: 1px solid var(--brandDarkSand);
+}
+
+/* Selected / focused card — more saturated blue-gray background,
+   light blue border instead of dark navy */
+.membership-type.sand-bubble.selected,
+.membership-type.sand-bubble:focus {
+  background-color: rgba(145, 172, 182, 0.55);
+  border: 2px solid var(--textEyebrowBlue);
   outline: none;
 }
 
 /* ==========================================
-   MEMBERSHIP TOGGLE — INITIAL HIDDEN STATES
-   View-only content is hidden until the
-   third-party card is selected by the user.
+   INPUT FIELDS
    ========================================== */
-.viewonly-only {
-  display: none;
+
+/* Explicit box styling so inputs look like distinct form fields.
+   Also overrides the global .subH1 font-size (24px → 15px). */
+.user-inputs-container input.subH1 {
+  font-size: 15px;
+}
+
+.user-inputs-container input {
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  padding: 10px 14px;
+  background-color: var(--textWhite);
+  transition: border-color 0.2s ease;
+}
+
+.user-inputs-container input:focus {
+  border-color: var(--textEyebrowBlue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
 }
 
 /* ==========================================
@@ -91,11 +194,14 @@
   margin-top: 4px;
 }
 
+/* Agreement checkbox label text */
+.blue-bubble.registration h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 /* ==========================================
    TRADE-ONLY AGREEMENT WRAPPER
-   Removes default block spacing so the two
-   trade-only checkboxes flow naturally inside
-   the user-inputs-container flex column.
    ========================================== */
 .user-inputs-container > .trade-only {
   display: flex;
