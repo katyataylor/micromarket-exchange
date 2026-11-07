@@ -23832,7 +23832,7 @@
   });
 
   // views/client.tsx
-  var import_react2 = __toESM(require_react());
+  var import_react3 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // views/partials/footer.tsx
@@ -24500,8 +24500,19 @@
   }
 
   // views/registration.tsx
+  var import_react2 = __toESM(require_react());
   var import_jsx_runtime13 = __toESM(require_jsx_runtime());
   function Registration() {
+    const [membership, setMembership] = (0, import_react2.useState)("trade");
+    const isTrade = membership === "trade";
+    const loginStep = isTrade ? 5 : 3;
+    const agreeStep = isTrade ? 6 : 4;
+    function handleCardKey(e, type) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        setMembership(type);
+      }
+    }
     return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "store-hero-text", children: [
@@ -24525,32 +24536,50 @@
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bubble-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "membership-type sand-bubble", tabIndex: 0, "data-membership": "trade", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Licensed operation" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "FDA-licensed farms, operations, and licensed feed mills with a physical location." }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
-                "\u2022 List & sell products ",
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                "\u2022 Bid on listings ",
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                "\u2022 Full marketplace access"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "Seller/Buyer" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "membership-type sand-bubble", tabIndex: 0, "data-membership": "viewonly", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Third-party member" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "Industry consultants, researchers, and observers who need marketplace visibility." }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 List & sell products" }),
-                " ",
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Bid on listings" }),
-                " ",
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                "\u2022 Browse marketplace"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "View only" })
-            ] })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+              "div",
+              {
+                className: `membership-type sand-bubble${membership === "trade" ? " selected" : ""}`,
+                tabIndex: 0,
+                onClick: () => setMembership("trade"),
+                onKeyDown: (e) => handleCardKey(e, "trade"),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Licensed operation" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "FDA-licensed farms, operations, and licensed feed mills with a physical location." }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
+                    "\u2022 List & sell products ",
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    "\u2022 Bid on listings ",
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    "\u2022 Full marketplace access"
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "Seller/Buyer" })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+              "div",
+              {
+                className: `membership-type sand-bubble${membership === "viewonly" ? " selected" : ""}`,
+                tabIndex: 0,
+                onClick: () => setMembership("viewonly"),
+                onKeyDown: (e) => handleCardKey(e, "viewonly"),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Third-party member" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "Industry consultants, researchers, and observers who need marketplace visibility." }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 List & sell products" }),
+                    " ",
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Bid on listings" }),
+                    " ",
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    "\u2022 Browse marketplace"
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "View only" })
+                ]
+              }
+            )
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
@@ -24575,15 +24604,7 @@
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-                  "h4",
-                  {
-                    id: "email-label",
-                    "data-trade-label": "Business email *",
-                    "data-viewonly-label": "Email *",
-                    children: "Business email *"
-                  }
-                ),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: isTrade ? "Business email *" : "Email *" }),
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "email", placeholder: "you@yourcompany.com" })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
@@ -24591,112 +24612,103 @@
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "tel", placeholder: "(000) 000-0000" })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1 trade-only", children: "Use your business email when possible \u2014 personal addresses may delay verification." }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-              "h4",
-              {
-                id: "occupation-label",
-                "data-trade-label": "Job title/role",
-                "data-viewonly-label": "Occupation",
-                children: "Job title/role"
-              }
-            ),
+            isTrade && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Use your business email when possible \u2014 personal addresses may delay verification." }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: isTrade ? "Job title/role" : "Occupation" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
               "input",
               {
-                id: "occupation-input",
                 className: "subH1 medium",
                 type: "text",
-                placeholder: "e.g. Owner, Operations Manager",
-                "data-trade-placeholder": "e.g. Owner, Operations Manager",
-                "data-viewonly-placeholder": "e.g. Consultant, Researcher"
+                placeholder: isTrade ? "e.g. Owner, Operations Manager" : "e.g. Consultant, Researcher"
               }
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container trade-only", id: "section-business-info", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "3" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Business information" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Details about your operation. Must match your FDA or state license records." })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business name *" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "As it appears on your license" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business type *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Input type" })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "State issuing license *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Select state" })
+        isTrade && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Business information" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Details about your operation. Must match your FDA or state license records." })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Address *" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "Street address" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "City" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "State" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "ZIP code" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Must be a physical address. P.O. boxes are not accepted." }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Website" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "www.yourcompany.com" })
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container trade-only", id: "section-license", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "4" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "License & registration" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Your FDA and state license details. Our team verifies all trading accounts against these records before activation." })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "FDA registration number *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "e.g. 12345678901" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "State feed license number *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "State-issued license number" })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "License expiry date *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "MM/YYYY" })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Issuing authority" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Texas Department of Agriculture" })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Upload license documentation *" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", id: "upload-box", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "upload-box-content", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("img", { src: "/images/upload icon.png", alt: "Yellow upload here icon" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Click to upload or drag and drop" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "tag-container", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "PDF" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "JPG" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "PNG" })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business name *" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "As it appears on your license" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business type *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Input type" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "State issuing license *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Select state" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Upload copies of your current FDA registration and state feed license. Both are required for trading accounts." })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Address *" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "Street address" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "City" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "State" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "ZIP code" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Must be a physical address. P.O. boxes are not accepted." }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Website" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "www.yourcompany.com" })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "License & registration" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Your FDA and state license details. Our team verifies all trading accounts against these records before activation." })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "FDA registration number *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "e.g. 12345678901" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "State feed license number *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "State-issued license number" })
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "License expiry date *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "MM/YYYY" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Issuing authority" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Texas Department of Agriculture" })
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Upload license documentation *" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", id: "upload-box", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "upload-box-content", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("img", { src: "/images/upload icon.png", alt: "Yellow upload here icon" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Click to upload or drag and drop" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "tag-container", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "PDF" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "JPG" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "PNG" })
+                  ] })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Upload copies of your current FDA registration and state feed license. Both are required for trading accounts." })
+              ] })
             ] })
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: loginStep }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Create your login" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Choose a secure password for your Micromarket Exchange account." })
@@ -24721,7 +24733,7 @@
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "6" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: agreeStep }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Agreements" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Review and accept these terms before submitting your application." })
@@ -24733,7 +24745,7 @@
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "termsOfServiceAndPrivacy" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I have read and agree to the Micromarket Exchange Terms of Service and Privacy Policy." })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "trade-only", children: [
+            isTrade && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "licensingConfirmation" }),
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I certify that my operation holds a valid FDA registration and/or state feed license and that all information provided is accurate. I understand that providing false information will result in account termination." })
@@ -24746,16 +24758,13 @@
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "cta-text-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "trade-only", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Submit your application" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "viewonly-only", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Create your account" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
-            ] })
-          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "cta-text-container", children: isTrade ? /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Submit your application" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Create your account" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
+          ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button", children: "Save Draft" }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button", children: "Submit" })
         ] })
@@ -24785,7 +24794,7 @@
     const props = JSON.parse(propsEl.textContent || "{}");
     const Page = page ? pages[page] : void 0;
     if (Page) {
-      (0, import_client.hydrateRoot)(root, (0, import_react2.createElement)(Page, props));
+      (0, import_client.hydrateRoot)(root, (0, import_react3.createElement)(Page, props));
     }
   }
 })();
