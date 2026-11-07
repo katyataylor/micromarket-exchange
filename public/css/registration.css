@@ -1,5 +1,6 @@
 /* ==========================================
    REGISTRATION PAGE
+   Values sourced directly from Figma prototype.
    ========================================== */
 
 /* Full-width hero wrapper for the registration page */
@@ -9,54 +10,30 @@
 }
 
 /* ==========================================
-   SECTION HEADER TYPOGRAPHY
-   global.css h3 = 30px / h4 = 22px — both
-   are too large for the registration design.
-   ========================================== */
-
-/* Section titles: "Membership type", "Contact information", etc. */
-.w-bubble-container h3 {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-/* Subtext below the section title */
-.list-item.registration .subp1 {
-  font-size: 13px;
-}
-
-/* Form field labels: "First name *", "Email *", etc. */
-.user-inputs-container h4 {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--textBody);
-}
-
-/* Hint text below inputs */
-.user-inputs-container .subp1 {
-  font-size: 12px;
-}
-
-/* ==========================================
    SECTION HEADER LAYOUT (NUMBER + TITLE ROW)
+   Figma: gap-[24px] between circle and text,
+   no extra padding-top (section py-[48px]
+   already provides the top spacing).
    ========================================== */
 
 .list-item.registration {
   width: 956px;
-  gap: 20px;
-  align-items: flex-start;
-  padding-top: 36px;
+  gap: 24px;
+  align-items: center;
+  padding-top: 0;
 }
 
-/* global.css gives .number margin-right: 25px; gap above handles
-   spacing so we zero the margin to prevent double-spacing. */
+/* global.css gives .number margin-right: 25px;
+   the gap above handles spacing — zero it out. */
 .list-item.registration .number {
   margin-right: 0;
-  /* Reduce circle from 55×55px to match the design */
-  width: 38px;
-  height: 38px;
-  /* h2 inside the circle is 28px by default — override here */
-  font-size: 16px;
+}
+
+/* global.css hr { margin-top: 62px }.
+   Figma shows 28px above and below the HR. */
+.w-bubble-container hr {
+  margin-top: 28px;
+  margin-bottom: 28px;
 }
 
 /* ==========================================
@@ -68,65 +45,55 @@
   align-items: stretch;
 }
 
-/* Make cards interactive and reduce internal gap */
+/* Make cards interactive; keep the global gap-[24px] */
 .membership-type.sand-bubble {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Pin the type-tag to the bottom of the card */
+/* Pin the type-tag to the bottom regardless of content height */
 .membership-type.sand-bubble .type-tag {
   margin-top: auto;
 }
 
-/* Card title: global h2 = 28px bold → design is ~18px */
-.membership-type.sand-bubble h2 {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-/* Card description and bullet list text: global h4 = 22px → design ~13px */
-.membership-type.sand-bubble h4 {
-  font-size: 13px;
-  line-height: 1.65;
-}
-
-/* Type tag: global is 20px / weight 800 → design is ~12px / weight 600 */
-.membership-type.type-tag {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 12px;
-  background-color: var(--brandLightSand);
-  color: var(--brandDarkSand);
-  border: 1px solid var(--brandDarkSand);
-}
-
-/* Selected / focused card — more saturated blue-gray background,
-   light blue border instead of dark navy */
+/* Selected state: blue-gray bg (Figma rgba(155,184,191,0.4)) +
+   2px dark-navy border (Figma border-2 border-[#2d3748]).
+   Also applied on :focus for keyboard users. */
 .membership-type.sand-bubble.selected,
 .membership-type.sand-bubble:focus {
-  background-color: rgba(145, 172, 182, 0.55);
-  border: 2px solid var(--textEyebrowBlue);
+  background-color: rgba(155, 184, 191, 0.4);
+  border: 2px solid var(--brandSlate);
   outline: none;
 }
 
 /* ==========================================
-   INPUT FIELDS
+   FORM LAYOUT
+   Figma: gap-[20px] between field groups,
+   gap-[12px] between a label and its input.
    ========================================== */
 
-/* Explicit box styling so inputs look like distinct form fields.
-   Also overrides the global .subH1 font-size (24px → 15px). */
-.user-inputs-container input.subH1 {
-  font-size: 15px;
+.user-inputs-container {
+  gap: 20px;
 }
 
+.input-column {
+  gap: 12px;
+}
+
+/* ==========================================
+   INPUT FIELDS
+   Figma: border 1px solid #9197a0, h-[48px],
+   p-[8px], rounded-[8px], placeholder 24px italic
+   (subH1 — global default, no override needed).
+   ========================================== */
+
 .user-inputs-container input {
-  border: 1px solid #D1D5DB;
-  border-radius: 6px;
-  padding: 10px 14px;
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px;
+  height: 48px;
   background-color: var(--textWhite);
   transition: border-color 0.2s ease;
 }
@@ -139,20 +106,23 @@
 
 /* ==========================================
    UPLOAD BOX
+   Figma: bg rgba(247,244,239,0.8), border
+   1px dashed rgba(0,0,0,0.25), rounded-[20px],
+   py-[36px] px-[10px], internal gap-[22px].
    ========================================== */
 #upload-box {
-  border: 2px dashed var(--brandLightSlate);
-  border-radius: var(--radius);
-  padding: 32px 20px;
+  background-color: rgba(247, 244, 239, 0.8);
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 36px 10px;
   align-items: center;
+  gap: 22px;
   cursor: pointer;
-  gap: 16px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 #upload-box:hover {
   border-color: var(--brandDarkSand);
-  background-color: rgba(232, 223, 200, 0.2);
 }
 
 .upload-box-content {
@@ -163,28 +133,53 @@
 }
 
 .upload-box-content img {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
 }
 
 .tag-container {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
 }
 
+/* Upload format tags — Figma: bg #fdf6dc, px-[8px] py-[2px],
+   rounded-[8px], text 20px uppercase brandDarkSand */
 .upload-tag {
-  padding: 4px 10px;
-  font-size: 13px;
-  border: 1px solid var(--brandLightSlate);
-  border-radius: 4px;
-  color: var(--textMutedCaptions);
+  background-color: var(--brandLightSand);
+  color: var(--brandDarkSand);
+  padding: 2px 8px;
+  font-size: 20px;
+  font-family: var(--fb);
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: none;
+  letter-spacing: 0.018px;
 }
 
 /* ==========================================
-   CHECKBOX STYLING
+   AGREEMENT CHECKBOXES
+   Figma: bg rgba(155,184,191,0.5),
+   border 1px solid #9bb8bf, rounded-[20px],
+   p-[20px], gap-[28px] between checkbox & text,
+   no box-shadow, text 22px Red Hat Text Regular.
    ========================================== */
+.blue-bubble.registration {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  background-color: rgba(155, 184, 191, 0.5);
+  border: 1px solid #9bb8bf;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 28px;
+  box-shadow: none;
+  margin-top: 0;
+  width: 100%;
+}
+
 .blue-check {
   width: 22px;
   height: 22px;
@@ -192,19 +187,19 @@
   accent-color: var(--textEyebrowBlue);
   cursor: pointer;
   margin-top: 4px;
+  flex-shrink: 0;
 }
 
-/* Agreement checkbox label text */
-.blue-bubble.registration h4 {
-  font-size: 14px;
-  font-weight: 400;
-}
+/* Agreement text uses global h4 (22px Red Hat Text) — no override needed */
 
 /* ==========================================
    TRADE-ONLY AGREEMENT WRAPPER
+   Both trade-only bubbles flow as a column
+   with 20px gap (matches user-inputs-container
+   gap above).
    ========================================== */
 .user-inputs-container > .trade-only {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 20px;
 }
