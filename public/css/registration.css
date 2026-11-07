@@ -1,0 +1,104 @@
+/* ==========================================
+   REGISTRATION PAGE
+   ========================================== */
+
+/* Full-width hero wrapper for the registration page */
+.hero-page-body {
+  display: flex;
+  width: 100%;
+}
+
+/* ==========================================
+   MEMBERSHIP TYPE CARDS
+   ========================================== */
+
+/* Make cards interactive with a pointer and smooth transition */
+.membership-type.sand-bubble {
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, border-width 0.1s ease;
+}
+
+/* Selected state — mirrors the :focus style but persists on click */
+.membership-type.sand-bubble.selected {
+  background-color: rgba(155, 184, 191, 0.4);
+  border: 2px solid var(--brandSlate);
+  outline: none;
+}
+
+/* ==========================================
+   MEMBERSHIP TOGGLE — INITIAL HIDDEN STATES
+   View-only content is hidden until the
+   third-party card is selected by the user.
+   ========================================== */
+.viewonly-only {
+  display: none;
+}
+
+/* ==========================================
+   UPLOAD BOX
+   ========================================== */
+#upload-box {
+  border: 2px dashed var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  align-items: center;
+  cursor: pointer;
+  gap: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+#upload-box:hover {
+  border-color: var(--brandDarkSand);
+  background-color: rgba(232, 223, 200, 0.2);
+}
+
+.upload-box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.upload-box-content img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.upload-tag {
+  padding: 4px 10px;
+  font-size: 13px;
+  border: 1px solid var(--brandLightSlate);
+  border-radius: 4px;
+  color: var(--textMutedCaptions);
+}
+
+/* ==========================================
+   CHECKBOX STYLING
+   ========================================== */
+.blue-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  accent-color: var(--textEyebrowBlue);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* ==========================================
+   TRADE-ONLY AGREEMENT WRAPPER
+   Removes default block spacing so the two
+   trade-only checkboxes flow naturally inside
+   the user-inputs-container flex column.
+   ========================================== */
+.user-inputs-container > .trade-only {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
