@@ -24525,8 +24525,8 @@
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bubble-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "membership-type sand-bubble", tabIndex: 0, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Licensed Operation" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "membership-type sand-bubble", tabIndex: 0, "data-membership": "trade", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Licensed operation" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "FDA-licensed farms, operations, and licensed feed mills with a physical location." }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
                 "\u2022 List & sell products ",
@@ -24535,22 +24535,21 @@
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
                 "\u2022 Full marketplace access"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "Trade" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "Seller/Buyer" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "membership-type sand-bubble", tabIndex: 0, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Industry Experts" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "membership-type sand-bubble", tabIndex: 0, "data-membership": "viewonly", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Third-party member" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "Industry consultants, researchers, and observers who need marketplace visibility." }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
-                " ",
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 List & sell products" }),
                 " ",
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Bid on listings" }),
                 " ",
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                "\u2022 Full marketplace access"
+                "\u2022 Browse marketplace"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "View Only" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "View only" })
             ] })
           ] })
         ] }),
@@ -24576,20 +24575,46 @@
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business email *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "you@yourcompany.com" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+                  "h4",
+                  {
+                    id: "email-label",
+                    "data-trade-label": "Business email *",
+                    "data-viewonly-label": "Email *",
+                    children: "Business email *"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "email", placeholder: "you@yourcompany.com" })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "First name *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "(000)000-0000" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Phone number *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "tel", placeholder: "(000) 000-0000" })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Use your business email when possible - personal addresses may delay verification." }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Job title/role" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Owner, Operations Manager" })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1 trade-only", children: "Use your business email when possible \u2014 personal addresses may delay verification." }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+              "h4",
+              {
+                id: "occupation-label",
+                "data-trade-label": "Job title/role",
+                "data-viewonly-label": "Occupation",
+                children: "Job title/role"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+              "input",
+              {
+                id: "occupation-input",
+                className: "subH1 medium",
+                type: "text",
+                placeholder: "e.g. Owner, Operations Manager",
+                "data-trade-placeholder": "e.g. Owner, Operations Manager",
+                "data-viewonly-placeholder": "e.g. Consultant, Researcher"
+              }
+            )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container trade-only", id: "section-business-info", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "3" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
@@ -24623,7 +24648,7 @@
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "www.yourcompany.com" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container trade-only", id: "section-license", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "4" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
@@ -24684,11 +24709,11 @@
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Password *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Minimum 8 characters" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "password", placeholder: "Minimum 8 characters" })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Confirm password *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Re-enter password" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "password", placeholder: "Re-enter password" })
               ] })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Use at least 8 characters including a number and a symbol." })
@@ -24708,20 +24733,28 @@
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "termsOfServiceAndPrivacy" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I have read and agree to the Micromarket Exchange Terms of Service and Privacy Policy." })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "licensingConfirmation" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I certify that my operation holds a valid FDA registration and/or state feed license and that all information provided is accurate. I understand that providing false information will result in account termination." })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "accountReview" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I understand that my trading account must be verified by Micromarket Exchange before I can buy or sell, and that Micromarket Exchange reserves the right to suspend accounts found to be operating outside their licensed scope." })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "trade-only", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "licensingConfirmation" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I certify that my operation holds a valid FDA registration and/or state feed license and that all information provided is accurate. I understand that providing false information will result in account termination." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "accountReview" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I understand that my trading account must be verified by Micromarket Exchange before I can buy or sell, and that Micromarket Exchange reserves the right to suspend accounts found to be operating outside their licensed scope." })
+              ] })
             ] })
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "cta-text-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Submit your application" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "trade-only", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Submit your application" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "viewonly-only", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Create your account" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
+            ] })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button", children: "Save Draft" }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button", children: "Submit" })
