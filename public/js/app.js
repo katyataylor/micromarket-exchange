@@ -24534,7 +24534,7 @@
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Select the membership that matches your operation. This determines what actions you can take on Micromarket Exchange." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bubble-container", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
               "div",
@@ -24590,7 +24590,7 @@
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "The primary contact for this account. This person will receive all notifications." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
@@ -24633,7 +24633,7 @@
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Details about your operation. Must match your FDA or state license records." })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business name *" }),
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "As it appears on your license" }),
@@ -24667,7 +24667,7 @@
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Your FDA and state license details. Our team verifies all trading accounts against these records before activation." })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
@@ -24714,7 +24714,7 @@
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Choose a secure password for your Micromarket Exchange account." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Username *" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. johnsmith1" }),
@@ -24739,7 +24739,7 @@
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Review and accept these terms before submitting your application." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", {}),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
               /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "termsOfServiceAndPrivacy" }),

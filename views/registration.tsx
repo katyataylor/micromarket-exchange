@@ -59,7 +59,7 @@ export function Registration() {
               </div>
             </div>
           </div>
-          <hr />
+          <hr style={{ marginTop: 28 }} />
           <div className="bubble-container">
             <div
               className={`membership-type sand-bubble${membership === 'trade' ? ' selected' : ''}`}
@@ -102,7 +102,7 @@ export function Registration() {
               <div className="subp1">The primary contact for this account. This person will receive all notifications.</div>
             </div>
           </div>
-          <hr />
+          <hr style={{ marginTop: 28 }} />
           <div className="user-inputs-container">
             <div className="input-row">
               <div className="input-column">
@@ -147,7 +147,7 @@ export function Registration() {
                   <div className="subp1">Details about your operation. Must match your FDA or state license records.</div>
                 </div>
               </div>
-              <hr />
+              <hr style={{ marginTop: 28 }} />
               <div className="user-inputs-container">
                 <h4>Business name *</h4>
                 <input className="subH1 large" type="text" placeholder="As it appears on your license" />
@@ -182,7 +182,7 @@ export function Registration() {
                   <div className="subp1">Your FDA and state license details. Our team verifies all trading accounts against these records before activation.</div>
                 </div>
               </div>
-              <hr />
+              <hr style={{ marginTop: 28 }} />
               <div className="user-inputs-container">
                 <div className="input-row">
                   <div className="input-column">
@@ -232,7 +232,7 @@ export function Registration() {
               <div className="subp1">Choose a secure password for your Micromarket Exchange account.</div>
             </div>
           </div>
-          <hr />
+          <hr style={{ marginTop: 28 }} />
           <div className="user-inputs-container">
             <h4>Username *</h4>
             <input className="subH1 medium" type="text" placeholder="e.g. johnsmith1" />
@@ -259,7 +259,7 @@ export function Registration() {
               <div className="subp1">Review and accept these terms before submitting your application.</div>
             </div>
           </div>
-          <hr />
+          <hr style={{ marginTop: 28 }} />
           <div className="user-inputs-container">
             <div className="blue-bubble registration">
               <input type="checkbox" className="blue-check" id="termsOfServiceAndPrivacy" />
