@@ -70,7 +70,7 @@ export function Registration() {
               <h2>Licensed operation</h2>
               <h4 style={{ color: 'var(--brandSoftGraphite)' }}>FDA-licensed farms, operations, and licensed feed mills with a physical location.</h4>
               <h4 style={{ color: 'var(--textEyebrowBlue)' }}>• List &amp; sell products <br />
-                • Purchase listings <br />
+                • Bid on listings <br />
                 • Full marketplace access
               </h4>
               <div className="membership-type type-tag">Seller/Buyer</div>
@@ -85,7 +85,7 @@ export function Registration() {
               <h2>Industry Experts</h2>
               <h4 style={{ color: 'var(--brandSoftGraphite)' }}>Industry consultants, researchers, and observers who need marketplace visibility.</h4>
               <h4 style={{ color: 'var(--textEyebrowBlue)' }}><s>• List &amp; sell products</s> <br />
-                <s>• Purchase listings</s> <br />
+                <s>• Bid on listings</s> <br />
                 • Browse marketplace
               </h4>
               <div className="membership-type type-tag">View only</div>
@@ -289,7 +289,8 @@ export function Registration() {
 
         {/* Submit — copy swaps between membership types */}
         <section className="w-bubble-container">
-          <div className="cta-text-container">
+          <div className='cta-content-container'>
+            <div className="cta-text-container">
             {isTrade ? (
               <>
                 <div className="p2">Submit your application</div>
@@ -305,9 +306,12 @@ export function Registration() {
                 </div>
               </>
             )}
+            </div>
+            <div className="save-submit-container">
+              <button className="list-button save-button">Save Draft</button>
+              <button className="list-button submit-button">Submit</button>
+            </div>
           </div>
-          <button className="list-button">Save Draft</button>
-          <button className="list-button">Submit</button>
         </section>
       </div>
 

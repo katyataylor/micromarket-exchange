@@ -24549,7 +24549,7 @@
                   /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
                     "\u2022 List & sell products ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                    "\u2022 Purchase listings ",
+                    "\u2022 Bid on listings ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
                     "\u2022 Full marketplace access"
                   ] }),
@@ -24571,7 +24571,7 @@
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 List & sell products" }),
                     " ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Purchase listings" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Bid on listings" }),
                     " ",
                     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
                     "\u2022 Browse marketplace"
@@ -24758,7 +24758,7 @@
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("section", { className: "w-bubble-container", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "cta-content-container", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "cta-text-container", children: isTrade ? /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Submit your application" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
@@ -24766,9 +24766,11 @@
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Create your account" }),
             /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button", children: "Save Draft" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button", children: "Submit" })
-        ] })
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "save-submit-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button save-button", children: "Save Draft" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button submit-button", children: "Submit" })
+          ] })
+        ] }) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Footer, {})
     ] });
