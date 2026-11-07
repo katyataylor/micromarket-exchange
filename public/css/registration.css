@@ -12,26 +12,65 @@
    MEMBERSHIP TYPE CARDS
    ========================================== */
 
+/* Stretch both cards to equal height */
+.bubble-container {
+  align-items: stretch;
+}
+
 /* Make cards interactive with a pointer and smooth transition */
 .membership-type.sand-bubble {
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, border-width 0.1s ease;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Selected state — mirrors the :focus style but persists on click */
-.membership-type.sand-bubble.selected {
+/* Push the type-tag to the bottom of the card regardless of content height */
+.membership-type.sand-bubble .type-tag {
+  margin-top: auto;
+}
+
+/* Selected state — light blue border to match planned design */
+.membership-type.sand-bubble.selected,
+.membership-type.sand-bubble:focus {
   background-color: rgba(155, 184, 191, 0.4);
-  border: 2px solid var(--brandSlate);
+  border: 2px solid var(--textEyebrowBlue);
   outline: none;
 }
 
 /* ==========================================
-   MEMBERSHIP TOGGLE — INITIAL HIDDEN STATES
-   View-only content is hidden until the
-   third-party card is selected by the user.
+   SECTION HEADER (NUMBER + TITLE ROW)
    ========================================== */
-.viewonly-only {
-  display: none;
+
+/* Width matches the input container so they left-align */
+.list-item.registration {
+  width: 956px;
+  gap: 28px;
+}
+
+/* global.css gives .number a margin-right: 25px; the gap above handles
+   spacing, so remove the extra margin to avoid double-spacing */
+.list-item.registration .number {
+  margin-right: 0;
+}
+
+/* ==========================================
+   INPUT FIELDS
+   ========================================== */
+
+/* Explicit box styling so inputs look like distinct form fields */
+.user-inputs-container input {
+  border: 1px solid var(--textLightGray);
+  border-radius: 4px;
+  padding: 10px 14px;
+  background-color: var(--textWhite);
+  transition: border-color 0.2s ease;
+}
+
+.user-inputs-container input:focus {
+  border-color: var(--textEyebrowBlue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
 }
 
 /* ==========================================
@@ -93,9 +132,8 @@
 
 /* ==========================================
    TRADE-ONLY AGREEMENT WRAPPER
-   Removes default block spacing so the two
-   trade-only checkboxes flow naturally inside
-   the user-inputs-container flex column.
+   Both trade-only checkboxes flow as a flex
+   column inside the user-inputs-container.
    ========================================== */
 .user-inputs-container > .trade-only {
   display: flex;
