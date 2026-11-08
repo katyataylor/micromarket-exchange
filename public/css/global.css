@@ -1170,11 +1170,11 @@ img.card-img-icon {
 
 .cta-text-container {
   display: flex;
+  flex-direction:row;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 955px;
-  gap: 8px;
+  width: 956px;
 }
 
 .list-button {

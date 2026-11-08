@@ -1,5 +1,6 @@
 /* ==========================================
    REGISTRATION PAGE
+   Values sourced directly from Figma prototype.
    ========================================== */
 
 /* Full-width hero wrapper for the registration page */
@@ -9,47 +10,119 @@
 }
 
 /* ==========================================
+   SECTION HEADER LAYOUT (NUMBER + TITLE ROW)
+   Figma: gap-[24px] between circle and text,
+   no extra padding-top (section py-[48px]
+   already provides the top spacing).
+   ========================================== */
+
+.list-item.registration {
+  width: 956px;
+  gap: 24px;
+  align-items: center;
+  padding-top: 0;
+}
+
+/* global.css gives .number margin-right: 25px;
+   the gap above handles spacing — zero it out. */
+.list-item.registration .number {
+  margin-right: 0;
+}
+
+/* global.css hr { margin-top: 62px }.
+   Figma shows 28px above and below the HR. */
+.w-bubble-container hr {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+/* ==========================================
    MEMBERSHIP TYPE CARDS
    ========================================== */
 
-/* Make cards interactive with a pointer and smooth transition */
-.membership-type.sand-bubble {
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, border-width 0.1s ease;
+/* Stretch both cards to equal height */
+.bubble-container {
+  align-items: stretch;
 }
 
-/* Selected state — mirrors the :focus style but persists on click */
-.membership-type.sand-bubble.selected {
+/* Make cards interactive; keep the global gap-[24px] */
+.membership-type.sand-bubble {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Pin the type-tag to the bottom regardless of content height */
+.membership-type.sand-bubble .type-tag {
+  margin-top: auto;
+}
+
+/* Selected state: blue-gray bg (Figma rgba(155,184,191,0.4)) +
+   2px dark-navy border (Figma border-2 border-[#2d3748]).
+   Also applied on :focus for keyboard users. */
+.membership-type.sand-bubble.selected,
+.membership-type.sand-bubble:focus {
   background-color: rgba(155, 184, 191, 0.4);
   border: 2px solid var(--brandSlate);
   outline: none;
 }
 
 /* ==========================================
-   MEMBERSHIP TOGGLE — INITIAL HIDDEN STATES
-   View-only content is hidden until the
-   third-party card is selected by the user.
+   FORM LAYOUT
+   Figma: gap-[20px] between field groups,
+   gap-[12px] between a label and its input.
    ========================================== */
-.viewonly-only {
-  display: none;
+
+.user-inputs-container {
+  gap: 20px;
+}
+
+.input-column {
+  gap: 12px;
+}
+
+/* ==========================================
+   INPUT FIELDS
+   Figma: border 1px solid #9197a0, h-[48px],
+   p-[8px], rounded-[8px], placeholder 24px italic
+   (subH1 — global default, no override needed).
+   ========================================== */
+
+.user-inputs-container input {
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px;
+  height: 48px;
+  background-color: var(--textWhite);
+  transition: border-color 0.2s ease;
+}
+
+.user-inputs-container input:focus {
+  border-color: var(--textEyebrowBlue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
 }
 
 /* ==========================================
    UPLOAD BOX
+   Figma: bg rgba(247,244,239,0.8), border
+   1px dashed rgba(0,0,0,0.25), rounded-[20px],
+   py-[36px] px-[10px], internal gap-[22px].
    ========================================== */
 #upload-box {
-  border: 2px dashed var(--brandLightSlate);
-  border-radius: var(--radius);
-  padding: 32px 20px;
+  background-color: rgba(247, 244, 239, 0.8);
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 36px 10px;
   align-items: center;
+  gap: 22px;
   cursor: pointer;
-  gap: 16px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 #upload-box:hover {
   border-color: var(--brandDarkSand);
-  background-color: rgba(232, 223, 200, 0.2);
 }
 
 .upload-box-content {
@@ -60,28 +133,53 @@
 }
 
 .upload-box-content img {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
 }
 
 .tag-container {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
 }
 
+/* Upload format tags — Figma: bg #fdf6dc, px-[8px] py-[2px],
+   rounded-[8px], text 20px uppercase brandDarkSand */
 .upload-tag {
-  padding: 4px 10px;
-  font-size: 13px;
-  border: 1px solid var(--brandLightSlate);
-  border-radius: 4px;
-  color: var(--textMutedCaptions);
+  background-color: var(--brandLightSand);
+  color: var(--brandDarkSand);
+  padding: 2px 8px;
+  font-size: 20px;
+  font-family: var(--fb);
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: none;
+  letter-spacing: 0.018px;
 }
 
 /* ==========================================
-   CHECKBOX STYLING
+   AGREEMENT CHECKBOXES
+   Figma: bg rgba(155,184,191,0.5),
+   border 1px solid #9bb8bf, rounded-[20px],
+   p-[20px], gap-[28px] between checkbox & text,
+   no box-shadow, text 22px Red Hat Text Regular.
    ========================================== */
+.blue-bubble.registration {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  background-color: rgba(155, 184, 191, 0.5);
+  border: 1px solid #9bb8bf;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 28px;
+  box-shadow: none;
+  margin-top: 0;
+  width: 100%;
+}
+
 .blue-check {
   width: 22px;
   height: 22px;
@@ -89,16 +187,41 @@
   accent-color: var(--textEyebrowBlue);
   cursor: pointer;
   margin-top: 4px;
+  flex-shrink: 0;
 }
+
+/* Agreement text uses global h4 (22px Red Hat Text) — no override needed */
 
 /* ==========================================
    TRADE-ONLY AGREEMENT WRAPPER
-   Removes default block spacing so the two
-   trade-only checkboxes flow naturally inside
-   the user-inputs-container flex column.
+   Both trade-only bubbles flow as a column
+   with 20px gap (matches user-inputs-container
+   gap above).
    ========================================== */
 .user-inputs-container > .trade-only {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 20px;
 }
+
+/* ==========================================
+   CTA SECTION
+   ========================================== */
+   .cta-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 956px;
+   }
+
+   .save-submit-container {
+    display: flex;
+    flex-flow:row nowrap;
+    margin-top: 62px;
+    gap: 20px;
+   }
+
+   .submit-button {
+    display: flex;
+    flex-direction: row;
+   }
