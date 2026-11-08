@@ -24484,17 +24484,15 @@
     ] });
   }
   function ListProduct() {
-    const [lotNumbers, setLotNumbers] = (0, import_react3.useState)([]);
-    const [currentLot, setCurrentLot] = (0, import_react3.useState)("");
-    function addLot() {
-      const trimmed = currentLot.trim();
-      if (trimmed && !lotNumbers.includes(trimmed)) {
-        setLotNumbers((prev) => [...prev, trimmed]);
-      }
-      setCurrentLot("");
+    const [lotRows, setLotRows] = (0, import_react3.useState)([""]);
+    function addLotRow() {
+      setLotRows((prev) => [...prev, ""]);
     }
-    function removeLot(lot) {
-      setLotNumbers((prev) => prev.filter((l) => l !== lot));
+    function updateLotRow(index, value) {
+      setLotRows((prev) => prev.map((v, i) => i === index ? value : v));
+    }
+    function removeLotRow(index) {
+      setLotRows((prev) => prev.filter((_, i) => i !== index));
     }
     return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Header, {}),
@@ -24563,38 +24561,35 @@
           /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-fields", children: [
             /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field", children: [
               /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Lot number(s)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-lot-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-lot-inputs", children: lotRows.map((val, i) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-lot-row", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
                   "input",
                   {
                     type: "text",
                     className: "pl-input pl-input--lot",
                     placeholder: "Enter a lot number",
-                    value: currentLot,
-                    onChange: (e) => setCurrentLot(e.target.value),
+                    value: val,
+                    onChange: (e) => updateLotRow(i, e.target.value),
                     onKeyDown: (e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
-                        addLot();
+                        addLotRow();
                       }
                     }
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { className: "pl-btn-add-lot", type: "button", onClick: addLot, children: "+ Add lot" })
-              ] }),
-              lotNumbers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-lot-tags", children: lotNumbers.map((lot) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "pl-lot-tag", children: [
-                lot,
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+                lotRows.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
                   "button",
                   {
                     type: "button",
-                    className: "pl-lot-remove",
-                    onClick: () => removeLot(lot),
-                    "aria-label": `Remove ${lot}`,
+                    className: "pl-lot-remove-row",
+                    onClick: () => removeLotRow(i),
+                    "aria-label": "Remove lot",
                     children: "\xD7"
                   }
                 )
-              ] }, lot)) }),
+              ] }, i)) }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { className: "pl-btn-add-lot", type: "button", onClick: addLotRow, children: "+ Add lot" }),
               /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-field-hint", children: "Add each lot number separately. Multiple lots can be included in one listing." })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field-row", children: [

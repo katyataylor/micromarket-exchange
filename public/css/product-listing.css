@@ -340,11 +340,19 @@
   resize: vertical;
 }
 
-/* ── Lot number row ──────────────────────────── */
+/* ── Lot number rows ─────────────────────────── */
 
+/* Stacked column of input rows */
+.pl-lot-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Each row: input + optional × button */
 .pl-lot-row {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -354,10 +362,33 @@
   border-color: #9bb8bf;
 }
 
-/* "+ Add lot" button — gold outline */
-.pl-btn-add-lot {
+/* × button to remove a row (all rows except when only one exists) */
+.pl-lot-remove-row {
   flex-shrink: 0;
-  height: 48px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 50%;
+  background: transparent;
+  font-size: 20px;
+  color: var(--textMutedCaptions);
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.pl-lot-remove-row:hover {
+  border-color: #c0392b;
+  color: #c0392b;
+}
+
+/* "+ Add lot" button — appears below the rows, left-aligned */
+.pl-btn-add-lot {
+  align-self: flex-start;
+  height: 44px;
   padding: 0 20px;
   border: 1px solid var(--brandGold);
   border-radius: var(--radius);
@@ -373,42 +404,6 @@
 
 .pl-btn-add-lot:hover {
   background-color: rgba(240, 193, 66, 0.1);
-}
-
-/* Added lot tags */
-.pl-lot-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pl-lot-tag {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--brandLightSand);
-  border: 1px solid var(--brandDarkSand);
-  border-radius: 18px;
-  padding: 4px 12px 4px 16px;
-  font-family: var(--fh);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--brandDarkSand);
-}
-
-.pl-lot-remove {
-  background: none;
-  border: none;
-  color: var(--brandDarkSand);
-  font-size: 18px;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  opacity: 0.7;
-}
-
-.pl-lot-remove:hover {
-  opacity: 1;
 }
 
 /* Small hint text — Onest ExtraLight 16px, muted */
