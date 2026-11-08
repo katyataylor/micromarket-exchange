@@ -24173,70 +24173,83 @@
       e.stopPropagation();
       setImgIndex((i) => (i + 1) % total);
     }
-    const priceFormatted = `$${item.price.toFixed(2)}/${item.priceUnit.replace("per ", "")}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "product-card", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-badge-dot" }),
-        item.listingType === "auction" ? "Auction" : "Fixed Price"
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-image-wrap", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-          "img",
-          {
-            className: "pc-image",
-            src: images[imgIndex],
-            alt: item.name
-          },
-          imgIndex
-        ),
-        total > 1 && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-            "button",
-            {
-              className: `pc-dot${i === imgIndex ? " pc-dot--active" : ""}`,
-              onClick: (e) => {
-                e.stopPropagation();
-                setImgIndex(i);
-              },
-              "aria-label": `Image ${i + 1}`
-            },
-            i
-          )) })
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-body", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-name", children: item.name }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-seller", children: item.seller }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-location", children: item.location }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-meta", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
-            " ",
-            item.qty
+    function goTo(i, e) {
+      e.stopPropagation();
+      setImgIndex(i);
+    }
+    function stopProp(e) {
+      e.stopPropagation();
+    }
+    const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace("per ", "")}`;
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+      "div",
+      {
+        className: "product-card",
+        onClick: () => {
+          window.location.href = `/product/${item.id}`;
+        },
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-badge-dot" }),
+            item.listingType === "auction" ? "Auction" : "Fixed Price"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
-            " ",
-            item.packaging
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-image-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-image-clip", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+              "img",
+              {
+                className: "pc-image",
+                src: images[imgIndex],
+                alt: item.name
+              },
+              imgIndex
+            ) }),
+            total > 1 && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+                "button",
+                {
+                  className: `pc-dot${i === imgIndex ? " pc-dot--active" : ""}`,
+                  onClick: (e) => goTo(i, e),
+                  "aria-label": `Image ${i + 1}`
+                },
+                i
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-body", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-name", children: item.name }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-seller", children: item.seller }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-location", children: item.location }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-meta", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
+                " ",
+                item.qty
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
+                " ",
+                item.packaging
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "pc-divider" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-price", children: price })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-actions", onClick: stopProp, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-btn-primary", children: "Bid Now" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+              "button",
+              {
+                className: `pc-btn-secondary${inWatchlist ? " pc-btn-secondary--active" : ""}`,
+                onClick: () => setInWatchlist((w) => !w),
+                children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
+              }
+            )
           ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "pc-divider" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-price", children: priceFormatted })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-actions", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-btn-primary", children: "Bid Now" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-          "button",
-          {
-            className: `pc-btn-secondary${inWatchlist ? " pc-btn-secondary--active" : ""}`,
-            onClick: () => setInWatchlist((w) => !w),
-            children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
-          }
-        )
-      ] })
-    ] });
+        ]
+      }
+    );
   }
 
   // views/data/mockListings.ts
