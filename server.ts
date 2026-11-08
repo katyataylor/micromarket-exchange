@@ -22,9 +22,9 @@ await esbuild.build({
 });
 
 const mockListings: Listing[] = [
-  { id: 101, name: 'USP Grade Citric Acid Powder', qty: '450 lbs', price: 1200, expires: '2027-04-12' },
-  { id: 102, name: 'Organic Xanthan Gum Batch B', qty: '200 lbs', price: 2400, expires: '2026-11-30' },
-  { id: 103, name: 'Pure Ascorbic Acid (Vitamin C)', qty: '600 lbs', price: 4100, expires: '2027-01-15' },
+  { id: 101, name: 'USP Grade Citric Acid Powder', seller: 'Demo Seller', location: 'Austin, TX', state: 'Texas', qty: '450 lbs', unit: 'pounds', packaging: 'Bags', price: 1.20, priceUnit: 'per lb', listingType: 'auction', images: ['/images/IMG_9097.jpeg'], expires: '2027-04-12' },
+  { id: 102, name: 'Organic Xanthan Gum Batch B', seller: 'Demo Seller', location: 'Iowa City, IA', state: 'Iowa', qty: '200 lbs', unit: 'pounds', packaging: 'Bags', price: 2.40, priceUnit: 'per lb', listingType: 'fixed', images: ['/images/IMG_9098.jpeg'], expires: '2026-11-30' },
+  { id: 103, name: 'Pure Ascorbic Acid (Vitamin C)', seller: 'Demo Seller', location: 'Wichita, KS', state: 'Kansas', qty: '600 lbs', unit: 'pounds', packaging: 'Bulk', price: 4.10, priceUnit: 'per lb', listingType: 'auction', images: ['/images/IMG_9099.jpeg'], expires: '2027-01-15' },
 ];
 
 function escapeHtml(value: string) {

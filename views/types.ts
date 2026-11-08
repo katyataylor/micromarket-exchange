@@ -1,9 +1,21 @@
+export type ListingType = 'auction' | 'fixed';
+export type UnitOfMeasure = 'pounds' | 'kilograms' | 'grams';
+
 export type Listing = {
   id: number;
   name: string;
+  seller: string;
+  location: string;
+  state: string;
   qty: string;
+  unit: UnitOfMeasure;
+  packaging: string;
   price: number;
+  priceUnit: string;
+  listingType: ListingType;
+  images: string[];
   expires: string;
+  category?: string;
 };
 
 

@@ -23832,7 +23832,7 @@
   });
 
   // views/client.tsx
-  var import_react2 = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // views/partials/footer.tsx
@@ -24154,67 +24154,389 @@
     ] });
   }
 
+  // views/marketplace.tsx
+  var import_react3 = __toESM(require_react());
+
   // views/partials/productCard.tsx
+  var import_react2 = __toESM(require_react());
   var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   function ProductCard({ item }) {
+    const [imgIndex, setImgIndex] = (0, import_react2.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react2.useState)(false);
+    const images = item.images.length > 0 ? item.images : ["/images/IMG_9097.jpeg"];
+    const total = images.length;
+    function prev(e) {
+      e.stopPropagation();
+      setImgIndex((i) => (i - 1 + total) % total);
+    }
+    function next(e) {
+      e.stopPropagation();
+      setImgIndex((i) => (i + 1) % total);
+    }
+    const priceFormatted = `$${item.price.toFixed(2)}/${item.priceUnit.replace("per ", "")}`;
     return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "product-card", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "card-image-wrapper", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "auction-badge", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "dot" }),
-          " AUCTION"
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("img", { className: "cover-img product-img", src: "/images/probios-precise.jpg", alt: item.name })
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-badge-dot" }),
+        item.listingType === "auction" ? "Auction" : "Fixed Price"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "card-details", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "product-title", children: "Product" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "company-name", children: "General Feed Co." }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "location", children: "Location, USA" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "meta-row", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
-            "Vol: ",
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("strong", { className: "meta-val", children: "55lbs" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
-            "Pkg: ",
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("strong", { className: "meta-val", children: "Bulk" })
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "price-display", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "amount", children: "$00.00" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "unit", children: "/lbs" })
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-image-wrap", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          "img",
+          {
+            className: "pc-image",
+            src: images[imgIndex],
+            alt: item.name
+          },
+          imgIndex
+        ),
+        total > 1 && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            "button",
+            {
+              className: `pc-dot${i === imgIndex ? " pc-dot--active" : ""}`,
+              onClick: (e) => {
+                e.stopPropagation();
+                setImgIndex(i);
+              },
+              "aria-label": `Image ${i + 1}`
+            },
+            i
+          )) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "card-actions", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "bid-btn", children: "Bid Now" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "watchlist-btn", children: "Add to Watchlist" })
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-body", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-name", children: item.name }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-seller", children: item.seller }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-location", children: item.location }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-meta", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
+            " ",
+            item.qty
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
+            " ",
+            item.packaging
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "pc-divider" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-price", children: priceFormatted })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-actions", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-btn-primary", children: "Bid Now" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          "button",
+          {
+            className: `pc-btn-secondary${inWatchlist ? " pc-btn-secondary--active" : ""}`,
+            onClick: () => setInWatchlist((w) => !w),
+            children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
+          }
+        )
       ] })
     ] });
   }
 
+  // views/data/mockListings.ts
+  var mockListings = [
+    {
+      id: 1,
+      name: "Lysine-L 98.5% \u2014 Grade A",
+      seller: "Lone Star Grain Co.",
+      location: "Amarillo, TX",
+      state: "Texas",
+      qty: "5,000 lbs",
+      unit: "pounds",
+      packaging: "Bulk",
+      price: 0.5,
+      priceUnit: "per lb",
+      listingType: "auction",
+      images: [
+        "/images/IMG_9097.jpeg",
+        "/images/IMG_9098.jpeg",
+        "/images/IMG_9099.jpeg"
+      ],
+      expires: "2026-11-10",
+      category: "Amino Acids"
+    },
+    {
+      id: 2,
+      name: "Corn Silage Grade B",
+      seller: "Heartland Farm Supply",
+      location: "Des Moines, IA",
+      state: "Iowa",
+      qty: "12,000 lbs",
+      unit: "pounds",
+      packaging: "Bulk",
+      price: 0.08,
+      priceUnit: "per lb",
+      listingType: "auction",
+      images: [
+        "/images/Grain.jpg",
+        "/images/IMG_9100.jpeg"
+      ],
+      expires: "2026-11-12",
+      category: "Silage"
+    },
+    {
+      id: 3,
+      name: "Soybean Meal 44%",
+      seller: "Prairie Mill Co.",
+      location: "Wichita, KS",
+      state: "Kansas",
+      qty: "8,500 lbs",
+      unit: "pounds",
+      packaging: "Bags",
+      price: 0.22,
+      priceUnit: "per lb",
+      listingType: "auction",
+      images: [
+        "/images/IMG_9101.jpeg",
+        "/images/IMG_9097.jpeg"
+      ],
+      expires: "2026-11-14",
+      category: "Protein Supplements"
+    },
+    {
+      id: 4,
+      name: "Premium Alfalfa Hay",
+      seller: "Platte River Ag",
+      location: "North Platte, NE",
+      state: "Nebraska",
+      qty: "3,200 lbs",
+      unit: "pounds",
+      packaging: "Bales",
+      price: 0.18,
+      priceUnit: "per lb",
+      listingType: "auction",
+      images: [
+        "/images/Hay-Missouri.webp",
+        "/images/IMG_9102.jpeg",
+        "/images/IMG_9098.jpeg"
+      ],
+      expires: "2026-11-15",
+      category: "Roughage"
+    },
+    {
+      id: 5,
+      name: "Distillers Dried Grains (DDG)",
+      seller: "North Star Feed Mills",
+      location: "Mankato, MN",
+      state: "Minnesota",
+      qty: "20,000 lbs",
+      unit: "pounds",
+      packaging: "Bulk",
+      price: 0.14,
+      priceUnit: "per lb",
+      listingType: "fixed",
+      images: [
+        "/images/IMG_9099.jpeg",
+        "/images/IMG_9100.jpeg"
+      ],
+      expires: "2026-11-30",
+      category: "Energy Feeds"
+    },
+    {
+      id: 6,
+      name: "Wheat Middlings \u2014 Feed Grade",
+      seller: "Valley Grain Partners",
+      location: "Fresno, CA",
+      state: "California",
+      qty: "6,000 lbs",
+      unit: "pounds",
+      packaging: "Bulk",
+      price: 0.11,
+      priceUnit: "per lb",
+      listingType: "auction",
+      images: [
+        "/images/IMG_9101.jpeg",
+        "/images/Grain.jpg"
+      ],
+      expires: "2026-11-11",
+      category: "Energy Feeds"
+    },
+    {
+      id: 7,
+      name: "Canola Meal 36%",
+      seller: "Pacific Coast Ag",
+      location: "Spokane, WA",
+      state: "Washington",
+      qty: "4,500 kg",
+      unit: "kilograms",
+      packaging: "Bulk",
+      price: 0.31,
+      priceUnit: "per kg",
+      listingType: "fixed",
+      images: [
+        "/images/IMG_9102.jpeg",
+        "/images/IMG_9097.jpeg"
+      ],
+      expires: "2026-11-20",
+      category: "Protein Supplements"
+    },
+    {
+      id: 8,
+      name: "Oat Groats \u2014 Whole",
+      seller: "Blue Ribbon Grain Co.",
+      location: "Sioux City, NE",
+      state: "Nebraska",
+      qty: "2,200 lbs",
+      unit: "pounds",
+      packaging: "Bags",
+      price: 0.27,
+      priceUnit: "per lb",
+      listingType: "auction",
+      images: [
+        "/images/IMG_9098.jpeg",
+        "/images/IMG_9101.jpeg"
+      ],
+      expires: "2026-11-09",
+      category: "Energy Feeds"
+    },
+    {
+      id: 9,
+      name: "Blood Meal 85% Protein",
+      seller: "Kansas Rendering Inc.",
+      location: "Dodge City, KS",
+      state: "Kansas",
+      qty: "1,800 lbs",
+      unit: "pounds",
+      packaging: "Bags",
+      price: 0.75,
+      priceUnit: "per lb",
+      listingType: "fixed",
+      images: [
+        "/images/IMG_9099.jpeg",
+        "/images/IMG_9100.jpeg",
+        "/images/IMG_9102.jpeg"
+      ],
+      expires: "2026-12-01",
+      category: "Protein Supplements"
+    }
+  ];
+  var featuredListing = mockListings[0];
+
   // views/marketplace.tsx
   var import_jsx_runtime11 = __toESM(require_jsx_runtime());
-  var sellerStates = [
-    ["Texas", "42"],
-    ["Iowa", "29"],
-    ["Kansas", "19"],
-    ["Nebraska", "17"],
-    ["Minnesota", "14"],
-    ["California", "12"],
-    ["Washington", "9"]
+  var INITIAL_FILTERS = {
+    listingType: "all",
+    states: /* @__PURE__ */ new Set(),
+    units: /* @__PURE__ */ new Set(),
+    minPrice: "",
+    maxPrice: ""
+  };
+  var SELLER_STATES = [
+    ["Texas", 72],
+    ["Iowa", 25],
+    ["Kansas", 14],
+    ["Nebraska", 13],
+    ["Minnesota", 11],
+    ["California", 9],
+    ["Washington", 8]
   ];
-  var units = [
-    ["Pounds", "52"],
-    ["Kilograms", "34"],
-    ["Grand", "27"]
+  var UNITS = [
+    ["pounds", 52],
+    ["kilograms", 34],
+    ["grams", 27]
   ];
+  var UNIT_LABELS = {
+    pounds: "Pounds",
+    kilograms: "Kilograms",
+    grams: "Grams"
+  };
+  var SORT_OPTIONS = [
+    { value: "default", label: "Sort by" },
+    { value: "price-asc", label: "Price: Low\u2013High" },
+    { value: "price-desc", label: "Price: High\u2013Low" },
+    { value: "ending", label: "Ending Soon" },
+    { value: "newest", label: "Newest" }
+  ];
+  function applyFilters(listings, f, search, sort) {
+    let result = listings.filter((l) => {
+      if (f.listingType !== "all" && l.listingType !== f.listingType) return false;
+      if (f.states.size > 0 && !f.states.has(l.state)) return false;
+      if (f.units.size > 0 && !f.units.has(l.unit)) return false;
+      if (f.minPrice !== "" && l.price < parseFloat(f.minPrice)) return false;
+      if (f.maxPrice !== "" && l.price > parseFloat(f.maxPrice)) return false;
+      if (search.trim() !== "") {
+        const q = search.toLowerCase();
+        if (!l.name.toLowerCase().includes(q) && !l.seller.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    });
+    if (sort === "price-asc") result = [...result].sort((a, b) => a.price - b.price);
+    if (sort === "price-desc") result = [...result].sort((a, b) => b.price - a.price);
+    if (sort === "ending") result = [...result].sort((a, b) => a.expires.localeCompare(b.expires));
+    return result;
+  }
   function Marketplace({ listings }) {
-    const hasListings = Boolean(listings && listings.length > 0);
+    const source = listings && listings.length > 0 ? listings : mockListings;
+    const [filters, setFilters] = (0, import_react3.useState)(INITIAL_FILTERS);
+    const [pendingMin, setPendingMin] = (0, import_react3.useState)("");
+    const [pendingMax, setPendingMax] = (0, import_react3.useState)("");
+    const [search, setSearch] = (0, import_react3.useState)("");
+    const [sort, setSort] = (0, import_react3.useState)("default");
+    const filtered = (0, import_react3.useMemo)(
+      () => applyFilters(source, filters, search, sort),
+      [source, filters, search, sort]
+    );
+    function toggleType(type) {
+      setFilters((f) => ({ ...f, listingType: type }));
+    }
+    function toggleState(state) {
+      setFilters((f) => {
+        const next = new Set(f.states);
+        if (next.has(state)) next.delete(state);
+        else next.add(state);
+        return { ...f, states: next };
+      });
+    }
+    function toggleUnit(unit) {
+      setFilters((f) => {
+        const next = new Set(f.units);
+        if (next.has(unit)) next.delete(unit);
+        else next.add(unit);
+        return { ...f, units: next };
+      });
+    }
+    function applyPrice() {
+      setFilters((f) => ({ ...f, minPrice: pendingMin, maxPrice: pendingMax }));
+    }
+    function clearFilters() {
+      setFilters(INITIAL_FILTERS);
+      setPendingMin("");
+      setPendingMax("");
+      setSearch("");
+      setSort("default");
+    }
+    const activeTags = [];
+    if (filters.listingType !== "all") {
+      activeTags.push({
+        label: filters.listingType === "auction" ? "Auctions" : "Fixed Price",
+        onRemove: () => setFilters((f) => ({ ...f, listingType: "all" }))
+      });
+    }
+    filters.states.forEach(
+      (s) => activeTags.push({ label: s, onRemove: () => toggleState(s) })
+    );
+    filters.units.forEach(
+      (u) => activeTags.push({ label: UNIT_LABELS[u], onRemove: () => toggleUnit(u) })
+    );
+    if (filters.minPrice || filters.maxPrice) {
+      const label = filters.minPrice && filters.maxPrice ? `$${filters.minPrice} \u2013 $${filters.maxPrice}` : filters.minPrice ? `\u2265 $${filters.minPrice}` : `\u2264 $${filters.maxPrice}`;
+      activeTags.push({ label, onRemove: () => setFilters((f) => ({ ...f, minPrice: "", maxPrice: "" })) });
+    }
+    if (search.trim()) {
+      activeTags.push({ label: `"${search}"`, onRemove: () => setSearch("") });
+    }
     return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-hero-text", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h6", { children: "CURRENT STOCK" }),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("section", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-hero-text", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "eyebrow", children: "CURRENT STOCK" }),
         /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "display", children: "Verified ingredients from verified sources." }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h3", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("p", { className: "p2", style: { color: "var(--textDarkBackground)" }, children: [
           "Every listing is from an FDA-licensed operation or licensed feed mill.",
           /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("br", {}),
           "All ingredients are reviewed and approved before going live."
@@ -24222,112 +24544,151 @@
         /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "hero-stats-container", children: [
           /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "hero-stats", children: [
             /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "stat", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { className: "stat-number", children: "142" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label", children: "Active Listings" })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-number", children: source.filter((l) => l.listingType === "auction").length + 115 }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label italic", children: "Active listings" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "hero-stat-sep" }),
             /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "stat", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { className: "stat-number", children: "38" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label", children: "Verified sellers" })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-number", children: "38" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label italic", children: "Verified sellers" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "hero-stat-sep" }),
             /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "stat", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { className: "stat-number", children: "15" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label", children: "Auctions ending today" })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-number", children: "15" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label italic", children: "Auctions ending today" })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "store-hero-button", children: "Learn more" })
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("a", { href: "/infopage", className: "store-hero-button", children: "Learn more" })
         ] })
-      ] }) }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-page-body", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("aside", { className: "store-sidebar", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-label", children: "Listing Type" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-item", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "checkbox" }),
-                " All Listings"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "store-filter-count", children: "142" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-item", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "checkbox" }),
-                " Auctions"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "store-filter-count", children: "115" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-item", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "checkbox" }),
-                " Fixed price"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "store-filter-count", children: "27" })
-            ] })
+      ] }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "shop-frame", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-contents", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("aside", { className: "shop-sidebar", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-filters", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Listing Type" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-items", children: ["all", "auction", "fixed"].map((type) => {
+              const count = type === "all" ? source.length : source.filter((l) => l.listingType === type).length;
+              const label = type === "all" ? "All listings" : type === "auction" ? "Auctions" : "Fixed price";
+              const checked = filters.listingType === type;
+              return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row", onClick: () => toggleType(type), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-text", children: label })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-count", children: count })
+              ] }, type);
+            }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-divider" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-label", children: "Price Range" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-price-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { className: "price-input", type: "text", placeholder: "$ Min" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { className: "price-input", type: "text", placeholder: "$ Max" })
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", { className: "sf-divider" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Price Range" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-price-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+                "input",
+                {
+                  className: "sf-price-input",
+                  type: "text",
+                  placeholder: "$ Min",
+                  value: pendingMin,
+                  onChange: (e) => setPendingMin(e.target.value)
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-price-sep", children: "\u2013" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+                "input",
+                {
+                  className: "sf-price-input",
+                  type: "text",
+                  placeholder: "$ Max",
+                  value: pendingMax,
+                  onChange: (e) => setPendingMax(e.target.value)
+                }
+              )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "btn-apply", children: "Apply" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "btn-clear", children: "Clear filters" })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "sf-btn sf-btn--apply", onClick: applyPrice, children: "Apply" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "sf-btn sf-btn--clear", onClick: clearFilters, children: "Clear filters" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-divider" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-label", children: "Seller State" }),
-            sellerStates.map(([state, count]) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-item", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "checkbox" }),
-                " ",
-                state
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "filter-count", children: count })
-            ] }, state))
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", { className: "sf-divider" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Seller State" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-items", children: SELLER_STATES.map(([state, count]) => {
+              const checked = filters.states.has(state);
+              return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row", onClick: () => toggleState(state), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-text", children: state })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-count", children: count })
+              ] }, state);
+            }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-divider" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-label", children: "Unit of Measure" }),
-            units.map(([unit, count]) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-filter-item", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "checkbox" }),
-                " ",
-                unit
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "filter-count", children: count })
-            ] }, unit))
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", { className: "sf-divider" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Unit of Measure" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-items", children: UNITS.map(([unit, count]) => {
+              const checked = filters.units.has(unit);
+              return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row", onClick: () => toggleUnit(unit), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-text", children: UNIT_LABELS[unit] })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-count", children: count })
+              ] }, unit);
+            }) })
           ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("main", { className: "store-main", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-results-bar", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-results-count", children: "Showing 142 listings" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-search-bar", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { id: "store-search-input", type: "text", placeholder: "Search" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("select", { id: "store-search-dropdown", defaultValue: "Sort by", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { children: "Sort by" }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { children: "Price: Low-High" }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { children: "Price: High-Low" }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { children: "Ending Soon" }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { children: "Newest" })
-              ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("main", { className: "shop-main", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-results-bar", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: "shop-results-count", children: [
+              "Showing ",
+              filtered.length,
+              " listings"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-search-bar", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+                "input",
+                {
+                  className: "shop-search-input",
+                  type: "text",
+                  placeholder: "Search",
+                  value: search,
+                  onChange: (e) => setSearch(e.target.value)
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+                "select",
+                {
+                  className: "shop-sort-select",
+                  value: sort,
+                  onChange: (e) => setSort(e.target.value),
+                  children: SORT_OPTIONS.map((o) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { value: o.value, children: o.label }, o.value))
+                }
+              )
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-filter-tags", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "active tag", children: "All listings \u2715" }) }),
+          activeTags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-tags-row", children: [
+            activeTags.map((tag, i) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("button", { className: "shop-active-tag", onClick: tag.onRemove, children: [
+              tag.label,
+              " ",
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "shop-tag-x", children: "\u2715" })
+            ] }, i)),
+            activeTags.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "shop-clear-all", onClick: clearFilters, children: "Clear all" })
+          ] }),
           /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-card", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h6", { className: "featured-eyebrow", children: "Featured Listing" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "featured-eyebrow", children: "Featured Listing" }),
             /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-content", children: [
               /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-seller-info", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "featured-name", children: "Lysine-L 98.5% - Grade A" }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "featured-name", children: featuredListing.name }),
                 /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-small-text", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "featured-seller", children: "Lone Star Grain Co." }),
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "seller-location", children: "Amarillo, TX" })
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "featured-seller", children: featuredListing.seller }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "seller-location", children: featuredListing.location })
                 ] })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-price-block", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "featured-price", children: "$0.50" }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "featured-unit", children: "per pound" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-price", children: [
+                  "$",
+                  featuredListing.price.toFixed(2)
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "featured-unit", children: featuredListing.priceUnit })
               ] })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-actions", children: [
@@ -24335,10 +24696,13 @@
               /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "btn-bid", children: "Place Bid" })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "product-grid", children: hasListings ? listings.map((listing) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ProductCard, { item: listing }, listing.id)) : /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "No listings yet" }) }),
+          filtered.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "product-grid", children: filtered.map((listing) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ProductCard, { item: listing }, listing.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-empty", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "No listings match your filters." }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "sf-btn sf-btn--apply", onClick: clearFilters, children: "Clear filters" })
+          ] }),
           /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "return-top", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("a", { href: "#", children: "\u2191 Return to Top" }) })
         ] })
-      ] }),
+      ] }) }),
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Footer, {})
     ] });
   }
@@ -24785,7 +25149,7 @@
     const props = JSON.parse(propsEl.textContent || "{}");
     const Page = page ? pages[page] : void 0;
     if (Page) {
-      (0, import_client.hydrateRoot)(root, (0, import_react2.createElement)(Page, props));
+      (0, import_client.hydrateRoot)(root, (0, import_react4.createElement)(Page, props));
     }
   }
 })();

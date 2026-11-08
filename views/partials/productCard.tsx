@@ -1,34 +1,88 @@
-// Product Card
+import { useState } from 'react';
 import type { Listing } from '../types';
 
 export function ProductCard({ item }: { item: Listing }) {
+  const [imgIndex, setImgIndex] = useState(0);
+  const [inWatchlist, setInWatchlist] = useState(false);
+
+  const images = item.images.length > 0 ? item.images : ['/images/IMG_9097.jpeg'];
+  const total = images.length;
+
+  function prev(e: React.MouseEvent) {
+    e.stopPropagation();
+    setImgIndex((i) => (i - 1 + total) % total);
+  }
+
+  function next(e: React.MouseEvent) {
+    e.stopPropagation();
+    setImgIndex((i) => (i + 1) % total);
+  }
+
+  const priceFormatted = `$${item.price.toFixed(2)}/${item.priceUnit.replace('per ', '')}`;
+
   return (
     <div className="product-card">
-      <div className="card-image-wrapper">
-        <span className="auction-badge">
-          <span className="dot" /> AUCTION
-        </span>
-        <img className="cover-img product-img" src="/images/probios-precise.jpg" alt={item.name} />
+      {/* Auction / Fixed badge — absolute over top padding area */}
+      <div className={`pc-badge ${item.listingType === 'auction' ? 'pc-badge--auction' : 'pc-badge--fixed'}`}>
+        <span className="pc-badge-dot" />
+        {item.listingType === 'auction' ? 'Auction' : 'Fixed Price'}
       </div>
 
-      <div className="card-details">
-        <h3 className="product-title">Product</h3>
-        <p className="company-name">General Feed Co.</p>
-        <p className="location">Location, USA</p>
+      {/* Image carousel */}
+      <div className="pc-image-wrap">
+        <img
+          className="pc-image"
+          src={images[imgIndex]}
+          alt={item.name}
+          key={imgIndex}
+        />
 
-        <div className="meta-row">
-          <span>Vol: <strong className="meta-val">55lbs</strong></span>
-          <span>Pkg: <strong className="meta-val">Bulk</strong></span>
-        </div>
-
-        <div className="price-display">
-          <span className="amount">$00.00</span><span className="unit">/lbs</span>
-        </div>
+        {total > 1 && (
+          <>
+            <button className="pc-arrow pc-arrow--prev" onClick={prev} aria-label="Previous image">&#8592;</button>
+            <button className="pc-arrow pc-arrow--next" onClick={next} aria-label="Next image">&#8594;</button>
+            <div className="pc-dots">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  className={`pc-dot${i === imgIndex ? ' pc-dot--active' : ''}`}
+                  onClick={(e) => { e.stopPropagation(); setImgIndex(i); }}
+                  aria-label={`Image ${i + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
-      
-      <div className="card-actions">
-        <button className="bid-btn">Bid Now</button>
-        <button className="watchlist-btn">Add to Watchlist</button>
+
+      {/* Card body */}
+      <div className="pc-body">
+        {/* Name & seller */}
+        <div className="pc-name">{item.name}</div>
+        <div className="pc-seller">{item.seller}</div>
+        <div className="pc-location">{item.location}</div>
+
+        {/* Meta row */}
+        <div className="pc-meta">
+          <span><span className="pc-meta-label">Vol :</span> {item.qty}</span>
+          <span><span className="pc-meta-label">Pkg :</span> {item.packaging}</span>
+        </div>
+
+        <hr className="pc-divider" />
+
+        {/* Price */}
+        <div className="pc-price">{priceFormatted}</div>
+      </div>
+
+      {/* Action buttons */}
+      <div className="pc-actions">
+        <button className="pc-btn-primary">Bid Now</button>
+        <button
+          className={`pc-btn-secondary${inWatchlist ? ' pc-btn-secondary--active' : ''}`}
+          onClick={() => setInWatchlist((w) => !w)}
+        >
+          {inWatchlist ? 'In Watchlist ✓' : 'Add to Watchlist'}
+        </button>
       </div>
     </div>
   );

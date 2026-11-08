@@ -1,0 +1,824 @@
+/* ==========================================
+   MARKETPLACE PAGE
+   Values sourced from Figma prototype.
+   ========================================== */
+
+/* ==========================================
+   HERO SECTION
+   Figma: gradient #2d3748 → #6d85ae, py-96px
+   ========================================== */
+
+.store-hero-bg {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-image: linear-gradient(to bottom, #2d3748, #6d85ae);
+  color: var(--textWhite);
+  padding: 96px 0;
+}
+
+.store-hero-content {
+  width: 1152px;
+  display: flex;
+  flex-direction: column;
+}
+
+.store-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.store-hero-text .display {
+  font-family: var(--fh);
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--textWhite);
+  letter-spacing: -0.24px;
+  line-height: 1;
+}
+
+.store-hero-text .p2 {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.store-hero-text .eyebrow {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--textEyebrowBlue);
+  letter-spacing: 0.018px;
+  text-transform: uppercase;
+}
+
+.hero-stats-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.hero-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+}
+
+.stat-number {
+  font-family: var(--fh);
+  font-size: 46px;
+  font-weight: 700;
+  color: #ebf0e7;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--fb);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--textEyebrowBlue);
+}
+
+.stat-label.italic {
+  font-style: italic;
+}
+
+.hero-stat-sep {
+  width: 1px;
+  height: 91px;
+  background-color: rgba(145, 172, 182, 0.5);
+}
+
+/* ==========================================
+   SHOP FRAME + LAYOUT
+   Figma: surface-page-bg, 1152px centered,
+   sidebar 368px, main fills rest
+   ========================================== */
+
+.shop-frame {
+  background-color: var(--surfacePg);
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  min-height: 100vh;
+}
+
+.shop-contents {
+  width: 1152px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0;
+}
+
+/* ==========================================
+   SIDEBAR
+   Figma: white bg, pt-48px px-20px, self-stretch
+   ========================================== */
+
+.shop-sidebar {
+  background-color: var(--textWhite);
+  padding: 48px 20px 48px;
+  flex-shrink: 0;
+  width: 368px;
+  align-self: stretch;
+}
+
+.shop-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 328px;
+}
+
+/* Filter group */
+.sf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Gold muted eyebrow label */
+.sf-label {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(240, 193, 66, 0.6);
+  letter-spacing: 0.018px;
+  text-transform: uppercase;
+}
+
+/* Filter item rows */
+.sf-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sf-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Custom checkbox — 22×22px, 2px dark navy border, rounded-6px */
+.sf-checkbox {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border: 2px solid var(--brandSlate);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.sf-checkbox--checked {
+  background-color: var(--brandSlate);
+  border-color: var(--brandSlate);
+}
+
+.sf-check {
+  color: white;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.sf-text {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: #000;
+  letter-spacing: 0.8px;
+}
+
+.sf-count {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textMutedCaptions);
+  letter-spacing: 0.8px;
+}
+
+/* Price range inputs */
+.sf-price-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.sf-price-input {
+  width: 144px;
+  height: 48px;
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px;
+  font-family: var(--fb);
+  font-size: 24px;
+  font-style: italic;
+  color: rgba(145, 151, 160, 0.6);
+  background: var(--textWhite);
+  transition: border-color 0.2s;
+}
+
+.sf-price-input:focus {
+  outline: none;
+  border-color: var(--textEyebrowBlue);
+  box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
+}
+
+.sf-price-sep {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: #000;
+}
+
+/* Apply / Clear buttons */
+.sf-btn {
+  width: 100%;
+  height: 58px;
+  border-radius: var(--radius);
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.sf-btn--apply {
+  border: 1px solid var(--textLeadIntro);
+  background: transparent;
+  color: var(--textLeadIntro);
+}
+
+.sf-btn--apply:hover {
+  background-color: rgba(145, 151, 160, 0.6);
+  border-color: var(--brandLightSlate);
+  color: var(--brandSlate);
+}
+
+.sf-btn--clear {
+  border: 1px solid var(--textLeadIntro);
+  background: transparent;
+  color: var(--textLeadIntro);
+}
+
+.sf-btn--clear:hover {
+  background-color: rgba(145, 151, 160, 0.15);
+}
+
+/* Horizontal dividers */
+.sf-divider {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 0;
+}
+
+/* ==========================================
+   MAIN CONTENT AREA
+   ========================================== */
+
+.shop-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 20px 24px;
+  min-width: 0;
+}
+
+/* Results bar */
+.shop-results-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.shop-results-count {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textBody);
+  letter-spacing: 0.8px;
+}
+
+.shop-search-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.shop-search-input {
+  height: 48px;
+  width: 220px;
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  font-family: var(--fb);
+  font-size: 16px;
+  background: var(--textWhite);
+  transition: border-color 0.2s;
+}
+
+.shop-search-input:focus {
+  outline: none;
+  border-color: var(--textEyebrowBlue);
+  box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
+}
+
+.shop-sort-select {
+  height: 48px;
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  background: var(--textWhite);
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textBody);
+  cursor: pointer;
+}
+
+/* ==========================================
+   ACTIVE FILTER TAG PILLS
+   Figma: bg #fdf6dc, border 1px solid #8a7a5a,
+   rounded-18px, px-20px py-8px,
+   text Onest Bold 20px #8a7a5a
+   ========================================== */
+
+.shop-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.shop-active-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 18px;
+  padding: 8px 20px;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brandDarkSand);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.shop-active-tag:hover {
+  background-color: #f0e8c8;
+}
+
+.shop-tag-x {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.shop-clear-all {
+  background: transparent;
+  border: 1px solid var(--textMutedCaptions);
+  border-radius: 18px;
+  padding: 8px 16px;
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.shop-clear-all:hover {
+  border-color: var(--brandSlate);
+  color: var(--brandSlate);
+}
+
+/* ==========================================
+   FEATURED CARD
+   Figma: bg brandSlate, white text,
+   rounded-30px, py-32px px-32px
+   ========================================== */
+
+.featured-card {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.featured-eyebrow {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(240, 193, 66, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.018px;
+  margin-bottom: 12px;
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.featured-name {
+  font-family: var(--fh);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--textWhite);
+  margin-bottom: 8px;
+}
+
+.featured-small-text {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.featured-seller,
+.seller-location {
+  font-family: var(--fb);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.seller-location {
+  font-style: italic;
+}
+
+.featured-price-block {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.featured-price {
+  font-family: var(--fh);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--textWhite);
+}
+
+.featured-unit {
+  font-family: var(--fb);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.featured-actions {
+  display: flex;
+  gap: 16px;
+}
+
+#btn-watchlist,
+#btn-bid {
+  flex: 1;
+  height: 48px;
+  border-radius: var(--radius);
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+#btn-watchlist {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--textWhite);
+}
+
+#btn-watchlist:hover {
+  background-color: var(--brandSand);
+  color: var(--brandDarkSand);
+}
+
+#btn-bid {
+  background-color: var(--brandLightSlate);
+  border: none;
+  color: var(--textWhite);
+}
+
+#btn-bid:hover {
+  background-color: var(--brandSlate);
+}
+
+/* ==========================================
+   PRODUCT GRID
+   3 columns on desktop
+   ========================================== */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 4px 0 20px;
+}
+
+@media (max-width: 1100px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .product-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================
+   PRODUCT CARD
+   Figma: rounded-tl-30 rounded-tr-30
+   rounded-bl-15 rounded-br-15, white bg,
+   shadow, pb-20px pt-68px px-20px
+   ========================================== */
+
+.product-card {
+  background: var(--textWhite);
+  border-radius: 30px 30px 15px 15px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: visible;
+}
+
+/* Badge — absolute over the top padding area */
+.pc-badge {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 10px;
+  border-radius: 18px;
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.pc-badge--auction {
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  color: var(--brandDarkSand);
+}
+
+.pc-badge--fixed {
+  background-color: rgba(145, 172, 182, 0.2);
+  border: 1px solid var(--textEyebrowBlue);
+  color: var(--textEyebrowBlue);
+}
+
+.pc-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+/* Image area */
+.pc-image-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 54px; /* space for the badge */
+  border-radius: 30px 30px 0 0;
+  overflow: hidden;
+}
+
+.pc-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  transition: opacity 0.2s ease;
+}
+
+/* Carousel arrows — only visible on hover */
+.pc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.pc-arrow--prev { left: 8px; }
+.pc-arrow--next { right: 8px; }
+
+.product-card:hover .pc-arrow {
+  opacity: 1;
+}
+
+/* Dot indicators */
+.pc-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 3;
+}
+
+.pc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.15s ease;
+}
+
+.pc-dot--active {
+  background: var(--textWhite);
+}
+
+/* Card body */
+.pc-body {
+  padding: 16px 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.pc-name {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  line-height: 1.2;
+}
+
+.pc-seller {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 200;
+  color: var(--brandSlate);
+  letter-spacing: 0.8px;
+}
+
+.pc-location {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--brandSlate);
+}
+
+.pc-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 200;
+  color: var(--brandSlate);
+  letter-spacing: 0.8px;
+  padding-bottom: 6px;
+}
+
+.pc-meta-label {
+  color: var(--brandLightSlate);
+}
+
+.pc-divider {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 4px 0;
+}
+
+.pc-price {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--brandGold);
+  font-weight: 400;
+  letter-spacing: 0.48px;
+}
+
+/* Action buttons */
+.pc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+.pc-btn-primary {
+  width: 100%;
+  height: 48px;
+  background-color: var(--brandLightSlate);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--fh);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--surfacePg);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.pc-btn-primary:hover {
+  background-color: var(--brandSlate);
+}
+
+.pc-btn-secondary {
+  width: 100%;
+  height: 48px;
+  background: transparent;
+  border: 1px solid var(--textLeadIntro);
+  border-radius: var(--radius);
+  font-family: var(--fh);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--textLeadIntro);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.pc-btn-secondary:hover {
+  background-color: rgba(145, 151, 160, 0.1);
+}
+
+.pc-btn-secondary--active {
+  border-color: var(--textEyebrowBlue);
+  color: var(--textEyebrowBlue);
+  background-color: rgba(145, 172, 182, 0.1);
+}
+
+/* ==========================================
+   EMPTY STATE + RETURN TO TOP
+   ========================================== */
+
+.shop-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--textMutedCaptions);
+  font-family: var(--fb);
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.shop-empty .sf-btn--apply {
+  width: 200px;
+}
+
+.return-top {
+  text-align: center;
+  padding: 32px 0 8px;
+  font-family: var(--fh);
+  font-size: 16px;
+}
+
+.return-top a {
+  color: var(--textMutedCaptions);
+  text-decoration: none;
+}
+
+.return-top a:hover {
+  color: var(--brandSlate);
+}
