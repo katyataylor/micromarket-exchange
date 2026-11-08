@@ -18,24 +18,41 @@ export function ProductCard({ item }: { item: Listing }) {
     setImgIndex((i) => (i + 1) % total);
   }
 
-  const priceFormatted = `$${item.price.toFixed(2)}/${item.priceUnit.replace('per ', '')}`;
+  function goTo(i: number, e: React.MouseEvent) {
+    e.stopPropagation();
+    setImgIndex(i);
+  }
+
+  function stopProp(e: React.MouseEvent) {
+    e.stopPropagation();
+  }
+
+  const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace('per ', '')}`;
 
   return (
-    <div className="product-card">
-      {/* Auction / Fixed badge — absolute over top padding area */}
+    <div
+      className="product-card"
+      onClick={() => { window.location.href = `/product/${item.id}`; }}
+    >
+      {/* Badge — absolute over the 68 px top-padding zone */}
       <div className={`pc-badge ${item.listingType === 'auction' ? 'pc-badge--auction' : 'pc-badge--fixed'}`}>
         <span className="pc-badge-dot" />
         {item.listingType === 'auction' ? 'Auction' : 'Fixed Price'}
       </div>
 
-      {/* Image carousel */}
-      <div className="pc-image-wrap">
-        <img
-          className="pc-image"
-          src={images[imgIndex]}
-          alt={item.name}
-          key={imgIndex}
-        />
+      {/* Image carousel
+          pc-image-container: position: relative for arrow/dot anchoring
+          pc-image-clip: overflow: hidden + border-radius clips the photo
+          Arrows are outside pc-image-clip so they are never clipped */}
+      <div className="pc-image-container">
+        <div className="pc-image-clip">
+          <img
+            className="pc-image"
+            src={images[imgIndex]}
+            alt={item.name}
+            key={imgIndex}
+          />
+        </div>
 
         {total > 1 && (
           <>
@@ -46,7 +63,7 @@ export function ProductCard({ item }: { item: Listing }) {
                 <button
                   key={i}
                   className={`pc-dot${i === imgIndex ? ' pc-dot--active' : ''}`}
-                  onClick={(e) => { e.stopPropagation(); setImgIndex(i); }}
+                  onClick={(e) => goTo(i, e)}
                   aria-label={`Image ${i + 1}`}
                 />
               ))}
@@ -55,27 +72,23 @@ export function ProductCard({ item }: { item: Listing }) {
         )}
       </div>
 
-      {/* Card body */}
+      {/* Text details */}
       <div className="pc-body">
-        {/* Name & seller */}
         <div className="pc-name">{item.name}</div>
         <div className="pc-seller">{item.seller}</div>
         <div className="pc-location">{item.location}</div>
 
-        {/* Meta row */}
         <div className="pc-meta">
           <span><span className="pc-meta-label">Vol :</span> {item.qty}</span>
           <span><span className="pc-meta-label">Pkg :</span> {item.packaging}</span>
         </div>
 
         <hr className="pc-divider" />
-
-        {/* Price */}
-        <div className="pc-price">{priceFormatted}</div>
+        <div className="pc-price">{price}</div>
       </div>
 
-      {/* Action buttons */}
-      <div className="pc-actions">
+      {/* Action buttons — stopPropagation prevents the card click from firing */}
+      <div className="pc-actions" onClick={stopProp}>
         <button className="pc-btn-primary">Bid Now</button>
         <button
           className={`pc-btn-secondary${inWatchlist ? ' pc-btn-secondary--active' : ''}`}

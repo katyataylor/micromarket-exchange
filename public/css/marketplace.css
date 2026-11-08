@@ -111,7 +111,6 @@
   width: 1152px;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 0;
 }
 
@@ -135,7 +134,6 @@
   width: 328px;
 }
 
-/* Filter group */
 .sf-group {
   display: flex;
   flex-direction: column;
@@ -152,7 +150,6 @@
   text-transform: uppercase;
 }
 
-/* Filter item rows */
 .sf-items {
   display: flex;
   flex-direction: column;
@@ -248,7 +245,7 @@
   color: #000;
 }
 
-/* Apply / Clear buttons */
+/* Apply / Clear buttons — Figma: Onest Bold 20px, border #555, h-58px */
 .sf-btn {
   width: 100%;
   height: 58px;
@@ -282,7 +279,6 @@
   background-color: rgba(145, 151, 160, 0.15);
 }
 
-/* Horizontal dividers */
 .sf-divider {
   border: none;
   border-top: 1px solid #e2e8f0;
@@ -401,7 +397,6 @@
   padding: 8px 16px;
   font-family: var(--fh);
   font-size: 16px;
-  font-weight: 400;
   color: var(--textMutedCaptions);
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
@@ -414,8 +409,6 @@
 
 /* ==========================================
    FEATURED CARD
-   Figma: bg brandSlate, white text,
-   rounded-30px, py-32px px-32px
    ========================================== */
 
 .featured-card {
@@ -497,7 +490,7 @@
 #btn-watchlist,
 #btn-bid {
   flex: 1;
-  height: 48px;
+  height: 58px;
   border-radius: var(--radius);
   font-family: var(--fh);
   font-size: 20px;
@@ -528,8 +521,7 @@
 }
 
 /* ==========================================
-   PRODUCT GRID
-   3 columns on desktop
+   PRODUCT GRID — 3 columns
    ========================================== */
 
 .product-grid {
@@ -542,7 +534,6 @@
 @media (max-width: 1100px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 700px) {
   .product-grid { grid-template-columns: 1fr; }
 }
@@ -551,7 +542,8 @@
    PRODUCT CARD
    Figma: rounded-tl-30 rounded-tr-30
    rounded-bl-15 rounded-br-15, white bg,
-   shadow, pb-20px pt-68px px-20px
+   shadow, pt-68px pb-20px px-20px.
+   Badge is absolute in the 68px top zone.
    ========================================== */
 
 .product-card {
@@ -561,19 +553,26 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: visible;
+  /* 68px top creates the white zone above the image where the badge sits */
+  padding: 68px 20px 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
 }
 
-/* Badge — absolute over the top padding area */
+.product-card:hover {
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Badge — absolute in the 68px top padding zone */
 .pc-badge {
   position: absolute;
-  top: 16px;
-  left: 20px;
+  top: 20px;
+  left: 22px;
   z-index: 2;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 14px 4px 10px;
+  padding: 4px 10px 4px 10px;
   border-radius: 18px;
   font-family: var(--fb);
   font-size: 14px;
@@ -602,30 +601,41 @@
   flex-shrink: 0;
 }
 
-/* Image area */
-.pc-image-wrap {
+/* ── Image carousel ────────────────────────────
+   pc-image-container: position relative for
+   anchoring arrows and dots; NO overflow hidden
+   so arrows are never clipped.
+   pc-image-clip: overflow hidden + border-radius
+   clips the photo to Figma's rounded-[35px] shape.
+   Arrows live OUTSIDE pc-image-clip.
+   ──────────────────────────────────────────── */
+
+.pc-image-container {
   position: relative;
   width: 100%;
-  padding-top: 54px; /* space for the badge */
-  border-radius: 30px 30px 0 0;
+}
+
+.pc-image-clip {
+  border-radius: 35px;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 100%;
 }
 
 .pc-image {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 20px;
   transition: opacity 0.2s ease;
 }
 
-/* Carousel arrows — only visible on hover */
+/* Prev/Next arrows — outside pc-image-clip so they aren't clipped */
 .pc-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 50%;
   width: 32px;
@@ -638,7 +648,7 @@
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 3;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .pc-arrow--prev { left: 8px; }
@@ -651,7 +661,7 @@
 /* Dot indicators */
 .pc-dots {
   position: absolute;
-  bottom: 8px;
+  bottom: 10px;
   left: 0;
   right: 0;
   display: flex;
@@ -665,7 +675,7 @@
   height: 7px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
   padding: 0;
   transition: background-color 0.15s ease;
@@ -675,15 +685,16 @@
   background: var(--textWhite);
 }
 
-/* Card body */
+/* Card body text */
 .pc-body {
-  padding: 16px 20px 8px;
+  padding: 14px 0 8px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   flex: 1;
 }
 
+/* Figma: Onest SemiBold 28px, #2d3748 */
 .pc-name {
   font-family: var(--fh);
   font-size: 20px;
@@ -692,6 +703,7 @@
   line-height: 1.2;
 }
 
+/* Figma: Onest ExtraLight 16px */
 .pc-seller {
   font-family: var(--fh);
   font-size: 14px;
@@ -700,6 +712,7 @@
   letter-spacing: 0.8px;
 }
 
+/* Figma: Red Hat Text Italic 16px */
 .pc-location {
   font-family: var(--fb);
   font-size: 14px;
@@ -707,6 +720,7 @@
   color: var(--brandSlate);
 }
 
+/* Figma: Onest ExtraLight 16px, Vol/Pkg row */
 .pc-meta {
   display: flex;
   justify-content: space-between;
@@ -728,6 +742,7 @@
   margin: 4px 0;
 }
 
+/* Figma: Red Hat Text Italic 24px, gold */
 .pc-price {
   font-family: var(--fb);
   font-size: 20px;
@@ -742,17 +757,18 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 0 20px 20px;
+  padding-top: 10px;
 }
 
+/* Figma: bg #9197a0 (light-slate), h-58px, Onest Bold 20px */
 .pc-btn-primary {
   width: 100%;
-  height: 48px;
+  height: 58px;
   background-color: var(--brandLightSlate);
   border: none;
   border-radius: var(--radius);
   font-family: var(--fh);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--surfacePg);
   cursor: pointer;
@@ -763,14 +779,15 @@
   background-color: var(--brandSlate);
 }
 
+/* Figma: border 1px solid #555, h-58px, Onest Bold 20px */
 .pc-btn-secondary {
   width: 100%;
-  height: 48px;
+  height: 58px;
   background: transparent;
   border: 1px solid var(--textLeadIntro);
   border-radius: var(--radius);
   font-family: var(--fh);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--textLeadIntro);
   cursor: pointer;
