@@ -24,7 +24,7 @@ export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
 
 export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   homepage: { title: 'MicroMarket Exchange', styles: ['/css/homepage.css'] },
-  marketplace: { title: 'MicroMarket Exchange Store', styles: ['/css/productCard'] },
+  marketplace: { title: 'MicroMarket Exchange — Browse Listings', styles: ['/css/marketplace.css'] },
   product: { title: 'Product Detail Page', styles: ['/css/registration.css'] },
   listProduct: { title: 'Sign Up', styles: ['/css/product-listing.css'] },
   account: { title: 'Sign Up', styles: ['/css/account.css'] },
