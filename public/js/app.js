@@ -23907,9 +23907,65 @@
 
   // views/account.tsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var accountCards = [
+    {
+      title: "My Listings",
+      description: "View approval status, re-list and manage your listed products."
+    },
+    {
+      title: "Account Support",
+      description: "Troubleshoot account-related issues. Get customer support."
+    },
+    {
+      title: "My Messages",
+      description: "View, respond to messages from sellers, buyers & MicroMarket."
+    },
+    {
+      title: "My Orders",
+      description: "Track, return, or cancel orders. Invoices, documents & receipts."
+    },
+    {
+      title: "Login & Passwords",
+      description: "Account security details \u2014 view, or change your login information."
+    },
+    {
+      title: "Manage Transactions",
+      description: "View transactions, manage payment methods & settings."
+    },
+    {
+      title: "My Subscription",
+      description: "Current plan information. Change or cancel your current plan."
+    },
+    {
+      title: "Account Details",
+      description: "Edit name, business information, address, email & phone number."
+    }
+  ];
   function Account() {
     return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-page", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-outer", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-inner", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-header", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-eyebrow", children: "My Account" }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-subtitle", children: "Access your account details, track your sales and orders, communicate with sellers and reach out to us with any issue. MicroMarket Exchange is committed to making this platform a useful tool for business owners." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "account-grid", children: accountCards.map((card) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-card", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-card-title", children: card.title }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-card-desc", children: card.description })
+            ] }, card.title)) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "account-rule-container", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("hr", { className: "account-rule" }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "account-cta-outer", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-cta-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-cta-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-cta-title", children: "Ready to list an ingredient?" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-cta-body", children: "Fill out the product listing form. Our team will review all submissions within 1\u20132 business days." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("a", { href: "/list-product", className: "account-cta-btn", children: "List Product" })
+        ] }) })
+      ] }),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Footer, {})
     ] });
   }

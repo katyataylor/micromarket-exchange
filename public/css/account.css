@@ -1,0 +1,252 @@
+/* ==========================================
+   MY ACCOUNT PAGE
+   Values sourced from Figma prototype.
+   ========================================== */
+
+/* ==========================================
+   PAGE SHELL
+   bg: var(--surfacePg, #f7f4ef)
+   ========================================== */
+
+.account-page {
+  background-color: var(--surfacePg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top content wrapper ──────────────────── */
+
+.account-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 62px 48px 48px;
+  width: 100%;
+  background-color: var(--surfacePg);
+}
+
+.account-inner {
+  width: 1152px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-bottom: 62px;
+}
+
+/* ==========================================
+   HEADER TEXT
+   Figma: eyebrow 20px gold, subtitle 26px
+   ========================================== */
+
+.account-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Eyebrow — Red Hat Text Bold 20px, gold eyebrow, uppercase */
+.account-eyebrow {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(240, 193, 66, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.018px;
+  line-height: 1;
+}
+
+/* Subtitle — Red Hat Text Regular 26px, body dark */
+.account-subtitle {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: #3a3a3a;
+  letter-spacing: 0.0052px;
+  line-height: 1.5;
+  max-width: 900px;
+}
+
+/* ==========================================
+   ACCOUNT CARD GRID
+   Figma: 3-column grid, 22px gap,
+   8 cards (3–3–2 layout)
+   ========================================== */
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* ── Individual card ──────────────────────
+   Figma: bg rgba(232,223,200,0.6), border 1px solid
+   brandSlate, rounded-30px, shadow, p-20px
+   ─────────────────────────────────────── */
+
+.account-card {
+  background-color: rgba(232, 223, 200, 0.6);
+  border: 1px solid var(--brandSlate);
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.account-card:hover {
+  background-color: rgba(232, 223, 200, 0.9);
+  border-color: var(--brandGold);
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Card title — Onest SemiBold 28px, brandSlate */
+.account-card-title {
+  font-family: var(--fh);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  letter-spacing: 0.0042px;
+  line-height: 1.1;
+}
+
+/* Card description — Red Hat Text Regular 22px, soft-graphite */
+.account-card-desc {
+  font-family: var(--fb);
+  font-size: 22px;
+  font-weight: 400;
+  color: #707070;
+  letter-spacing: 0.0033px;
+  line-height: 1.45;
+}
+
+/* ==========================================
+   HR SEPARATOR
+   Full-width line under the card grid,
+   before the CTA section
+   ========================================== */
+
+.account-rule-container {
+  width: 1152px;
+}
+
+.account-rule {
+  border: none;
+  border-top: 1px solid rgba(45, 55, 72, 0.25);
+  margin: 0;
+}
+
+/* ==========================================
+   CTA SECTION
+   Figma: white card, rounded-30px,
+   shadow 0 10 12.5 rgba(0,0,0,0.25), py-48px
+   ========================================== */
+
+.account-cta-outer {
+  display: flex;
+  justify-content: center;
+  padding: 0 48px 48px;
+  background-color: var(--surfacePg);
+}
+
+/* White card */
+.account-cta-card {
+  width: 1152px;
+  background: var(--textWhite);
+  border-radius: 30px;
+  box-shadow: 0px 10px 12.5px rgba(0, 0, 0, 0.25);
+  padding: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Left text block */
+.account-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 780px;
+}
+
+/* "Ready to list an ingredient?" — Red Hat Text Regular 26px, headings */
+.account-cta-title {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--textHeadings);
+  letter-spacing: 0.0052px;
+  line-height: 1.3;
+}
+
+/* Muted subtitle */
+.account-cta-body {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  letter-spacing: 0.0052px;
+  line-height: 1.3;
+}
+
+/* "List Product" button — gold outline, Onest Bold 20px */
+.account-cta-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  border: 1px solid var(--brandGold);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brandGold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.account-cta-btn:hover {
+  background-color: rgba(240, 193, 66, 0.1);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1200px) {
+  .account-inner,
+  .account-rule-container,
+  .account-cta-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .account-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
