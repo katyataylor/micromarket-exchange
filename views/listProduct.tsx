@@ -75,19 +75,18 @@ function UploadBox({ title, hint, accept, tags }: {
 }
 
 export function ListProduct() {
-  const [lotNumbers, setLotNumbers] = useState<string[]>([]);
-  const [currentLot, setCurrentLot] = useState('');
+  const [lotRows, setLotRows] = useState<string[]>(['']);
 
-  function addLot() {
-    const trimmed = currentLot.trim();
-    if (trimmed && !lotNumbers.includes(trimmed)) {
-      setLotNumbers((prev) => [...prev, trimmed]);
-    }
-    setCurrentLot('');
+  function addLotRow() {
+    setLotRows((prev) => [...prev, '']);
   }
 
-  function removeLot(lot: string) {
-    setLotNumbers((prev) => prev.filter((l) => l !== lot));
+  function updateLotRow(index: number, value: string) {
+    setLotRows((prev) => prev.map((v, i) => (i === index ? value : v)));
+  }
+
+  function removeLotRow(index: number) {
+    setLotRows((prev) => prev.filter((_, i) => i !== index));
   }
 
   return (
@@ -182,36 +181,33 @@ export function ListProduct() {
               <div className="pl-fields">
                 <div className="pl-field">
                   <FieldLabel required>Lot number(s)</FieldLabel>
-                  <div className="pl-lot-row">
-                    <input
-                      type="text"
-                      className="pl-input pl-input--lot"
-                      placeholder="Enter a lot number"
-                      value={currentLot}
-                      onChange={(e) => setCurrentLot(e.target.value)}
-                      onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addLot(); } }}
-                    />
-                    <button className="pl-btn-add-lot" type="button" onClick={addLot}>
-                      + Add lot
-                    </button>
-                  </div>
-                  {lotNumbers.length > 0 && (
-                    <div className="pl-lot-tags">
-                      {lotNumbers.map((lot) => (
-                        <span key={lot} className="pl-lot-tag">
-                          {lot}
+                  <div className="pl-lot-inputs">
+                    {lotRows.map((val, i) => (
+                      <div className="pl-lot-row" key={i}>
+                        <input
+                          type="text"
+                          className="pl-input pl-input--lot"
+                          placeholder="Enter a lot number"
+                          value={val}
+                          onChange={(e) => updateLotRow(i, e.target.value)}
+                          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addLotRow(); } }}
+                        />
+                        {lotRows.length > 1 && (
                           <button
                             type="button"
-                            className="pl-lot-remove"
-                            onClick={() => removeLot(lot)}
-                            aria-label={`Remove ${lot}`}
+                            className="pl-lot-remove-row"
+                            onClick={() => removeLotRow(i)}
+                            aria-label="Remove lot"
                           >
                             ×
                           </button>
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button className="pl-btn-add-lot" type="button" onClick={addLotRow}>
+                    + Add lot
+                  </button>
                   <p className="pl-field-hint">
                     Add each lot number separately. Multiple lots can be included in one listing.
                   </p>
