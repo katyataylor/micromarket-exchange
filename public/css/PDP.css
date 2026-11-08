@@ -277,7 +277,8 @@
 
 /* Lot number pill */
 .lot-tag {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   background-color: var(--brandLightSand);
   border: 1px solid var(--brandDarkSand);
