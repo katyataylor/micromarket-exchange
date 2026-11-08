@@ -105,7 +105,8 @@
   -webkit-overflow-scrolling: touch;
   -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
-  padding: 4px 20px;
+  /* Extra vertical padding lets the scale(1.06) transform breathe without clipping */
+  padding: 10px 20px;
 }
 
 .photos-group::-webkit-scrollbar {
@@ -119,19 +120,21 @@
   border-radius: 20px;
   flex-shrink: 0;
   cursor: pointer;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   outline: 2px solid transparent;
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .photos-group img:hover {
-  opacity: 0.8;
+  opacity: 0.75;
+  transform: scale(1.06);
 }
 
-/* Active thumbnail — dark navy outline */
+/* Active thumbnail — dark navy outline, full opacity, no scale */
 .photos-group img.thumb-active {
   outline: 2px solid var(--brandSlate);
   opacity: 1;
+  transform: scale(1.06);
 }
 
 /* ── Product info card ───────────────────────

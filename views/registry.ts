@@ -23,7 +23,7 @@ export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
 };
 
 export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
-  homepage: { title: 'MicroMarket Exchange', styles: ['/css/homepage.css'] },
+  homepage: { title: 'MicroMarket Exchange', styles: ['/css/marketplace.css'] },
   marketplace: { title: 'MicroMarket Exchange — Browse Listings', styles: ['/css/marketplace.css'] },
   product: { title: 'Product Detail — MicroMarket Exchange', styles: ['/css/marketplace.css', '/css/PDP.css'] },
   listProduct: { title: 'Sign Up', styles: ['/css/product-listing.css'] },

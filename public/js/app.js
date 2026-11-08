@@ -23932,234 +23932,9 @@
     ] });
   }
 
-  // views/partials/stockCard.tsx
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
-  function IngredientMark() {
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("svg", { viewBox: "0 0 26 26", fill: "none", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("path", { d: "M13 3C13 3 7 7.5 7 13s6 10 6 10 6-4.5 6-10S13 3 13 3z", fill: "#5E9E96", opacity: "0.25" }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("path", { d: "M13 5v16M7.5 9.5l5.5-3.5 5.5 3.5M9.5 18l3.5 2 3.5-2", stroke: "#5E9E96", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" })
-    ] });
-  }
-  function StockCard({ category, name, price, alt = false, imageSrc, categoryTag = "div" }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "product-card", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: alt ? "card-img card-img-alt" : "card-img", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "card-badge", children: "Auction" }),
-        imageSrc ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("img", { className: "card-img-icon", src: imageSrc, alt: "Product photo" }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "card-img-icon", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(IngredientMark, {}) })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "card-body", children: [
-        categoryTag === "h6" ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h6", { className: "card-category", children: category }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "card-category", children: category }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "card-name", children: name }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "card-seller", children: "Genetic Feed Co." }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "card-meta", children: [
-          "Location: USA ",
-          "\xA0\xA0",
-          " Pkg: Bulk"
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "card-price", children: [
-          price,
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: " /lbs" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "card-actions", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-bid", children: "Bid Now" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-watchlist", children: "Add to Watchlist" })
-        ] })
-      ] })
-    ] });
-  }
-
-  // views/homepage.tsx
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
-  function Homepage() {
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("section", { className: "hero", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { src: "/images/ag-warehouse.jpg", alt: "Photo of the inside of a large agricultural warehouse. Lots of rows of stacked canvas bags." }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "hero-bg" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "hero-text", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "display", children: "Where obsolete and overstock inventory finds a home." }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { color: "white" }, children: "Connecting unicorn ingredient havers to unicorn ingredient needers. Reducing waste in the ag industry and freeing up space in your warehouse." }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "hero-info-button", children: "Learn More" })
-        ] }) })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "info", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "info-grid", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "How It Works" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "In four easy steps you can have your product listed for buyers across the US. MicroMarket Exchange charges a monthly subsciption and a small listing fee once your product sells." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "about-button", children: "About Us" })
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "hay-bales", src: "/images/Hay-Missouri.webp", alt: "Hay bale in the forefront of a green field." }) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-right", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "grain", src: "/images/Grain.jpg", alt: "Hands holding unprocessed grain in front of a bag full of grain." }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-right", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Commitment to Quality" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "Every listing includes a spec sheet, SDS, and certificate of analysis so buyers know exactly what they're getting. Quantities, packaging type, and pickup or freight details are all handled directly between buyer and seller." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "shop-button", children: "In Stock" })
-          ] }) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Selling Requirements" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "To buy or sell on MicroMarket Exchange, your operation must hold a valid FDA registration, an active state feed license, and a physical facility - no brokers or traders allowed. Every account and listing is manually reviewed before going live." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "info-button", children: "Selling Info" })
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "cows", style: { height: "412px" }, src: "/images/Cattle-feedlot-south-africa-beef-industry.webp", alt: "Cattle eating at a large, outoor trough." }) })
-        ] })
-      ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "featured-stock", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "featured-stock-container", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Current Stock" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "product-grid", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StockCard, { category: "Amino acid", name: "Product 1", price: "$20.00", imageSrc: "/images/IMG_9098.jpeg", categoryTag: "h6" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StockCard, { category: "Vitamin", name: "Product 2", price: "$300.00", alt: true }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StockCard, { category: "Mineral", name: "Product 3", price: "$300.00" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StockCard, { category: "Enzyme", name: "Product 4", price: "$30.00", alt: true })
-        ] })
-      ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Footer, {})
-    ] });
-  }
-
-  // views/infoPage.tsx
-  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
-  function InfoPage() {
-    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "page-body", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("section", { className: "info-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "who can trade on micromarket exchange" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "display", style: { color: "var(--brandSlate)" }, children: "A verified marketplace for the industry" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Micromarket Exchange is built exclusively for licensed feed manufacturers. Every buyer and seller on our platform is verified before they can list, so you always know who you're dealing with." }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bubble-container", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "membership-types-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "callout-bubble", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "account registration" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "display", children: "Join Micromarket Exchange" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "p2", children: [
-                "Micromarket Exchange is a marketplace for licensed agricultural operations.",
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { style: { fontWeight: 800 }, children: "Select the option below that describes your operation to sign up." }),
-                "Only FDA-licensed operations and licensed feed mills may buy ot sell. A third party memebrship is available for viewing products only."
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "full-membership", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--textEyebrowBlue)" }, children: "full membership" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "FDA-licensed operations" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "FDA-licensed farms and operations approved to list feed ingredients for sale on the platform." }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "type-tag", children: "Buy & Sell" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "full-membership", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--textEyebrowBlue)" }, children: "full membership" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Verified businesses" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Licensed feed mills and brick-and-mortar operations who need to source verified ingredients." }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "type-tag", children: "Buy & Sell" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "third-party-membership", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--textEyebrowBlue)" }, children: "third-party members" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Industry Experts" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Consultants, researchers and industry professionals can view the marketplace." }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "type-tag", children: "View Only" })
-            ] })
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "l-subtext", children: "No traders. No middlemen. Only licensed operations whith a physical presence can buy or sell." }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {})
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("section", { className: "info-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "listing process" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h5", { children: "Every listing is reviewed before it goes live" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "We manually approve all submissions, including photos, to keep listing quality high and the marketplace trustworthy." }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "1" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Submit your listing" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Provide product details, quantity, asking price, and clear photos of what you're selling." })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "2" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Review & approval" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Our team reviews your submission for accuracy and quality. We check photos too - blurry, misleading, or low quality images won't make it through." })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "3" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Listing goes live" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Once approved, your listing is visible to all qualified buyers on the marketplace." })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Sale completes or listing expires" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "If your item sells, the commission is deducted from your final payout - nothing to pay upfront. If it doesn't sell in the 14-day period, you can relist." })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {})
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("section", { className: "info-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "fees & pricing" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h5", { children: "Simple, seller-side fees" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Buyers pay only listing price + sales tax. Sellers pay an initial listing fee and a percentage of the completed sale. No hidden platform fees." }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bubble-list-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { children: "Marketplace fee structure" }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Listing fee" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "gold", children: "Charged when your listing is approved and goes live." })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Per listing" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Sale commission" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "gold", children: "Deducted from seller's payout when a sale completes. Buyers pay the listed price + tax." })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "% of final sale" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Relisting" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "gold", children: "Unsold listings that are unlisted after 14 days in the marketplace can be resubmitted." })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "After 14 days" })
-            ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "infopage-cta", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "cta-text-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Ready to list an ingredient?" }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Fill out the product listing form. Our team will review all submissions within 1-2 business days." })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "list-button", children: "List Product" })
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Footer, {})
-    ] });
-  }
-
-  // views/listProduct.tsx
-  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
-  function ListProduct() {
-    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "page-body" }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Footer, {})
-    ] });
-  }
-
-  // views/marketplace.tsx
-  var import_react3 = __toESM(require_react());
-
   // views/partials/productCard.tsx
   var import_react2 = __toESM(require_react());
-  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   function ProductCard({ item }) {
     const [imgIndex, setImgIndex] = (0, import_react2.useState)(0);
     const [inWatchlist, setInWatchlist] = (0, import_react2.useState)(false);
@@ -24181,7 +23956,7 @@
       e.stopPropagation();
     }
     const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace("per ", "")}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
       "div",
       {
         className: "product-card",
@@ -24189,12 +23964,12 @@
           window.location.href = `/product/${item.id}`;
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-badge-dot" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-badge-dot" }),
             item.listingType === "auction" ? "Auction" : "Fixed Price"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-image-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-image-clip", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-image-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-image-clip", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
               "img",
               {
                 className: "pc-image",
@@ -24203,10 +23978,10 @@
               },
               imgIndex
             ) }),
-            total > 1 && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            total > 1 && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
                 "button",
                 {
                   className: `pc-dot${i === imgIndex ? " pc-dot--active" : ""}`,
@@ -24217,28 +23992,28 @@
               )) })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-body", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-name", children: item.name }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-seller", children: item.seller }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-location", children: item.location }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-meta", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-body", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-name", children: item.name }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-seller", children: item.seller }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-location", children: item.location }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-meta", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
                 " ",
                 item.qty
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
                 " ",
                 item.packaging
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "pc-divider" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "pc-price", children: price })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("hr", { className: "pc-divider" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-price", children: price })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "pc-actions", onClick: stopProp, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "pc-btn-primary", children: "Bid Now" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-actions", onClick: stopProp, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-btn-primary", children: "Bid Now" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
               "button",
               {
                 className: `pc-btn-secondary${inWatchlist ? " pc-btn-secondary--active" : ""}`,
@@ -24431,8 +24206,191 @@
   ];
   var featuredListing = mockListings[0];
 
+  // views/homepage.tsx
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+  function Homepage() {
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("section", { className: "hero", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { src: "/images/ag-warehouse.jpg", alt: "Photo of the inside of a large agricultural warehouse. Lots of rows of stacked canvas bags." }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "hero-bg" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "hero-text", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "display", children: "Where obsolete and overstock inventory finds a home." }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { color: "white" }, children: "Connecting unicorn ingredient havers to unicorn ingredient needers. Reducing waste in the ag industry and freeing up space in your warehouse." }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "hero-info-button", children: "Learn More" })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "info", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "info-grid", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "How It Works" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "In four easy steps you can have your product listed for buyers across the US. MicroMarket Exchange charges a monthly subsciption and a small listing fee once your product sells." }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "about-button", children: "About Us" })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "hay-bales", src: "/images/Hay-Missouri.webp", alt: "Hay bale in the forefront of a green field." }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-right", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "grain", src: "/images/Grain.jpg", alt: "Hands holding unprocessed grain in front of a bag full of grain." }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-right", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Commitment to Quality" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "Every listing includes a spec sheet, SDS, and certificate of analysis so buyers know exactly what they're getting. Quantities, packaging type, and pickup or freight details are all handled directly between buyer and seller." }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "shop-button", children: "In Stock" })
+          ] }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Selling Requirements" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "To buy or sell on MicroMarket Exchange, your operation must hold a valid FDA registration, an active state feed license, and a physical facility - no brokers or traders allowed. Every account and listing is manually reviewed before going live." }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "info-button", children: "Selling Info" })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "cows", style: { height: "412px" }, src: "/images/Cattle-feedlot-south-africa-beef-industry.webp", alt: "Cattle eating at a large, outoor trough." }) })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "featured-stock", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "featured-stock-container", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Current Stock" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "product-grid", children: mockListings.slice(0, 4).map((listing) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ProductCard, { item: listing }, listing.id)) })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Footer, {})
+    ] });
+  }
+
+  // views/infoPage.tsx
+  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+  function InfoPage() {
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "page-body", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("section", { className: "info-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "who can trade on micromarket exchange" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "display", style: { color: "var(--brandSlate)" }, children: "A verified marketplace for the industry" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Micromarket Exchange is built exclusively for licensed feed manufacturers. Every buyer and seller on our platform is verified before they can list, so you always know who you're dealing with." }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bubble-container", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "membership-types-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "callout-bubble", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "account registration" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "display", children: "Join Micromarket Exchange" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "p2", children: [
+                "Micromarket Exchange is a marketplace for licensed agricultural operations.",
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { style: { fontWeight: 800 }, children: "Select the option below that describes your operation to sign up." }),
+                "Only FDA-licensed operations and licensed feed mills may buy ot sell. A third party memebrship is available for viewing products only."
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "full-membership", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--textEyebrowBlue)" }, children: "full membership" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "FDA-licensed operations" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "FDA-licensed farms and operations approved to list feed ingredients for sale on the platform." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "type-tag", children: "Buy & Sell" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "full-membership", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--textEyebrowBlue)" }, children: "full membership" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Verified businesses" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Licensed feed mills and brick-and-mortar operations who need to source verified ingredients." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "type-tag", children: "Buy & Sell" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "third-party-membership", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--textEyebrowBlue)" }, children: "third-party members" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Industry Experts" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Consultants, researchers and industry professionals can view the marketplace." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "type-tag", children: "View Only" })
+            ] })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "l-subtext", children: "No traders. No middlemen. Only licensed operations whith a physical presence can buy or sell." }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {})
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("section", { className: "info-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "listing process" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h5", { children: "Every listing is reviewed before it goes live" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "We manually approve all submissions, including photos, to keep listing quality high and the marketplace trustworthy." }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Submit your listing" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Provide product details, quantity, asking price, and clear photos of what you're selling." })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "2" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Review & approval" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Our team reviews your submission for accuracy and quality. We check photos too - blurry, misleading, or low quality images won't make it through." })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Listing goes live" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Once approved, your listing is visible to all qualified buyers on the marketplace." })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "number", children: "4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Sale completes or listing expires" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "If your item sells, the commission is deducted from your final payout - nothing to pay upfront. If it doesn't sell in the 14-day period, you can relist." })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {})
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("section", { className: "info-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "eyebrow", style: { color: "var(--brandGold)" }, children: "fees & pricing" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h5", { children: "Simple, seller-side fees" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Buyers pay only listing price + sales tax. Sellers pay an initial listing fee and a percentage of the completed sale. No hidden platform fees." }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bubble-list-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { children: "Marketplace fee structure" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Listing fee" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "gold", children: "Charged when your listing is approved and goes live." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Per listing" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Sale commission" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "gold", children: "Deducted from seller's payout when a sale completes. Buyers pay the listed price + tax." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "% of final sale" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "list-item infopage", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Relisting" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "gold", children: "Unsold listings that are unlisted after 14 days in the marketplace can be resubmitted." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "After 14 days" })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "infopage-cta", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "cta-text-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Ready to list an ingredient?" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Fill out the product listing form. Our team will review all submissions within 1-2 business days." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "list-button", children: "List Product" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Footer, {})
+    ] });
+  }
+
+  // views/listProduct.tsx
+  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
+  function ListProduct() {
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "page-body" }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Footer, {})
+    ] });
+  }
+
   // views/marketplace.tsx
-  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
+  var import_react3 = __toESM(require_react());
+  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   var INITIAL_FILTERS = {
     listingType: "all",
     states: /* @__PURE__ */ new Set(),
@@ -24544,58 +24502,58 @@
     if (search.trim()) {
       activeTags.push({ label: `"${search}"`, onRemove: () => setSearch("") });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("section", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "store-hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "store-hero-text", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "eyebrow", children: "CURRENT STOCK" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "display", children: "Verified ingredients from verified sources." }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("p", { className: "p2", style: { color: "var(--textDarkBackground)" }, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("section", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "store-hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "store-hero-text", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "eyebrow", children: "CURRENT STOCK" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "display", children: "Verified ingredients from verified sources." }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("p", { className: "p2", style: { color: "var(--textDarkBackground)" }, children: [
           "Every listing is from an FDA-licensed operation or licensed feed mill.",
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("br", {}),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("br", {}),
           "All ingredients are reviewed and approved before going live."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "hero-stats-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "hero-stats", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "stat", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-number", children: source.filter((l) => l.listingType === "auction").length + 115 }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label italic", children: "Active listings" })
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "hero-stats-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "hero-stats", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "stat", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "stat-number", children: source.filter((l) => l.listingType === "auction").length + 115 }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "stat-label italic", children: "Active listings" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "hero-stat-sep" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "stat", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-number", children: "38" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label italic", children: "Verified sellers" })
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "hero-stat-sep" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "stat", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "stat-number", children: "38" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "stat-label italic", children: "Verified sellers" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "hero-stat-sep" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "stat", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-number", children: "15" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "stat-label italic", children: "Auctions ending today" })
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "hero-stat-sep" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "stat", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "stat-number", children: "15" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "stat-label italic", children: "Auctions ending today" })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("a", { href: "/infopage", className: "store-hero-button", children: "Learn more" })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("a", { href: "/infopage", className: "store-hero-button", children: "Learn more" })
         ] })
       ] }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "shop-frame", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-contents", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("aside", { className: "shop-sidebar", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-filters", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Listing Type" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-items", children: ["all", "auction", "fixed"].map((type) => {
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "shop-frame", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "shop-contents", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("aside", { className: "shop-sidebar", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "shop-filters", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-label", children: "Listing Type" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-items", children: ["all", "auction", "fixed"].map((type) => {
               const count = type === "all" ? source.length : source.filter((l) => l.listingType === type).length;
               const label = type === "all" ? "All listings" : type === "auction" ? "Auctions" : "Fixed price";
               const checked = filters.listingType === type;
-              return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row", onClick: () => toggleType(type), children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row-left", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-text", children: label })
+              return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-row", onClick: () => toggleType(type), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-row-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-text", children: label })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-count", children: count })
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-count", children: count })
               ] }, type);
             }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", { className: "sf-divider" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Price Range" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-price-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "sf-divider" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-label", children: "Price Range" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-price-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
                 "input",
                 {
                   className: "sf-price-input",
@@ -24605,8 +24563,8 @@
                   onChange: (e) => setPendingMin(e.target.value)
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-price-sep", children: "\u2013" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-price-sep", children: "\u2013" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
                 "input",
                 {
                   className: "sf-price-input",
@@ -24617,47 +24575,47 @@
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "sf-btn sf-btn--apply", onClick: applyPrice, children: "Apply" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "sf-btn sf-btn--clear", onClick: clearFilters, children: "Clear filters" })
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "sf-btn sf-btn--apply", onClick: applyPrice, children: "Apply" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "sf-btn sf-btn--clear", onClick: clearFilters, children: "Clear filters" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", { className: "sf-divider" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Seller State" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-items", children: SELLER_STATES.map(([state, count]) => {
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "sf-divider" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-label", children: "Seller State" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-items", children: SELLER_STATES.map(([state, count]) => {
               const checked = filters.states.has(state);
-              return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row", onClick: () => toggleState(state), children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row-left", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-text", children: state })
+              return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-row", onClick: () => toggleState(state), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-row-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-text", children: state })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-count", children: count })
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-count", children: count })
               ] }, state);
             }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", { className: "sf-divider" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-group", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-label", children: "Unit of Measure" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "sf-items", children: UNITS.map(([unit, count]) => {
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("hr", { className: "sf-divider" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-group", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-label", children: "Unit of Measure" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "sf-items", children: UNITS.map(([unit, count]) => {
               const checked = filters.units.has(unit);
-              return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row", onClick: () => toggleUnit(unit), children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sf-row-left", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-text", children: UNIT_LABELS[unit] })
+              return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-row", onClick: () => toggleUnit(unit), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sf-row-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: `sf-checkbox${checked ? " sf-checkbox--checked" : ""}`, children: checked && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-check", children: "\u2713" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-text", children: UNIT_LABELS[unit] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "sf-count", children: count })
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "sf-count", children: count })
               ] }, unit);
             }) })
           ] })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("main", { className: "shop-main", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-results-bar", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: "shop-results-count", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("main", { className: "shop-main", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "shop-results-bar", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "shop-results-count", children: [
               "Showing ",
               filtered.length,
               " listings"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-search-bar", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "shop-search-bar", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
                 "input",
                 {
                   className: "shop-search-input",
@@ -24667,62 +24625,62 @@
                   onChange: (e) => setSearch(e.target.value)
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
                 "select",
                 {
                   className: "shop-sort-select",
                   value: sort,
                   onChange: (e) => setSort(e.target.value),
-                  children: SORT_OPTIONS.map((o) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { value: o.value, children: o.label }, o.value))
+                  children: SORT_OPTIONS.map((o) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: o.value, children: o.label }, o.value))
                 }
               )
             ] })
           ] }),
-          activeTags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-tags-row", children: [
-            activeTags.map((tag, i) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("button", { className: "shop-active-tag", onClick: tag.onRemove, children: [
+          activeTags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "shop-tags-row", children: [
+            activeTags.map((tag, i) => /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("button", { className: "shop-active-tag", onClick: tag.onRemove, children: [
               tag.label,
               " ",
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "shop-tag-x", children: "\u2715" })
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "shop-tag-x", children: "\u2715" })
             ] }, i)),
-            activeTags.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "shop-clear-all", onClick: clearFilters, children: "Clear all" })
+            activeTags.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "shop-clear-all", onClick: clearFilters, children: "Clear all" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-card", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "featured-eyebrow", children: "Featured Listing" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-content", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-seller-info", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "featured-name", children: featuredListing.name }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-small-text", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "featured-seller", children: featuredListing.seller }),
-                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "seller-location", children: featuredListing.location })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-card", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "featured-eyebrow", children: "Featured Listing" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-content", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-seller-info", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h2", { className: "featured-name", children: featuredListing.name }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-small-text", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "featured-seller", children: featuredListing.seller }),
+                  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "seller-location", children: featuredListing.location })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-price-block", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-price", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-price-block", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-price", children: [
                   "$",
                   featuredListing.price.toFixed(2)
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "featured-unit", children: featuredListing.priceUnit })
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "featured-unit", children: featuredListing.priceUnit })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-actions", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "btn-watchlist", children: "Add to Watchlist" }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "btn-bid", children: "Place Bid" })
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "featured-actions", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { id: "btn-watchlist", children: "Add to Watchlist" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { id: "btn-bid", children: "Place Bid" })
             ] })
           ] }),
-          filtered.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "product-grid", children: filtered.map((listing) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ProductCard, { item: listing }, listing.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "shop-empty", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "No listings match your filters." }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "sf-btn sf-btn--apply", onClick: clearFilters, children: "Clear filters" })
+          filtered.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "product-grid", children: filtered.map((listing) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(ProductCard, { item: listing }, listing.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "shop-empty", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { children: "No listings match your filters." }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "sf-btn sf-btn--apply", onClick: clearFilters, children: "Clear filters" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "return-top", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("a", { href: "#", children: "\u2191 Return to Top" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "return-top", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("a", { href: "#", children: "\u2191 Return to Top" }) })
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Footer, {})
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Footer, {})
     ] });
   }
 
   // views/product-page.tsx
   var import_react4 = __toESM(require_react());
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   var photos = [
     "/images/IMG_9098.jpeg",
     "/images/IMG_9097.jpeg",
@@ -24754,14 +24712,14 @@
   function ProductPage({ productId }) {
     const [mainPhoto, setMainPhoto] = (0, import_react4.useState)(0);
     const [inWatchlist, setInWatchlist] = (0, import_react4.useState)(false);
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "page-container", "data-product-id": productId, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "page-contents", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "product-content", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "photos-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: photos[mainPhoto], alt: "Product photo" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "photos-group", children: photos.map((src, i) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "page-container", "data-product-id": productId, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "page-contents", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "product-content", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "photos-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("img", { src: photos[mainPhoto], alt: "Product photo" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "photos-group", children: photos.map((src, i) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "img",
                 {
                   src,
@@ -24772,124 +24730,124 @@
                 src
               )) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "info-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h6", { children: "featured listing" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "header-section", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { children: "Lysine-L 98.5% - Grade A" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "header-section-subheader", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "avatar", children: "LS" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "company-location", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Lone Star Grain Co." }),
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic", children: "Amarillo, TX" })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "info-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h6", { children: "featured listing" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "header-section", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { children: "Lysine-L 98.5% - Grade A" }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "header-section-subheader", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "avatar", children: "LS" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "company-location", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Lone Star Grain Co." }),
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "italic", children: "Amarillo, TX" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "seller-tag", children: "Verified Trader" })
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "seller-tag", children: "Verified Trader" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "info-grid", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Total volume" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "info-grid", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-box", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Total volume" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h4", { children: [
                     "55 ",
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "grid-unit", children: "lbs." })
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "grid-unit", children: "lbs." })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Packaging" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Pneumatic" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-box", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Packaging" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h4", { children: "Pneumatic" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Lot number" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-box", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Lot number" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h4", { children: [
                     "1 ",
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "grid-unit", children: "lot" })
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "grid-unit", children: "lot" })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Manufacturer" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Big Feed Co." })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-box", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Manufacturer" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h4", { children: "Big Feed Co." })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Unit of measurement" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-box", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Unit of measurement" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h4", { children: [
                     "Pounds ",
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "grid-unit", children: "lbs." })
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "grid-unit", children: "lbs." })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "COA expiry" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Jan. 2027" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-box", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "COA expiry" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h4", { children: "Jan. 2027" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "description-section", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "desc-title", children: "Product description" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "desc-body", children: "Feed-grade L-Lysine HCl 98.5%. 98.5% L-Lysine HCl assay (\u226578.8% free base), moisture not exceeding 1.0%, and heavy metals below 10 ppm. Suitable for swine, poultry, dairy, beef, aquaculture, and companion animal rations. Stored below 25\xB0C in a cool, dry environment since September 2025. Available for pickup or freight with services from freightquote.com as a recommended carrier." })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "description-section", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "desc-title", children: "Product description" }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "desc-body", children: "Feed-grade L-Lysine HCl 98.5%. 98.5% L-Lysine HCl assay (\u226578.8% free base), moisture not exceeding 1.0%, and heavy metals below 10 ppm. Suitable for swine, poultry, dairy, beef, aquaculture, and companion animal rations. Stored below 25\xB0C in a cool, dry environment since September 2025. Available for pickup or freight with services from freightquote.com as a recommended carrier." })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: "Included lot numbers" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "lot-tag", children: "LOT-2025-0441" })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "subtext", children: "Included lot numbers" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "lot-tag", children: "LOT-2025-0441" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "docs-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "card-title", children: "Listing documents" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
-              documents.map(([title, meta]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "doc-block", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "doc-icon" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "doc-text", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "doc-name", children: title }),
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: meta })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "docs-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "card-title", children: "Listing documents" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+              documents.map(([title, meta]) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "doc-block", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "doc-icon" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "doc-text", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "doc-name", children: title }),
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "subtext", children: meta })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "download", children: "Download" })
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "download", children: "Download" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {})
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {})
               ] }, title))
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "about-seller-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "card-title", children: "About the seller" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
-              sellerFacts.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "about-text-container", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: label }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "l-subtext", children: value })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "about-seller-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "card-title", children: "About the seller" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+              sellerFacts.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "about-text-container", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "subtext", children: label }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "l-subtext", children: value })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {})
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {})
               ] }, label))
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "sidebar", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "actions-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "sidebar-eyebrow", children: "Live auction" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-tracking-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "bid-current-price", children: "$ 0.50/lbs" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "bid-current-label", children: "Current bid" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row bid-row--highlight", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Time remaining" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "3d 14h 22m" })
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "sidebar", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "actions-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "sidebar-eyebrow", children: "Live auction" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bid-tracking-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "bid-current-price", children: "$ 0.50/lbs" }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "bid-current-label", children: "Current bid" }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bid-row bid-row--highlight", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-label", children: "Time remaining" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-value", children: "3d 14h 22m" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Total bids" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "1 bid" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bid-row", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-label", children: "Total bids" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-value", children: "1 bid" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Starting bid" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "$0.40/lbs" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bid-row", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-label", children: "Starting bid" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-value", children: "$0.40/lbs" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Min. bid increment" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "$0.10" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bid-row", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-label", children: "Min. bid increment" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-row-value", children: "$0.10" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-input-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "bid-input-label", children: "Your bid" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { type: "text", id: "input-bid", placeholder: "Place Bid" })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bid-input-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "bid-input-label", children: "Your bid" }),
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "text", id: "input-bid", placeholder: "Place Bid" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("p", { className: "bid-total-line", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("p", { className: "bid-total-line", children: [
                 "Total at this bid : ",
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-total-amount", children: "$00.00" })
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "bid-total-amount", children: "$00.00" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "btn-bid", children: "Bid Now" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "btn-bid", children: "Bid Now" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "button",
                 {
                   className: `btn-watchlist${inWatchlist ? " btn-watchlist--active" : ""}`,
@@ -24897,38 +24855,33 @@
                   children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "bid-disclaimer", children: "Commission deducted from seller's final payout. Taxes may apply." })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "bid-disclaimer", children: "Commission deducted from seller's final payout. Taxes may apply." })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "listing-details-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "sidebar-eyebrow sidebar-eyebrow--gold", children: "Listing details" }),
-              listingDetails.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "details-text-container", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: label }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "detail-value", children: value })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "listing-details-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "sidebar-eyebrow sidebar-eyebrow--gold", children: "Listing details" }),
+              listingDetails.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "details-text-container", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "subtext", children: label }),
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "detail-value", children: value })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {})
+                /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("hr", {})
               ] }, label))
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { id: "seller-question", children: "Ask the seller a question" })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { id: "seller-question", children: "Ask the seller a question" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("section", { className: "featured-stock", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "featured-stock-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "similar-title", children: "Similar listings" }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "product-grid", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StockCard, { category: "Amino acid", name: "Product 1", price: "$20.00" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StockCard, { category: "Vitamin", name: "Product 2", price: "$300.00", alt: true }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StockCard, { category: "Mineral", name: "Product 3", price: "$300.00" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StockCard, { category: "Enzyme", name: "Product 4", price: "$30.00", alt: true })
-          ] })
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("section", { className: "featured-stock", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "featured-stock-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "similar-title", children: "Similar listings" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "product-grid", children: mockListings.slice(1, 5).map((listing) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ProductCard, { item: listing }, listing.id)) })
         ] }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Footer, {})
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Footer, {})
     ] });
   }
 
   // views/registration.tsx
   var import_react5 = __toESM(require_react());
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
   function Registration() {
     const [membership, setMembership] = (0, import_react5.useState)("trade");
     const isTrade = membership === "trade";
@@ -24940,30 +24893,30 @@
         setMembership(type);
       }
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "store-hero-text", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h6", { className: "gold", children: "account registration" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "display", children: "Join Micromarket Exchange" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Micromarket Exchange is a marketplace for licensed agricultural operations. Choose your membership type below. Only FDA-licensed operations and licensed feed mills may buy or sell. A third-party observer membership is available for viewing products only." })
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "store-hero-text", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h6", { className: "gold", children: "account registration" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "display", children: "Join Micromarket Exchange" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", children: "Micromarket Exchange is a marketplace for licensed agricultural operations. Choose your membership type below. Only FDA-licensed operations and licensed feed mills may buy or sell. A third-party observer membership is available for viewing products only." })
       ] }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "page-body", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "p2 page-text", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "page-body", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "p2 page-text", children: [
           "Already have an account? ",
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("a", { href: "/account", children: "Sign in" })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { href: "/account", children: "Sign in" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("section", { className: "disclosure-container", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("ul", { className: "h4", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("li", { children: "All trading accounts require verification before activation. Our team will review documentation and approve or follow up within 2 business days. Third-party memberships are approved automatically upon email confirmation." }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "1" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Membership type" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Select the membership that matches your operation. This determines what actions you can take on Micromarket Exchange." })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("section", { className: "disclosure-container", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("ul", { className: "h4", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("li", { children: "All trading accounts require verification before activation. Our team will review documentation and approve or follow up within 2 business days. Third-party memberships are approved automatically upon email confirmation." }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "w-bubble-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "list-item registration", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "blue number", children: "1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Membership type" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Select the membership that matches your operation. This determines what actions you can take on Micromarket Exchange." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bubble-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", { style: { marginTop: 28 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bubble-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
               "div",
               {
                 className: `membership-type sand-bubble${membership === "trade" ? " selected" : ""}`,
@@ -24971,20 +24924,20 @@
                 onClick: () => setMembership("trade"),
                 onKeyDown: (e) => handleCardKey(e, "trade"),
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Licensed operation" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "FDA-licensed farms, operations, and licensed feed mills with a physical location." }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { children: "Licensed operation" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "FDA-licensed farms, operations, and licensed feed mills with a physical location." }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
                     "\u2022 List & sell products ",
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("br", {}),
                     "\u2022 Bid on listings ",
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("br", {}),
                     "\u2022 Full marketplace access"
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "Seller/Buyer" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "membership-type type-tag", children: "Seller/Buyer" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
               "div",
               {
                 className: `membership-type sand-bubble${membership === "viewonly" ? " selected" : ""}`,
@@ -24992,56 +24945,56 @@
                 onClick: () => setMembership("viewonly"),
                 onKeyDown: (e) => handleCardKey(e, "viewonly"),
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { children: "Industry Experts" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "Industry consultants, researchers, and observers who need marketplace visibility." }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 List & sell products" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { children: "Industry Experts" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { style: { color: "var(--brandSoftGraphite)" }, children: "Industry consultants, researchers, and observers who need marketplace visibility." }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { style: { color: "var(--textEyebrowBlue)" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("s", { children: "\u2022 List & sell products" }),
                     " ",
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("s", { children: "\u2022 Bid on listings" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("br", {}),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("s", { children: "\u2022 Bid on listings" }),
                     " ",
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("br", {}),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("br", {}),
                     "\u2022 Browse marketplace"
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "membership-type type-tag", children: "View only" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "membership-type type-tag", children: "View only" })
                 ]
               }
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "2" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Contact information" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "The primary contact for this account. This person will receive all notifications." })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "w-bubble-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "list-item registration", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "blue number", children: "2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Contact information" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "The primary contact for this account. This person will receive all notifications." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "First name *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. John" })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", { style: { marginTop: 28 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "user-inputs-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "First name *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. John" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Last name *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Smith" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Last name *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Smith" })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: isTrade ? "Business email *" : "Email *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "email", placeholder: "you@yourcompany.com" })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: isTrade ? "Business email *" : "Email *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "email", placeholder: "you@yourcompany.com" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Phone number *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "tel", placeholder: "(000) 000-0000" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Phone number *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "tel", placeholder: "(000) 000-0000" })
               ] })
             ] }),
-            isTrade && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Use your business email when possible \u2014 personal addresses may delay verification." }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: isTrade ? "Job title/role" : "Occupation" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+            isTrade && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Use your business email when possible \u2014 personal addresses may delay verification." }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: isTrade ? "Job title/role" : "Occupation" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
               "input",
               {
                 className: "subH1 medium",
@@ -25051,155 +25004,155 @@
             )
           ] })
         ] }),
-        isTrade && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "3" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Business information" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Details about your operation. Must match your FDA or state license records." })
+        isTrade && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "w-bubble-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "list-item registration", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "blue number", children: "3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Business information" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Details about your operation. Must match your FDA or state license records." })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business name *" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "As it appears on your license" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Business type *" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Input type" })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", { style: { marginTop: 28 } }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "user-inputs-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Business name *" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 large", type: "text", placeholder: "As it appears on your license" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Business type *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Input type" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "State issuing license *" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Select state" })
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "State issuing license *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "Select state" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Address *" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "Street address" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "City" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "State" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1", type: "text", placeholder: "ZIP code" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Address *" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 large", type: "text", placeholder: "Street address" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1", type: "text", placeholder: "City" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1", type: "text", placeholder: "State" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1", type: "text", placeholder: "ZIP code" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Must be a physical address. P.O. boxes are not accepted." }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Website" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 large", type: "text", placeholder: "www.yourcompany.com" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Must be a physical address. P.O. boxes are not accepted." }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Website" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 large", type: "text", placeholder: "www.yourcompany.com" })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: "4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "License & registration" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Your FDA and state license details. Our team verifies all trading accounts against these records before activation." })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "w-bubble-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "list-item registration", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "blue number", children: "4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "License & registration" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Your FDA and state license details. Our team verifies all trading accounts against these records before activation." })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "FDA registration number *" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "e.g. 12345678901" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", { style: { marginTop: 28 } }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "user-inputs-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "FDA registration number *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "e.g. 12345678901" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "State feed license number *" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "State-issued license number" })
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "State feed license number *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "number", placeholder: "State-issued license number" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "License expiry date *" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "MM/YYYY" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "License expiry date *" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "MM/YYYY" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Issuing authority" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Texas Department of Agriculture" })
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Issuing authority" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. Texas Department of Agriculture" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Upload license documentation *" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", id: "upload-box", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "upload-box-content", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("img", { src: "/images/upload icon.png", alt: "Yellow upload here icon" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Click to upload or drag and drop" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "tag-container", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "PDF" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "JPG" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "upload-tag eyebrow", children: "PNG" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Upload license documentation *" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "user-inputs-container", id: "upload-box", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "upload-box-content", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/upload icon.png", alt: "Yellow upload here icon" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", children: "Click to upload or drag and drop" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "tag-container", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "upload-tag eyebrow", children: "PDF" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "upload-tag eyebrow", children: "JPG" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "upload-tag eyebrow", children: "PNG" })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Upload copies of your current FDA registration and state feed license. Both are required for trading accounts." })
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Upload copies of your current FDA registration and state feed license. Both are required for trading accounts." })
               ] })
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: loginStep }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Create your login" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Choose a secure password for your Micromarket Exchange account." })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "w-bubble-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "list-item registration", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "blue number", children: loginStep }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Create your login" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Choose a secure password for your Micromarket Exchange account." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Username *" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. johnsmith1" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-row", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Password *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "password", placeholder: "Minimum 8 characters" })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", { style: { marginTop: 28 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "user-inputs-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Username *" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "text", placeholder: "e.g. johnsmith1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "11-digit FDA Food Facility Registration number." }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Password *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "password", placeholder: "Minimum 8 characters" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "input-column", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "Confirm password *" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { className: "subH1 medium", type: "password", placeholder: "Re-enter password" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "input-column", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Confirm password *" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { className: "subH1 medium", type: "password", placeholder: "Re-enter password" })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Use at least 8 characters including a number and a symbol." })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Use at least 8 characters including a number and a symbol." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "list-item registration", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "blue number", children: agreeStep }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { children: "Agreements" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "subp1", children: "Review and accept these terms before submitting your application." })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "w-bubble-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "list-item registration", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "blue number", children: agreeStep }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-container", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Agreements" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "subp1", children: "Review and accept these terms before submitting your application." })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("hr", { style: { marginTop: 28 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "user-inputs-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "termsOfServiceAndPrivacy" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I have read and agree to the Micromarket Exchange Terms of Service and Privacy Policy." })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", { style: { marginTop: 28 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "user-inputs-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "blue-bubble registration", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { type: "checkbox", className: "blue-check", id: "termsOfServiceAndPrivacy" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "I have read and agree to the Micromarket Exchange Terms of Service and Privacy Policy." })
             ] }),
-            isTrade && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "licensingConfirmation" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I certify that my operation holds a valid FDA registration and/or state feed license and that all information provided is accurate. I understand that providing false information will result in account termination." })
+            isTrade && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "blue-bubble registration", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { type: "checkbox", className: "blue-check", id: "licensingConfirmation" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "I certify that my operation holds a valid FDA registration and/or state feed license and that all information provided is accurate. I understand that providing false information will result in account termination." })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "blue-bubble registration", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("input", { type: "checkbox", className: "blue-check", id: "accountReview" }),
-                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { children: "I understand that my trading account must be verified by Micromarket Exchange before I can buy or sell, and that Micromarket Exchange reserves the right to suspend accounts found to be operating outside their licensed scope." })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "blue-bubble registration", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { type: "checkbox", className: "blue-check", id: "accountReview" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "I understand that my trading account must be verified by Micromarket Exchange before I can buy or sell, and that Micromarket Exchange reserves the right to suspend accounts found to be operating outside their licensed scope." })
               ] })
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("section", { className: "w-bubble-container", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "cta-content-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "cta-text-container", children: isTrade ? /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Submit your application" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
-          ] }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "Create your account" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("section", { className: "w-bubble-container", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "cta-content-container", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "cta-text-container", children: isTrade ? /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", children: "Submit your application" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Trading accounts are reviewed within 2 business days. You'll receive a confirmation email once approved." })
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", children: "Create your account" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "save-submit-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button save-button", children: "Save Draft" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "list-button submit-button", children: "Submit" })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "save-submit-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "list-button save-button", children: "Save Draft" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "list-button submit-button", children: "Submit" })
           ] })
         ] }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Footer, {})
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Footer, {})
     ] });
   }
 

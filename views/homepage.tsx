@@ -1,6 +1,7 @@
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
-import { StockCard } from './partials/stockCard';
+import { ProductCard } from './partials/productCard';
+import { mockListings } from './data/mockListings';
 
 export function Homepage() {
   return (
@@ -68,10 +69,9 @@ export function Homepage() {
         <div className="featured-stock-container">
           <h2>Current Stock</h2>
           <div className="product-grid">
-            <StockCard category="Amino acid" name="Product 1" price="$20.00" imageSrc="/images/IMG_9098.jpeg" categoryTag="h6" />
-            <StockCard category="Vitamin" name="Product 2" price="$300.00" alt />
-            <StockCard category="Mineral" name="Product 3" price="$300.00" />
-            <StockCard category="Enzyme" name="Product 4" price="$30.00" alt />
+            {mockListings.slice(0, 4).map((listing) => (
+              <ProductCard key={listing.id} item={listing} />
+            ))}
           </div>
         </div>
       </section>

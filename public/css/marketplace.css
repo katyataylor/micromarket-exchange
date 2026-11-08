@@ -840,3 +840,27 @@
 .return-top a:hover {
   color: var(--brandSlate);
 }
+
+/* ==========================================
+   FEATURED STOCK GRID (homepage + PDP)
+   "Current Stock" / "Similar listings" always
+   show 4 cards per row inside the shared
+   featured-stock-container section.
+   ========================================== */
+
+.featured-stock-container .product-grid {
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0;
+}
+
+@media (max-width: 1100px) {
+  .featured-stock-container .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-stock-container .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

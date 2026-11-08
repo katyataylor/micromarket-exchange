@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
-import { StockCard } from './partials/stockCard';
+import { ProductCard } from './partials/productCard';
+import { mockListings } from './data/mockListings';
 
 const photos = [
   '/images/IMG_9098.jpeg',
@@ -237,10 +238,9 @@ export function ProductPage({ productId }: { productId: string }) {
           <div className="featured-stock-container">
             <p className="similar-title">Similar listings</p>
             <div className="product-grid">
-              <StockCard category="Amino acid" name="Product 1" price="$20.00" />
-              <StockCard category="Vitamin" name="Product 2" price="$300.00" alt />
-              <StockCard category="Mineral" name="Product 3" price="$300.00" />
-              <StockCard category="Enzyme" name="Product 4" price="$30.00" alt />
+              {mockListings.slice(1, 5).map((listing) => (
+                <ProductCard key={listing.id} item={listing} />
+              ))}
             </div>
           </div>
         </section>
