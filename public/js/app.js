@@ -23832,7 +23832,7 @@
   });
 
   // views/client.tsx
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // views/partials/footer.tsx
@@ -24721,11 +24721,19 @@
   }
 
   // views/product-page.tsx
+  var import_react4 = __toESM(require_react());
   var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+  var photos = [
+    "/images/IMG_9098.jpeg",
+    "/images/IMG_9097.jpeg",
+    "/images/IMG_9099.jpeg",
+    "/images/IMG_9100.jpeg",
+    "/images/IMG_9102.jpeg"
+  ];
   var documents = [
-    ["Specification sheet", "PDF-284KB-Uploaded Jan. 02, 2026"],
-    ["Safety data sheet (SDS)", "PDF-512KB-Uploaded Jan. 02, 2026"],
-    ["Certificate of analysis (COA)", "PDF-198KB-Uploaded Jan. 02, 2026"]
+    ["Specification sheet", "PDF \xB7 284 KB \xB7 Uploaded Jan. 02, 2026"],
+    ["Safety data sheet (SDS)", "PDF \xB7 512 KB \xB7 Uploaded Jan. 02, 2026"],
+    ["Certificate of analysis (COA)", "PDF \xB7 198 KB \xB7 Uploaded Jan. 02, 2026"]
   ];
   var sellerFacts = [
     ["Business name", "Lone Star Grain Co."],
@@ -24735,21 +24743,34 @@
     ["Member since", "December 2025"],
     ["Completed sales", "14 transactions"]
   ];
+  var listingDetails = [
+    ["Listing ID", "JN-2026-002"],
+    ["Listed", "Jan. 03, 2026"],
+    ["Approved by", "MicroMarket Exchange"],
+    ["Pickup / delivery", "Seller arranged it"],
+    ["Location", "Amarillo, TX"],
+    ["Relisting allowed", "Yes"]
+  ];
   function ProductPage({ productId }) {
+    const [mainPhoto, setMainPhoto] = (0, import_react4.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react4.useState)(false);
     return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "page-container", "data-product-id": productId, children: [
         /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "page-contents", children: [
           /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "product-content", children: [
             /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "photos-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/IMG_9098.jpeg", alt: "Photo of product tag" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "photos-group", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/IMG_9097.jpeg", alt: "Product photo" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/IMG_9099.jpeg", alt: "Product photo" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/IMG_9100.jpeg", alt: "Product photo" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/IMG_9102.jpeg", alt: "Product photo" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: "/images/IMG_9102.jpeg", alt: "Product photo" })
-              ] })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: photos[mainPhoto], alt: "Product photo" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "photos-group", children: photos.map((src, i) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+                "img",
+                {
+                  src,
+                  alt: `Product photo ${i + 1}`,
+                  className: i === mainPhoto ? "thumb-active" : "",
+                  onClick: () => setMainPhoto(i)
+                },
+                src
+              )) })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "info-container", children: [
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h6", { children: "featured listing" }),
@@ -24768,51 +24789,54 @@
               /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "info-grid", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
                   /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Total volume" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "55" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic", children: "lbs." })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { children: [
+                    "55 ",
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "grid-unit", children: "lbs." })
+                  ] })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "packaging" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Pneumatic" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Packaging" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Pneumatic" })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "lot number" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "1" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic", children: "lot" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Lot number" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { children: [
+                    "1 ",
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "grid-unit", children: "lot" })
+                  ] })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "manufacturer" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Big Feed Co." }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Manufacturer" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Big Feed Co." })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "unit of measurement" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "pounds" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic", children: "lbs." })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Unit of measurement" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { children: [
+                    "Pounds ",
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "grid-unit", children: "lbs." })
+                  ] })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-box", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "coa" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Jan. 2027" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "COA expiry" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { children: "Jan. 2027" })
                 ] })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "description-section", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h5", { className: "bold", children: "Product description" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h5", { children: "Feed-grade L-Lysine HCl 98.5%. 98.5% L-Lysine HCl assay (\u226578.8% free base), moisture not exceeding 1.0%, and heavy metals below 10 ppm. Suitable for swine, poultry, dairy, beef, aquaculture, and companion animal rations. Stored below 25\xB0C in a cool, dry environment since September 2025. Available for pickup of freight with services from freightquote.com as a recommended carrier." })
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "desc-title", children: "Product description" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "desc-body", children: "Feed-grade L-Lysine HCl 98.5%. 98.5% L-Lysine HCl assay (\u226578.8% free base), moisture not exceeding 1.0%, and heavy metals below 10 ppm. Suitable for swine, poultry, dairy, beef, aquaculture, and companion animal rations. Stored below 25\xB0C in a cool, dry environment since September 2025. Available for pickup or freight with services from freightquote.com as a recommended carrier." })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: "Included lot numbers" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "lot-tag", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "LOT-2025-0441" }) })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "lot-tag", children: "LOT-2025-0441" })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "docs-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h5", { className: "bold", children: "Listing documents" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "card-title", children: "Listing documents" }),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
               documents.map(([title, meta]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "doc-block", children: [
                   /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "doc-icon" }),
                   /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "doc-text", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h5", { children: title }),
+                    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "doc-name", children: title }),
                     /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: meta })
                   ] }),
                   /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "download", children: "Download" })
@@ -24821,7 +24845,7 @@
               ] }, title))
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "about-seller-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h5", { className: "bold", children: "About the seller" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "card-title", children: "About the seller" }),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
               sellerFacts.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "about-text-container", children: [
@@ -24834,36 +24858,62 @@
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "sidebar", children: [
             /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "actions-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h6", { className: "gold", children: "Live auction" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "bid-tracking-container" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "sidebar-eyebrow", children: "Live auction" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-tracking-container", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "bid-current-price", children: "$ 0.50/lbs" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "bid-current-label", children: "Current bid" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row bid-row--highlight", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Time remaining" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "3d 14h 22m" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Total bids" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "1 bid" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Starting bid" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "$0.40/lbs" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-row", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-label", children: "Min. bid increment" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-row-value", children: "$0.10" })
+                ] })
+              ] }),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {}),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-input-container", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: "Your Bid" }),
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "bid-input-label", children: "Your bid" }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { type: "text", id: "input-bid", placeholder: "Place Bid" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bid-total", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Total at this bid : " }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "bold", children: "$00.00" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("p", { className: "bid-total-line", children: [
+                "Total at this bid : ",
+                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "bid-total-amount", children: "$00.00" })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "btn-bid", children: "Bid Now" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "btn-watchlist", children: "Add to Watchlist" }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "italic", children: "Commission deducted from seller\u2019s final payout. Taxes may apply." })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+                "button",
+                {
+                  className: `btn-watchlist${inWatchlist ? " btn-watchlist--active" : ""}`,
+                  onClick: () => setInWatchlist((w) => !w),
+                  children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "bid-disclaimer", children: "Commission deducted from seller's final payout. Taxes may apply." })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "listing-details-container", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h6", { className: "gold", children: "Listing details" }),
-              Array.from({ length: 6 }, (_, index) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "sidebar-eyebrow sidebar-eyebrow--gold", children: "Listing details" }),
+              listingDetails.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "details-text-container", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: "Listing ID" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: "JN-2026-002" })
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtext", children: label }),
+                  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "detail-value", children: value })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("hr", {})
-              ] }, index))
+              ] }, label))
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { id: "seller-question", children: "Ask the seller a question" })
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("section", { className: "featured-stock", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "featured-stock-container", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h5", { children: "Similar listings" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "similar-title", children: "Similar listings" }),
           /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "product-grid", children: [
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StockCard, { category: "Amino acid", name: "Product 1", price: "$20.00" }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StockCard, { category: "Vitamin", name: "Product 2", price: "$300.00", alt: true }),
@@ -24877,10 +24927,10 @@
   }
 
   // views/registration.tsx
-  var import_react4 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
   var import_jsx_runtime13 = __toESM(require_jsx_runtime());
   function Registration() {
-    const [membership, setMembership] = (0, import_react4.useState)("trade");
+    const [membership, setMembership] = (0, import_react5.useState)("trade");
     const isTrade = membership === "trade";
     const loginStep = isTrade ? 5 : 3;
     const agreeStep = isTrade ? 6 : 4;
@@ -25174,7 +25224,7 @@
     const props = JSON.parse(propsEl.textContent || "{}");
     const Page = page ? pages[page] : void 0;
     if (Page) {
-      (0, import_client.hydrateRoot)(root, (0, import_react5.createElement)(Page, props));
+      (0, import_client.hydrateRoot)(root, (0, import_react6.createElement)(Page, props));
     }
   }
 })();

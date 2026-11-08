@@ -1,11 +1,20 @@
+import { useState } from 'react';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 import { StockCard } from './partials/stockCard';
 
+const photos = [
+  '/images/IMG_9098.jpeg',
+  '/images/IMG_9097.jpeg',
+  '/images/IMG_9099.jpeg',
+  '/images/IMG_9100.jpeg',
+  '/images/IMG_9102.jpeg',
+];
+
 const documents = [
-  ['Specification sheet', 'PDF-284KB-Uploaded Jan. 02, 2026'],
-  ['Safety data sheet (SDS)', 'PDF-512KB-Uploaded Jan. 02, 2026'],
-  ['Certificate of analysis (COA)', 'PDF-198KB-Uploaded Jan. 02, 2026'],
+  ['Specification sheet', 'PDF · 284 KB · Uploaded Jan. 02, 2026'],
+  ['Safety data sheet (SDS)', 'PDF · 512 KB · Uploaded Jan. 02, 2026'],
+  ['Certificate of analysis (COA)', 'PDF · 198 KB · Uploaded Jan. 02, 2026'],
 ] as const;
 
 const sellerFacts = [
@@ -17,25 +26,46 @@ const sellerFacts = [
   ['Completed sales', '14 transactions'],
 ] as const;
 
+const listingDetails = [
+  ['Listing ID', 'JN-2026-002'],
+  ['Listed', 'Jan. 03, 2026'],
+  ['Approved by', 'MicroMarket Exchange'],
+  ['Pickup / delivery', 'Seller arranged it'],
+  ['Location', 'Amarillo, TX'],
+  ['Relisting allowed', 'Yes'],
+] as const;
+
 export function ProductPage({ productId }: { productId: string }) {
+  const [mainPhoto, setMainPhoto] = useState(0);
+  const [inWatchlist, setInWatchlist] = useState(false);
+
   return (
     <>
       <Header />
 
       <div className="page-container" data-product-id={productId}>
         <div className="page-contents">
+
+          {/* ── Left column ──────────────────── */}
           <div className="product-content">
+
+            {/* Photos */}
             <div className="photos-container">
-              <img src="/images/IMG_9098.jpeg" alt="Photo of product tag" />
+              <img src={photos[mainPhoto]} alt="Product photo" />
               <div className="photos-group">
-                <img src="/images/IMG_9097.jpeg" alt="Product photo" />
-                <img src="/images/IMG_9099.jpeg" alt="Product photo" />
-                <img src="/images/IMG_9100.jpeg" alt="Product photo" />
-                <img src="/images/IMG_9102.jpeg" alt="Product photo" />
-                <img src="/images/IMG_9102.jpeg" alt="Product photo" />
+                {photos.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Product photo ${i + 1}`}
+                    className={i === mainPhoto ? 'thumb-active' : ''}
+                    onClick={() => setMainPhoto(i)}
+                  />
+                ))}
               </div>
             </div>
 
+            {/* Product info */}
             <div className="info-container">
               <h6>featured listing</h6>
               <div className="header-section">
@@ -55,59 +85,58 @@ export function ProductPage({ productId }: { productId: string }) {
               <div className="info-grid">
                 <div className="grid-box">
                   <p>Total volume</p>
-                  <h4>55</h4><p className="italic">lbs.</p>
+                  <h4>55 <span className="grid-unit">lbs.</span></h4>
                 </div>
                 <div className="grid-box">
-                  <p>packaging</p>
-                  <h4>Pneumatic</h4><p className="italic" />
+                  <p>Packaging</p>
+                  <h4>Pneumatic</h4>
                 </div>
                 <div className="grid-box">
-                  <p>lot number</p>
-                  <h4>1</h4><p className="italic">lot</p>
+                  <p>Lot number</p>
+                  <h4>1 <span className="grid-unit">lot</span></h4>
                 </div>
                 <div className="grid-box">
-                  <p>manufacturer</p>
-                  <h4>Big Feed Co.</h4><p className="italic" />
+                  <p>Manufacturer</p>
+                  <h4>Big Feed Co.</h4>
                 </div>
                 <div className="grid-box">
-                  <p>unit of measurement</p>
-                  <h4>pounds</h4><p className="italic">lbs.</p>
+                  <p>Unit of measurement</p>
+                  <h4>Pounds <span className="grid-unit">lbs.</span></h4>
                 </div>
                 <div className="grid-box">
-                  <p>coa</p>
-                  <h4>Jan. 2027</h4><p className="italic" />
+                  <p>COA expiry</p>
+                  <h4>Jan. 2027</h4>
                 </div>
               </div>
 
               <div className="description-section">
-                <h5 className="bold">Product description</h5>
-                <h5>
+                <p className="desc-title">Product description</p>
+                <p className="desc-body">
                   Feed-grade L-Lysine HCl 98.5%. 98.5% L-Lysine HCl assay (≥78.8% free base),
                   moisture not exceeding 1.0%, and heavy metals below 10 ppm. Suitable for swine,
                   poultry, dairy, beef, aquaculture, and companion animal rations.
                   Stored below 25°C in a cool, dry environment since September 2025.
-                  Available for pickup of freight with services from freightquote.com
+                  Available for pickup or freight with services from freightquote.com
                   as a recommended carrier.
-                </h5>
+                </p>
               </div>
 
               <hr />
 
               <p className="subtext">Included lot numbers</p>
-              <div className="lot-tag">
-                <p>LOT-2025-0441</p>
-              </div>
+              <div className="lot-tag">LOT-2025-0441</div>
             </div>
 
+            {/* Documents */}
             <div className="docs-container">
-              <h5 className="bold">Listing documents</h5>
+              <p className="card-title">Listing documents</p>
               <hr />
               {documents.map(([title, meta]) => (
                 <div key={title}>
                   <div className="doc-block">
                     <div className="doc-icon" />
                     <div className="doc-text">
-                      <h5>{title}</h5>
+                      <p className="doc-name">{title}</p>
                       <p className="subtext">{meta}</p>
                     </div>
                     <button className="download">Download</button>
@@ -117,8 +146,9 @@ export function ProductPage({ productId }: { productId: string }) {
               ))}
             </div>
 
+            {/* About the seller */}
             <div className="about-seller-container">
-              <h5 className="bold">About the seller</h5>
+              <p className="card-title">About the seller</p>
               <hr />
               {sellerFacts.map(([label, value]) => (
                 <div key={label}>
@@ -132,42 +162,80 @@ export function ProductPage({ productId }: { productId: string }) {
             </div>
           </div>
 
+          {/* ── Right sidebar ─────────────────── */}
           <div className="sidebar">
+
+            {/* Bid / actions card */}
             <div className="actions-container">
-              <h6 className="gold">Live auction</h6>
-              <div className="bid-tracking-container" />
+              <p className="sidebar-eyebrow">Live auction</p>
+
+              {/* Bid stats block */}
+              <div className="bid-tracking-container">
+                <div className="bid-current-price">$ 0.50/lbs</div>
+                <div className="bid-current-label">Current bid</div>
+
+                <div className="bid-row bid-row--highlight">
+                  <span className="bid-row-label">Time remaining</span>
+                  <span className="bid-row-value">3d 14h 22m</span>
+                </div>
+                <div className="bid-row">
+                  <span className="bid-row-label">Total bids</span>
+                  <span className="bid-row-value">1 bid</span>
+                </div>
+                <div className="bid-row">
+                  <span className="bid-row-label">Starting bid</span>
+                  <span className="bid-row-value">$0.40/lbs</span>
+                </div>
+                <div className="bid-row">
+                  <span className="bid-row-label">Min. bid increment</span>
+                  <span className="bid-row-value">$0.10</span>
+                </div>
+              </div>
+
               <hr />
+
               <div className="bid-input-container">
-                <p className="subtext">Your Bid</p>
+                <p className="bid-input-label">Your bid</p>
                 <input type="text" id="input-bid" placeholder="Place Bid" />
               </div>
-              <div className="bid-total">
-                <p>Total at this bid : </p><p className="bold">$00.00</p>
-              </div>
+
+              <p className="bid-total-line">
+                Total at this bid : <span className="bid-total-amount">$00.00</span>
+              </p>
+
               <button className="btn-bid">Bid Now</button>
-              <button className="btn-watchlist">Add to Watchlist</button>
-              <p className="italic">Commission deducted from seller’s final payout. Taxes may apply.</p>
+              <button
+                className={`btn-watchlist${inWatchlist ? ' btn-watchlist--active' : ''}`}
+                onClick={() => setInWatchlist((w) => !w)}
+              >
+                {inWatchlist ? 'In Watchlist ✓' : 'Add to Watchlist'}
+              </button>
+              <p className="bid-disclaimer">
+                Commission deducted from seller's final payout. Taxes may apply.
+              </p>
             </div>
 
+            {/* Listing details card */}
             <div className="listing-details-container">
-              <h6 className="gold">Listing details</h6>
-              {Array.from({ length: 6 }, (_, index) => (
-                <div key={index}>
+              <p className="sidebar-eyebrow sidebar-eyebrow--gold">Listing details</p>
+              {listingDetails.map(([label, value]) => (
+                <div key={label}>
                   <div className="details-text-container">
-                    <p className="subtext">Listing ID</p>
-                    <p className="subtext">JN-2026-002</p>
+                    <p className="subtext">{label}</p>
+                    <p className="detail-value">{value}</p>
                   </div>
                   <hr />
                 </div>
               ))}
             </div>
+
             <button id="seller-question">Ask the seller a question</button>
           </div>
         </div>
 
         <section className="featured-stock">
           <div className="featured-stock-container">
-            <h5>Similar listings</h5>
+            <p className="similar-title">Similar listings</p>
             <div className="product-grid">
               <StockCard category="Amino acid" name="Product 1" price="$20.00" />
               <StockCard category="Vitamin" name="Product 2" price="$300.00" alt />

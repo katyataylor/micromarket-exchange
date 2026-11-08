@@ -4,6 +4,37 @@
    ========================================== */
 
 /* ==========================================
+   RESET GLOBAL OVERRIDES INSIDE PDP
+   global.css gives <hr> a margin-top: 62px
+   and h5 a font-size: 48px — both are wrong
+   for this page. Scope resets to .page-container.
+   ========================================== */
+
+.page-container hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 0;
+  opacity: 1;
+}
+
+/* headings h2/h4 resets for PDP scope */
+.page-container h2 {
+  font-family: var(--fh);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--textHeadings);
+  line-height: 1.1;
+}
+
+.page-container h4 {
+  font-family: var(--fh);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--textHeadings);
+  line-height: 1.2;
+}
+
+/* ==========================================
    PAGE SHELL
    ========================================== */
 
@@ -39,7 +70,7 @@
 
 /* ── Photos card ──────────────────────────────
    White card, rounded-30px, shadow.
-   Main photo is 700×700, thumbnails scroll below.
+   Hero photo 700×700, thumbnails scroll below.
    ─────────────────────────────────────────── */
 
 .photos-container {
@@ -53,13 +84,14 @@
   gap: 16px;
 }
 
-/* Main hero image — 700 × 700, rounded-35px */
+/* Main hero image — 700×700, rounded-35px */
 .photos-container > img:first-child {
   width: 700px;
   height: 700px;
   object-fit: cover;
   border-radius: 35px;
   display: block;
+  transition: opacity 0.2s ease;
 }
 
 /* Thumbnail strip — horizontal scroll with fade edges */
@@ -88,10 +120,18 @@
   flex-shrink: 0;
   cursor: pointer;
   transition: opacity 0.15s ease;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .photos-group img:hover {
-  opacity: 0.85;
+  opacity: 0.8;
+}
+
+/* Active thumbnail — dark navy outline */
+.photos-group img.thumb-active {
+  outline: 2px solid var(--brandSlate);
+  opacity: 1;
 }
 
 /* ── Product info card ───────────────────────
@@ -99,6 +139,9 @@
    ─────────────────────────────────────────── */
 
 .info-container {
+  /* Reset global.css values (applies to InfoPage) */
+  width: auto;
+  margin: 0;
   background: var(--textWhite);
   border-radius: var(--radius-lg);
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
@@ -106,12 +149,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Reset margins set by global.css */
-  width: auto;
-  margin: 0;
 }
 
-/* Eyebrow — "FEATURED LISTING", gold, 20px */
+/* Eyebrow "FEATURED LISTING" */
 .info-container > h6 {
   font-family: var(--fb);
   font-size: 20px;
@@ -119,32 +159,23 @@
   color: var(--brandGold);
   text-transform: uppercase;
   letter-spacing: 0.018px;
+  line-height: 1;
 }
 
-/* Product title area */
+/* Title + avatar sub-section */
 .header-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Title — Onest Bold 48px, #1c1c1c */
-.header-section > h2 {
-  font-family: var(--fh);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--textHeadings);
-  line-height: 1.1;
-}
-
-/* Avatar + company + verified tag row */
 .header-section-subheader {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* Figma: 78×78px circle, bg light-steel (#e2eaed), initials text */
+/* Avatar circle — 78×78px, light steel bg */
 .avatar {
   width: 78px;
   height: 78px;
@@ -167,7 +198,7 @@
   gap: 4px;
 }
 
-/* Seller name — Onest SemiBold 22px */
+/* Seller name */
 .company-location > p:first-child {
   font-family: var(--fh);
   font-size: 22px;
@@ -175,15 +206,15 @@
   color: var(--textHeadings);
 }
 
-/* Location — Red Hat Text Italic 24px */
+/* Location italic muted */
 .company-location > p.italic {
   font-family: var(--fb);
-  font-size: 24px;
+  font-size: 20px;
   font-style: italic;
   color: var(--textMutedCaptions);
 }
 
-/* "Verified Trader" pill — Figma: bg sand, border gold-muted */
+/* "Verified Trader" pill */
 .seller-tag {
   margin-left: auto;
   background-color: var(--brandLightSand);
@@ -197,19 +228,13 @@
   white-space: nowrap;
 }
 
-/* HR — thin separator */
-.info-container hr {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-}
-
-/* Spec grid — 3×2, Figma: flex-wrap, gap-10, 200×106px tiles */
+/* Spec grid — Figma: flex-wrap, gap-10, 200×106px tiles */
 .info-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
-  /* Reset global.css values that apply to info page */
+  /* Reset global.css .info-grid which is for the homepage */
   align-content: initial;
   align-items: initial;
 }
@@ -225,28 +250,21 @@
   gap: 6px;
 }
 
-/* Grid-box label — Red Hat Text Bold 20px, muted */
+/* Grid-box label */
 .grid-box > p:first-child {
   font-family: var(--fb);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.4);
   text-transform: capitalize;
   letter-spacing: 0.5px;
 }
 
-/* Grid-box value — Onest SemiBold 28px */
-.grid-box > h4 {
-  font-family: var(--fh);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--textHeadings);
-}
-
-/* Grid-box unit italic — small muted */
-.grid-box > p.italic {
+/* Grid-box unit inline text */
+.grid-unit {
   font-family: var(--fb);
   font-size: 14px;
+  font-weight: 400;
   font-style: italic;
   color: var(--textMutedCaptions);
 }
@@ -258,21 +276,19 @@
   gap: 10px;
 }
 
-/* "Product description" label — Onest SemiBold */
-.description-section > h5.bold {
+.desc-title {
   font-family: var(--fh);
   font-size: 20px;
   font-weight: 600;
   color: var(--textHeadings);
 }
 
-/* Body text — Red Hat Text Regular 24px */
-.description-section > h5 {
+.desc-body {
   font-family: var(--fb);
   font-size: 20px;
   font-weight: 400;
   color: var(--textBody);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* Lot number pill */
@@ -290,6 +306,15 @@
   color: var(--brandDarkSand);
 }
 
+/* ── Shared card-title for docs / about seller ── */
+
+.card-title {
+  font-family: var(--fh);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--textHeadings);
+}
+
 /* ── Documents card ──────────────────────────
    White card, rounded-30px, shadow, p-32px
    ─────────────────────────────────────────── */
@@ -304,26 +329,14 @@
   gap: 16px;
 }
 
-.docs-container > h5.bold {
-  font-family: var(--fh);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--textHeadings);
-}
-
-.docs-container hr {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-}
-
-/* Doc row — icon (74px) + text + download button */
+/* Doc row */
 .doc-block {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* doc-icon: styled in global.css — 74×74 sand rounded-20px */
+/* doc-icon: 74×74 sand rounded-20px — styled in global.css */
 
 .doc-text {
   flex: 1;
@@ -332,7 +345,7 @@
   gap: 4px;
 }
 
-.doc-text h5 {
+.doc-name {
   font-family: var(--fh);
   font-size: 18px;
   font-weight: 500;
@@ -343,9 +356,10 @@
   font-family: var(--fb);
   font-size: 14px;
   color: var(--textMutedCaptions);
+  text-transform: none;
 }
 
-/* Download button — outline style */
+/* Download button */
 button.download {
   flex-shrink: 0;
   height: 44px;
@@ -380,19 +394,7 @@ button.download:hover {
   gap: 16px;
 }
 
-.about-seller-container > h5.bold {
-  font-family: var(--fh);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--textHeadings);
-}
-
-.about-seller-container hr {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-}
-
-/* Each row — left label + right value */
+/* Each label/value row */
 .about-text-container {
   display: flex;
   justify-content: space-between;
@@ -404,6 +406,7 @@ button.download:hover {
   font-family: var(--fb);
   font-size: 16px;
   color: var(--textMutedCaptions);
+  text-transform: none;
 }
 
 .about-text-container .l-subtext {
@@ -427,6 +430,22 @@ button.download:hover {
   top: 24px;
 }
 
+/* ── Shared sidebar eyebrow label ─────────── */
+
+.sidebar-eyebrow {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(240, 193, 66, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.018px;
+  line-height: 1;
+}
+
+.sidebar-eyebrow--gold {
+  color: var(--brandGold);
+}
+
 /* ── Action card (bid) ───────────────────────
    White card, rounded-30px, shadow, p-32px
    ─────────────────────────────────────────── */
@@ -434,59 +453,101 @@ button.download:hover {
 .actions-container {
   background: var(--textWhite);
   border-radius: var(--radius-lg);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.15);
   padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* Eyebrow — gold */
-.actions-container h6.gold {
-  font-family: var(--fb);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--brandGold);
-  text-transform: uppercase;
-  letter-spacing: 0.018px;
-}
+/* ── Bid tracking block ──────────────────────
+   Current price, time remaining, total bids,
+   starting bid, min increment.
+   ─────────────────────────────────────────── */
 
-.actions-container hr {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-  margin: 4px 0;
-}
-
-/* Bid tracking — progress display area */
 .bid-tracking-container {
-  min-height: 60px;
-  background: var(--surfacePg);
-  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Current bid price — Onest Bold 36px, brandSlate */
+.bid-current-price {
+  font-family: var(--fh);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--brandSlate);
+  line-height: 1;
+}
+
+/* "Current bid" label */
+.bid-current-label {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textLeadIntro);
+  letter-spacing: 0.8px;
+  margin-top: -4px;
+}
+
+/* Each bid stat row */
+.bid-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--textMutedCaptions);
-  font-family: var(--fb);
-  font-size: 14px;
+  justify-content: space-between;
+  border-radius: 12px;
+  padding: 2px 0;
 }
 
-/* Bid input label + field */
+/* Time remaining row — sand tinted bg */
+.bid-row--highlight {
+  background-color: rgba(232, 223, 200, 0.6);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.bid-row-label {
+  font-family: var(--fb);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--textMutedCaptions);
+}
+
+.bid-row--highlight .bid-row-label {
+  color: var(--textEyebrowBlue);
+  letter-spacing: 0.48px;
+}
+
+.bid-row-value {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--textBody);
+}
+
+.bid-row--highlight .bid-row-value {
+  color: var(--brandSlate);
+}
+
+/* ── Bid input ──────────────────────────────── */
+
 .bid-input-container {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.bid-input-container .subtext {
-  font-family: var(--fb);
-  font-size: 14px;
+.bid-input-label {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
   color: var(--textMutedCaptions);
-  font-weight: 500;
+  letter-spacing: 0.8px;
 }
 
 #input-bid {
   width: 100%;
-  height: 56px;
+  height: 48px;
   border: 1px solid var(--brandLightSlate);
   border-radius: var(--radius);
   padding: 8px 14px;
@@ -503,67 +564,73 @@ button.download:hover {
   box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
 }
 
-/* Bid total row */
-.bid-total {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+/* Bid total line */
+.bid-total-line {
   font-family: var(--fb);
-  font-size: 16px;
-  color: var(--textMutedCaptions);
+  font-size: 20px;
+  color: var(--textEyebrowBlue);
+  letter-spacing: 0.003px;
+  line-height: 1.4;
 }
 
-.bid-total .bold {
-  font-weight: 700;
-  color: var(--textBody);
+.bid-total-amount {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--textEyebrowBlue);
 }
 
-/* Bid Now button — Figma: slate bg, 58px, Onest Bold 20px */
+/* Bid Now button — Figma: light-slate bg, 58px */
 .btn-bid {
   width: 100%;
   height: 58px;
-  background-color: var(--brandSlate);
+  background-color: var(--brandLightSlate);
   border: none;
   border-radius: var(--radius);
   font-family: var(--fh);
   font-size: 20px;
   font-weight: 700;
-  color: var(--textWhite);
+  color: var(--surfacePg);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .btn-bid:hover {
-  background-color: #3d4f6b;
+  background-color: var(--brandSlate);
 }
 
-/* Watchlist button — Figma: outline, 58px, Onest Bold 20px */
+/* Watchlist button — Figma: border gold, text gold, 58px */
 .btn-watchlist {
   width: 100%;
   height: 58px;
   background: transparent;
-  border: 1px solid #555;
+  border: 1px solid var(--brandGold);
   border-radius: var(--radius);
   font-family: var(--fh);
   font-size: 20px;
   font-weight: 700;
-  color: var(--textLeadIntro);
+  color: var(--brandGold);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .btn-watchlist:hover {
-  background-color: rgba(145, 151, 160, 0.1);
+  background-color: rgba(240, 193, 66, 0.1);
 }
 
-/* Fine-print italic disclaimer */
-.actions-container .italic {
-  font-family: var(--fb);
-  font-size: 12px;
-  font-style: italic;
+.btn-watchlist--active {
+  background-color: rgba(240, 193, 66, 0.15);
+}
+
+/* Disclaimer */
+.bid-disclaimer {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 200;
   color: var(--textMutedCaptions);
-  line-height: 1.4;
   text-align: center;
+  letter-spacing: 0.8px;
+  line-height: 1.4;
 }
 
 /* ── Listing details card ────────────────────
@@ -573,28 +640,13 @@ button.download:hover {
 .listing-details-container {
   background: var(--textWhite);
   border-radius: var(--radius-lg);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.15);
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.listing-details-container h6.gold {
-  font-family: var(--fb);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--brandGold);
-  text-transform: uppercase;
-  letter-spacing: 0.018px;
-}
-
-.listing-details-container hr {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-}
-
-/* Each detail row */
 .details-text-container {
   display: flex;
   justify-content: space-between;
@@ -606,6 +658,15 @@ button.download:hover {
   font-family: var(--fb);
   font-size: 14px;
   color: var(--textMutedCaptions);
+  text-transform: none;
+}
+
+.detail-value {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--textBody);
+  text-align: right;
 }
 
 /* Ask the seller button */
@@ -645,14 +706,14 @@ button.download:hover {
   gap: 24px;
 }
 
-.featured-stock-container h5 {
+.similar-title {
   font-family: var(--fh);
   font-size: 28px;
   font-weight: 600;
   color: var(--textHeadings);
 }
 
-/* Reuse the 4-column grid for stock cards */
+/* 4-column grid for StockCards */
 .featured-stock-container .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
