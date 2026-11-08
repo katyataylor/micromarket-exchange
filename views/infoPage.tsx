@@ -138,7 +138,7 @@ export function InfoPage() {
               Our team will review all submissions within 1-2 business days.
             </div>
           </div>
-          <button className="list-button">List Product</button>
+          <a href="/list-product" className="list-button">List Product</a>
         </div>
       </div>
       <Footer />

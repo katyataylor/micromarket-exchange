@@ -81,6 +81,10 @@ app.get('/sell/list', (_req, res) => {
   res.send(renderDocument('listProduct', {}));
 });
 
+app.get('/list-product', (_req, res) => {
+  res.send(renderDocument('listProduct', {}));
+});
+
 app.get('/account', (_req, res) => {
   res.send(renderDocument('account', {}));
 });

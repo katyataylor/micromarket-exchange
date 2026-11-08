@@ -1,0 +1,632 @@
+/* ==========================================
+   PRODUCT LISTING REGISTRATION PAGE
+   Values sourced from Figma prototype (node 289:1097).
+   ========================================== */
+
+/* ==========================================
+   HERO SECTION
+   Figma: gradient #2d3748 → #6d85ae, py-96px
+   ========================================== */
+
+.pl-hero {
+  background-image: linear-gradient(to bottom, #2d3748, #6d85ae);
+  display: flex;
+  justify-content: center;
+  padding: 96px 0;
+}
+
+.pl-hero-inner {
+  width: 1152px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.pl-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Eyebrow — Red Hat Text Bold 20px, gold, uppercase */
+.pl-hero-eyebrow {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(240, 193, 66, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.018px;
+  line-height: 1;
+}
+
+/* Title — Onest Bold 48px, white */
+.pl-hero-title {
+  font-family: var(--fh);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--textWhite);
+  letter-spacing: -0.24px;
+  line-height: 1;
+}
+
+/* Subtitle — Red Hat Text Regular 26px, #f3f6f7 */
+.pl-hero-subtitle {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: #f3f6f7;
+  letter-spacing: 0.0052px;
+  line-height: 1.5;
+}
+
+/* ── Progress steps ─────────────────────────
+   Figma: 5 circles + italic label, row,
+   justify-between, gold #f0c142 circles 55×55px
+   ─────────────────────────────────────────── */
+
+.pl-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pl-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Gold circle — 55×55px, rounded-full */
+.pl-step-bullet {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--brandGold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fh);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--textWhite);
+  letter-spacing: 0.0042px;
+}
+
+/* Step label — Red Hat Text Italic 24px, #f3f6f7 */
+.pl-step-label {
+  font-family: var(--fb);
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  color: #f3f6f7;
+  letter-spacing: 0.48px;
+  line-height: 1.3;
+  white-space: pre-line;
+}
+
+/* ==========================================
+   REQUIRED-FIELDS NOTICE BANNER
+   Figma: bg #fdf6dc, border 1px solid #8a7a5a,
+   rounded-20px, p-20px
+   ========================================== */
+
+.pl-required-banner-wrap {
+  background-color: var(--surfacePg);
+  display: flex;
+  justify-content: center;
+  padding: 48px 10px 0;
+}
+
+.pl-required-banner {
+  width: 1152px;
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 20px;
+  padding: 20px 24px;
+}
+
+.pl-required-banner ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.pl-required-banner li {
+  font-family: var(--fb);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--brandSlate);
+  letter-spacing: 0.0033px;
+  line-height: 1.5;
+}
+
+/* Required asterisk colour */
+.pl-req-star {
+  color: #9bb8bf;
+}
+
+/* ==========================================
+   FORM SECTIONS CONTAINER
+   bg: var(--surfacePg), py-48px, 1152px
+   ========================================== */
+
+.pl-form-wrap {
+  background-color: var(--surfacePg);
+  display: flex;
+  justify-content: center;
+  padding: 48px 10px;
+}
+
+.pl-form-sections {
+  width: 1152px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ── Section card ────────────────────────────
+   Figma: white bg, rounded-30px,
+   drop-shadow 0 10 12.5 rgba(0,0,0,0.25), py-48px
+   ─────────────────────────────────────────── */
+
+.pl-card {
+  background: var(--textWhite);
+  border-radius: 30px;
+  box-shadow: 0px 10px 12.5px rgba(0, 0, 0, 0.25);
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Inner content — 956px wide */
+.pl-card-inner {
+  width: 956px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Section title block ─────────────────────
+   Cool-steel circle (#9bb8bf) + title + subtitle + HR
+   ─────────────────────────────────────────── */
+
+.pl-section-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.pl-section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Section number circle — #9bb8bf, 55×55px */
+.pl-step-circle {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: #9bb8bf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fh);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--textWhite);
+  letter-spacing: 0.0042px;
+}
+
+.pl-section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Section title — Onest SemiBold 30px, #1c1c1c */
+.pl-section-title {
+  font-family: var(--fh);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--textHeadings);
+  letter-spacing: -0.006px;
+  line-height: 1;
+}
+
+/* Section subtitle — Onest ExtraLight 16px, #3a3a3a */
+.pl-section-sub {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textBody);
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+}
+
+/* HR under section header */
+.pl-section-rule {
+  border: none;
+  border-top: 1px solid rgba(45, 55, 72, 0.2);
+  margin: 0;
+}
+
+/* ==========================================
+   FORM FIELDS
+   ========================================== */
+
+.pl-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Side-by-side pair */
+.pl-field-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.pl-field--half {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Field label — Red Hat Text Regular 22px, #3a3a3a */
+.pl-field-label {
+  font-family: var(--fb);
+  font-size: 22px;
+  font-weight: 400;
+  color: #3a3a3a;
+  letter-spacing: 0.0033px;
+  line-height: 1;
+}
+
+/* Required asterisk */
+.pl-required {
+  color: #9bb8bf;
+}
+
+/* Text input — 48px tall, border cool-steel, rounded-8px */
+.pl-input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-family: var(--fb);
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--textBody);
+  background: var(--textWhite);
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+.pl-input::placeholder {
+  color: var(--brandLightSlate);
+}
+
+.pl-input:focus {
+  outline: none;
+  border-color: #9bb8bf;
+  box-shadow: 0 0 0 3px rgba(155, 184, 191, 0.15);
+}
+
+/* Tall textarea — 127px for description */
+.pl-input--tall {
+  height: 127px;
+  resize: vertical;
+}
+
+/* Notes textarea — taller, solid subtle border */
+.pl-input--notes {
+  height: 160px;
+  border-color: rgba(0, 0, 0, 0.25);
+  resize: vertical;
+}
+
+/* ── Lot number row ──────────────────────────── */
+
+.pl-lot-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pl-input--lot {
+  flex: 1;
+  height: 48px;
+  border-color: #9bb8bf;
+}
+
+/* "+ Add lot" button — gold outline */
+.pl-btn-add-lot {
+  flex-shrink: 0;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--brandGold);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brandGold);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.pl-btn-add-lot:hover {
+  background-color: rgba(240, 193, 66, 0.1);
+}
+
+/* Added lot tags */
+.pl-lot-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pl-lot-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 18px;
+  padding: 4px 12px 4px 16px;
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brandDarkSand);
+}
+
+.pl-lot-remove {
+  background: none;
+  border: none;
+  color: var(--brandDarkSand);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.pl-lot-remove:hover {
+  opacity: 1;
+}
+
+/* Small hint text — Onest ExtraLight 16px, muted */
+.pl-field-hint {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textMutedCaptions);
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+}
+
+/* Asking-price right-aligned hint */
+.pl-price-hint {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textMutedCaptions);
+  letter-spacing: 0.8px;
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   UPLOAD AREAS
+   Figma: bg rgba(247,244,239,0.8), dashed border
+   rgba(0,0,0,0.25), rounded-20px, centered
+   ========================================== */
+
+.pl-upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pl-upload-box {
+  background-color: rgba(247, 244, 239, 0.8);
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 100%;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.pl-upload-box:hover {
+  border-color: #9bb8bf;
+  background-color: rgba(247, 244, 239, 0.95);
+}
+
+.pl-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 36px 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Upload icon — 74×74px, sand rounded-20px */
+.pl-upload-icon {
+  width: 74px;
+  height: 74px;
+  background-color: var(--brandLightSand);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pl-upload-icon--photo {
+  background-color: var(--brandLightSand);
+  border-radius: 20px;
+}
+
+/* Upload instruction text */
+.pl-upload-text {
+  font-family: var(--fb);
+  font-size: 26px;
+  letter-spacing: 0.0052px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.pl-upload-heading {
+  display: block;
+  font-weight: 500;
+  color: var(--textHeadings);
+  margin-bottom: 4px;
+}
+
+.pl-upload-sub {
+  display: block;
+  font-size: 24px;
+}
+
+.pl-upload-click {
+  color: #9bb8bf;
+}
+
+.pl-upload-drop {
+  color: var(--textMutedCaptions);
+}
+
+/* File type tags — PDF, DOC, DOCX / JPG, PNG, WEBP */
+.pl-upload-tags {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.pl-tag {
+  background-color: var(--brandLightSand);
+  border-radius: var(--radius);
+  padding: 2px 8px;
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brandDarkSand);
+  letter-spacing: 0.018px;
+  text-transform: uppercase;
+}
+
+/* Photos upload variant (larger) */
+.pl-upload-box--photos .pl-upload-label {
+  padding: 48px 10px;
+}
+
+.pl-upload-text--photos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hidden file input */
+.pl-upload-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Upload hint text */
+.pl-upload-hint {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--textMutedCaptions);
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   SUBMIT CARD
+   Figma: flex row, text left + buttons right,
+   aligned to bottom, 956px inner width
+   ========================================== */
+
+.pl-submit-row {
+  width: 956px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pl-submit-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 667px;
+}
+
+/* "Ready to submit?" — Red Hat Text Regular 26px, headings */
+.pl-submit-title {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--textHeadings);
+  letter-spacing: 0.0052px;
+  line-height: 1.3;
+}
+
+/* Muted subtitle */
+.pl-submit-body {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  letter-spacing: 0.0052px;
+  line-height: 1.3;
+}
+
+.pl-submit-actions {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* Save Draft / Submit — gold outline, Onest Bold 20px */
+.pl-btn-outline {
+  height: 56px;
+  padding: 0 20px;
+  border: 1px solid var(--brandGold);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brandGold);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.pl-btn-outline:hover {
+  background-color: rgba(240, 193, 66, 0.1);
+}
