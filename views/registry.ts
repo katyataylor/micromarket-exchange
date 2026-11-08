@@ -26,7 +26,7 @@ export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   homepage: { title: 'MicroMarket Exchange', styles: ['/css/marketplace.css'] },
   marketplace: { title: 'MicroMarket Exchange — Browse Listings', styles: ['/css/marketplace.css'] },
   product: { title: 'Product Detail — MicroMarket Exchange', styles: ['/css/marketplace.css', '/css/PDP.css'] },
-  listProduct: { title: 'Sign Up', styles: ['/css/product-listing.css'] },
+  listProduct: { title: 'Submit a New Listing — MicroMarket Exchange', styles: ['/css/product-listing.css'] },
   account: { title: 'My Account — MicroMarket Exchange', styles: ['/css/account.css'] },
   cart: { title: 'Sign Up', styles: ['/css/registration.css'] },
   registration: { title: 'Sign Up', styles: ['/css/registration.css'] },

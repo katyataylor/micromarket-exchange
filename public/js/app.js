@@ -23832,7 +23832,7 @@
   });
 
   // views/client.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // views/partials/footer.tsx
@@ -24427,7 +24427,7 @@
             /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", children: "Ready to list an ingredient?" }),
             /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Fill out the product listing form. Our team will review all submissions within 1-2 business days." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "list-button", children: "List Product" })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("a", { href: "/list-product", className: "list-button", children: "List Product" })
         ] })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Footer, {})
@@ -24435,17 +24435,301 @@
   }
 
   // views/listProduct.tsx
+  var import_react3 = __toESM(require_react());
   var import_jsx_runtime9 = __toESM(require_jsx_runtime());
+  var STEPS = [
+    { n: 1, label: "Product\ninfo" },
+    { n: 2, label: "Lot &\nVolume" },
+    { n: 3, label: "Documentation" },
+    { n: 4, label: "Photos" },
+    { n: 5, label: "Review &\nSubmit" }
+  ];
+  function SectionHeader({ n, title, subtitle }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-section-title-block", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-section-title-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-step-circle", children: n }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-section-text", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-section-title", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-section-sub", children: subtitle })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("hr", { className: "pl-section-rule" })
+    ] });
+  }
+  function FieldLabel({ children, required }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("p", { className: "pl-field-label", children: [
+      children,
+      required && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-required", children: " *" })
+    ] });
+  }
+  function TextInput({ placeholder, tall }) {
+    return tall ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("textarea", { className: "pl-input pl-input--tall", placeholder }) : /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { type: "text", className: "pl-input", placeholder });
+  }
+  function UploadBox({ title, hint, accept, tags }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-upload-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-upload-box", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "pl-upload-label", htmlFor: `upload-${title}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-upload-icon", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("svg", { width: "36", height: "36", viewBox: "0 0 36 36", fill: "none", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("path", { d: "M18 6v18M9 15l9-9 9 9", stroke: "#9bb8bf", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("path", { d: "M6 30h24", stroke: "#9bb8bf", strokeWidth: "2.5", strokeLinecap: "round" })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-upload-text", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-upload-click", children: "Click to upload" }),
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-upload-drop", children: "or drag and drop" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-upload-tags", children: tags.map((t) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-tag", children: t }, t)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { id: `upload-${title}`, type: "file", accept, className: "pl-upload-input" })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-upload-hint", children: hint })
+    ] });
+  }
   function ListProduct() {
+    const [lotNumbers, setLotNumbers] = (0, import_react3.useState)([]);
+    const [currentLot, setCurrentLot] = (0, import_react3.useState)("");
+    function addLot() {
+      const trimmed = currentLot.trim();
+      if (trimmed && !lotNumbers.includes(trimmed)) {
+        setLotNumbers((prev) => [...prev, trimmed]);
+      }
+      setCurrentLot("");
+    }
+    function removeLot(lot) {
+      setLotNumbers((prev) => prev.filter((l) => l !== lot));
+    }
     return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "page-body" }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("section", { className: "pl-hero", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-hero-inner", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-hero-text", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-hero-eyebrow", children: "Seller Portal" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h1", { className: "pl-hero-title", children: "Submit a new listing" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-hero-subtitle", children: "MicroMarket Exchange is built exclusively for licensed agricultural operations. Every buyer and seller on our platform is verified before they can transact, so you always know who you're dealing with." })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-steps", children: STEPS.map(({ n, label }) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-step", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-step-bullet", children: n }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-step-label", children: label })
+        ] }, n)) })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-required-banner-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-required-banner", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("ul", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("li", { children: [
+        "All fields marked with ",
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-req-star", children: "*" }),
+        " are required. Your listing will not be approved without complete documentation including spec sheet, SDS, and certificate of analysis."
+      ] }) }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-form-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-form-sections", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-card", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-card-inner", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            SectionHeader,
+            {
+              n: 1,
+              title: "Product information",
+              subtitle: "Basic details about the ingredient you're listing for sale."
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-fields", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Product name" }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "e.g. Micro Ingredient Example" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field pl-field--half", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Manufacturer / producer" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "Business name" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field pl-field--half", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { children: "Product category" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "Select a category" })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Product description" }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+                TextInput,
+                {
+                  placeholder: "Describe the product: grade, quality characteristics, intended use, any relevant certifications or storage history...",
+                  tall: true
+                }
+              )
+            ] })
+          ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-card", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-card-inner", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            SectionHeader,
+            {
+              n: 2,
+              title: "Lot numbers & volume",
+              subtitle: "Enter all lot numbers included in this listing and the total volume available."
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-fields", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Lot number(s)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-lot-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+                  "input",
+                  {
+                    type: "text",
+                    className: "pl-input pl-input--lot",
+                    placeholder: "Enter a lot number",
+                    value: currentLot,
+                    onChange: (e) => setCurrentLot(e.target.value),
+                    onKeyDown: (e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addLot();
+                      }
+                    }
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { className: "pl-btn-add-lot", type: "button", onClick: addLot, children: "+ Add lot" })
+              ] }),
+              lotNumbers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-lot-tags", children: lotNumbers.map((lot) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "pl-lot-tag", children: [
+                lot,
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+                  "button",
+                  {
+                    type: "button",
+                    className: "pl-lot-remove",
+                    onClick: () => removeLot(lot),
+                    "aria-label": `Remove ${lot}`,
+                    children: "\xD7"
+                  }
+                )
+              ] }, lot)) }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-field-hint", children: "Add each lot number separately. Multiple lots can be included in one listing." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field pl-field--half", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Total volume available" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "0.00" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field pl-field--half", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Unit of measure" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "Select unit" })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field-row", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field pl-field--half", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { children: "Packaging type" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "Select packaging" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field pl-field--half", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { children: "Asking price" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TextInput, { placeholder: "0.00" })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-price-hint", children: "Per unit of measure selected above. Leave blank to list as auction." })
+          ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-card", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-card-inner", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            SectionHeader,
+            {
+              n: 3,
+              title: "Required documentation",
+              subtitle: "All three documents below are required. Listings submitted without complete documentation will not be approved."
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-fields", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Specification sheet" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+              UploadBox,
+              {
+                title: "spec",
+                hint: "Product specifications including nutritional analysis, physical characteristics, and guaranteed analysis.",
+                accept: ".pdf,.doc,.docx",
+                tags: ["PDF", "DOC", "DOCX"]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Safety data sheet (SDS)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+              UploadBox,
+              {
+                title: "sds",
+                hint: "Current OSHA-format SDS. Must correspond to the lot numbers listed above.",
+                accept: ".pdf,.doc,.docx",
+                tags: ["PDF", "DOC", "DOCX"]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Certificate of analysis (COA)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+              UploadBox,
+              {
+                title: "coa",
+                hint: "Lab-certified analysis matching the lot numbers on this listing. Must be dated within 12 months.",
+                accept: ".pdf,.doc,.docx",
+                tags: ["PDF", "DOC", "DOCX"]
+              }
+            )
+          ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-card", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-card-inner", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            SectionHeader,
+            {
+              n: 4,
+              title: "Product photos",
+              subtitle: "Clear, accurate photos of the actual product and packaging. Blurry, misleading, or stock images will not be approved."
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-fields", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { required: true, children: "Product and packaging photos" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-upload-box pl-upload-box--photos", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "pl-upload-label", htmlFor: "upload-photos", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-upload-icon pl-upload-icon--photo", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("svg", { width: "36", height: "36", viewBox: "0 0 36 36", fill: "none", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("rect", { x: "3", y: "8", width: "30", height: "22", rx: "3", stroke: "#9bb8bf", strokeWidth: "2.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("circle", { cx: "18", cy: "19", r: "6", stroke: "#9bb8bf", strokeWidth: "2.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("path", { d: "M13 8l2-4h6l2 4", stroke: "#9bb8bf", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" })
+              ] }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-upload-text pl-upload-text--photos", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-upload-heading", children: "Upload product photos" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "pl-upload-sub", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-upload-click", children: "Click to upload" }),
+                  " ",
+                  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-upload-drop", children: "or drag and drop \u2014 Up to 10 images" })
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-upload-tags", children: ["JPG", "PNG", "WEBP"].map((t) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "pl-tag", children: t }, t)) }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { id: "upload-photos", type: "file", accept: ".jpg,.jpeg,.png,.webp", multiple: true, className: "pl-upload-input" })
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-upload-hint", children: "Include: product close-up, packaging label, lot number visible on packaging, and overall condition. Minimum 3 photos." })
+          ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-card", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-card-inner", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            SectionHeader,
+            {
+              n: 5,
+              title: "Additional notes",
+              subtitle: "Anything else buyers should know \u2014 storage conditions, pickup/delivery details, expiry, etc."
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-fields", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-field", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FieldLabel, { children: "Seller notes" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+              "textarea",
+              {
+                className: "pl-input pl-input--notes",
+                placeholder: "e.g. Stored in climate-controlled warehouse. Available for pickup or freight arrangements. Product expired MM/YYYY"
+              }
+            )
+          ] }) })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "pl-card", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-submit-row", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-submit-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-submit-title", children: "Ready to submit?" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "pl-submit-body", children: "Your listing will be reviewed before going live. You'll receive an email with the outcome within 1\u20132 business days." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pl-submit-actions", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { type: "button", className: "pl-btn-outline", children: "Save Draft" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { type: "submit", className: "pl-btn-outline", children: "Submit" })
+          ] })
+        ] }) })
+      ] }) }),
       /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Footer, {})
     ] });
   }
 
   // views/marketplace.tsx
-  var import_react3 = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   var INITIAL_FILTERS = {
     listingType: "all",
@@ -24500,12 +24784,12 @@
   }
   function Marketplace({ listings }) {
     const source = listings && listings.length > 0 ? listings : mockListings;
-    const [filters, setFilters] = (0, import_react3.useState)(INITIAL_FILTERS);
-    const [pendingMin, setPendingMin] = (0, import_react3.useState)("");
-    const [pendingMax, setPendingMax] = (0, import_react3.useState)("");
-    const [search, setSearch] = (0, import_react3.useState)("");
-    const [sort, setSort] = (0, import_react3.useState)("default");
-    const filtered = (0, import_react3.useMemo)(
+    const [filters, setFilters] = (0, import_react4.useState)(INITIAL_FILTERS);
+    const [pendingMin, setPendingMin] = (0, import_react4.useState)("");
+    const [pendingMax, setPendingMax] = (0, import_react4.useState)("");
+    const [search, setSearch] = (0, import_react4.useState)("");
+    const [sort, setSort] = (0, import_react4.useState)("default");
+    const filtered = (0, import_react4.useMemo)(
       () => applyFilters(source, filters, search, sort),
       [source, filters, search, sort]
     );
@@ -24735,7 +25019,7 @@
   }
 
   // views/product-page.tsx
-  var import_react4 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
   var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   var photos = [
     "/images/IMG_9098.jpeg",
@@ -24766,8 +25050,8 @@
     ["Relisting allowed", "Yes"]
   ];
   function ProductPage({ productId }) {
-    const [mainPhoto, setMainPhoto] = (0, import_react4.useState)(0);
-    const [inWatchlist, setInWatchlist] = (0, import_react4.useState)(false);
+    const [mainPhoto, setMainPhoto] = (0, import_react5.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react5.useState)(false);
     return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "page-container", "data-product-id": productId, children: [
@@ -24936,10 +25220,10 @@
   }
 
   // views/registration.tsx
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   var import_jsx_runtime12 = __toESM(require_jsx_runtime());
   function Registration() {
-    const [membership, setMembership] = (0, import_react5.useState)("trade");
+    const [membership, setMembership] = (0, import_react6.useState)("trade");
     const isTrade = membership === "trade";
     const loginStep = isTrade ? 5 : 3;
     const agreeStep = isTrade ? 6 : 4;
@@ -25233,7 +25517,7 @@
     const props = JSON.parse(propsEl.textContent || "{}");
     const Page = page ? pages[page] : void 0;
     if (Page) {
-      (0, import_client.hydrateRoot)(root, (0, import_react6.createElement)(Page, props));
+      (0, import_client.hydrateRoot)(root, (0, import_react7.createElement)(Page, props));
     }
   }
 })();
