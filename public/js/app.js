@@ -23832,7 +23832,7 @@
   });
 
   // views/client.tsx
-  var import_react8 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // views/partials/footer.tsx
@@ -23849,10 +23849,10 @@
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("hr", {}),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "footer-bottom", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ul", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "Login/Sign Up" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "List Your Products" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "Account Portal" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "Contact Us" })
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: "/registration", children: "Login/Sign Up" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: "/list-product", children: "List Your Products" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: "/account", children: "Account Portal" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: "/contact", children: "Contact Us" }) })
       ] }) })
     ] }) });
   }
@@ -23894,7 +23894,7 @@
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { ref: navRef, className: `nav-right${open ? " is-active active" : ""}`, children: [
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "nav-links", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("ul", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/marketplace", children: "Buy" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/infoPage", children: "Sell" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/infopage", children: "Sell" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/account", children: "My Account" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/registration", children: "Sign Up/Login" }) })
         ] }) }),
@@ -24588,16 +24588,73 @@
   }
 
   // views/contactpage.tsx
+  var import_react3 = __toESM(require_react());
   var import_jsx_runtime5 = __toESM(require_jsx_runtime());
   function ContactPage() {
+    const [submitted, setSubmitted] = (0, import_react3.useState)(false);
+    function handleSubmit(e) {
+      e.preventDefault();
+      setSubmitted(true);
+    }
     return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("main", { className: "contact-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("section", { className: "contact-container", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "contact-content", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h1", { className: "contact-heading", children: "Contact Us" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "contact-form-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("hr", { className: "contact-divider" }),
+          submitted ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "contact-success", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { children: "Message sent!" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Thank you for reaching out. We'll get back to you within 1\u20132 business days." })
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("form", { className: "contact-form", onSubmit: handleSubmit, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "contact-form-group", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "contact-input-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                  "input",
+                  {
+                    className: "subH1 contact-small-input",
+                    type: "text",
+                    placeholder: "First name",
+                    required: true
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                  "input",
+                  {
+                    className: "subH1 contact-small-input",
+                    type: "text",
+                    placeholder: "Last name",
+                    required: true
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                "input",
+                {
+                  className: "subH1 contact-full-input",
+                  type: "email",
+                  placeholder: "Email address",
+                  required: true
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                "textarea",
+                {
+                  className: "subH1 contact-textarea",
+                  placeholder: "Your message\u2026",
+                  required: true
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", { type: "submit", className: "contact-submit-button", children: "Send Message" })
+          ] })
+        ] })
+      ] }) }) }),
       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Footer, {})
     ] });
   }
 
   // views/partials/productCard.tsx
-  var import_react3 = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   function safeParseJSON2(str, fallback) {
     if (!str) return fallback;
@@ -24614,12 +24671,12 @@
     return safeParseJSON2(localStorage.getItem("mme_cart"), []);
   }
   function ProductCard({ item }) {
-    const [imgIndex, setImgIndex] = (0, import_react3.useState)(0);
-    const [inWatchlist, setInWatchlist] = (0, import_react3.useState)(false);
-    const [inCart, setInCart] = (0, import_react3.useState)(false);
+    const [imgIndex, setImgIndex] = (0, import_react4.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react4.useState)(false);
+    const [inCart, setInCart] = (0, import_react4.useState)(false);
     const images = item.images.length > 0 ? item.images : ["/images/IMG_9097.jpeg"];
     const total = images.length;
-    (0, import_react3.useEffect)(() => {
+    (0, import_react4.useEffect)(() => {
       setInWatchlist(getWatchlist().some((w) => w.listingId === item.id));
       setInCart(getCart().some((c) => c.listingId === item.id));
     }, [item.id]);
@@ -24759,7 +24816,9 @@
         /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "hero-content", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "hero-text", children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "display", children: "Where obsolete and overstock inventory finds a home." }),
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { color: "white" }, children: "Connecting unicorn ingredient havers to unicorn ingredient needers. Reducing waste in the ag industry and freeing up space in your warehouse." }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "hero-info-button", children: "Learn More" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "hero-info-button", onClick: () => {
+            window.location.href = "/infopage";
+          }, children: "Learn More" })
         ] }) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "info", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "info-grid", children: [
@@ -24767,7 +24826,9 @@
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "How It Works" }),
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "In four easy steps you can have your product listed for buyers across the US. MicroMarket Exchange charges a monthly subsciption and a small listing fee once your product sells." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "about-button", children: "About Us" })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "about-button", onClick: () => {
+              window.location.href = "/infopage";
+            }, children: "About Us" })
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "hay-bales", src: "/images/Hay-Missouri.webp", alt: "Hay bale in the forefront of a green field." }) })
         ] }),
@@ -24776,14 +24837,18 @@
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-right", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Commitment to Quality" }),
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "Every listing includes a spec sheet, SDS, and certificate of analysis so buyers know exactly what they're getting. Quantities, packaging type, and pickup or freight details are all handled directly between buyer and seller." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "shop-button", children: "In Stock" })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "shop-button", onClick: () => {
+              window.location.href = "/marketplace";
+            }, children: "In Stock" })
           ] }) })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-content", children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-text", children: [
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: "Selling Requirements" }),
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p2", style: { opacity: "60%" }, children: "To buy or sell on MicroMarket Exchange, your operation must hold a valid FDA registration, an active state feed license, and a physical facility - no brokers or traders allowed. Every account and listing is manually reviewed before going live." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "info-button", children: "Selling Info" })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "info-button", onClick: () => {
+              window.location.href = "/infopage";
+            }, children: "Selling Info" })
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "card-left", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("img", { id: "cows", style: { height: "412px" }, src: "/images/Cattle-feedlot-south-africa-beef-industry.webp", alt: "Cattle eating at a large, outoor trough." }) })
         ] })
@@ -24921,7 +24986,7 @@
   }
 
   // views/listProduct.tsx
-  var import_react4 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
   var import_jsx_runtime9 = __toESM(require_jsx_runtime());
   var STEPS = [
     { n: 1, label: "Product\ninfo" },
@@ -24970,7 +25035,7 @@
     ] });
   }
   function ListProduct() {
-    const [lotRows, setLotRows] = (0, import_react4.useState)([""]);
+    const [lotRows, setLotRows] = (0, import_react5.useState)([""]);
     function addLotRow() {
       setLotRows((prev) => [...prev, ""]);
     }
@@ -25210,7 +25275,7 @@
   }
 
   // views/marketplace.tsx
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   var INITIAL_FILTERS = {
     listingType: "all",
@@ -25265,12 +25330,12 @@
   }
   function Marketplace({ listings }) {
     const source = listings && listings.length > 0 ? listings : mockListings;
-    const [filters, setFilters] = (0, import_react5.useState)(INITIAL_FILTERS);
-    const [pendingMin, setPendingMin] = (0, import_react5.useState)("");
-    const [pendingMax, setPendingMax] = (0, import_react5.useState)("");
-    const [search, setSearch] = (0, import_react5.useState)("");
-    const [sort, setSort] = (0, import_react5.useState)("default");
-    const filtered = (0, import_react5.useMemo)(
+    const [filters, setFilters] = (0, import_react6.useState)(INITIAL_FILTERS);
+    const [pendingMin, setPendingMin] = (0, import_react6.useState)("");
+    const [pendingMax, setPendingMax] = (0, import_react6.useState)("");
+    const [search, setSearch] = (0, import_react6.useState)("");
+    const [sort, setSort] = (0, import_react6.useState)("default");
+    const filtered = (0, import_react6.useMemo)(
       () => applyFilters(source, filters, search, sort),
       [source, filters, search, sort]
     );
@@ -25500,7 +25565,7 @@
   }
 
   // views/product-page.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
   var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   var photos = [
     "/images/IMG_9098.jpeg",
@@ -25531,8 +25596,8 @@
     ["Relisting allowed", "Yes"]
   ];
   function ProductPage({ productId }) {
-    const [mainPhoto, setMainPhoto] = (0, import_react6.useState)(0);
-    const [inWatchlist, setInWatchlist] = (0, import_react6.useState)(false);
+    const [mainPhoto, setMainPhoto] = (0, import_react7.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react7.useState)(false);
     return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "page-container", "data-product-id": productId, children: [
@@ -25701,10 +25766,10 @@
   }
 
   // views/registration.tsx
-  var import_react7 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
   var import_jsx_runtime12 = __toESM(require_jsx_runtime());
   function Registration() {
-    const [membership, setMembership] = (0, import_react7.useState)("trade");
+    const [membership, setMembership] = (0, import_react8.useState)("trade");
     const isTrade = membership === "trade";
     const loginStep = isTrade ? 5 : 3;
     const agreeStep = isTrade ? 6 : 4;
@@ -25998,7 +26063,7 @@
     const props = JSON.parse(propsEl.textContent || "{}");
     const Page = page ? pages[page] : void 0;
     if (Page) {
-      (0, import_client.hydrateRoot)(root, (0, import_react8.createElement)(Page, props));
+      (0, import_client.hydrateRoot)(root, (0, import_react9.createElement)(Page, props));
     }
   }
 })();
