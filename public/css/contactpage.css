@@ -1,0 +1,188 @@
+/* ==========================================
+   CONTACT PAGE
+   Values sourced from Figma prototype
+   (node 198:1635 — "contact us").
+   ========================================== */
+
+/* Full-width page wrapper */
+.contact-page-body {
+  background-color: var(--textWhite);
+}
+
+/* Full-width content band — matches Figma "contact container"
+   (1440 × 612, top border line, 50 px top padding). */
+.contact-container {
+  width: 100%;
+  background-color: var(--textWhite);
+  border-top: 1px solid rgba(45, 55, 72, 0.15);
+  padding: 50px 0 80px;
+}
+
+/* Centred content column — matches Figma "contact page elements"
+   (max-width 1152 px, x = 144 inside 1440 px). */
+.contact-content {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Page heading — h1 from global.css (46 px, Onest 600).
+   Figma text node height 82 px ≈ 46 px × line-height 1.6. */
+.contact-heading {
+  color: var(--textHeadings);
+}
+
+/* Figma "contact page textbox elements" starts 130 px below the top
+   of contact page elements; the heading is ~82 px, so the gap
+   between heading bottom and the HR is ~48 px. */
+.contact-form-section {
+  margin-top: 48px;
+}
+
+/* Reuses global hr (1 px solid brandSlate at 40% opacity) */
+.contact-divider {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   FORM LAYOUT
+   Figma "comment textbox group": 564 × 288 px,
+   centred (x = 294 inside 1152 px = (1152−564)/2).
+   48 px gap between HR and first input.
+   ========================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+  gap: 32px;
+}
+
+/* Stacked field group — 564 px wide, 24 px gap between rows */
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  width: 564px;
+  gap: 24px;
+}
+
+/* Row with two side-by-side small inputs.
+   Figma: each 270 px wide, 24 px gap (294 − 270 = 24). */
+.contact-input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+/* Individual small input — 270 px each */
+.contact-small-input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Full-width single input — 564 px (email row) */
+.contact-full-input {
+  width: 100%;
+}
+
+/* ==========================================
+   INPUT STYLING
+   Matches registration.css: border 1 px solid
+   brandLightSlate, h-[48 px], radius 8 px.
+   ========================================== */
+
+.contact-form-group input,
+.contact-textarea {
+  border: 1px solid var(--brandLightSlate);
+  border-radius: var(--radius);
+  padding: 8px;
+  background-color: var(--textWhite);
+  transition: border-color 0.2s ease;
+}
+
+.contact-form-group input {
+  height: 48px;
+}
+
+.contact-form-group input:focus,
+.contact-textarea:focus {
+  border-color: var(--textEyebrowBlue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(145, 172, 182, 0.15);
+}
+
+/* Large textarea — Figma "large textbox" 564 × 144 px */
+.contact-textarea {
+  width: 100%;
+  height: 144px;
+  resize: vertical;
+  font-family: var(--fb);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--textMutedCaptions);
+}
+
+/* ==========================================
+   SUBMIT BUTTON
+   Reuses global button base + gold border style
+   matching the existing list-button pattern.
+   ========================================== */
+
+.contact-submit-button {
+  align-self: flex-end;
+  width: 180px;
+  height: 58px;
+  background-color: transparent;
+  border: 1px solid var(--brandGold);
+  color: var(--brandGold);
+  border-radius: var(--radius);
+  font-family: var(--fh);
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-submit-button:hover {
+  background-color: #e0b034cc;
+  color: var(--surfacePg);
+  border-color: transparent;
+}
+
+/* ==========================================
+   SUCCESS STATE
+   ========================================== */
+
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+  gap: 20px;
+  text-align: center;
+}
+
+.contact-success h3 {
+  color: var(--textHeadings);
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .contact-form-group {
+    width: 100%;
+  }
+
+  .contact-input-row {
+    flex-direction: column;
+  }
+
+  .contact-submit-button {
+    align-self: stretch;
+    width: 100%;
+  }
+}

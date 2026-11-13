@@ -30,6 +30,6 @@ export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   account: { title: 'My Account — MicroMarket Exchange', styles: ['/css/account.css'] },
   cart: { title: 'Sign Up', styles: ['/css/registration.css'] },
   registration: { title: 'Sign Up', styles: ['/css/registration.css'] },
-  contact: { title: 'Sign Up', styles: ['/css/contactpage.css'] },
+  contact: { title: 'Contact Us — MicroMarket Exchange', styles: ['/css/contactpage.css'] },
   infopage: { title: 'Sign Up', styles: [] },
 };
