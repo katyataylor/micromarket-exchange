@@ -780,6 +780,11 @@
   background-color: var(--brandSlate);
 }
 
+.pc-btn-primary--active {
+  background-color: var(--brandSlate);
+  color: var(--surfacePg);
+}
+
 /* Figma: border 1px solid #555, h-58px, Onest Bold 20px */
 .pc-btn-secondary {
   width: 100%;
