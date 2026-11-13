@@ -26,14 +26,14 @@
   padding: 0 20px;
 }
 
-/* Page heading — Figma uses display-class values on this white-background section:
-   48 px, weight 700, dark-navy brandSlate colour (same pattern as infoPage.tsx).
-   Overrides global h1 (46 px / 600 / #1C1C1C). */
+/* Page heading — exact Figma spec (MERP-4):
+   Onest, weight 400 (regular), line-height 64px.
+   Overrides global h1 defaults (weight 600, line-height inherited from body). */
 .contact-heading {
-  font-size: 48px;
-  font-weight: 700;
+  font-family: var(--fh); /* Onest */
+  font-weight: 400;
+  line-height: 64px;
   color: var(--brandSlate);
-  letter-spacing: -0.05%;
 }
 
 /* Figma "contact page textbox elements" starts 130 px below the top
