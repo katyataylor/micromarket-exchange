@@ -17,7 +17,7 @@ export function Homepage() {
             <div className="p2" style={{ color: 'white' }}>Connecting unicorn ingredient havers to unicorn ingredient needers.
               Reducing waste in the ag industry and freeing up space in your warehouse.
             </div>
-            <button className="hero-info-button">Learn More</button>
+            <button className="hero-info-button" onClick={() => { window.location.href = '/infopage'; }}>Learn More</button>
           </div>
         </div>
       </section>
@@ -29,7 +29,7 @@ export function Homepage() {
               <div className="card-text">
                 <h2>How It Works</h2>
                 <div className="p2" style={{ opacity: '60%' }}>In four easy steps you can have your product listed for buyers across the US. MicroMarket Exchange charges a monthly subsciption and a small listing fee once your product sells.</div>
-                <button className="about-button">About Us</button>
+                <button className="about-button" onClick={() => { window.location.href = '/infopage'; }}>About Us</button>
               </div>
             </div>
             <div className="card-left">
@@ -45,7 +45,7 @@ export function Homepage() {
               <div className="card-text">
                 <h2>Commitment to Quality</h2>
                 <div className="p2" style={{ opacity: '60%' }}>Every listing includes a spec sheet, SDS, and certificate of analysis so buyers know exactly what they're getting. Quantities, packaging type, and pickup or freight details are all handled directly between buyer and seller.</div>
-                <button className="shop-button">In Stock</button>
+                <button className="shop-button" onClick={() => { window.location.href = '/marketplace'; }}>In Stock</button>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@ export function Homepage() {
               <div className="card-text">
                 <h2>Selling Requirements</h2>
                 <div className="p2" style={{ opacity: '60%' }}>To buy or sell on MicroMarket Exchange, your operation must hold a valid FDA registration, an active state feed license, and a physical facility - no brokers or traders allowed. Every account and listing is manually reviewed before going live.</div>
-                <button className="info-button">Selling Info</button>
+                <button className="info-button" onClick={() => { window.location.href = '/infopage'; }}>Selling Info</button>
               </div>
             </div>
             <div className="card-left">

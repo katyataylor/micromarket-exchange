@@ -16,10 +16,10 @@ export function Footer() {
         <hr />
         <div className="footer-bottom">
           <ul>
-            <li>Login/Sign Up</li>
-            <li>List Your Products</li>
-            <li>Account Portal</li>
-            <li>Contact Us</li>
+            <li><a href="/registration">Login/Sign Up</a></li>
+            <li><a href="/list-product">List Your Products</a></li>
+            <li><a href="/account">Account Portal</a></li>
+            <li><a href="/contact">Contact Us</a></li>
           </ul>
         </div>
       </section>

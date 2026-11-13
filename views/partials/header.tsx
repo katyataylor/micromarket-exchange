@@ -41,7 +41,7 @@ export function Header() {
           <div className="nav-links">
             <ul>
               <li><a href="/marketplace">Buy</a></li>
-              <li><a href="/infoPage">Sell</a></li>
+              <li><a href="/infopage">Sell</a></li>
               <li><a href="/account">My Account</a></li>
               <li><a href="/registration">Sign Up/Login</a></li>
             </ul>
