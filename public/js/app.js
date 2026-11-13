@@ -23832,7 +23832,7 @@
   });
 
   // views/client.tsx
-  var import_react7 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // views/partials/footer.tsx
@@ -23971,117 +23971,7 @@
   }
 
   // views/cart.tsx
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  function Cart() {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Footer, {})
-    ] });
-  }
-
-  // views/contactpage.tsx
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
-  function ContactPage() {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Header, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Footer, {})
-    ] });
-  }
-
-  // views/partials/productCard.tsx
   var import_react2 = __toESM(require_react());
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
-  function ProductCard({ item }) {
-    const [imgIndex, setImgIndex] = (0, import_react2.useState)(0);
-    const [inWatchlist, setInWatchlist] = (0, import_react2.useState)(false);
-    const images = item.images.length > 0 ? item.images : ["/images/IMG_9097.jpeg"];
-    const total = images.length;
-    function prev(e) {
-      e.stopPropagation();
-      setImgIndex((i) => (i - 1 + total) % total);
-    }
-    function next(e) {
-      e.stopPropagation();
-      setImgIndex((i) => (i + 1) % total);
-    }
-    function goTo(i, e) {
-      e.stopPropagation();
-      setImgIndex(i);
-    }
-    function stopProp(e) {
-      e.stopPropagation();
-    }
-    const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace("per ", "")}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
-      "div",
-      {
-        className: "product-card",
-        onClick: () => {
-          window.location.href = `/product/${item.id}`;
-        },
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-badge-dot" }),
-            item.listingType === "auction" ? "Auction" : "Fixed Price"
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-image-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-image-clip", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
-              "img",
-              {
-                className: "pc-image",
-                src: images[imgIndex],
-                alt: item.name
-              },
-              imgIndex
-            ) }),
-            total > 1 && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
-                "button",
-                {
-                  className: `pc-dot${i === imgIndex ? " pc-dot--active" : ""}`,
-                  onClick: (e) => goTo(i, e),
-                  "aria-label": `Image ${i + 1}`
-                },
-                i
-              )) })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-body", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-name", children: item.name }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-seller", children: item.seller }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-location", children: item.location }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-meta", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
-                " ",
-                item.qty
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
-                " ",
-                item.packaging
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("hr", { className: "pc-divider" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-price", children: price })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-actions", onClick: stopProp, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-btn-primary", children: "Bid Now" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
-              "button",
-              {
-                className: `pc-btn-secondary${inWatchlist ? " pc-btn-secondary--active" : ""}`,
-                onClick: () => setInWatchlist((w) => !w),
-                children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
-              }
-            )
-          ] })
-        ]
-      }
-    );
-  }
 
   // views/data/mockListings.ts
   var mockListings = [
@@ -24262,6 +24152,602 @@
   ];
   var featuredListing = mockListings[0];
 
+  // views/cart.tsx
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  function safeParseJSON(str, fallback) {
+    if (!str) return fallback;
+    try {
+      return JSON.parse(str);
+    } catch {
+      return fallback;
+    }
+  }
+  function persistCart(items) {
+    localStorage.setItem("mme_cart", JSON.stringify(items));
+  }
+  function persistWatchlist(items) {
+    localStorage.setItem("mme_watchlist", JSON.stringify(items));
+  }
+  function getListing(id) {
+    return mockListings.find((l) => l.id === id);
+  }
+  var SEED_CART = [
+    { listingId: 1, qty: 1 },
+    { listingId: 2, qty: 2 }
+  ];
+  var SEED_WATCHLIST = [
+    { listingId: 3, qty: 1, sold: false },
+    { listingId: 5, qty: 1, sold: false },
+    { listingId: 7, qty: 1, sold: false }
+  ];
+  function ColumnHeaders() {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-col-headers", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-col-headers-spacer" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-col-headers-inner", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-col-h-product", children: "product" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-col-h-qty-total", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-col-h-qty", children: "quantity" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-col-h-total", children: "total" })
+        ] })
+      ] })
+    ] });
+  }
+  function ProductRow({
+    entry,
+    listing,
+    checked,
+    onCheckChange,
+    onIncrement,
+    onDecrement,
+    onRemove,
+    onMoveToCart,
+    onMarkSold
+  }) {
+    const isSold = Boolean(entry.sold);
+    const rowTotal = listing.price * entry.qty;
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `cart-row${isSold ? " cart-row--sold" : ""}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-row-rule" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-inner", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          "input",
+          {
+            type: "checkbox",
+            className: "cart-checkbox",
+            checked: checked ?? false,
+            onChange: onCheckChange,
+            disabled: isSold,
+            "aria-label": `Select ${listing.name}`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-middle", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-product", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "img",
+              {
+                className: "cart-row-image",
+                src: listing.images[0] || "/images/IMG_9097.jpeg",
+                alt: listing.name
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-info", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-name-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-row-name", children: listing.name }),
+                isSold && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-sold-badge", children: "Sold" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "cart-row-price", children: [
+                "$",
+                listing.price.toFixed(2)
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-qty-total", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-qty-control", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-row-qty-btn",
+                  onClick: onIncrement,
+                  disabled: isSold,
+                  "aria-label": "Increase quantity",
+                  children: "+"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-row-qty-value", children: entry.qty }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-row-qty-btn",
+                  onClick: onDecrement,
+                  disabled: isSold,
+                  "aria-label": "Decrease quantity",
+                  children: "\u2212"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: `cart-row-total${isSold ? " cart-row-total--sold" : ""}`, children: [
+              "$",
+              rowTotal.toFixed(2)
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-row-actions", children: [
+              onMoveToCart && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-row-move-btn",
+                  onClick: onMoveToCart,
+                  disabled: isSold,
+                  title: isSold ? "Item is no longer available" : "Move to cart",
+                  children: "Move to Cart"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-row-remove-btn",
+                  onClick: onRemove,
+                  "aria-label": onMoveToCart ? "Remove from watchlist" : "Remove from cart",
+                  children: "Remove"
+                }
+              ),
+              onMarkSold && !isSold && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-demo-sold-btn",
+                  onClick: onMarkSold,
+                  title: "Demo: dispatch mme:listing-sold event for this item",
+                  children: "Mark\xA0Sold"
+                }
+              )
+            ] })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+  function Cart() {
+    const [mounted, setMounted] = (0, import_react2.useState)(false);
+    const [cartItems, setCartItems] = (0, import_react2.useState)([]);
+    const [watchlistItems, setWatchlistItems] = (0, import_react2.useState)([]);
+    const [checkedWatchlist, setCheckedWatchlist] = (0, import_react2.useState)(/* @__PURE__ */ new Set());
+    (0, import_react2.useEffect)(() => {
+      const storedCart = localStorage.getItem("mme_cart");
+      const storedWatchlist = localStorage.getItem("mme_watchlist");
+      const cart = storedCart ? safeParseJSON(storedCart, SEED_CART) : SEED_CART;
+      const watchlist = storedWatchlist ? safeParseJSON(storedWatchlist, SEED_WATCHLIST) : SEED_WATCHLIST;
+      if (!storedCart) persistCart(cart);
+      if (!storedWatchlist) persistWatchlist(watchlist);
+      setCartItems(cart);
+      setWatchlistItems(watchlist);
+      setMounted(true);
+    }, []);
+    (0, import_react2.useEffect)(() => {
+      function handleListingSold(e) {
+        const { listingId } = e.detail;
+        setWatchlistItems((prev) => {
+          const updated = prev.map(
+            (item) => item.listingId === listingId ? { ...item, sold: true } : item
+          );
+          persistWatchlist(updated);
+          return updated;
+        });
+        setCartItems((prev) => {
+          const updated = prev.map(
+            (item) => item.listingId === listingId ? { ...item, sold: true } : item
+          );
+          persistCart(updated);
+          return updated;
+        });
+      }
+      window.addEventListener("mme:listing-sold", handleListingSold);
+      return () => window.removeEventListener("mme:listing-sold", handleListingSold);
+    }, []);
+    function updateCartQty(listingId, delta) {
+      setCartItems((prev) => {
+        const updated = prev.map(
+          (item) => item.listingId === listingId ? { ...item, qty: Math.max(1, item.qty + delta) } : item
+        );
+        persistCart(updated);
+        return updated;
+      });
+    }
+    function removeFromCart(listingId) {
+      setCartItems((prev) => {
+        const updated = prev.filter((item) => item.listingId !== listingId);
+        persistCart(updated);
+        return updated;
+      });
+    }
+    function updateWatchlistQty(listingId, delta) {
+      setWatchlistItems((prev) => {
+        const updated = prev.map(
+          (item) => item.listingId === listingId ? { ...item, qty: Math.max(1, item.qty + delta) } : item
+        );
+        persistWatchlist(updated);
+        return updated;
+      });
+    }
+    function removeFromWatchlist(listingId) {
+      setWatchlistItems((prev) => {
+        const updated = prev.filter((item) => item.listingId !== listingId);
+        persistWatchlist(updated);
+        return updated;
+      });
+      setCheckedWatchlist((prev) => {
+        const next = new Set(prev);
+        next.delete(listingId);
+        return next;
+      });
+    }
+    function toggleWatchlistCheck(listingId) {
+      setCheckedWatchlist((prev) => {
+        const next = new Set(prev);
+        if (next.has(listingId)) {
+          next.delete(listingId);
+        } else {
+          next.add(listingId);
+        }
+        return next;
+      });
+    }
+    function moveOneToCart(listingId, qty) {
+      setCartItems((prev) => {
+        const existing = prev.find((c) => c.listingId === listingId);
+        let updated;
+        if (existing) {
+          updated = prev.map(
+            (c) => c.listingId === listingId ? { ...c, qty: c.qty + qty } : c
+          );
+        } else {
+          updated = [...prev, { listingId, qty }];
+        }
+        persistCart(updated);
+        return updated;
+      });
+      removeFromWatchlist(listingId);
+    }
+    function moveCheckedToCart() {
+      const toMove = watchlistItems.filter((item) => {
+        if (item.sold) return false;
+        if (checkedWatchlist.size === 0) return true;
+        return checkedWatchlist.has(item.listingId);
+      });
+      if (toMove.length === 0) return;
+      setCartItems((prev) => {
+        let updated = [...prev];
+        for (const wItem of toMove) {
+          const existing = updated.find((c) => c.listingId === wItem.listingId);
+          if (existing) {
+            updated = updated.map(
+              (c) => c.listingId === wItem.listingId ? { ...c, qty: c.qty + wItem.qty } : c
+            );
+          } else {
+            updated = [...updated, { listingId: wItem.listingId, qty: wItem.qty }];
+          }
+        }
+        persistCart(updated);
+        return updated;
+      });
+      const movedIds = new Set(toMove.map((item) => item.listingId));
+      setWatchlistItems((prev) => {
+        const updated = prev.filter((item) => !movedIds.has(item.listingId));
+        persistWatchlist(updated);
+        return updated;
+      });
+      setCheckedWatchlist(/* @__PURE__ */ new Set());
+    }
+    function fireSoldEvent(listingId) {
+      window.dispatchEvent(
+        new CustomEvent("mme:listing-sold", { detail: { listingId } })
+      );
+    }
+    const cartTotal = cartItems.reduce((sum, item) => {
+      const listing = getListing(item.listingId);
+      return sum + (listing ? listing.price * item.qty : 0);
+    }, 0);
+    const watchlistTotal = watchlistItems.filter((item) => !item.sold).reduce((sum, item) => {
+      const listing = getListing(item.listingId);
+      return sum + (listing ? listing.price * item.qty : 0);
+    }, 0);
+    const allWatchlistSold = watchlistItems.length > 0 && watchlistItems.every((i) => i.sold);
+    if (!mounted) {
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Header, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-page", style: { minHeight: "60vh" } }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Footer, {})
+      ] });
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-page", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-rule" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header-content", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-title-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "cart-section-title", children: "Your Cart" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: "/marketplace", className: "cart-continue-link", children: "Continue shopping" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ColumnHeaders, {})
+            ] })
+          ] }),
+          cartItems.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-empty", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+            "Your cart is empty.",
+            " ",
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: "/marketplace", children: "Browse listings \u2192" })
+          ] }) }) : cartItems.map((item) => {
+            const listing = getListing(item.listingId);
+            if (!listing) return null;
+            return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              ProductRow,
+              {
+                entry: item,
+                listing,
+                onIncrement: () => updateCartQty(item.listingId, 1),
+                onDecrement: () => updateCartQty(item.listingId, -1),
+                onRemove: () => removeFromCart(item.listingId),
+                onMarkSold: () => fireSoldEvent(item.listingId)
+              },
+              item.listingId
+            );
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-footer", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-footer-rule" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-totals", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-estimated-total", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-estimated-label", children: "Estimated total" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "cart-estimated-value", children: [
+                  "$",
+                  cartTotal.toFixed(2),
+                  " USD"
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "cart-taxes-note", children: "Taxes, discounts and shipping calculated at checkout." }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-action-btn",
+                  disabled: cartItems.length === 0 || cartItems.every((i) => i.sold),
+                  children: "Checkout"
+                }
+              )
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-rule" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header-content", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-title-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "cart-section-title", children: "Watchlist" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: "/marketplace", className: "cart-continue-link", children: "Continue shopping" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ColumnHeaders, {})
+            ] })
+          ] }),
+          watchlistItems.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-empty", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+            "Your watchlist is empty.",
+            " ",
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: "/marketplace", children: "Browse listings \u2192" })
+          ] }) }) : watchlistItems.map((item) => {
+            const listing = getListing(item.listingId);
+            if (!listing) return null;
+            return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              ProductRow,
+              {
+                entry: item,
+                listing,
+                checked: checkedWatchlist.has(item.listingId),
+                onCheckChange: () => toggleWatchlistCheck(item.listingId),
+                onIncrement: () => updateWatchlistQty(item.listingId, 1),
+                onDecrement: () => updateWatchlistQty(item.listingId, -1),
+                onRemove: () => removeFromWatchlist(item.listingId),
+                onMoveToCart: () => moveOneToCart(item.listingId, item.qty),
+                onMarkSold: () => fireSoldEvent(item.listingId)
+              },
+              item.listingId
+            );
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-footer", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-footer-rule" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-totals", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-estimated-total", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "cart-estimated-label", children: "Estimated total" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "cart-estimated-value", children: [
+                  "$",
+                  watchlistTotal.toFixed(2),
+                  " USD"
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "cart-taxes-note", children: "Taxes, discounts and shipping calculated at checkout." }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                "button",
+                {
+                  className: "cart-action-btn",
+                  onClick: moveCheckedToCart,
+                  disabled: watchlistItems.length === 0 || allWatchlistSold,
+                  title: checkedWatchlist.size > 0 ? `Move ${checkedWatchlist.size} selected item(s) to cart` : "Move all watchlist items to cart",
+                  children: "Move to Cart"
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-return-top-section", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-footer-rule" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                className: "cart-return-top-btn",
+                onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+                children: "Return to Top \u2191"
+              }
+            )
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Footer, {})
+    ] });
+  }
+
+  // views/contactpage.tsx
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  function ContactPage() {
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Footer, {})
+    ] });
+  }
+
+  // views/partials/productCard.tsx
+  var import_react3 = __toESM(require_react());
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+  function safeParseJSON2(str, fallback) {
+    if (!str) return fallback;
+    try {
+      return JSON.parse(str);
+    } catch {
+      return fallback;
+    }
+  }
+  function getWatchlist() {
+    return safeParseJSON2(localStorage.getItem("mme_watchlist"), []);
+  }
+  function getCart() {
+    return safeParseJSON2(localStorage.getItem("mme_cart"), []);
+  }
+  function ProductCard({ item }) {
+    const [imgIndex, setImgIndex] = (0, import_react3.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react3.useState)(false);
+    const [inCart, setInCart] = (0, import_react3.useState)(false);
+    const images = item.images.length > 0 ? item.images : ["/images/IMG_9097.jpeg"];
+    const total = images.length;
+    (0, import_react3.useEffect)(() => {
+      setInWatchlist(getWatchlist().some((w) => w.listingId === item.id));
+      setInCart(getCart().some((c) => c.listingId === item.id));
+    }, [item.id]);
+    function prev(e) {
+      e.stopPropagation();
+      setImgIndex((i) => (i - 1 + total) % total);
+    }
+    function next(e) {
+      e.stopPropagation();
+      setImgIndex((i) => (i + 1) % total);
+    }
+    function goTo(i, e) {
+      e.stopPropagation();
+      setImgIndex(i);
+    }
+    function stopProp(e) {
+      e.stopPropagation();
+    }
+    function toggleWatchlist(e) {
+      e.stopPropagation();
+      const wl = getWatchlist();
+      if (inWatchlist) {
+        localStorage.setItem(
+          "mme_watchlist",
+          JSON.stringify(wl.filter((w) => w.listingId !== item.id))
+        );
+        setInWatchlist(false);
+      } else {
+        localStorage.setItem(
+          "mme_watchlist",
+          JSON.stringify([...wl, { listingId: item.id, qty: 1, sold: false }])
+        );
+        setInWatchlist(true);
+      }
+    }
+    function addToCart(e) {
+      e.stopPropagation();
+      if (inCart) {
+        window.location.href = "/cart";
+        return;
+      }
+      const cart = getCart();
+      localStorage.setItem(
+        "mme_cart",
+        JSON.stringify([...cart, { listingId: item.id, qty: 1 }])
+      );
+      setInCart(true);
+    }
+    const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace("per ", "")}`;
+    const bidLabel = item.listingType === "auction" ? "Bid Now" : "Add to Cart";
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+      "div",
+      {
+        className: "product-card",
+        onClick: () => {
+          window.location.href = `/product/${item.id}`;
+        },
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: `pc-badge ${item.listingType === "auction" ? "pc-badge--auction" : "pc-badge--fixed"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-badge-dot" }),
+            item.listingType === "auction" ? "Auction" : "Fixed Price"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-image-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-image-clip", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              "img",
+              {
+                className: "pc-image",
+                src: images[imgIndex],
+                alt: item.name
+              },
+              imgIndex
+            ) }),
+            total > 1 && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-arrow pc-arrow--prev", onClick: prev, "aria-label": "Previous image", children: "\u2190" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "pc-arrow pc-arrow--next", onClick: next, "aria-label": "Next image", children: "\u2192" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-dots", children: images.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                "button",
+                {
+                  className: `pc-dot${i === imgIndex ? " pc-dot--active" : ""}`,
+                  onClick: (e) => goTo(i, e),
+                  "aria-label": `Image ${i + 1}`
+                },
+                i
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-body", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-name", children: item.name }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-seller", children: item.seller }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-location", children: item.location }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-meta", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-meta-label", children: "Vol :" }),
+                " ",
+                item.qty
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "pc-meta-label", children: "Pkg :" }),
+                " ",
+                item.packaging
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("hr", { className: "pc-divider" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pc-price", children: price })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "pc-actions", onClick: stopProp, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              "button",
+              {
+                className: `pc-btn-primary${inCart ? " pc-btn-primary--active" : ""}`,
+                onClick: addToCart,
+                children: inCart ? "In Cart \u2713" : bidLabel
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              "button",
+              {
+                className: `pc-btn-secondary${inWatchlist ? " pc-btn-secondary--active" : ""}`,
+                onClick: toggleWatchlist,
+                children: inWatchlist ? "In Watchlist \u2713" : "Add to Watchlist"
+              }
+            )
+          ] })
+        ]
+      }
+    );
+  }
+
   // views/homepage.tsx
   var import_jsx_runtime7 = __toESM(require_jsx_runtime());
   function Homepage() {
@@ -24435,7 +24921,7 @@
   }
 
   // views/listProduct.tsx
-  var import_react3 = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   var import_jsx_runtime9 = __toESM(require_jsx_runtime());
   var STEPS = [
     { n: 1, label: "Product\ninfo" },
@@ -24484,7 +24970,7 @@
     ] });
   }
   function ListProduct() {
-    const [lotRows, setLotRows] = (0, import_react3.useState)([""]);
+    const [lotRows, setLotRows] = (0, import_react4.useState)([""]);
     function addLotRow() {
       setLotRows((prev) => [...prev, ""]);
     }
@@ -24724,7 +25210,7 @@
   }
 
   // views/marketplace.tsx
-  var import_react4 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
   var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   var INITIAL_FILTERS = {
     listingType: "all",
@@ -24779,12 +25265,12 @@
   }
   function Marketplace({ listings }) {
     const source = listings && listings.length > 0 ? listings : mockListings;
-    const [filters, setFilters] = (0, import_react4.useState)(INITIAL_FILTERS);
-    const [pendingMin, setPendingMin] = (0, import_react4.useState)("");
-    const [pendingMax, setPendingMax] = (0, import_react4.useState)("");
-    const [search, setSearch] = (0, import_react4.useState)("");
-    const [sort, setSort] = (0, import_react4.useState)("default");
-    const filtered = (0, import_react4.useMemo)(
+    const [filters, setFilters] = (0, import_react5.useState)(INITIAL_FILTERS);
+    const [pendingMin, setPendingMin] = (0, import_react5.useState)("");
+    const [pendingMax, setPendingMax] = (0, import_react5.useState)("");
+    const [search, setSearch] = (0, import_react5.useState)("");
+    const [sort, setSort] = (0, import_react5.useState)("default");
+    const filtered = (0, import_react5.useMemo)(
       () => applyFilters(source, filters, search, sort),
       [source, filters, search, sort]
     );
@@ -25014,7 +25500,7 @@
   }
 
   // views/product-page.tsx
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   var photos = [
     "/images/IMG_9098.jpeg",
@@ -25045,8 +25531,8 @@
     ["Relisting allowed", "Yes"]
   ];
   function ProductPage({ productId }) {
-    const [mainPhoto, setMainPhoto] = (0, import_react5.useState)(0);
-    const [inWatchlist, setInWatchlist] = (0, import_react5.useState)(false);
+    const [mainPhoto, setMainPhoto] = (0, import_react6.useState)(0);
+    const [inWatchlist, setInWatchlist] = (0, import_react6.useState)(false);
     return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "page-container", "data-product-id": productId, children: [
@@ -25215,10 +25701,10 @@
   }
 
   // views/registration.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
   var import_jsx_runtime12 = __toESM(require_jsx_runtime());
   function Registration() {
-    const [membership, setMembership] = (0, import_react6.useState)("trade");
+    const [membership, setMembership] = (0, import_react7.useState)("trade");
     const isTrade = membership === "trade";
     const loginStep = isTrade ? 5 : 3;
     const agreeStep = isTrade ? 6 : 4;
@@ -25512,7 +25998,7 @@
     const props = JSON.parse(propsEl.textContent || "{}");
     const Page = page ? pages[page] : void 0;
     if (Page) {
-      (0, import_client.hydrateRoot)(root, (0, import_react7.createElement)(Page, props));
+      (0, import_client.hydrateRoot)(root, (0, import_react8.createElement)(Page, props));
     }
   }
 })();
