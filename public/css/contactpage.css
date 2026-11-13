@@ -26,10 +26,14 @@
   padding: 0 20px;
 }
 
-/* Page heading — h1 from global.css (46 px, Onest 600).
-   Figma text node height 82 px ≈ 46 px × line-height 1.6. */
+/* Page heading — Figma uses display-class values on this white-background section:
+   48 px, weight 700, dark-navy brandSlate colour (same pattern as infoPage.tsx).
+   Overrides global h1 (46 px / 600 / #1C1C1C). */
 .contact-heading {
-  color: var(--textHeadings);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--brandSlate);
+  letter-spacing: -0.05%;
 }
 
 /* Figma "contact page textbox elements" starts 130 px below the top
@@ -132,8 +136,12 @@
 
 .contact-submit-button {
   align-self: flex-end;
-  width: 180px;
+  /* Figma standard button: 153 × 58 px with padding 16px 20px.
+     width: fit-content (global default) + explicit padding prevents text wrapping. */
+  width: fit-content;
   height: 58px;
+  padding: 16px 20px;
+  white-space: nowrap;
   background-color: transparent;
   border: 1px solid var(--brandGold);
   color: var(--brandGold);
