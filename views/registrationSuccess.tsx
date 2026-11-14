@@ -9,7 +9,7 @@ export function RegistrationSuccess() {
       <section className="hero-page-body">
         <div className="store-hero-bg">
           <div className="store-hero-text">
-            <h6 className="gold">account Registration</h6>
+            <h6 className="gold">ACCOUNT REGISTRATION</h6>
             <div className="display">Welcome to MicroMarket Exchange</div>
             <div className="p2">
               List your overstock and bid on auctions from our verified sellers.
@@ -23,11 +23,13 @@ export function RegistrationSuccess() {
 
           {/* Verification notice */}
           <div className="reg-success-notice">
-            <p className="reg-success-notice-text">
-              All trading accounts require verification before activation. Our team will review
-              your documentation and approve or follow up within 2 business days. Third-party
-              memberships are approved automatically upon email confirmation.
-            </p>
+            <ul className="reg-success-notice-list">
+              <li className="reg-success-notice-text">
+                All trading accounts require verification before activation. Our team will review
+                your documentation and approve or follow up within 2 business days. Third-party
+                memberships are approved automatically upon email confirmation.
+              </li>
+            </ul>
           </div>
 
           {/* CTA */}
@@ -40,7 +42,7 @@ export function RegistrationSuccess() {
                   through products currently up for auction in our marketplace.
                 </p>
               </div>
-              <a href="/marketplace" className="reg-success-btn">View Marketplace</a>
+              <a href="/marketplace" className="reg-success-btn">View Store</a>
             </div>
           </div>
 
