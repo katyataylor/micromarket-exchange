@@ -19,10 +19,10 @@ export function RegistrationSuccessObserver() {
       </section>
 
       <div className="page-body">
-        <section className="w-bubble-container reg-success-section">
+        <section className="reg-success-section">
 
           {/* Verification notice */}
-          <div className="reg-success-notice">
+          <div className="disclosure-container reg-success-notice">
             <ul className="reg-success-notice-list">
               <li className="reg-success-notice-text">
                 All trading accounts require verification before activation. Our team will review

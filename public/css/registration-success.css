@@ -26,11 +26,9 @@
    ========================================== */
 
 .reg-success-notice {
-  background-color: rgba(155, 184, 191, 0.5);
-  border: 1px solid #9bb8bf;
-  border-radius: 20px;
+  /* border-radius: 20px;
   padding: 20px 20px 20px 20px;
-  width: 100%;
+  width: 100%; */
 }
 
 /* Bullet list inside the notice box */
