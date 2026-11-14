@@ -23939,18 +23939,24 @@
     {
       title: "Account Details",
       description: "Edit name, business information, address, email & phone number."
+    },
+    {
+      title: "My Bids",
+      description: "Track active bids and bid history. View outcomes and manage ongoing auction offers."
     }
   ];
   function Account() {
     return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-page", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "store-hero-bg account-hero", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "store-hero-text account-hero-text", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-eyebrow", children: "my account" }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h2", { className: "account-hero-heading", children: "Welcome to MicroMarket Exchange" }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-hero-subtitle", children: "List your overstock and bid on auctions with verified sellers. Select an option below to continue." })
+        ] }) }) }),
         /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-outer", children: [
           /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-inner", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-header", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-eyebrow", children: "My Account" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-subtitle", children: "Access your account details, track your sales and orders, communicate with sellers and reach out to us with any issue. MicroMarket Exchange is committed to making this platform a useful tool for business owners." })
-            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-subtitle", children: "Access your account details, track your sales and orders, communicate with sellers and reach out to us with any issue. MicroMarket Exchange is committed to making this platform a useful tool for business owners." }),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "account-grid", children: accountCards.map((card) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "account-card", children: [
               /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-card-title", children: card.title }),
               /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "account-card-desc", children: card.description })
@@ -26034,11 +26040,68 @@
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "save-submit-container", children: [
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "list-button save-button", children: "Save Draft" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "list-button submit-button", children: "Submit" })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+              "button",
+              {
+                className: "list-button submit-button",
+                onClick: () => {
+                  window.location.href = isTrade ? "/registration/success" : "/registration/success-observer";
+                },
+                children: "Submit"
+              }
+            )
           ] })
         ] }) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Footer, {})
+    ] });
+  }
+
+  // views/registrationSuccess.tsx
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
+  function RegistrationSuccess() {
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "store-hero-text", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h6", { className: "gold", children: "account Registration" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "display", children: "Welcome to MicroMarket Exchange" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p2", children: "List your overstock and bid on auctions from our verified sellers." })
+      ] }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "page-body", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "w-bubble-container reg-success-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "reg-success-notice", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "reg-success-notice-text", children: "All trading accounts require verification before activation. Our team will review your documentation and approve or follow up within 2 business days. Third-party memberships are approved automatically upon email confirmation." }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "reg-success-cta-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "reg-success-cta", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "reg-success-cta-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "reg-success-cta-title", children: "View Marketplace" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "reg-success-cta-body", children: "While your trading account is reviewed by our team we welcome you to browse through products currently up for auction in our marketplace." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("a", { href: "/marketplace", className: "reg-success-btn", children: "View Marketplace" })
+        ] }) })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Footer, {})
+    ] });
+  }
+
+  // views/registrationSuccessObserver.tsx
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  function RegistrationSuccessObserver() {
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Header, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { className: "hero-page-body", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "store-hero-bg", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "store-hero-text", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h6", { className: "gold", children: "account Registration" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "display", children: "Welcome to MicroMarket Exchange" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "p2", children: "Browse our exclusive marketplace. See listings and auctions from our verified sellers." })
+      ] }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "page-body", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("section", { className: "w-bubble-container reg-success-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "reg-success-notice", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "reg-success-notice-text", children: "All trading accounts require verification before activation. Our team will review your documentation and approve or follow up within 2 business days. Third-party memberships are approved automatically upon email confirmation." }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "reg-success-cta-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "reg-success-cta", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "reg-success-cta-text", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "reg-success-cta-title", children: "View Marketplace" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "reg-success-cta-body", children: "Browse current stock and auctions in our marketplace." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "/marketplace", className: "reg-success-btn", children: "View Marketplace" })
+        ] }) })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Footer, {})
     ] });
   }
 
@@ -26051,6 +26114,8 @@
     account: Account,
     cart: Cart,
     registration: Registration,
+    registrationSuccess: RegistrationSuccess,
+    registrationSuccessObserver: RegistrationSuccessObserver,
     contact: ContactPage,
     infopage: InfoPage
   };
