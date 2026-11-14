@@ -35,8 +35,8 @@ const accountCards = [
     description: 'Edit name, business information, address, email & phone number.',
   },
   {
-    title: 'My Bids',
-    description: 'Track active bids and bid history. View outcomes and manage ongoing auction offers.',
+    title: 'Account Support',
+    description: 'Edit name, business information, address, email & phone number.',
   },
 ] as const;
 
@@ -73,8 +73,8 @@ export function Account() {
 
             {/* Navigation card grid */}
             <div className="account-grid">
-              {accountCards.map((card) => (
-                <div className="account-card" key={card.title}>
+              {accountCards.map((card, i) => (
+                <div className="account-card" key={i}>
                   <p className="account-card-title">{card.title}</p>
                   <p className="account-card-desc">{card.description}</p>
                 </div>
