@@ -671,7 +671,7 @@ img.card-img-icon {
   display: flex;
   width: 100%;
   justify-content: center;
-  background-image: linear-gradient(#2D3748,#6D85AE);
+  background: linear-gradient(135deg, #6D85AE, #2D3748);
   color: var(--textWhite);
   padding: 96px 0;
 }

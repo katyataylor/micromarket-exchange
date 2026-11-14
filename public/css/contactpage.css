@@ -13,6 +13,7 @@
    (1440 × 612, top border line, 50 px top padding). */
 .contact-container {
   width: 100%;
+  height: 100%;
   background-color: var(--textWhite);
   border-top: 1px solid rgba(45, 55, 72, 0.15);
   padding: 50px 0 80px;
@@ -33,7 +34,7 @@
   font-family: var(--fh); /* Onest */
   font-weight: 400;
   line-height: 64px;
-  color: var(--brandSlate);
+  color: var(--brandLightSlate);
 }
 
 /* Figma "contact page textbox elements" starts 130 px below the top
@@ -135,7 +136,7 @@
    ========================================== */
 
 .contact-submit-button {
-  align-self: flex-end;
+  align-self: center;
   /* Figma standard button: 153 × 58 px with padding 16px 20px.
      width: fit-content (global default) + explicit padding prevents text wrapping. */
   width: fit-content;
