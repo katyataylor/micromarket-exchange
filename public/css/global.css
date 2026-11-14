@@ -68,6 +68,10 @@
   padding: 0;
 }
 
+a {
+  color: var(--textBody);
+}
+
 button,
 input,
 textarea,
@@ -740,6 +744,7 @@ img.card-img-icon {
   font-family: var(--fh);
   font-size: 20px;
   font-weight: 700;
+  text-decoration: none;
   border-radius: var(--radius);
   cursor: pointer;
   margin-left: auto; /* Pushes the button to the far right side */
@@ -1178,17 +1183,24 @@ img.card-img-icon {
 }
 
 .list-button {
-  width: 157px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 54px;
+  justify-content: center;
   height: 58px;
-  align-self: center;
-  background-color: transparent;
+  padding: 16px 20px;
   border: 1px solid var(--brandGold);
-  color: var(--brandGold);
   border-radius: var(--radius);
+  background: transparent;
   font-family: var(--fh);
-  font-weight: 600;
   font-size: 20px;
+  font-weight: 700;
+  color: var(--brandGold);
+  text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
 }
 
 .list-button:hover {
