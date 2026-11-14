@@ -23909,15 +23909,15 @@
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
   var accountCards = [
     {
-      title: "My Listings",
-      description: "View approval status, re-list and manage your listed products."
+      title: "My Cart",
+      description: "Manage bids and view auction status. View items in cart."
     },
     {
-      title: "Account Support",
-      description: "Troubleshoot account-related issues. Get customer support."
+      title: "Watchlist",
+      description: "View items added to watchlist, see current auction status."
     },
     {
-      title: "My Messages",
+      title: "Messages",
       description: "View, respond to messages from sellers, buyers & MicroMarket."
     },
     {
@@ -23925,20 +23925,20 @@
       description: "Track, return, or cancel orders. Invoices, documents & receipts."
     },
     {
-      title: "Login & Passwords",
-      description: "Account security details \u2014 view, or change your login information."
-    },
-    {
       title: "Manage Transactions",
       description: "View transactions, manage payment methods & settings."
     },
     {
-      title: "My Subscription",
-      description: "Current plan information. Change or cancel your current plan."
-    },
-    {
       title: "Account Details",
       description: "Edit name, business information, address, email & phone number."
+    },
+    {
+      title: "My Listings",
+      description: "View approval status, re-list and manage your listed products."
+    },
+    {
+      title: "Manage Subscription",
+      description: "Current plan information. Change or cancel your current plan."
     },
     {
       title: "Account Support",
