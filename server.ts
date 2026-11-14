@@ -97,6 +97,14 @@ app.get('/registration', (_req, res) => {
   res.send(renderDocument('registration', {}));
 });
 
+app.get('/registration/success', (_req, res) => {
+  res.send(renderDocument('registrationSuccess', {}));
+});
+
+app.get('/registration/success-observer', (_req, res) => {
+  res.send(renderDocument('registrationSuccessObserver', {}));
+});
+
 app.get('/contact', (_req, res) => {
   res.send(renderDocument('contact', {}));
 });

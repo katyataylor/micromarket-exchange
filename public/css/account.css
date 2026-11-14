@@ -15,6 +15,53 @@
   flex-direction: column;
 }
 
+/* ==========================================
+   HERO HEADER
+   Gradient bg (inherits .store-hero-bg).
+   Figma: eyebrow + h2 + subtitle.
+   ========================================== */
+
+.account-hero {
+  padding: 96px 0;
+}
+
+.account-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Eyebrow — Red Hat Text 20px, gold, uppercase */
+.account-eyebrow {
+  font-family: var(--fb);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--brandGold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+/* Large welcome heading — Onest SemiBold ~48px, white */
+.account-hero-heading {
+  font-family: var(--fh);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--textWhite);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Hero subtitle — Red Hat Text Regular 26px, white */
+.account-hero-subtitle {
+  font-family: var(--fb);
+  font-size: 26px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  max-width: 820px;
+}
+
 /* ── Top content wrapper ──────────────────── */
 
 .account-outer {
@@ -35,28 +82,11 @@
 }
 
 /* ==========================================
-   HEADER TEXT
-   Figma: eyebrow 20px gold, subtitle 26px
+   DESCRIPTION TEXT (below hero)
+   Figma: 26px, body dark
    ========================================== */
 
-.account-header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Eyebrow — Red Hat Text Bold 20px, gold eyebrow, uppercase */
-.account-eyebrow {
-  font-family: var(--fb);
-  font-size: 20px;
-  font-weight: 700;
-  color: rgba(240, 193, 66, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 0.018px;
-  line-height: 1;
-}
-
-/* Subtitle — Red Hat Text Regular 26px, body dark */
+/* Description text — Red Hat Text Regular 26px, body dark */
 .account-subtitle {
   font-family: var(--fb);
   font-size: 26px;

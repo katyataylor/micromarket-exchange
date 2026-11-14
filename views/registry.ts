@@ -8,6 +8,8 @@ import { ListProduct } from './listProduct';
 import { Marketplace } from './marketplace';
 import { ProductPage } from './product-page';
 import { Registration } from './registration';
+import { RegistrationSuccess } from './registrationSuccess';
+import { RegistrationSuccessObserver } from './registrationSuccessObserver';
 import type { PageName, PagePropsMap } from './types';
 
 export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
@@ -18,6 +20,8 @@ export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
   account: Account,
   cart: Cart,
   registration: Registration,
+  registrationSuccess: RegistrationSuccess,
+  registrationSuccessObserver: RegistrationSuccessObserver,
   contact: ContactPage,
   infopage: InfoPage,
 };
@@ -30,6 +34,8 @@ export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   account: { title: 'My Account — MicroMarket Exchange', styles: ['/css/account.css'] },
   cart: { title: 'Cart & Watchlist — MicroMarket Exchange', styles: ['/css/cart.css'] },
   registration: { title: 'Sign Up', styles: ['/css/registration.css'] },
+  registrationSuccess: { title: 'Registration Submitted — MicroMarket Exchange', styles: ['/css/registration.css', '/css/registration-success.css'] },
+  registrationSuccessObserver: { title: 'Account Created — MicroMarket Exchange', styles: ['/css/registration.css', '/css/registration-success.css'] },
   contact: { title: 'Contact Us — MicroMarket Exchange', styles: ['/css/contactpage.css'] },
   infopage: { title: 'Sign Up', styles: [] },
 };

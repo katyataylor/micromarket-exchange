@@ -27,6 +27,8 @@ export type PageName =
   | 'account'
   | 'cart'
   | 'registration'
+  | 'registrationSuccess'
+  | 'registrationSuccessObserver'
   | 'contact'
   | 'infopage';
 
@@ -39,6 +41,8 @@ export type PagePropsMap = {
   account: Record<string, never>;
   cart: Record<string, never>;
   registration: Record<string, never>;
+  registrationSuccess: Record<string, never>;
+  registrationSuccessObserver: Record<string, never>;
   contact: Record<string, never>;
   infopage: Record<string, never>;
 };

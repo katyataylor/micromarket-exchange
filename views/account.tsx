@@ -34,6 +34,10 @@ const accountCards = [
     title: 'Account Details',
     description: 'Edit name, business information, address, email & phone number.',
   },
+  {
+    title: 'My Bids',
+    description: 'Track active bids and bid history. View outcomes and manage ongoing auction offers.',
+  },
 ] as const;
 
 export function Account() {
@@ -43,19 +47,29 @@ export function Account() {
 
       <div className="account-page">
 
+        {/* ── Hero header ──────────────────────────── */}
+        <section className="hero-page-body">
+          <div className="store-hero-bg account-hero">
+            <div className="store-hero-text account-hero-text">
+              <p className="account-eyebrow">my account</p>
+              <h2 className="account-hero-heading">Welcome to MicroMarket Exchange</h2>
+              <p className="account-hero-subtitle">
+                List your overstock and bid on auctions with verified sellers. Select an option below to continue.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* ── Main content ─────────────────────────── */}
         <div className="account-outer">
           <div className="account-inner">
 
-            {/* Header text */}
-            <div className="account-header">
-              <p className="account-eyebrow">My Account</p>
-              <p className="account-subtitle">
-                Access your account details, track your sales and orders, communicate with sellers
-                and reach out to us with any issue. MicroMarket Exchange is committed to making
-                this platform a useful tool for business owners.
-              </p>
-            </div>
+            {/* Description */}
+            <p className="account-subtitle">
+              Access your account details, track your sales and orders, communicate with sellers
+              and reach out to us with any issue. MicroMarket Exchange is committed to making
+              this platform a useful tool for business owners.
+            </p>
 
             {/* Navigation card grid */}
             <div className="account-grid">
