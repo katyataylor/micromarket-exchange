@@ -308,9 +308,8 @@ export function Registration() {
             )}
             </div>
             <div className="save-submit-container">
-              <button className="list-button save-button">Save Draft</button>
               <button
-                className="list-button submit-button"
+                className="submit-button"
                 onClick={() => {
                   window.location.href = isTrade
                     ? '/registration/success'

@@ -224,4 +224,21 @@
    .submit-button {
     display: flex;
     flex-direction: row;
+    align-self: flex-start;
+    padding: 16px 20px;
+    background-color: transparent;
+    color: var(--brandGold);
+    border: 1px;
+    border-color: var(--brandGold);
+    border-style: solid;
+    font-family: var(--fh);
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+   }
+
+   .submit-button:hover {
+    background-color: var(--brandGold);
+    color: var(--textWhite);
    }

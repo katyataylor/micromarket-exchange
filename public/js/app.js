@@ -26038,19 +26038,16 @@
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", children: "Create your account" }),
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p2", style: { color: "var(--textMutedCaptions)" }, children: "Third party accounts are created instantly upon email verification." })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "save-submit-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "list-button save-button", children: "Save Draft" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-              "button",
-              {
-                className: "list-button submit-button",
-                onClick: () => {
-                  window.location.href = isTrade ? "/registration/success" : "/registration/success-observer";
-                },
-                children: "Submit"
-              }
-            )
-          ] })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "save-submit-container", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+            "button",
+            {
+              className: "submit-button",
+              onClick: () => {
+                window.location.href = isTrade ? "/registration/success" : "/registration/success-observer";
+              },
+              children: "Submit"
+            }
+          ) })
         ] }) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Footer, {})
