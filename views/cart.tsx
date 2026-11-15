@@ -33,6 +33,23 @@ function getListing(id: number): Listing | undefined {
   return mockListings.find((l) => l.id === id);
 }
 
+function resolveTargetCartSection(): 'cart' | 'watchlist' | null {
+  const hash = window.location.hash.replace(/^#/, '').toLowerCase();
+  if (hash === 'watchlist' || hash === 'watch-list') return 'watchlist';
+  if (hash === 'cart' || hash === 'your-cart' || hash === 'cartentry') return 'cart';
+  const sectionParam = new URLSearchParams(window.location.search).get('section')?.toLowerCase();
+  if (sectionParam === 'watchlist') return 'watchlist';
+  if (sectionParam === 'cart') return 'cart';
+  return null;
+}
+
+function scrollToCartSection(section: 'cart' | 'watchlist', behavior: ScrollBehavior) {
+  const target = document.getElementById(section);
+  if (target) {
+    target.scrollIntoView({ behavior, block: 'start' });
+  }
+}
+
 // ── Seed data shown when localStorage is empty ────────────────────────────────
 
 const SEED_CART: CartEntry[] = [
@@ -210,6 +227,36 @@ export function Cart() {
     setWatchlistItems(watchlist);
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const initialTarget = resolveTargetCartSection();
+    if (initialTarget) {
+      requestAnimationFrame(() => {
+        scrollToCartSection(initialTarget, 'auto');
+      });
+    }
+
+    const onHashChange = () => {
+      const target = resolveTargetCartSection();
+      if (target) scrollToCartSection(target, 'smooth');
+    };
+
+    const onCartNavigate = (event: Event) => {
+      const section = (event as CustomEvent<{ section?: 'cart' | 'watchlist' }>).detail?.section;
+      if (section === 'cart' || section === 'watchlist') {
+        scrollToCartSection(section, 'smooth');
+      }
+    };
+
+    window.addEventListener('hashchange', onHashChange);
+    window.addEventListener('mme:cart-navigate', onCartNavigate);
+    return () => {
+      window.removeEventListener('hashchange', onHashChange);
+      window.removeEventListener('mme:cart-navigate', onCartNavigate);
+    };
+  }, [mounted]);
 
   // ── Sold-item event listener ──────────────────────────────────────────────────
   // The app (or any external system) can fire:
@@ -401,7 +448,7 @@ export function Cart() {
       <div className="cart-page">
 
         {/* ══ YOUR CART ══════════════════════════════════════════════════════════ */}
-        <div className="cart-section">
+        <div id="cart" className="cart-section">
           <div className="cart-section-header">
             <div className="cart-section-rule" />
             <div className="cart-section-header-content">
@@ -459,7 +506,7 @@ export function Cart() {
         </div>
 
         {/* ══ WATCHLIST ══════════════════════════════════════════════════════════ */}
-        <div className="cart-section">
+        <div id="watchlist" className="cart-section">
           <div className="cart-section-header">
             <div className="cart-section-rule" />
             <div className="cart-section-header-content">

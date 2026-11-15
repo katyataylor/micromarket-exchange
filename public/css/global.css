@@ -449,6 +449,102 @@ nav {
   font-weight: 500;
 }
 
+.nav-links li.nav-account-item {
+  position: relative;
+  padding: 0;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-account-trigger {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  height: auto;
+  width: fit-content;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: var(--line-base);
+  color: rgba(45, 55, 72, 0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-account-trigger:hover,
+.nav-account-trigger:focus-visible {
+  color: rgba(45, 55, 72, 0.85);
+}
+
+.nav-account-trigger:focus {
+  outline: none;
+}
+
+.nav-account-trigger:focus-visible {
+  outline: 2px solid var(--brandSlate);
+  outline-offset: 2px;
+}
+
+.nav-account-caret {
+  width: 13px;
+  height: 7px;
+  flex-shrink: 0;
+}
+
+.nav-account-bridge {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 226px;
+  height: 32px;
+  z-index: 1009;
+}
+
+.nav-account-menu {
+  position: absolute;
+  top: calc(100% + 30px);
+  left: 20px;
+  width: 206px;
+  min-height: 256px;
+  padding: 12px;
+  background-color: var(--textWhite);
+  border-radius: 0 20px 20px 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1010;
+}
+
+.nav-links a.nav-account-menu-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 58px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  color: rgba(45, 55, 72, 0.5);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.nav-links a.nav-account-menu-link:hover,
+.nav-links a.nav-account-menu-link:focus-visible {
+  color: var(--brandSlate);
+}
+
 .contact-button {
   background: transparent;
   border: 1px solid rgba(45, 55, 72, 0.8);
@@ -1501,6 +1597,30 @@ footer hr {
     font-size: 18px;
     padding: 10px 0;
     border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .nav-links li.nav-account-item {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .nav-account-trigger {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  .nav-account-bridge {
+    display: none;
+  }
+
+  .nav-account-menu {
+    position: static;
+    width: 100%;
+    min-height: auto;
+    margin-bottom: 10px;
   }
 
   .contact-button {
