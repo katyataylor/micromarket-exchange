@@ -23860,10 +23860,28 @@
   // views/partials/header.tsx
   var import_react = __toESM(require_react());
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
+  var ACCOUNT_MENU_ITEMS = [
+    { label: "My Cart", href: "/cart#cart", cartSection: "cart" },
+    { label: "Watchlist", href: "/cart#watchlist", cartSection: "watchlist" },
+    { label: "Account Tools", href: "/account" },
+    { label: "List a product", href: "/list-product" }
+  ];
   function Header() {
     const [open, setOpen] = (0, import_react.useState)(false);
+    const [accountMenuOpen, setAccountMenuOpen] = (0, import_react.useState)(false);
     const navRef = (0, import_react.useRef)(null);
     const toggleRef = (0, import_react.useRef)(null);
+    const enteredDropdownRef = (0, import_react.useRef)(false);
+    const closeAccountMenu = () => {
+      enteredDropdownRef.current = false;
+      setAccountMenuOpen(false);
+    };
+    const toggleAccountMenu = () => {
+      setAccountMenuOpen((prev) => {
+        enteredDropdownRef.current = false;
+        return !prev;
+      });
+    };
     (0, import_react.useEffect)(() => {
       const onClick = (event) => {
         const target = event.target;
@@ -23871,9 +23889,29 @@
         const isClickInside = navRef.current.contains(target) || toggleRef.current.contains(target);
         if (!isClickInside) setOpen(false);
       };
+      const onKeyDown = (event) => {
+        if (event.key === "Escape") {
+          closeAccountMenu();
+        }
+      };
       document.addEventListener("click", onClick);
-      return () => document.removeEventListener("click", onClick);
+      document.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.removeEventListener("click", onClick);
+        document.removeEventListener("keydown", onKeyDown);
+      };
     }, []);
+    const handleMenuItemClick = (event, item) => {
+      closeAccountMenu();
+      setOpen(false);
+      if ("cartSection" in item && item.cartSection && window.location.pathname === "/cart") {
+        event.preventDefault();
+        window.history.pushState(null, "", item.href);
+        window.dispatchEvent(
+          new CustomEvent("mme:cart-navigate", { detail: { section: item.cartSection } })
+        );
+      }
+    };
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "nav-content", children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/homepage", className: "logo-link", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("img", { src: "/images/small-mme-logo.png", alt: "Small yellow MicroMarket logo." }) }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
@@ -23895,7 +23933,73 @@
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "nav-links", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("ul", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/marketplace", children: "Buy" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/infopage", children: "Sell" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/account", children: "My Account" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            "li",
+            {
+              className: `nav-account-item${accountMenuOpen ? " is-open" : ""}`,
+              onMouseLeave: closeAccountMenu,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+                  "button",
+                  {
+                    type: "button",
+                    className: "nav-account-trigger",
+                    "aria-haspopup": "menu",
+                    "aria-expanded": accountMenuOpen,
+                    onClick: toggleAccountMenu,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "My Account" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                        "svg",
+                        {
+                          className: "nav-account-caret",
+                          width: "14",
+                          height: "8",
+                          viewBox: "0 0 14 8",
+                          fill: "none",
+                          "aria-hidden": "true",
+                          children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                            "path",
+                            {
+                              d: "M0.75 0.75L6.8 6.75L13.25 0.75",
+                              stroke: "currentColor",
+                              strokeWidth: "1.5"
+                            }
+                          )
+                        }
+                      )
+                    ]
+                  }
+                ),
+                accountMenuOpen && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "nav-account-bridge", "aria-hidden": "true" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                    "div",
+                    {
+                      className: "nav-account-menu",
+                      role: "menu",
+                      "aria-label": "My Account",
+                      onMouseEnter: () => {
+                        enteredDropdownRef.current = true;
+                      },
+                      onMouseLeave: closeAccountMenu,
+                      children: ACCOUNT_MENU_ITEMS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                        "a",
+                        {
+                          href: item.href,
+                          role: "menuitem",
+                          className: "nav-account-menu-link",
+                          onClick: (event) => handleMenuItemClick(event, item),
+                          children: item.label
+                        },
+                        item.label
+                      ))
+                    }
+                  )
+                ] })
+              ]
+            }
+          ),
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href: "/registration", children: "Sign Up/Login" }) })
         ] }) }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("button", { className: "contact-button", onClick: () => {
@@ -24177,6 +24281,21 @@
   function getListing(id) {
     return mockListings.find((l) => l.id === id);
   }
+  function resolveTargetCartSection() {
+    const hash = window.location.hash.replace(/^#/, "").toLowerCase();
+    if (hash === "watchlist" || hash === "watch-list") return "watchlist";
+    if (hash === "cart" || hash === "your-cart" || hash === "cartentry") return "cart";
+    const sectionParam = new URLSearchParams(window.location.search).get("section")?.toLowerCase();
+    if (sectionParam === "watchlist") return "watchlist";
+    if (sectionParam === "cart") return "cart";
+    return null;
+  }
+  function scrollToCartSection(section, behavior) {
+    const target = document.getElementById(section);
+    if (target) {
+      target.scrollIntoView({ behavior, block: "start" });
+    }
+  }
   var SEED_CART = [
     { listingId: 1, qty: 1 },
     { listingId: 2, qty: 2 }
@@ -24326,6 +24445,31 @@
       setMounted(true);
     }, []);
     (0, import_react2.useEffect)(() => {
+      if (!mounted) return;
+      const initialTarget = resolveTargetCartSection();
+      if (initialTarget) {
+        requestAnimationFrame(() => {
+          scrollToCartSection(initialTarget, "auto");
+        });
+      }
+      const onHashChange = () => {
+        const target = resolveTargetCartSection();
+        if (target) scrollToCartSection(target, "smooth");
+      };
+      const onCartNavigate = (event) => {
+        const section = event.detail?.section;
+        if (section === "cart" || section === "watchlist") {
+          scrollToCartSection(section, "smooth");
+        }
+      };
+      window.addEventListener("hashchange", onHashChange);
+      window.addEventListener("mme:cart-navigate", onCartNavigate);
+      return () => {
+        window.removeEventListener("hashchange", onHashChange);
+        window.removeEventListener("mme:cart-navigate", onCartNavigate);
+      };
+    }, [mounted]);
+    (0, import_react2.useEffect)(() => {
       function handleListingSold(e) {
         const { listingId } = e.detail;
         setWatchlistItems((prev) => {
@@ -24464,7 +24608,7 @@
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Header, {}),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-page", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { id: "cart", className: "cart-section", children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-rule" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header-content", children: [
@@ -24518,7 +24662,7 @@
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { id: "watchlist", className: "cart-section", children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "cart-section-rule" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "cart-section-header-content", children: [

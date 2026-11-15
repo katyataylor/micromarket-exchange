@@ -1,10 +1,31 @@
 // Header
-import { useEffect, useRef, useState } from 'react';
+import { type MouseEvent as ReactMouseEvent, useEffect, useRef, useState } from 'react';
+
+const ACCOUNT_MENU_ITEMS = [
+  { label: 'My Cart', href: '/cart#cart', cartSection: 'cart' as const },
+  { label: 'Watchlist', href: '/cart#watchlist', cartSection: 'watchlist' as const },
+  { label: 'Account Tools', href: '/account' },
+  { label: 'List a product', href: '/list-product' },
+] as const;
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const enteredDropdownRef = useRef(false);
+
+  const closeAccountMenu = () => {
+    enteredDropdownRef.current = false;
+    setAccountMenuOpen(false);
+  };
+
+  const toggleAccountMenu = () => {
+    setAccountMenuOpen((prev) => {
+      enteredDropdownRef.current = false;
+      return !prev;
+    });
+  };
 
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
@@ -14,9 +35,35 @@ export function Header() {
       if (!isClickInside) setOpen(false);
     };
 
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeAccountMenu();
+      }
+    };
+
     document.addEventListener('click', onClick);
-    return () => document.removeEventListener('click', onClick);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('click', onClick);
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, []);
+
+  const handleMenuItemClick = (
+    event: ReactMouseEvent<HTMLAnchorElement>,
+    item: (typeof ACCOUNT_MENU_ITEMS)[number],
+  ) => {
+    closeAccountMenu();
+    setOpen(false);
+
+    if ('cartSection' in item && item.cartSection && window.location.pathname === '/cart') {
+      event.preventDefault();
+      window.history.pushState(null, '', item.href);
+      window.dispatchEvent(
+        new CustomEvent('mme:cart-navigate', { detail: { section: item.cartSection } }),
+      );
+    }
+  };
   
   return (
     <nav>
@@ -42,7 +89,60 @@ export function Header() {
             <ul>
               <li><a href="/marketplace">Buy</a></li>
               <li><a href="/infopage">Sell</a></li>
-              <li><a href="/account">My Account</a></li>
+              <li
+                className={`nav-account-item${accountMenuOpen ? ' is-open' : ''}`}
+                onMouseLeave={closeAccountMenu}
+              >
+                <button
+                  type="button"
+                  className="nav-account-trigger"
+                  aria-haspopup="menu"
+                  aria-expanded={accountMenuOpen}
+                  onClick={toggleAccountMenu}
+                >
+                  <span>My Account</span>
+                  <svg
+                    className="nav-account-caret"
+                    width="14"
+                    height="8"
+                    viewBox="0 0 14 8"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M0.75 0.75L6.8 6.75L13.25 0.75"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                </button>
+                {accountMenuOpen && (
+                  <>
+                    <div className="nav-account-bridge" aria-hidden="true" />
+                    <div
+                      className="nav-account-menu"
+                      role="menu"
+                      aria-label="My Account"
+                      onMouseEnter={() => {
+                        enteredDropdownRef.current = true;
+                      }}
+                      onMouseLeave={closeAccountMenu}
+                    >
+                      {ACCOUNT_MENU_ITEMS.map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          role="menuitem"
+                          className="nav-account-menu-link"
+                          onClick={(event) => handleMenuItemClick(event, item)}
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </li>
               <li><a href="/registration">Sign Up/Login</a></li>
             </ul>
           </div>
