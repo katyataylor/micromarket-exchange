@@ -26,6 +26,7 @@
   --brandLightSand: #FDF6DC;
   --brandGold: #F0C142;
   --surfacePg: #F4F3F0;
+  --surfacePage: #F4F3F0;
 
   --textLeadIntro: #555;
   --textEyebrowGold: #F0C142;
@@ -374,7 +375,7 @@ button {
   align-items: center;
   flex-direction: column;
   padding: 48px 20px;
-  background-color: var(--surfacePg);
+  background-color: var(--surfacePage);
   gap: 32px;
 }
 
@@ -775,6 +776,11 @@ img.card-img-icon {
 /* ==========================================
     MARKETPLACE HERO SECTION
    ========================================== */
+
+.hero-page-body {
+  display: flex;
+  width: 100%;
+}
 
 .store-hero-bg {
   display: flex;

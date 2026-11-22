@@ -84,15 +84,33 @@ const SEED_WATCHLIST: WatchlistEntry[] = [
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-function ColumnHeaders() {
+function CartHero() {
   return (
-    <div className="cart-col-headers">
+    <section className="hero-page-body">
+      <div className="store-hero-bg">
+        <div className="store-hero-text">
+          <h6 className="gold">cart &amp; watchlist</h6>
+          <div className="display">Cart &amp; Watchlist</div>
+          <div className="p2">
+            Review selected microingredient lots, track watched listings, and submit
+            verified B2B order requests.
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ColumnHeaders({ hasMoveAction = false }: { hasMoveAction?: boolean }) {
+  return (
+    <div className={`cart-col-headers${hasMoveAction ? ' cart-col-headers--watchlist' : ''}`}>
       <div className="cart-col-headers-spacer" />
       <div className="cart-col-headers-inner">
         <span className="cart-col-h-product">product</span>
         <div className="cart-col-h-qty-total">
           <span className="cart-col-h-qty">quantity</span>
           <span className="cart-col-h-total">total</span>
+          <span className="cart-col-h-actions-spacer" aria-hidden="true" />
         </div>
       </div>
     </div>
@@ -184,7 +202,7 @@ function ProductRow({
               ${rowTotal.toFixed(2)}
             </span>
 
-            <div className="cart-row-actions">
+            <div className={`cart-row-actions${onMoveToCart ? ' cart-row-actions--watchlist' : ''}`}>
               {onMoveToCart && (
                 <button
                   type="button"
@@ -318,11 +336,6 @@ export function Cart() {
   }, [checkoutOpen]);
 
   // ── Sold-item event listener ──────────────────────────────────────────────────
-  // The app (or any external system) can fire:
-  //   window.dispatchEvent(new CustomEvent('mme:listing-sold', { detail: { listingId: N } }))
-  // The cart page listens and immediately marks the matching item in both
-  // cart and watchlist as sold, disabling the move-to-cart button and showing
-  // a "Sold" badge.
   useEffect(() => {
     function handleListingSold(e: Event) {
       const detail = (e as CustomEvent<{ listingId?: number }>).detail;
@@ -611,12 +624,13 @@ export function Cart() {
 
   // ── Render ────────────────────────────────────────────────────────────────────
 
-  // Before hydration the page renders empty to match the server HTML exactly.
+  // Before hydration the page renders matching shell elements to match SSR HTML cleanly.
   if (!mounted) {
     return (
       <>
         <Header />
-        <div className="cart-page" style={{ minHeight: '60vh' }} />
+        <CartHero />
+        <main className="page-body cart-page" style={{ minHeight: '60vh' }} />
         <Footer />
       </>
     );
@@ -625,171 +639,183 @@ export function Cart() {
   return (
     <>
       <Header />
-      <div className="cart-page">
+      <CartHero />
+
+      <main className="page-body cart-page">
 
         {/* ══ YOUR CART ══════════════════════════════════════════════════════════ */}
-        <div id="cart" className="cart-section">
-          <div className="cart-section-header">
-            <div className="cart-section-rule" />
-            <div className="cart-section-header-content">
-              <div className="cart-section-title-row">
-                <p className="cart-section-title">Your Cart</p>
-                <a href="/marketplace" className="cart-continue-link">Continue shopping</a>
+        <section id="cart" className="w-bubble-container cart-section">
+          <div className="cart-bubble-inner">
+            <div className="cart-header-row">
+              <div>
+                <h3>Your Cart</h3>
+                <p className="subp1">
+                  Select available lots to submit a verified B2B order request.
+                </p>
               </div>
-              {recentOrderBanner && (
-                <div className="cart-order-banner" role="status">
-                  <div className="cart-order-banner-text">
-                    <strong>Order request {recentOrderBanner.orderId} submitted.</strong>{' '}
-                    Confirmation sent to {recentOrderBanner.contactEmail} (${recentOrderBanner.total.toFixed(2)} USD).{' '}
-                    <a href="/account#orders">View in My Orders →</a>
-                  </div>
-                  <button
-                    type="button"
-                    className="cart-order-banner-dismiss"
-                    onClick={() => setRecentOrderBanner(null)}
-                    aria-label="Dismiss order confirmation"
-                  >
-                    ✕
-                  </button>
+              <a href="/marketplace" className="cart-continue-link">Continue shopping</a>
+            </div>
+
+            <hr className="cart-header-divider" />
+
+            {recentOrderBanner && (
+              <div className="cart-order-banner" role="status">
+                <div className="cart-order-banner-text">
+                  <strong>Order request {recentOrderBanner.orderId} submitted.</strong>{' '}
+                  Confirmation sent to {recentOrderBanner.contactEmail} (${recentOrderBanner.total.toFixed(2)} USD).{' '}
+                  <a href="/account#orders">View in My Orders →</a>
                 </div>
-              )}
-              <ColumnHeaders />
-            </div>
-          </div>
-
-          {cartItems.length === 0 ? (
-            <div className="cart-empty">
-              <p>
-                Your cart is empty.{' '}
-                <a href="/marketplace">Browse listings →</a>
-              </p>
-            </div>
-          ) : (
-            cartItems.map((item) => {
-              const listing = getListing(item.listingId);
-              if (!listing) return null;
-              return (
-                <ProductRow
-                  key={item.listingId}
-                  entry={item}
-                  listing={listing}
-                  checked={checkedCart.has(item.listingId)}
-                  onCheckChange={() => toggleCartCheck(item.listingId)}
-                  onIncrement={() => updateCartQty(item.listingId, 1)}
-                  onDecrement={() => updateCartQty(item.listingId, -1)}
-                  onRemove={() => removeFromCart(item.listingId)}
-                />
-              );
-            })
-          )}
-
-          <div className="cart-section-footer">
-            <div className="cart-section-footer-rule" />
-            <div className="cart-section-totals">
-              <div className="cart-estimated-total">
-                <span className="cart-estimated-label">
-                  {checkedCart.size > 0
-                    ? `Selected total (${itemsToCheckout.length})`
-                    : 'Estimated total'}
-                </span>
-                <span className="cart-estimated-value">
-                  ${(checkedCart.size > 0 ? checkoutTotal : cartTotal).toFixed(2)} USD
-                </span>
+                <button
+                  type="button"
+                  className="cart-order-banner-dismiss"
+                  onClick={() => setRecentOrderBanner(null)}
+                  aria-label="Dismiss order confirmation"
+                >
+                  ✕
+                </button>
               </div>
-              <p className="cart-taxes-note">
-                Taxes, discounts and shipping calculated at checkout.
-              </p>
-              <button
-                type="button"
-                className="cart-action-btn"
-                onClick={openCheckoutModal}
-                disabled={itemsToCheckout.length === 0}
-              >
-                Checkout
-              </button>
+            )}
+
+            {cartItems.length > 0 && <ColumnHeaders />}
+
+            {cartItems.length === 0 ? (
+              <div className="cart-empty">
+                <p>
+                  Your cart is empty.{' '}
+                  <a href="/marketplace">Browse listings →</a>
+                </p>
+              </div>
+            ) : (
+              cartItems.map((item) => {
+                const listing = getListing(item.listingId);
+                if (!listing) return null;
+                return (
+                  <ProductRow
+                    key={item.listingId}
+                    entry={item}
+                    listing={listing}
+                    checked={checkedCart.has(item.listingId)}
+                    onCheckChange={() => toggleCartCheck(item.listingId)}
+                    onIncrement={() => updateCartQty(item.listingId, 1)}
+                    onDecrement={() => updateCartQty(item.listingId, -1)}
+                    onRemove={() => removeFromCart(item.listingId)}
+                  />
+                );
+              })
+            )}
+
+            <div className="cart-section-footer">
+              <div className="cart-section-footer-rule" />
+              <div className="cart-section-totals">
+                <div className="cart-estimated-total">
+                  <span className="cart-estimated-label">
+                    {checkedCart.size > 0
+                      ? `Selected total (${itemsToCheckout.length})`
+                      : 'Estimated total'}
+                  </span>
+                  <span className="cart-estimated-value">
+                    ${(checkedCart.size > 0 ? checkoutTotal : cartTotal).toFixed(2)} USD
+                  </span>
+                </div>
+                <p className="cart-taxes-note">
+                  Taxes, discounts and shipping calculated at checkout.
+                </p>
+                <button
+                  type="button"
+                  className="cart-action-btn"
+                  onClick={openCheckoutModal}
+                  disabled={itemsToCheckout.length === 0}
+                >
+                  Checkout
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* ══ WATCHLIST ══════════════════════════════════════════════════════════ */}
-        <div id="watchlist" className="cart-section">
-          <div className="cart-section-header">
-            <div className="cart-section-rule" />
-            <div className="cart-section-header-content">
-              <div className="cart-section-title-row">
-                <p className="cart-section-title">Watchlist</p>
-                <a href="/marketplace" className="cart-continue-link">Continue shopping</a>
+        <section id="watchlist" className="w-bubble-container cart-section">
+          <div className="cart-bubble-inner">
+            <div className="cart-header-row">
+              <div>
+                <h3>Watchlist</h3>
+                <p className="subp1">
+                  Track saved ingredient lots and move available items to your cart when ready.
+                </p>
               </div>
-              <ColumnHeaders />
+              <a href="/marketplace" className="cart-continue-link">Continue shopping</a>
             </div>
-          </div>
 
-          {watchlistItems.length === 0 ? (
-            <div className="cart-empty">
-              <p>
-                Your watchlist is empty.{' '}
-                <a href="/marketplace">Browse listings →</a>
-              </p>
-            </div>
-          ) : (
-            watchlistItems.map((item) => {
-              const listing = getListing(item.listingId);
-              if (!listing) return null;
-              return (
-                <ProductRow
-                  key={item.listingId}
-                  entry={item}
-                  listing={listing}
-                  checked={checkedWatchlist.has(item.listingId)}
-                  onCheckChange={() => toggleWatchlistCheck(item.listingId)}
-                  onIncrement={() => updateWatchlistQty(item.listingId, 1)}
-                  onDecrement={() => updateWatchlistQty(item.listingId, -1)}
-                  onRemove={() => removeFromWatchlist(item.listingId)}
-                  onMoveToCart={() => moveOneToCart(item.listingId, item.qty)}
-                />
-              );
-            })
-          )}
+            <hr className="cart-header-divider" />
 
-          <div className="cart-section-footer">
-            <div className="cart-section-footer-rule" />
-            <div className="cart-section-totals">
-              <div className="cart-estimated-total">
-                <span className="cart-estimated-label">Estimated total</span>
-                <span className="cart-estimated-value">${watchlistTotal.toFixed(2)} USD</span>
+            {watchlistItems.length > 0 && <ColumnHeaders hasMoveAction />}
+
+            {watchlistItems.length === 0 ? (
+              <div className="cart-empty">
+                <p>
+                  Your watchlist is empty.{' '}
+                  <a href="/marketplace">Browse listings →</a>
+                </p>
               </div>
-              <p className="cart-taxes-note">
-                Taxes, discounts and shipping calculated at checkout.
-              </p>
-              <button
-                type="button"
-                className="cart-action-btn"
-                onClick={moveCheckedToCart}
-                disabled={watchlistItems.length === 0 || allWatchlistSold}
-                title={
-                  checkedWatchlist.size > 0
-                    ? `Move ${checkedWatchlist.size} selected item(s) to cart`
-                    : 'Move all watchlist items to cart'
-                }
-              >
-                Move to Cart
-              </button>
+            ) : (
+              watchlistItems.map((item) => {
+                const listing = getListing(item.listingId);
+                if (!listing) return null;
+                return (
+                  <ProductRow
+                    key={item.listingId}
+                    entry={item}
+                    listing={listing}
+                    checked={checkedWatchlist.has(item.listingId)}
+                    onCheckChange={() => toggleWatchlistCheck(item.listingId)}
+                    onIncrement={() => updateWatchlistQty(item.listingId, 1)}
+                    onDecrement={() => updateWatchlistQty(item.listingId, -1)}
+                    onRemove={() => removeFromWatchlist(item.listingId)}
+                    onMoveToCart={() => moveOneToCart(item.listingId, item.qty)}
+                  />
+                );
+              })
+            )}
+
+            <div className="cart-section-footer">
+              <div className="cart-section-footer-rule" />
+              <div className="cart-section-totals">
+                <div className="cart-estimated-total">
+                  <span className="cart-estimated-label">Estimated total</span>
+                  <span className="cart-estimated-value">${watchlistTotal.toFixed(2)} USD</span>
+                </div>
+                <p className="cart-taxes-note">
+                  Taxes, discounts and shipping calculated at checkout.
+                </p>
+                <button
+                  type="button"
+                  className="cart-action-btn"
+                  onClick={moveCheckedToCart}
+                  disabled={watchlistItems.length === 0 || allWatchlistSold}
+                  title={
+                    checkedWatchlist.size > 0
+                      ? `Move ${checkedWatchlist.size} selected item(s) to cart`
+                      : 'Move all watchlist items to cart'
+                  }
+                >
+                  Move to Cart
+                </button>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="cart-return-top-section">
-            <div className="cart-section-footer-rule" />
-            <button
-              type="button"
-              className="cart-return-top-btn"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Return to Top ↑
-            </button>
-          </div>
+        <div className="cart-return-top-section">
+          <button
+            type="button"
+            className="cart-return-top-btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Return to Top ↑
+          </button>
         </div>
 
-      </div>
+      </main>
 
       {/* ══ CHECKOUT / ORDER REQUEST MODAL ═════════════════════════════════════ */}
       {checkoutOpen && (
