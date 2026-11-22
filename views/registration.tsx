@@ -1,4 +1,5 @@
 import { type DragEvent, type FormEvent, useEffect, useRef, useState } from 'react';
+import { PENDING_REGISTRATION_KEY } from './auth';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
@@ -128,13 +129,13 @@ export function Registration() {
 
     const fullName = `${firstName.trim()} ${lastName.trim()}`;
     localStorage.setItem(
-      'mme_session',
+      PENDING_REGISTRATION_KEY,
       JSON.stringify({
         username: username.trim(),
         email: email.trim(),
         name: fullName,
         membership,
-        signedInAt: new Date().toISOString(),
+        submittedAt: new Date().toISOString(),
       }),
     );
     localStorage.setItem(

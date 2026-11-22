@@ -1,8 +1,24 @@
-import { type FormEvent, useState } from 'react';
+import { type FormEvent, useEffect, useState } from 'react';
+import {
+  PENDING_REGISTRATION_KEY,
+  sanitizeNextPath,
+  signInMember,
+} from './auth';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
-export function Login() {
+function describeGatedDestination(nextPath: string): string {
+  if (nextPath.startsWith('/product')) return 'product listing details and live bidding';
+  if (nextPath.startsWith('/cart')) return 'your Cart & Watchlist';
+  if (nextPath.startsWith('/list-product') || nextPath.startsWith('/sell')) {
+    return 'the Seller Listing Portal';
+  }
+  if (nextPath.startsWith('/account')) return 'your Member Account Portal';
+  return 'the MicroMarket Exchange Marketplace';
+}
+
+export function Login({ nextUrl }: { nextUrl?: string | null }) {
+  const [targetNext, setTargetNext] = useState<string | null>(() => sanitizeNextPath(nextUrl));
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
@@ -11,6 +27,26 @@ export function Login() {
   const [recoveryOpen, setRecoveryOpen] = useState(false);
   const [recoveryEmail, setRecoveryEmail] = useState('');
   const [recoveryFeedback, setRecoveryFeedback] = useState<string | null>(null);
+
+  useEffect(() => {
+    const queryNext = sanitizeNextPath(new URLSearchParams(window.location.search).get('next'));
+    if (queryNext) {
+      setTargetNext(queryNext);
+    }
+
+    try {
+      const pendingRaw = localStorage.getItem(PENDING_REGISTRATION_KEY);
+      if (pendingRaw) {
+        const pending = JSON.parse(pendingRaw) as { email?: string; username?: string };
+        const suggested = pending.email || pending.username;
+        if (suggested) {
+          setIdentifier((prev) => (prev ? prev : suggested));
+        }
+      }
+    } catch {
+      // Ignore malformed pending registration metadata
+    }
+  }, []);
 
   function handleSignIn(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,26 +62,48 @@ export function Login() {
     }
 
     const isEmail = trimmedId.includes('@');
-    const derivedName = isEmail
+    let derivedName = isEmail
       ? trimmedId
           .split('@')[0]
           .replace(/[._-]+/g, ' ')
           .replace(/\b\w/g, (c) => c.toUpperCase())
       : trimmedId;
+    let membership: 'trade' | 'viewonly' | undefined;
 
-    localStorage.setItem(
-      'mme_session',
-      JSON.stringify({
-        username: trimmedId,
-        email: isEmail ? trimmedId : `${trimmedId}@verifiedmill.com`,
-        name: derivedName,
-        rememberMe,
-        signedInAt: new Date().toISOString(),
-      }),
-    );
+    try {
+      const pendingRaw = localStorage.getItem(PENDING_REGISTRATION_KEY);
+      if (pendingRaw) {
+        const pending = JSON.parse(pendingRaw) as {
+          username?: string;
+          email?: string;
+          name?: string;
+          membership?: 'trade' | 'viewonly';
+        };
+        if (
+          pending.name &&
+          (pending.email?.toLowerCase() === trimmedId.toLowerCase() ||
+            pending.username?.toLowerCase() === trimmedId.toLowerCase())
+        ) {
+          derivedName = pending.name;
+          membership = pending.membership;
+        }
+      }
+    } catch {
+      // Ignore malformed storage
+    }
+
+    signInMember({
+      username: trimmedId,
+      email: isEmail ? trimmedId : `${trimmedId}@verifiedmill.com`,
+      name: derivedName,
+      membership,
+      rememberMe,
+      signedInAt: new Date().toISOString(),
+    });
 
     setError(null);
-    window.location.href = '/account';
+    const destination = sanitizeNextPath(targetNext) ?? '/marketplace';
+    window.location.href = destination;
   }
 
   function handleRecoverySubmit(e: FormEvent<HTMLFormElement>) {
@@ -86,6 +144,17 @@ export function Login() {
         <div className="p2 page-text">
           New to MicroMarket Exchange? <a href="/registration">Apply for membership</a>
         </div>
+
+        {targetNext && (
+          <div className="login-paywall-notice" role="status">
+            <p className="login-paywall-title">Member login required</p>
+            <p className="login-paywall-body">
+              Please sign in with a verified MicroMarket Exchange account to access{' '}
+              <strong>{describeGatedDestination(targetNext)}</strong>. Reviewing the prototype?
+              Click <strong>Use demo credentials</strong> below to unlock full member access.
+            </p>
+          </div>
+        )}
 
         <section className="w-bubble-container login-card-container">
           <div className="login-card-inner">

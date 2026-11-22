@@ -1,4 +1,5 @@
 import { type FormEvent, useEffect, useRef, useState } from 'react';
+import { signOutAndRedirect } from './auth';
 import type { StoredOrder } from './cart';
 import {
   formatCurrencyUSD,
@@ -695,9 +696,8 @@ export function Account() {
                       type="button"
                       className="account-signout-btn"
                       onClick={() => {
-                        localStorage.removeItem('mme_session');
                         setSignedInUser(null);
-                        window.location.href = '/login';
+                        signOutAndRedirect('/homepage');
                       }}
                     >
                       Sign Out

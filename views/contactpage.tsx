@@ -1,8 +1,10 @@
 import { type FormEvent, useEffect, useState } from 'react';
+import { useAuth } from './auth';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
 export function ContactPage() {
+  const { memberHref } = useAuth();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -101,7 +103,7 @@ export function ContactPage() {
                   >
                     Send Another Message
                   </button>
-                  <a href="/marketplace" className="contact-secondary-link">
+                  <a href={memberHref('/marketplace')} className="contact-secondary-link">
                     Browse Marketplace
                   </a>
                 </div>
@@ -202,7 +204,7 @@ export function ContactPage() {
                   <button type="submit" className="contact-submit-button">
                     Send Message
                   </button>
-                  <a href="/marketplace" className="contact-secondary-link">
+                  <a href={memberHref('/marketplace')} className="contact-secondary-link">
                     Browse Marketplace
                   </a>
                 </div>

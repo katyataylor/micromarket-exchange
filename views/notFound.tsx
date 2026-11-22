@@ -1,7 +1,10 @@
+import { useAuth } from './auth';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
 export function NotFound() {
+  const { memberHref } = useAuth();
+
   return (
     <>
       <Header />
@@ -15,7 +18,7 @@ export function NotFound() {
               The page or listing you requested could not be found. Browse active listings or return to the homepage.
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '12px' }}>
-              <a href="/marketplace" className="store-hero-button" style={{ marginLeft: 0 }}>
+              <a href={memberHref('/marketplace')} className="store-hero-button" style={{ marginLeft: 0 }}>
                 Browse Marketplace
               </a>
               <a
