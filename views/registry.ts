@@ -5,6 +5,7 @@ import { ContactPage } from './contactpage';
 import { Homepage } from './homepage';
 import { InfoPage } from './infoPage';
 import { ListProduct } from './listProduct';
+import { Login } from './login';
 import { Marketplace } from './marketplace';
 import { NotFound } from './notFound';
 import { ProductPage } from './product-page';
@@ -20,6 +21,7 @@ export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
   listProduct: ListProduct,
   account: Account,
   cart: Cart,
+  login: Login,
   registration: Registration,
   registrationSuccess: RegistrationSuccess,
   registrationSuccessObserver: RegistrationSuccessObserver,
@@ -35,10 +37,11 @@ export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   listProduct: { title: 'Submit a New Listing — MicroMarket Exchange', styles: ['/css/product-listing.css'] },
   account: { title: 'My Account — MicroMarket Exchange', styles: ['/css/account.css'] },
   cart: { title: 'Cart & Watchlist — MicroMarket Exchange', styles: ['/css/cart.css'] },
-  registration: { title: 'Sign Up', styles: ['/css/registration.css'] },
+  login: { title: 'Sign In — MicroMarket Exchange', styles: ['/css/registration.css'] },
+  registration: { title: 'Sign Up — MicroMarket Exchange', styles: ['/css/registration.css'] },
   registrationSuccess: { title: 'Registration Submitted — MicroMarket Exchange', styles: ['/css/registration.css', '/css/registration-success.css'] },
   registrationSuccessObserver: { title: 'Account Created — MicroMarket Exchange', styles: ['/css/registration.css', '/css/registration-success.css'] },
   contact: { title: 'Contact Us — MicroMarket Exchange', styles: ['/css/contactpage.css'] },
-  infopage: { title: 'Sign Up', styles: [] },
+  infopage: { title: 'How It Works & Selling — MicroMarket Exchange', styles: [] },
   notFound: { title: 'Page Not Found — MicroMarket Exchange', styles: ['/css/marketplace.css'] },
 };

@@ -417,7 +417,15 @@ export function Marketplace({ listings }: { listings?: Listing[] }) {
             )}
 
             <div className="return-top">
-              <a href="#">↑ Return to Top</a>
+              <a
+                href="#top"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                ↑ Return to Top
+              </a>
             </div>
           </main>
 

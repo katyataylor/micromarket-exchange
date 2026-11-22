@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import type { Listing } from '../types';
 
 type WatchlistEntry = { listingId: number; qty: number; sold: boolean };
-type CartEntry = { listingId: number; qty: number };
+type CartEntry = { listingId: number; qty: number; sold?: boolean };
+type StoredBidMap = Record<
+  string,
+  { bidPerUnit: number; lotTotal: number; bidCount: number; placedAt: string }
+>;
 
 function safeParseJSON<T>(str: string | null, fallback: T): T {
   if (!str) return fallback;
@@ -15,20 +19,37 @@ function getWatchlist(): WatchlistEntry[] {
 function getCart(): CartEntry[] {
   return safeParseJSON<CartEntry[]>(localStorage.getItem('mme_cart'), []);
 }
+function getBids(): StoredBidMap {
+  return safeParseJSON<StoredBidMap>(localStorage.getItem('mme_bids'), {});
+}
 
 export function ProductCard({ item }: { item: Listing }) {
   const [imgIndex, setImgIndex] = useState(0);
   const [inWatchlist, setInWatchlist] = useState(false);
   const [inCart, setInCart] = useState(false);
+  const [hasBid, setHasBid] = useState(false);
+  const [activePrice, setActivePrice] = useState(item.price);
 
   const images = item.images.length > 0 ? item.images : ['/images/IMG_9097.jpeg'];
   const total = images.length;
+
+  useEffect(() => {
+    setActivePrice(item.price);
+  }, [item.price]);
 
   // Sync with localStorage after hydration (avoids SSR mismatch)
   useEffect(() => {
     const syncStorage = () => {
       setInWatchlist(getWatchlist().some((w) => w.listingId === item.id));
-      setInCart(getCart().some((c) => c.listingId === item.id));
+      setInCart(getCart().some((c) => c.listingId === item.id && !c.sold));
+      const recordedBid = getBids()[String(item.id)];
+      if (recordedBid && item.listingType === 'auction') {
+        setHasBid(true);
+        setActivePrice(recordedBid.bidPerUnit);
+      } else {
+        setHasBid(false);
+        setActivePrice(item.price);
+      }
     };
     syncStorage();
     window.addEventListener('mme:storage-sync', syncStorage);
@@ -37,7 +58,7 @@ export function ProductCard({ item }: { item: Listing }) {
       window.removeEventListener('mme:storage-sync', syncStorage);
       window.removeEventListener('storage', syncStorage);
     };
-  }, [item.id]);
+  }, [item.id, item.listingType, item.price]);
 
   function prev(e: React.MouseEvent) {
     e.stopPropagation();
@@ -77,14 +98,17 @@ export function ProductCard({ item }: { item: Listing }) {
     window.dispatchEvent(new Event('mme:storage-sync'));
   }
 
-  function addToCart(e: React.MouseEvent) {
+  function handlePrimaryAction(e: React.MouseEvent) {
     e.stopPropagation();
-    if (inCart) {
-      // Navigate to cart if already added
-      window.location.href = '/cart';
+    if (item.listingType === 'auction') {
+      window.location.href = `/product/${item.id}#input-bid`;
       return;
     }
-    const cart = getCart();
+    if (inCart) {
+      window.location.href = '/cart#cart';
+      return;
+    }
+    const cart = getCart().filter((c) => c.listingId !== item.id);
     localStorage.setItem(
       'mme_cart',
       JSON.stringify([...cart, { listingId: item.id, qty: 1 }]),
@@ -93,8 +117,16 @@ export function ProductCard({ item }: { item: Listing }) {
     window.dispatchEvent(new Event('mme:storage-sync'));
   }
 
-  const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace('per ', '')}`;
-  const bidLabel = item.listingType === 'auction' ? 'Bid Now' : 'Add to Cart';
+  const price = `$${activePrice.toFixed(2)}/${item.priceUnit.replace('per ', '')}`;
+  const primaryLabel =
+    item.listingType === 'auction'
+      ? hasBid
+        ? 'Bid Placed ✓'
+        : 'Bid Now'
+      : inCart
+        ? 'In Cart ✓'
+        : 'Add to Cart';
+  const primaryActive = item.listingType === 'auction' ? hasBid : inCart;
 
   return (
     <div
@@ -122,11 +154,12 @@ export function ProductCard({ item }: { item: Listing }) {
 
         {total > 1 && (
           <>
-            <button className="pc-arrow pc-arrow--prev" onClick={prev} aria-label="Previous image">&#8592;</button>
-            <button className="pc-arrow pc-arrow--next" onClick={next} aria-label="Next image">&#8594;</button>
+            <button type="button" className="pc-arrow pc-arrow--prev" onClick={prev} aria-label="Previous image">&#8592;</button>
+            <button type="button" className="pc-arrow pc-arrow--next" onClick={next} aria-label="Next image">&#8594;</button>
             <div className="pc-dots">
               {images.map((_, i) => (
                 <button
+                  type="button"
                   key={i}
                   className={`pc-dot${i === imgIndex ? ' pc-dot--active' : ''}`}
                   onClick={(e) => goTo(i, e)}
@@ -156,12 +189,14 @@ export function ProductCard({ item }: { item: Listing }) {
       {/* Action buttons — stopPropagation prevents the card click from firing */}
       <div className="pc-actions" onClick={stopProp}>
         <button
-          className={`pc-btn-primary${inCart ? ' pc-btn-primary--active' : ''}`}
-          onClick={addToCart}
+          type="button"
+          className={`pc-btn-primary${primaryActive ? ' pc-btn-primary--active' : ''}`}
+          onClick={handlePrimaryAction}
         >
-          {inCart ? 'In Cart ✓' : bidLabel}
+          {primaryLabel}
         </button>
         <button
+          type="button"
           className={`pc-btn-secondary${inWatchlist ? ' pc-btn-secondary--active' : ''}`}
           onClick={toggleWatchlist}
         >
