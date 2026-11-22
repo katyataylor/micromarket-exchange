@@ -529,7 +529,8 @@ a.account-row-title:hover {
   color: var(--textHeadings);
 }
 
-.account-field input {
+.account-field input,
+.account-field select {
   width: 100%;
   height: 46px;
   padding: 8px 12px;
@@ -539,6 +540,41 @@ a.account-row-title:hover {
   font-size: 16px;
   color: var(--textHeadings);
   background: var(--textWhite);
+}
+
+.account-field textarea {
+  width: 100%;
+  min-height: 88px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandLightSlate);
+  font-family: var(--fb);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--textHeadings);
+  background: var(--textWhite);
+  resize: vertical;
+}
+
+.account-field input:focus,
+.account-field select:focus,
+.account-field textarea:focus {
+  outline: none;
+  border-color: var(--brandSlate);
+  box-shadow: 0 0 0 3px rgba(155, 184, 191, 0.25);
+}
+
+.account-field-hint {
+  font-family: var(--fb);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brandDarkSand);
+}
+
+.account-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .account-pill-choices {
@@ -639,10 +675,510 @@ a.account-row-title:hover {
   text-decoration: none;
 }
 
+/* ==========================================
+   MY LISTINGS WORKSPACE PANEL
+   Active Listings (Editable) & Listing History (Sold & Locked)
+   ========================================== */
+
+.account-panel-header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.account-new-listing-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandGold);
+  background-color: var(--brandGold);
+  color: var(--brandSlate);
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.account-new-listing-btn:hover {
+  opacity: 0.92;
+}
+
+.account-listings-workspace {
+  gap: 28px;
+}
+
+.account-listings-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.account-listings-jump {
+  width: 100%;
+  height: auto;
+  padding: 16px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(45, 55, 72, 0.22);
+  background-color: rgba(232, 223, 200, 0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.account-listings-jump:hover {
+  background-color: rgba(232, 223, 200, 0.78);
+  border-color: var(--brandGold);
+}
+
+.account-listings-jump--history {
+  background-color: var(--surfacePg);
+}
+
+.account-listings-jump--history:hover {
+  background-color: rgba(155, 184, 191, 0.22);
+  border-color: var(--brandSlate);
+}
+
+.account-listings-jump-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fb);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brandDarkSand);
+}
+
+.account-listings-jump--history .account-listings-jump-kicker {
+  color: var(--brandSlate);
+}
+
+.account-listings-jump-main {
+  font-family: var(--fh);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-listings-jump-main strong {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.account-listings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-margin-top: 110px;
+}
+
+.account-listings-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.account-listings-section-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.account-listings-heading-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.account-listings-heading-row h4 {
+  font-family: var(--fh);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-family: var(--fh);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.account-section-badge--editable {
+  background-color: rgba(155, 184, 191, 0.34);
+  border: 1px solid rgba(45, 55, 72, 0.25);
+  color: var(--brandSlate);
+}
+
+.account-section-badge--locked {
+  background-color: rgba(45, 55, 72, 0.08);
+  border: 1px solid rgba(45, 55, 72, 0.28);
+  color: var(--brandSlate);
+}
+
+.account-section-count {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--textMutedCaptions);
+}
+
+.account-listings-empty {
+  background-color: var(--surfacePg);
+  border: 1px dashed var(--brandLightSlate);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.account-listing-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-listing-card {
+  background-color: var(--surfacePg);
+  border: 1px solid rgba(45, 55, 72, 0.16);
+  border-radius: 20px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-listing-card.is-editing {
+  background-color: rgba(253, 246, 220, 0.55);
+  border-color: var(--brandDarkSand);
+}
+
+.account-listing-card--locked {
+  background-color: #efeeeb;
+  border-color: rgba(45, 55, 72, 0.22);
+}
+
+.account-listing-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.account-listing-heading-wrap {
+  min-width: 0;
+  flex: 1 1 260px;
+}
+
+.account-listing-title {
+  font-family: var(--fh);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  line-height: 1.3;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+a.account-listing-title:hover {
+  text-decoration: underline;
+}
+
+.account-listing-submeta {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  margin-top: 4px;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+
+.account-listing-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.account-status-pill--live {
+  background-color: rgba(155, 184, 191, 0.36);
+  border-color: rgba(45, 55, 72, 0.3);
+  color: var(--brandSlate);
+}
+
+.account-status-pill--pending {
+  background-color: var(--brandLightSand);
+  border-color: var(--brandDarkSand);
+  color: var(--brandSlate);
+}
+
+.account-format-pill {
+  background-color: var(--textWhite);
+  border: 1px solid rgba(45, 55, 72, 0.22);
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-family: var(--fh);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-sold-pill {
+  background-color: var(--brandSlate);
+  border: 1px solid var(--brandSlate);
+  border-radius: 14px;
+  padding: 3px 11px;
+  font-family: var(--fh);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--textWhite);
+}
+
+.account-locked-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--brandSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-family: var(--fh);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-lock-icon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.account-listing-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.account-metric-cell {
+  min-width: 0;
+  background-color: var(--textWhite);
+  border: 1px solid rgba(45, 55, 72, 0.1);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.account-listing-card--locked .account-metric-cell {
+  background-color: rgba(255, 255, 255, 0.72);
+}
+
+.account-metric-label {
+  font-family: var(--fb);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--textMutedCaptions);
+}
+
+.account-metric-val {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.account-metric-sub {
+  font-family: var(--fb);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.account-listing-notes {
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--textBody);
+  line-height: 1.5;
+  background-color: rgba(255, 255, 255, 0.65);
+  border-left: 3px solid var(--brandGold);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px;
+}
+
+.account-listing-notes--locked {
+  border-left-color: var(--brandLightSlate);
+  color: var(--textMutedCaptions);
+}
+
+.account-listing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.account-listing-footer--locked {
+  padding-top: 10px;
+  border-top: 1px solid rgba(45, 55, 72, 0.12);
+}
+
+.account-listing-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.account-edit-listing-btn {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandSlate);
+  background-color: var(--textWhite);
+  color: var(--brandSlate);
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.account-edit-listing-btn:hover {
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+}
+
+.account-listing-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(138, 122, 90, 0.3);
+}
+
+.account-edit-banner {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-cancel-btn {
+  height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandLightSlate);
+  background-color: var(--textWhite);
+  color: var(--brandSlate);
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.account-cancel-btn:hover {
+  border-color: var(--brandSlate);
+}
+
+.account-listings-divider {
+  border: none;
+  border-top: 1px solid rgba(45, 55, 72, 0.16);
+  opacity: 1;
+  margin: 4px 0;
+}
+
+.account-lock-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+
+.account-lock-banner svg {
+  margin-top: 3px;
+  color: var(--brandSlate);
+}
+
+.account-lock-banner p {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brandSlate);
+  line-height: 1.5;
+}
+
+.account-locked-audit-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fb);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--textMutedCaptions);
+}
+
+.account-locked-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(45, 55, 72, 0.25);
+  background-color: rgba(45, 55, 72, 0.08);
+  color: var(--textMutedCaptions);
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
 @media (max-width: 900px) {
   .account-messages-layout,
-  .account-two-col {
+  .account-two-col,
+  .account-three-col {
     grid-template-columns: 1fr;
+  }
+
+  .account-listing-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .account-row-right {
@@ -658,6 +1194,19 @@ a.account-row-title:hover {
 
   .account-panel-header {
     flex-direction: column;
+  }
+
+  .account-panel-header-actions {
+    width: 100%;
+  }
+
+  .account-listings-summary,
+  .account-listing-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .account-listing-card {
+    padding: 16px;
   }
 }
 

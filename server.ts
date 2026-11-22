@@ -163,6 +163,10 @@ async function main() {
     res.send(renderDocument('account', {}));
   });
 
+  app.get('/account/listings', (_req, res) => {
+    res.redirect('/account#listings');
+  });
+
   app.get('/cart', (_req, res) => {
     res.send(renderDocument('cart', {}));
   });

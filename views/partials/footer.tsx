@@ -1,3 +1,5 @@
+import { SELLER_LISTINGS_STORAGE_KEY } from '../data/sellerListings';
+
 // Footer
 const DEMO_STORAGE_KEYS = [
   'mme_cart',
@@ -6,6 +8,7 @@ const DEMO_STORAGE_KEYS = [
   'mme_orders',
   'mme_listing_draft',
   'mme_submitted_listings',
+  SELLER_LISTINGS_STORAGE_KEY,
   'mme_account_profile',
   'mme_session',
 ] as const;

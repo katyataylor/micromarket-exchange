@@ -1,4 +1,11 @@
 import { type DragEvent, type FormEvent, useEffect, useRef, useState } from 'react';
+import {
+  loadSellerListings,
+  mapFormUnitToSellerUnit,
+  resolveDefaultSellerLocation,
+  saveSellerListings,
+  type SellerListing,
+} from './data/sellerListings';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
@@ -369,6 +376,35 @@ export function ListProduct() {
     };
 
     localStorage.setItem('mme_submitted_listings', JSON.stringify([record, ...existing]));
+
+    const currentSellerListings = loadSellerListings();
+    const expDate = new Date();
+    expDate.setDate(expDate.getDate() + 30);
+    const expiresIso = expDate.toISOString().slice(0, 10);
+    const parsedAskingPrice = askingPrice.trim()
+      ? Number(Number(askingPrice.replace(/[^0-9.]/g, '')).toFixed(2))
+      : 0;
+
+    const newSellerListing: SellerListing = {
+      id: `lst-sub-${Date.now()}`,
+      referenceId: record.referenceId,
+      title: record.productName,
+      category: record.category,
+      lotNumber: validLots.join(', '),
+      listingType: askingPrice.trim() ? 'fixed' : 'auction',
+      price: Number.isFinite(parsedAskingPrice) && parsedAskingPrice > 0 ? parsedAskingPrice : 0,
+      quantity: numericVolume,
+      unit: mapFormUnitToSellerUnit(unitOfMeasure),
+      packaging: record.packagingType,
+      location: resolveDefaultSellerLocation(),
+      expires: expiresIso,
+      approvalStatus: 'Pending Compliance Review',
+      notes: sellerNotes.trim() || description.trim(),
+      status: 'active',
+      submittedAt: record.submittedAt,
+    };
+    saveSellerListings([newSellerListing, ...currentSellerListings]);
+
     localStorage.removeItem('mme_listing_draft');
 
     setErrors([]);
@@ -466,9 +502,12 @@ export function ListProduct() {
                 </div>
 
                 <div className="pl-confirm-actions">
+                  <a href="/account#listings" className="pl-btn-primary pl-btn-link">
+                    View My Listings
+                  </a>
                   <button
                     type="button"
-                    className="pl-btn-primary"
+                    className="pl-btn-outline"
                     onClick={() => {
                       handleClearDraft();
                       setSubmittedRecord(null);
@@ -478,9 +517,6 @@ export function ListProduct() {
                   </button>
                   <a href="/marketplace" className="pl-btn-outline pl-btn-link">
                     Browse Marketplace
-                  </a>
-                  <a href="/account" className="pl-btn-outline pl-btn-link">
-                    Go to My Account
                   </a>
                 </div>
               </div>
