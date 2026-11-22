@@ -660,45 +660,6 @@ nav {
   }
 }
 
-@media (max-width: 900px) and (min-width: 769px) {
-  .nav-content {
-    gap: 14px;
-  }
-
-  .nav-right {
-    gap: 8px;
-  }
-
-  .nav-links li,
-  .nav-account-trigger {
-    font-size: 16px;
-  }
-
-  .nav-links li:not(.nav-account-item) > a,
-  .nav-account-trigger {
-    padding: 10px 10px;
-  }
-
-  .nav-account-trigger {
-    gap: 8px;
-  }
-
-  .nav-account-bridge {
-    height: 40px;
-  }
-
-  .nav-account-menu {
-    left: 10px;
-    top: calc(100% + 30px);
-  }
-
-  .contact-button {
-    font-size: 16px;
-    height: 44px;
-    padding: 0 16px;
-  }
-}
-
 .menu-toggle {
   display: none; /* Hidden on desktop */
   align-items: center;
@@ -1730,10 +1691,6 @@ footer hr {
     width: 100%;
     padding: 10px 0;
     border-radius: 0;
-  }
-
-  .nav-links li::after {
-    display: none;
   }
 
   .nav-links li.nav-account-item {
