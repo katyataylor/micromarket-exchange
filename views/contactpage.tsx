@@ -51,52 +51,80 @@ export function ContactPage() {
     <>
       <Header />
 
-      <main className="contact-page-body">
-        <section className="contact-container">
-          <div className="contact-content">
-            <h1 className="contact-heading">Contact Us</h1>
+      <section className="hero-page-body">
+        <div className="store-hero-bg">
+          <div className="store-hero-text">
+            <h6 className="gold">member &amp; marketplace support</h6>
+            <div className="display">Contact MicroMarket Exchange</div>
+            <div className="p2">
+              Have a question about trading verification, an active ingredient listing,
+              or freight coordination? Reach out to our team below.
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="contact-form-section">
-              <hr className="contact-divider" />
+      <main className="page-body contact-page-body">
+        <div className="p2 page-text">
+          Looking for membership or listing guidelines? <a href="/infopage">How it works</a>
+        </div>
 
-              {submittedRef ? (
-                <div className="contact-success" role="status">
-                  <p className="contact-success-eyebrow">Inquiry {submittedRef}</p>
-                  <h3>Message sent!</h3>
-                  <div className="p2" style={{ color: 'var(--textMutedCaptions)' }}>
-                    Thank you for reaching out, {firstName.trim()}. We&apos;ve sent a copy to{' '}
-                    <strong>{email.trim()}</strong> and will follow up within 1–2 business days.
-                  </div>
-                  <div className="contact-success-actions">
-                    <button
-                      type="button"
-                      className="contact-submit-button"
-                      onClick={() => {
-                        setSubmittedRef(null);
-                        setMessage('');
-                      }}
-                    >
-                      Send Another Message
-                    </button>
-                    <a href="/marketplace" className="contact-secondary-link">
-                      Browse Marketplace
-                    </a>
-                  </div>
+        <section className="w-bubble-container contact-card-container">
+          <div className="contact-card-inner">
+            <div className="contact-header-row">
+              <div>
+                <h3>Contact Us</h3>
+                <p className="subp1">
+                  Send us a message and we&apos;ll email you a copy and follow up within 1–2 business days.
+                </p>
+              </div>
+            </div>
+
+            <hr className="contact-divider" />
+
+            {submittedRef ? (
+              <div className="contact-success" role="status">
+                <p className="contact-success-eyebrow">Inquiry {submittedRef}</p>
+                <h3>Message sent!</h3>
+                <div className="p2 contact-success-body">
+                  Thank you for reaching out, {firstName.trim()}. We&apos;ve sent a copy to{' '}
+                  <strong>{email.trim()}</strong> and will follow up within 1–2 business days.
                 </div>
-              ) : (
-                <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                  {listingContext && (
-                    <div className="contact-context-pill">
-                      <span>
-                        Inquiry regarding <strong>{listingContext.listing}</strong>
-                        {listingContext.seller ? ` (${listingContext.seller})` : ''}
-                      </span>
-                    </div>
-                  )}
+                <div className="contact-success-actions">
+                  <button
+                    type="button"
+                    className="contact-submit-button"
+                    onClick={() => {
+                      setSubmittedRef(null);
+                      setMessage('');
+                    }}
+                  >
+                    Send Another Message
+                  </button>
+                  <a href="/marketplace" className="contact-secondary-link">
+                    Browse Marketplace
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                {listingContext && (
+                  <div className="contact-context-pill">
+                    <span>
+                      Inquiry regarding <strong>{listingContext.listing}</strong>
+                      {listingContext.seller ? ` (${listingContext.seller})` : ''}
+                    </span>
+                  </div>
+                )}
 
-                  <div className="contact-form-group">
-                    <div className="contact-input-row">
+                <div className="contact-form-group">
+                  <div className="contact-input-row">
+                    <div className="input-column contact-field-col">
+                      <label htmlFor="contact-first-name">
+                        <h4>First name *</h4>
+                      </label>
                       <input
+                        id="contact-first-name"
                         className="subH1 contact-small-input contact-live-input"
                         type="text"
                         placeholder="First name"
@@ -107,7 +135,14 @@ export function ContactPage() {
                           if (error) setError(null);
                         }}
                       />
+                    </div>
+
+                    <div className="input-column contact-field-col">
+                      <label htmlFor="contact-last-name">
+                        <h4>Last name *</h4>
+                      </label>
                       <input
+                        id="contact-last-name"
                         className="subH1 contact-small-input contact-live-input"
                         type="text"
                         placeholder="Last name"
@@ -119,8 +154,14 @@ export function ContactPage() {
                         }}
                       />
                     </div>
+                  </div>
 
+                  <div className="input-column contact-field-col">
+                    <label htmlFor="contact-email">
+                      <h4>Business email *</h4>
+                    </label>
                     <input
+                      id="contact-email"
                       className="subH1 contact-full-input contact-live-input"
                       type="email"
                       placeholder="Email address"
@@ -131,8 +172,14 @@ export function ContactPage() {
                         if (error) setError(null);
                       }}
                     />
+                  </div>
 
+                  <div className="input-column contact-field-col">
+                    <label htmlFor="contact-message">
+                      <h4>Message *</h4>
+                    </label>
                     <textarea
+                      id="contact-message"
                       className="subH1 contact-textarea contact-live-input"
                       placeholder="Your message…"
                       aria-label="Your message"
@@ -142,20 +189,25 @@ export function ContactPage() {
                         if (error) setError(null);
                       }}
                     />
-
-                    {error && (
-                      <p className="contact-error-banner" role="alert">
-                        {error}
-                      </p>
-                    )}
                   </div>
 
+                  {error && (
+                    <p className="contact-error-banner" role="alert">
+                      {error}
+                    </p>
+                  )}
+                </div>
+
+                <div className="contact-submit-row">
                   <button type="submit" className="contact-submit-button">
                     Send Message
                   </button>
-                </form>
-              )}
-            </div>
+                  <a href="/marketplace" className="contact-secondary-link">
+                    Browse Marketplace
+                  </a>
+                </div>
+              </form>
+            )}
           </div>
         </section>
       </main>
