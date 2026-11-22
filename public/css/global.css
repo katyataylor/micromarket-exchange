@@ -407,10 +407,18 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .nav-content img {
   height: 60px;
+  width: auto;
 }
 
 .nav-content img:hover {
@@ -421,6 +429,8 @@ nav {
 .nav-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
   gap: 12px;
   opacity: 1;           /* Forces visibility on desktop */
   visibility: visible;   /* Forces visibility on desktop */
@@ -447,19 +457,25 @@ nav {
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.2s ease, opacity 0.2s ease;
+  padding: 0;
+}
+
+.nav-links li:not(.nav-account-item) > a {
+  display: inline-flex;
+  align-items: center;
   padding: 16px 20px;
+  border-radius: 8px;
+}
+
+.nav-links li:not(.nav-account-item) > a:focus-visible {
+  outline: 2px solid var(--brandSlate);
+  outline-offset: 2px;
 }
 
 .nav-links li:hover {
   color: var(--brandSlate);
   opacity: 1;
   font-weight: 500;
-}
-
-.nav-links li.nav-auth-item a:hover {
-  color: var(--brandSlate);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .nav-links li.nav-account-item {
@@ -621,13 +637,65 @@ nav {
   .nav-links li,
   .nav-account-trigger {
     font-size: 18px;
+  }
+
+  .nav-links li:not(.nav-account-item) > a,
+  .nav-account-trigger {
     padding: 12px 12px;
+  }
+
+  .nav-account-bridge {
+    height: 36px;
+  }
+
+  .nav-account-menu {
+    left: 12px;
+    top: calc(100% + 26px);
   }
 
   .contact-button {
     font-size: 18px;
     height: 48px;
     padding: 0 18px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+  .nav-content {
+    gap: 14px;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .nav-links li,
+  .nav-account-trigger {
+    font-size: 16px;
+  }
+
+  .nav-links li:not(.nav-account-item) > a,
+  .nav-account-trigger {
+    padding: 10px 10px;
+  }
+
+  .nav-account-trigger {
+    gap: 8px;
+  }
+
+  .nav-account-bridge {
+    height: 40px;
+  }
+
+  .nav-account-menu {
+    left: 10px;
+    top: calc(100% + 30px);
+  }
+
+  .contact-button {
+    font-size: 16px;
+    height: 44px;
+    padding: 0 16px;
   }
 }
 
@@ -1461,78 +1529,6 @@ img.card-img-icon {
 }
 
 /* ==========================================
-    MOBILE RESPONSIVE MEDIA QUERY
-   ========================================== */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: inline-flex; /* Show hamburger only on mobile screen widths */
-  }
-
-  /* Re-defining nav-right specifically for mobile view dropdown */
-  .nav-content .nav-right {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-    padding: 24px 24px 28px;
-    border-bottom: 2px solid var(--brandSand);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-    z-index: 99;
-    
-    /* Hidden by default on mobile screens until toggle script activates it */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.25s ease;
-  }
-
-  .nav-links ul {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    width: 100%;
-  }
-
-  .nav-links li {
-    width: 100%;
-    font-size: 18px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-  }
-
-  .nav-links li > a {
-    display: block;
-    width: 100%;
-  }
-
-  /* Reset hover line animation for touch screens so it doesn't look buggy */
-  .nav-links li::after {
-    display: none;
-  }
-
-  .contact-button {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-  }
-
-  /* This active helper class is what your JS toggles */
-  .nav-content .nav-right.is-active {
-    display: flex;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-  }
-}
-
-/* ==========================================
    FOOTER
    ========================================== */
 footer {
@@ -1658,10 +1654,6 @@ footer hr {
 }
 
 @media (max-width: 768px) {
-  .nav-right {
-    display: none; /* Simple implementation; can expand to burger menu later */
-  }
-  
   .hero-text h1 {
     font-size: 32px;
   }
@@ -1684,37 +1676,27 @@ footer hr {
    MOBILE MENU INTERACTION
    ========================================== */
 
-/* Hide the hamburger button by default on desktop screens */
-.menu-toggle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: none;
-  color: var(--brandSlate);
-  cursor: pointer;
-  padding: 6px;
-  z-index: 100;
-}
-
 @media (max-width: 768px) {
   /* Show the hamburger icon on mobile */
   .menu-toggle {
     display: inline-flex;
+    flex-shrink: 0;
   }
 
   /* Transform the nav container into a full-width dropdown */
   .nav-right {
-    display: flex; /* Override the previous 'display: none' */
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #ffffff;
+    margin-left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start;
     gap: 20px;
     padding: 24px 24px 28px;
     border-bottom: 2px solid var(--brandSand);
@@ -1725,7 +1707,7 @@ footer hr {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.25s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
   }
 
   /* Stack menu items vertically with better touch targets */
@@ -1739,8 +1721,19 @@ footer hr {
   .nav-links li {
     width: 100%;
     font-size: 18px;
-    padding: 10px 0;
+    padding: 0;
     border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-links li:not(.nav-account-item) > a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 0;
+  }
+
+  .nav-links li::after {
+    display: none;
   }
 
   .nav-links li.nav-account-item {
@@ -1773,7 +1766,7 @@ footer hr {
     padding: 12px;
   }
 
-  /* Active state class (triggered via JavaScript) */
+  /* Active state class (triggered via React state) */
   .nav-right.is-active {
     opacity: 1;
     visibility: visible;
