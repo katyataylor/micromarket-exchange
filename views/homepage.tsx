@@ -1,9 +1,12 @@
+import { useAuth } from './auth';
+import { mockListings } from './data/mockListings';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 import { ProductCard } from './partials/productCard';
-import { mockListings } from './data/mockListings';
 
 export function Homepage() {
+  const { memberHref } = useAuth();
+
   return (
     <>
       <Header />
@@ -50,7 +53,15 @@ export function Homepage() {
                 <div className="p2" style={{ opacity: '60%' }}>
                   Every listing includes a spec sheet, SDS, and certificate of analysis so buyers know exactly what they&apos;re getting. Quantities, packaging type, and pickup or freight details are all handled directly between buyer and seller.
                 </div>
-                <button type="button" className="shop-button" onClick={() => { window.location.href = '/marketplace'; }}>In Stock</button>
+                <button
+                  type="button"
+                  className="shop-button"
+                  onClick={() => {
+                    window.location.href = memberHref('/marketplace');
+                  }}
+                >
+                  In Stock
+                </button>
               </div>
             </div>
           </div>

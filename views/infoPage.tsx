@@ -1,7 +1,10 @@
+import { useAuth } from './auth';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
 export function InfoPage() {
+  const { memberHref } = useAuth();
+
   return (
     <>
       <Header />
@@ -150,7 +153,9 @@ export function InfoPage() {
               Our team will review all submissions within 1–2 business days.
             </div>
           </div>
-          <a href="/list-product" className="list-button">List Product</a>
+          <a href={memberHref('/list-product')} className="list-button">
+            List Product
+          </a>
         </div>
       </div>
       <Footer />

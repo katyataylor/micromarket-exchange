@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { createElement, type ComponentType } from 'react';
 import { renderToString } from 'react-dom/server';
+import { AuthProvider, buildLoginUrl, hasAuthCookie, sanitizeNextPath } from './views/auth';
 import { mockListings } from './views/data/mockListings';
 import { pageMeta, pages } from './views/registry';
 import type { PageName, PagePropsMap } from './views/types';
@@ -32,15 +33,27 @@ function escapeHtml(value: string) {
     .replace(/"/g, '&quot;');
 }
 
+type RenderOptions = {
+  req?: express.Request;
+  titleOverride?: string;
+};
+
 function renderDocument<K extends PageName>(
   name: K,
   props: PagePropsMap[K],
-  titleOverride?: string,
+  options?: RenderOptions,
 ) {
   const Page = pages[name] as ComponentType<PagePropsMap[K]>;
   const meta = pageMeta[name];
-  const title = titleOverride ?? meta.title;
-  const body = renderToString(createElement(Page, props));
+  const title = options?.titleOverride ?? meta.title;
+  const isAuthenticated = hasAuthCookie(options?.req?.headers.cookie);
+  const body = renderToString(
+    createElement(
+      AuthProvider,
+      { initialAuthenticated: isAuthenticated },
+      createElement(Page, props),
+    ),
+  );
   const styles = meta.styles
     .map((href) => `<link rel="stylesheet" href="${escapeHtml(href)}">`)
     .join('\n  ');
@@ -65,11 +78,24 @@ function renderDocument<K extends PageName>(
   ${styles}
 </head>
 <body>
-  <div id="root" data-page="${name}">${body}</div>
+  <div id="root" data-page="${name}" data-auth="${isAuthenticated ? '1' : '0'}">${body}</div>
   <script id="page-props" type="application/json">${safeProps}</script>
   <script src="/js/app.js" defer></script>
 </body>
 </html>`;
+}
+
+function requireMemberAuth(
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction,
+) {
+  if (hasAuthCookie(req.headers.cookie)) {
+    next();
+    return;
+  }
+  const target = sanitizeNextPath(req.originalUrl) ?? '/marketplace';
+  res.redirect(buildLoginUrl(target));
 }
 
 async function main() {
@@ -124,87 +150,125 @@ async function main() {
     res.redirect('/homepage');
   });
 
-  app.get('/homepage', (_req, res) => {
-    res.send(renderDocument('homepage', {}));
+  app.get('/homepage', (req, res) => {
+    res.send(renderDocument('homepage', {}, { req }));
   });
 
-  app.get('/marketplace', (_req, res) => {
-    res.send(renderDocument('marketplace', { listings: mockListings }));
+  app.get('/infopage', (req, res) => {
+    res.send(renderDocument('infopage', {}, { req }));
   });
 
-  app.get('/product/:id', (req, res) => {
-    const listing = mockListings.find((item) => String(item.id) === req.params.id);
+  app.get('/faq', (_req, res) => {
+    res.redirect('/infopage');
+  });
+
+  app.get('/login', (req, res) => {
+    const rawNext = typeof req.query.next === 'string' ? req.query.next : null;
+    const nextUrl = sanitizeNextPath(rawNext);
+    res.send(renderDocument('login', { nextUrl }, { req }));
+  });
+
+  app.get('/signin', (req, res) => {
+    const rawNext = typeof req.query.next === 'string' ? req.query.next : null;
+    res.redirect(rawNext ? buildLoginUrl(rawNext) : '/login');
+  });
+
+  app.get('/registration', (req, res) => {
+    res.send(renderDocument('registration', {}, { req }));
+  });
+
+  app.get('/registration/success', (req, res) => {
+    res.send(renderDocument('registrationSuccess', {}, { req }));
+  });
+
+  app.get('/registration/success-observer', (req, res) => {
+    res.send(renderDocument('registrationSuccessObserver', {}, { req }));
+  });
+
+  app.get('/contact', (req, res) => {
+    res.send(renderDocument('contact', {}, { req }));
+  });
+
+  app.get('/contactpage', (req, res) => {
+    res.send(renderDocument('contact', {}, { req }));
+  });
+
+  // ── Member-only (paywalled) routes ──────────────────────────────────────────
+
+  app.get('/marketplace', requireMemberAuth, (req, res) => {
+    res.send(renderDocument('marketplace', { listings: mockListings }, { req }));
+  });
+
+  app.get('/product/:id', requireMemberAuth, (req, res) => {
+    const productId = String(req.params.id);
+    const listing = mockListings.find((item) => String(item.id) === productId);
     if (!listing) {
-      res.status(404).send(renderDocument('notFound', {}));
+      res.status(404).send(renderDocument('notFound', {}, { req }));
       return;
     }
     res.send(
       renderDocument(
         'product',
-        { productId: req.params.id, listing },
-        `${listing.name} — MicroMarket Exchange`,
+        { productId, listing },
+        {
+          req,
+          titleOverride: `${listing.name} — MicroMarket Exchange`,
+        },
       ),
     );
   });
 
-  app.get('/sell/list', (_req, res) => {
-    res.send(renderDocument('listProduct', {}));
+  app.get('/product', requireMemberAuth, (_req, res) => {
+    res.redirect('/marketplace');
   });
 
-  app.get('/list-product', (_req, res) => {
-    res.send(renderDocument('listProduct', {}));
+  app.get('/sell/list', requireMemberAuth, (req, res) => {
+    res.send(renderDocument('listProduct', {}, { req }));
   });
 
-  app.get('/listProduct', (_req, res) => {
+  app.get('/list-product', requireMemberAuth, (req, res) => {
+    res.send(renderDocument('listProduct', {}, { req }));
+  });
+
+  app.get('/listProduct', (req, res) => {
+    if (!hasAuthCookie(req.headers.cookie)) {
+      res.redirect(buildLoginUrl('/list-product'));
+      return;
+    }
     res.redirect('/list-product');
   });
 
-  app.get('/account', (_req, res) => {
-    res.send(renderDocument('account', {}));
+  app.get('/account', requireMemberAuth, (req, res) => {
+    res.send(renderDocument('account', {}, { req }));
   });
 
-  app.get('/account/listings', (_req, res) => {
+  app.get('/account/listings', requireMemberAuth, (_req, res) => {
     res.redirect('/account#listings');
   });
 
-  app.get('/cart', (_req, res) => {
-    res.send(renderDocument('cart', {}));
+  app.get('/account/*', requireMemberAuth, (req, res) => {
+    const rawSub = req.path.replace(/^\/account\/+/, '').split('/')[0]?.toLowerCase() ?? '';
+    const validPanels = new Set([
+      'messages',
+      'orders',
+      'transactions',
+      'details',
+      'listings',
+      'subscription',
+    ]);
+    if (validPanels.has(rawSub)) {
+      res.redirect(`/account#${rawSub}`);
+      return;
+    }
+    res.redirect('/account');
   });
 
-  app.get('/login', (_req, res) => {
-    res.send(renderDocument('login', {}));
+  app.get('/cart', requireMemberAuth, (req, res) => {
+    res.send(renderDocument('cart', {}, { req }));
   });
 
-  app.get('/signin', (_req, res) => {
-    res.redirect('/login');
-  });
-
-  app.get('/registration', (_req, res) => {
-    res.send(renderDocument('registration', {}));
-  });
-
-  app.get('/registration/success', (_req, res) => {
-    res.send(renderDocument('registrationSuccess', {}));
-  });
-
-  app.get('/registration/success-observer', (_req, res) => {
-    res.send(renderDocument('registrationSuccessObserver', {}));
-  });
-
-  app.get('/contact', (_req, res) => {
-    res.send(renderDocument('contact', {}));
-  });
-
-  app.get('/contactpage', (_req, res) => {
-    res.send(renderDocument('contact', {}));
-  });
-
-  app.get('/infopage', (_req, res) => {
-    res.send(renderDocument('infopage', {}));
-  });
-
-  app.use((_req, res) => {
-    res.status(404).send(renderDocument('notFound', {}));
+  app.use((req, res) => {
+    res.status(404).send(renderDocument('notFound', {}, { req }));
   });
 
   app.listen(PORT, HOST, () => {

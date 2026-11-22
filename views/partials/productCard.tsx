@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { buildLoginUrl, useAuth } from '../auth';
 import type { Listing } from '../types';
 
 type WatchlistEntry = { listingId: number; qty: number; sold: boolean };
@@ -24,6 +25,7 @@ function getBids(): StoredBidMap {
 }
 
 export function ProductCard({ item }: { item: Listing }) {
+  const { isAuthenticated } = useAuth();
   const [imgIndex, setImgIndex] = useState(0);
   const [inWatchlist, setInWatchlist] = useState(false);
   const [inCart, setInCart] = useState(false);
@@ -37,9 +39,16 @@ export function ProductCard({ item }: { item: Listing }) {
     setActivePrice(item.price);
   }, [item.price]);
 
-  // Sync with localStorage after hydration (avoids SSR mismatch)
+  // Sync with localStorage after hydration when authenticated (avoids SSR mismatch & guest leaks)
   useEffect(() => {
     const syncStorage = () => {
+      if (!isAuthenticated) {
+        setInWatchlist(false);
+        setInCart(false);
+        setHasBid(false);
+        setActivePrice(item.price);
+        return;
+      }
       setInWatchlist(getWatchlist().some((w) => w.listingId === item.id));
       setInCart(getCart().some((c) => c.listingId === item.id && !c.sold));
       const recordedBid = getBids()[String(item.id)];
@@ -58,7 +67,7 @@ export function ProductCard({ item }: { item: Listing }) {
       window.removeEventListener('mme:storage-sync', syncStorage);
       window.removeEventListener('storage', syncStorage);
     };
-  }, [item.id, item.listingType, item.price]);
+  }, [isAuthenticated, item.id, item.listingType, item.price]);
 
   function prev(e: React.MouseEvent) {
     e.stopPropagation();
@@ -81,6 +90,10 @@ export function ProductCard({ item }: { item: Listing }) {
 
   function toggleWatchlist(e: React.MouseEvent) {
     e.stopPropagation();
+    if (!isAuthenticated) {
+      window.location.href = buildLoginUrl(`/product/${item.id}`);
+      return;
+    }
     const wl = getWatchlist();
     if (inWatchlist) {
       localStorage.setItem(
@@ -100,6 +113,12 @@ export function ProductCard({ item }: { item: Listing }) {
 
   function handlePrimaryAction(e: React.MouseEvent) {
     e.stopPropagation();
+    if (!isAuthenticated) {
+      const target =
+        item.listingType === 'auction' ? `/product/${item.id}#input-bid` : `/product/${item.id}`;
+      window.location.href = buildLoginUrl(target);
+      return;
+    }
     if (item.listingType === 'auction') {
       window.location.href = `/product/${item.id}#input-bid`;
       return;
@@ -131,7 +150,11 @@ export function ProductCard({ item }: { item: Listing }) {
   return (
     <div
       className="product-card"
-      onClick={() => { window.location.href = `/product/${item.id}`; }}
+      onClick={() => {
+        window.location.href = isAuthenticated
+          ? `/product/${item.id}`
+          : buildLoginUrl(`/product/${item.id}`);
+      }}
     >
       {/* Badge — absolute over the 68 px top-padding zone */}
       <div className={`pc-badge ${item.listingType === 'auction' ? 'pc-badge--auction' : 'pc-badge--fixed'}`}>

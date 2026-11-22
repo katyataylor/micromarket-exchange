@@ -1,7 +1,10 @@
+import { useAuth } from './auth';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 
 export function RegistrationSuccessObserver() {
+  const { memberHref } = useAuth();
+
   return (
     <>
       <Header />
@@ -41,7 +44,9 @@ export function RegistrationSuccessObserver() {
                   Browse current stock and auctions in our marketplace.
                 </p>
               </div>
-              <a href="/marketplace" className="reg-success-btn">View Store</a>
+              <a href={memberHref('/marketplace')} className="reg-success-btn">
+                View Store
+              </a>
             </div>
           </div>
 

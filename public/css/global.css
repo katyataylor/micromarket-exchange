@@ -391,20 +391,19 @@ hr {
   NAVIGATION BAR (GLOBAL)
    ========================================== */
 nav {
-  background-color: rgba(244, 243, 240, 0.6); /* 60% transparent */
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(45, 55, 72, 0.08);
   padding: 20px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);   Not sure about the blur*/
 }
 
 .nav-content {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -430,12 +429,13 @@ nav {
 
 .nav-links ul {
   display: flex;
+  align-items: center;
   list-style: none;
 }
 
 .nav-links a {
-    text-decoration: none; /* Removes default underline */
-    color: inherit; /* Prevents the default browser link blue color */
+  text-decoration: none; /* Removes default underline */
+  color: inherit; /* Prevents the default browser link blue color */
 }
 
 .nav-links li {
@@ -445,12 +445,14 @@ nav {
   opacity: 80%;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s ease;
-  padding: 16px 20px; 
+  white-space: nowrap;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  padding: 16px 20px;
 }
 
 .nav-links li:hover {
   color: var(--brandSlate);
+  opacity: 1;
   font-weight: 500;
 }
 
@@ -473,7 +475,7 @@ nav {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 16px;
+  gap: 14px;
   height: auto;
   width: fit-content;
   padding: 16px 20px;
@@ -484,7 +486,7 @@ nav {
   font-size: 20px;
   font-weight: 500;
   line-height: var(--line-base);
-  color: rgba(45, 55, 72, 0.5);
+  color: rgba(45, 55, 72, 0.55);
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.2s ease;
@@ -492,7 +494,7 @@ nav {
 
 .nav-account-trigger:hover,
 .nav-account-trigger:focus-visible {
-  color: rgba(45, 55, 72, 0.85);
+  color: var(--brandSlate);
 }
 
 .nav-account-trigger:focus {
@@ -514,16 +516,16 @@ nav {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 226px;
+  width: 236px;
   height: 32px;
   z-index: 1009;
 }
 
 .nav-account-menu {
   position: absolute;
-  top: calc(100% + 30px);
+  top: calc(100% + 22px);
   left: 20px;
-  width: 206px;
+  width: 216px;
   min-height: 256px;
   padding: 12px;
   background-color: var(--textWhite);
@@ -538,49 +540,108 @@ nav {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 58px;
-  padding: 16px 20px;
+  height: 54px;
+  padding: 14px 20px;
   border-radius: 8px;
   font-family: var(--fh);
   font-size: 20px;
   font-weight: 500;
   line-height: normal;
-  color: rgba(45, 55, 72, 0.5);
+  color: rgba(45, 55, 72, 0.55);
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .nav-links a.nav-account-menu-link:hover,
 .nav-links a.nav-account-menu-link:focus-visible {
   color: var(--brandSlate);
+  background-color: var(--surfacePg);
+}
+
+.nav-account-menu-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(45, 55, 72, 0.12);
+  margin: 6px 0;
+}
+
+.nav-links button.nav-account-signout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 52px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  color: rgba(45, 55, 72, 0.65);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-links button.nav-account-signout:hover,
+.nav-links button.nav-account-signout:focus-visible {
+  color: var(--brandSlate);
+  background-color: var(--surfacePg);
 }
 
 .contact-button {
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  background: #ffffff;
   border: 1px solid rgba(45, 55, 72, 0.8);
-  color: rgba(45, 55, 72, 0.6);
-  padding: 16px 20px;
+  color: var(--brandSlate);
+  padding: 0 24px;
   border-radius: 8px;
   font-family: var(--fh);
   font-weight: 500;
   font-size: 20px;
+  text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .contact-button:hover {
   background-color: var(--brandSlate);
+  border-color: var(--brandSlate);
   color: var(--textWhite);
-  opacity: 60%;
+}
+
+@media (max-width: 1040px) and (min-width: 769px) {
+  .nav-links li,
+  .nav-account-trigger {
+    font-size: 18px;
+    padding: 12px 12px;
+  }
+
+  .contact-button {
+    font-size: 18px;
+    height: 48px;
+    padding: 0 18px;
+  }
 }
 
 .menu-toggle {
   display: none; /* Hidden on desktop */
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   color: var(--brandSlate);
   cursor: pointer;
-  padding: 5px;
+  padding: 6px;
   z-index: 100;
 }
 
@@ -1404,23 +1465,23 @@ img.card-img-icon {
    ========================================== */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block; /* Show hamburger only on mobile screen widths */
+    display: inline-flex; /* Show hamburger only on mobile screen widths */
   }
 
   /* Re-defining nav-right specifically for mobile view dropdown */
   .nav-content .nav-right {
     display: flex;
     position: absolute;
-    top: 76px; 
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* More solid on mobile for text readability */
+    background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     flex-direction: column;
     align-items: stretch;
     gap: 20px;
-    padding: 30px;
+    padding: 24px 24px 28px;
     border-bottom: 2px solid var(--brandSand);
     box-shadow: 0 10px 15px rgba(0,0,0,0.05);
     z-index: 99;
@@ -1429,19 +1490,26 @@ img.card-img-icon {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
 
   .nav-links ul {
     flex-direction: column;
-    gap: 15px;
+    align-items: stretch;
+    gap: 8px;
     width: 100%;
   }
 
   .nav-links li {
+    width: 100%;
     font-size: 18px;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-links li > a {
+    display: block;
+    width: 100%;
   }
 
   /* Reset hover line animation for touch screens so it doesn't look buggy */
@@ -1619,32 +1687,36 @@ footer hr {
 /* Hide the hamburger button by default on desktop screens */
 .menu-toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   color: var(--brandSlate);
   cursor: pointer;
-  padding: 5px;
+  padding: 6px;
   z-index: 100;
 }
 
 @media (max-width: 768px) {
   /* Show the hamburger icon on mobile */
   .menu-toggle {
-    display: block;
+    display: inline-flex;
   }
 
   /* Transform the nav container into a full-width dropdown */
   .nav-right {
     display: flex; /* Override the previous 'display: none' */
     position: absolute;
-    top: 76px; /* Adjust based on your exact header height */
+    top: 100%;
     left: 0;
     width: 100%;
     background-color: #ffffff;
     flex-direction: column;
     align-items: stretch;
     gap: 20px;
-    padding: 30px;
+    padding: 24px 24px 28px;
     border-bottom: 2px solid var(--brandSand);
     box-shadow: 0 10px 15px rgba(0,0,0,0.05);
     z-index: 99;
@@ -1653,20 +1725,22 @@ footer hr {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
 
   /* Stack menu items vertically with better touch targets */
   .nav-links ul {
     flex-direction: column;
-    gap: 15px;
+    align-items: stretch;
+    gap: 8px;
     width: 100%;
   }
 
   .nav-links li {
+    width: 100%;
     font-size: 18px;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
 
   .nav-links li.nav-account-item {

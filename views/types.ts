@@ -44,7 +44,7 @@ export type PagePropsMap = {
   listProduct: Record<string, never>;
   account: Record<string, never>;
   cart: Record<string, never>;
-  login: Record<string, never>;
+  login: { nextUrl?: string | null };
   registration: Record<string, never>;
   registrationSuccess: Record<string, never>;
   registrationSuccessObserver: Record<string, never>;
