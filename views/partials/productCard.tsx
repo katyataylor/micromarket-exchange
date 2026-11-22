@@ -26,8 +26,17 @@ export function ProductCard({ item }: { item: Listing }) {
 
   // Sync with localStorage after hydration (avoids SSR mismatch)
   useEffect(() => {
-    setInWatchlist(getWatchlist().some((w) => w.listingId === item.id));
-    setInCart(getCart().some((c) => c.listingId === item.id));
+    const syncStorage = () => {
+      setInWatchlist(getWatchlist().some((w) => w.listingId === item.id));
+      setInCart(getCart().some((c) => c.listingId === item.id));
+    };
+    syncStorage();
+    window.addEventListener('mme:storage-sync', syncStorage);
+    window.addEventListener('storage', syncStorage);
+    return () => {
+      window.removeEventListener('mme:storage-sync', syncStorage);
+      window.removeEventListener('storage', syncStorage);
+    };
   }, [item.id]);
 
   function prev(e: React.MouseEvent) {
@@ -65,6 +74,7 @@ export function ProductCard({ item }: { item: Listing }) {
       );
       setInWatchlist(true);
     }
+    window.dispatchEvent(new Event('mme:storage-sync'));
   }
 
   function addToCart(e: React.MouseEvent) {
@@ -80,6 +90,7 @@ export function ProductCard({ item }: { item: Listing }) {
       JSON.stringify([...cart, { listingId: item.id, qty: 1 }]),
     );
     setInCart(true);
+    window.dispatchEvent(new Event('mme:storage-sync'));
   }
 
   const price = `$${item.price.toFixed(2)}/${item.priceUnit.replace('per ', '')}`;
@@ -104,6 +115,8 @@ export function ProductCard({ item }: { item: Listing }) {
             src={images[imgIndex]}
             alt={item.name}
             key={imgIndex}
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

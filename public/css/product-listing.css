@@ -12,11 +12,12 @@
   background-image: linear-gradient(to bottom, #2d3748, #6d85ae);
   display: flex;
   justify-content: center;
-  padding: 96px 0;
+  padding: 96px 20px;
 }
 
 .pl-hero-inner {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -115,11 +116,12 @@
   background-color: var(--surfacePg);
   display: flex;
   justify-content: center;
-  padding: 48px 10px 0;
+  padding: 48px 20px 0;
 }
 
 .pl-required-banner {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   background-color: var(--brandLightSand);
   border: 1px solid var(--brandDarkSand);
   border-radius: 20px;
@@ -154,11 +156,12 @@
   background-color: var(--surfacePg);
   display: flex;
   justify-content: center;
-  padding: 48px 10px;
+  padding: 48px 20px;
 }
 
 .pl-form-sections {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -173,7 +176,7 @@
   background: var(--textWhite);
   border-radius: 30px;
   box-shadow: 0px 10px 12.5px rgba(0, 0, 0, 0.25);
-  padding: 48px 0;
+  padding: 48px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,7 +184,8 @@
 
 /* Inner content — 956px wide */
 .pl-card-inner {
-  width: 956px;
+  width: 100%;
+  max-width: 956px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -566,7 +570,8 @@
    ========================================== */
 
 .pl-submit-row {
-  width: 956px;
+  width: 100%;
+  max-width: 956px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -624,4 +629,50 @@
 
 .pl-btn-outline:hover {
   background-color: rgba(240, 193, 66, 0.1);
+}
+
+@media (max-width: 960px) {
+  .pl-hero {
+    padding: 56px 20px;
+  }
+
+  .pl-hero-title {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+
+  .pl-hero-subtitle {
+    font-size: 20px;
+  }
+
+  .pl-steps {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .pl-step-label {
+    font-size: 18px;
+  }
+
+  .pl-field-row {
+    flex-direction: column;
+  }
+
+  .pl-field--half {
+    width: 100%;
+  }
+
+  .pl-upload-tags {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pl-submit-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pl-submit-actions {
+    flex-wrap: wrap;
+  }
 }

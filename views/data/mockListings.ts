@@ -18,8 +18,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9098.jpeg',
       '/images/IMG_9099.jpeg',
     ],
-    expires: '2026-11-10',
+    expires: '2026-12-10',
     category: 'Amino Acids',
+    manufacturer: 'Big Feed Co.',
+    lotNumber: 'LOT-2026-0441',
+    coaExpiry: 'Jan. 2027',
+    description:
+      'Feed-grade L-Lysine HCl 98.5%. 98.5% L-Lysine HCl assay (≥78.8% free base), moisture not exceeding 1.0%, and heavy metals below 10 ppm. Suitable for swine, poultry, dairy, beef, aquaculture, and companion animal rations. Stored below 25°C in a cool, dry environment. Available for pickup or freight with services from freightquote.com as a recommended carrier.',
   },
   {
     id: 2,
@@ -37,8 +42,13 @@ export const mockListings: Listing[] = [
       '/images/Grain.jpg',
       '/images/IMG_9100.jpeg',
     ],
-    expires: '2026-11-12',
+    expires: '2026-12-14',
     category: 'Silage',
+    manufacturer: 'Heartland Farm Supply',
+    lotNumber: 'LOT-2026-0812',
+    coaExpiry: 'Mar. 2027',
+    description:
+      'Fermented whole-plant Corn Silage Grade B with 34% dry matter and consistent chop length for beef and dairy total mixed rations. Tested free of mycotoxins above FDA action levels and stored in sealed bunker storage in Des Moines, IA. Ready for bulk live-bottom or walking-floor pickup.',
   },
   {
     id: 3,
@@ -56,8 +66,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9101.jpeg',
       '/images/IMG_9097.jpeg',
     ],
-    expires: '2026-11-14',
+    expires: '2026-12-18',
     category: 'Protein Supplements',
+    manufacturer: 'Prairie Oilseed Processing',
+    lotNumber: 'LOT-2026-1104',
+    coaExpiry: 'Apr. 2027',
+    description:
+      'Solvent-extracted 44% crude protein soybean meal packaged in 50 lb multi-wall poly bags on shrink-wrapped pallets. Guaranteed minimum 44.0% crude protein, max 7.0% crude fiber, and max 12.0% moisture. Ideal for swine, poultry, and ruminant protein supplementation.',
   },
   {
     id: 4,
@@ -76,8 +91,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9102.jpeg',
       '/images/IMG_9098.jpeg',
     ],
-    expires: '2026-11-15',
+    expires: '2026-12-22',
     category: 'Roughage',
+    manufacturer: 'Platte River Ag',
+    lotNumber: 'LOT-2026-0629',
+    coaExpiry: 'May 2027',
+    description:
+      'Third-cutting Nebraska dairy-quality alfalfa hay in dense large square bales. Relative Feed Value (RFV) 172, crude protein 20.4%, barn-stored off ground since harvest with zero rain damage. Full forage NIR lab analysis included.',
   },
   {
     id: 5,
@@ -95,8 +115,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9099.jpeg',
       '/images/IMG_9100.jpeg',
     ],
-    expires: '2026-11-30',
+    expires: '2027-01-10',
     category: 'Energy Feeds',
+    manufacturer: 'Midwest BioEnergy Milling',
+    lotNumber: 'LOT-2026-1290',
+    coaExpiry: 'Jun. 2027',
+    description:
+      'Golden corn Distillers Dried Grains with Solubles (DDGS), minimum 27% crude protein and 8.5% crude fat. Screened for flowability and mycotoxin-tested (<2 ppm DON, <10 ppb aflatoxin). Available at fixed per-pound pricing for immediate hopper-bottom loading.',
   },
   {
     id: 6,
@@ -114,8 +139,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9101.jpeg',
       '/images/Grain.jpg',
     ],
-    expires: '2026-11-11',
+    expires: '2026-12-12',
     category: 'Energy Feeds',
+    manufacturer: 'San Joaquin Flour & Feed',
+    lotNumber: 'LOT-2026-0935',
+    coaExpiry: 'Feb. 2027',
+    description:
+      'Clean mill-run wheat middlings (15.5% crude protein, max 9.5% crude fiber) from food-grade flour milling overstock. Excellent pellet binder and digestible fiber/energy source for cattle, swine, and poultry rations.',
   },
   {
     id: 7,
@@ -133,8 +163,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9102.jpeg',
       '/images/IMG_9097.jpeg',
     ],
-    expires: '2026-11-20',
+    expires: '2027-01-20',
     category: 'Protein Supplements',
+    manufacturer: 'Columbia Basin Crushers',
+    lotNumber: 'LOT-2026-1402',
+    coaExpiry: 'Jul. 2027',
+    description:
+      'Low-glucosinolate 36% crude protein expeller-pressed canola meal with high rumen-undegradable methionine and cysteine profile. Stored in climate-monitored flat storage in Spokane, WA with full amino acid COA.',
   },
   {
     id: 8,
@@ -152,8 +187,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9098.jpeg',
       '/images/IMG_9101.jpeg',
     ],
-    expires: '2026-11-09',
+    expires: '2026-12-08',
     category: 'Energy Feeds',
+    manufacturer: 'Blue Ribbon Grain Co.',
+    lotNumber: 'LOT-2026-0774',
+    coaExpiry: 'Apr. 2027',
+    description:
+      'Triple-cleaned, dehulled whole oat groats in 2,200 lb FIBC super sacks. High palatability and starch digestibility for nursery pig starter diets, equine rations, and companion animal premixes.',
   },
   {
     id: 9,
@@ -172,8 +212,13 @@ export const mockListings: Listing[] = [
       '/images/IMG_9100.jpeg',
       '/images/IMG_9102.jpeg',
     ],
-    expires: '2026-12-01',
+    expires: '2027-02-01',
     category: 'Protein Supplements',
+    manufacturer: 'Kansas Rendering Inc.',
+    lotNumber: 'LOT-2026-1518',
+    coaExpiry: 'Aug. 2027',
+    description:
+      'Spray-dried porcine blood meal guaranteed minimum 85% crude protein and ≥7.5% digestible lysine. Salmonella-negative COA, packaged in moisture-barrier 50 lb bags on heat-treated pallets.',
   },
 ];
 
