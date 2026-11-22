@@ -154,6 +154,7 @@
 
 .pl-form-wrap {
   background-color: var(--surfacePg);
+  border-style: none;
   display: flex;
   justify-content: center;
   padding: 48px 20px;
