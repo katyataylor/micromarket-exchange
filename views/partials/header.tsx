@@ -18,18 +18,18 @@ export function Header(_props?: HeaderProps) {
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const enteredDropdownRef = useRef(false);
 
   const closeAccountMenu = () => {
-    enteredDropdownRef.current = false;
     setAccountMenuOpen(false);
   };
 
+  const closeAllMenus = () => {
+    setAccountMenuOpen(false);
+    setOpen(false);
+  };
+
   const toggleAccountMenu = () => {
-    setAccountMenuOpen((prev) => {
-      enteredDropdownRef.current = false;
-      return !prev;
-    });
+    setAccountMenuOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -40,22 +40,30 @@ export function Header(_props?: HeaderProps) {
         navRef.current.contains(target) || toggleRef.current.contains(target);
       if (!isClickInside) {
         setOpen(false);
-        closeAccountMenu();
+        setAccountMenuOpen(false);
       }
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        closeAccountMenu();
+        setAccountMenuOpen(false);
+        setOpen(false);
+      }
+    };
+
+    const onResize = () => {
+      if (window.innerWidth > 768) {
         setOpen(false);
       }
     };
 
     document.addEventListener('click', onClick);
     document.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
     return () => {
       document.removeEventListener('click', onClick);
       document.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
@@ -69,8 +77,7 @@ export function Header(_props?: HeaderProps) {
     event: ReactMouseEvent<HTMLAnchorElement>,
     item: (typeof ACCOUNT_MENU_ITEMS)[number],
   ) => {
-    closeAccountMenu();
-    setOpen(false);
+    closeAllMenus();
 
     if ('cartSection' in item && item.cartSection && window.location.pathname === '/cart') {
       event.preventDefault();
@@ -82,15 +89,14 @@ export function Header(_props?: HeaderProps) {
   };
 
   const handleSignOut = () => {
-    closeAccountMenu();
-    setOpen(false);
+    closeAllMenus();
     signOutAndRedirect('/homepage');
   };
 
   return (
     <nav data-auth-mode={isAuthenticated ? 'member' : 'guest'}>
       <div className="nav-content">
-        <a href="/homepage" className="logo-link">
+        <a href="/homepage" className="logo-link" onClick={closeAllMenus}>
           <img src="/images/small-mme-logo.png" alt="MicroMarket Exchange logo" />
         </a>
         <button
@@ -118,21 +124,24 @@ export function Header(_props?: HeaderProps) {
         </button>
 
         {isAuthenticated ? (
-          <div ref={navRef} className={`nav-right${open ? ' is-active active' : ''}`}>
+          <div
+            ref={navRef}
+            className={`nav-right nav-right--member${open ? ' is-active active' : ''}`}
+          >
             <div className="nav-links">
               <ul>
                 <li>
-                  <a href="/marketplace" onClick={() => setOpen(false)}>
+                  <a href="/marketplace" onClick={closeAllMenus}>
                     Marketplace
                   </a>
                 </li>
                 <li>
-                  <a href="/list-product" onClick={() => setOpen(false)}>
+                  <a href="/list-product" onClick={closeAllMenus}>
                     List a product
                   </a>
                 </li>
                 <li>
-                  <a href="/infopage" onClick={() => setOpen(false)}>
+                  <a href="/infopage" onClick={closeAllMenus}>
                     FAQ
                   </a>
                 </li>
@@ -170,9 +179,6 @@ export function Header(_props?: HeaderProps) {
                         className="nav-account-menu"
                         role="menu"
                         aria-label="My Account"
-                        onMouseEnter={() => {
-                          enteredDropdownRef.current = true;
-                        }}
                         onMouseLeave={closeAccountMenu}
                       >
                         {ACCOUNT_MENU_ITEMS.map((item) => (
@@ -201,7 +207,7 @@ export function Header(_props?: HeaderProps) {
                 </li>
               </ul>
             </div>
-            <a href="/contact" className="contact-button" onClick={() => setOpen(false)}>
+            <a href="/contact" className="contact-button" onClick={closeAllMenus}>
               Contact Us
             </a>
           </div>
@@ -213,12 +219,12 @@ export function Header(_props?: HeaderProps) {
             <div className="nav-links">
               <ul>
                 <li>
-                  <a href="/infopage" onClick={() => setOpen(false)}>
+                  <a href="/infopage" onClick={closeAllMenus}>
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a href="/registration" onClick={() => setOpen(false)}>
+                  <a href="/registration" onClick={closeAllMenus}>
                     Create Account
                   </a>
                 </li>
@@ -227,7 +233,7 @@ export function Header(_props?: HeaderProps) {
             <a
               href="/login"
               className="contact-button nav-login-button"
-              onClick={() => setOpen(false)}
+              onClick={closeAllMenus}
             >
               Login
             </a>
