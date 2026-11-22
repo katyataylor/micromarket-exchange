@@ -22,7 +22,6 @@ export type Listing = {
   description?: string;
 };
 
-
 export type PageName =
   | 'homepage'
   | 'marketplace'
@@ -30,13 +29,13 @@ export type PageName =
   | 'listProduct'
   | 'account'
   | 'cart'
+  | 'login'
   | 'registration'
   | 'registrationSuccess'
   | 'registrationSuccessObserver'
   | 'contact'
   | 'infopage'
   | 'notFound';
-
 
 export type PagePropsMap = {
   homepage: Record<string, never>;
@@ -45,6 +44,7 @@ export type PagePropsMap = {
   listProduct: Record<string, never>;
   account: Record<string, never>;
   cart: Record<string, never>;
+  login: Record<string, never>;
   registration: Record<string, never>;
   registrationSuccess: Record<string, never>;
   registrationSuccessObserver: Record<string, never>;

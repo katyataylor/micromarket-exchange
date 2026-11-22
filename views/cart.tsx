@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { type FormEvent, useEffect, useState } from 'react';
 import { mockListings } from './data/mockListings';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
@@ -9,6 +9,31 @@ import type { Listing } from './types';
 type CartEntry = { listingId: number; qty: number; sold?: boolean };
 type WatchlistEntry = { listingId: number; qty: number; sold: boolean };
 
+type FulfillmentMethod = 'freight' | 'pickup';
+
+export type StoredOrderItem = {
+  listingId: number;
+  name: string;
+  seller: string;
+  qty: number;
+  unitPrice: number;
+  priceUnit: string;
+  lotVolume: string;
+};
+
+export type StoredOrder = {
+  orderId: string;
+  createdAt: string;
+  status: string;
+  fulfillment: FulfillmentMethod;
+  contactName: string;
+  contactEmail: string;
+  deliveryAddress: string;
+  poNumber?: string;
+  total: number;
+  items: StoredOrderItem[];
+};
+
 // ── localStorage helpers ───────────────────────────────────────────────────────
 
 function safeParseJSON<T>(str: string | null, fallback: T): T {
@@ -16,12 +41,6 @@ function safeParseJSON<T>(str: string | null, fallback: T): T {
   try { return JSON.parse(str) as T; } catch { return fallback; }
 }
 
-function loadCart(): CartEntry[] {
-  return safeParseJSON(localStorage.getItem('mme_cart'), []);
-}
-function loadWatchlist(): WatchlistEntry[] {
-  return safeParseJSON(localStorage.getItem('mme_watchlist'), []);
-}
 function persistCart(items: CartEntry[]) {
   localStorage.setItem('mme_cart', JSON.stringify(items));
 }
@@ -90,8 +109,6 @@ type CartRowProps = {
   onRemove: () => void;
   /** Watchlist-only: move a single item to cart */
   onMoveToCart?: () => void;
-  /** Demo button: fire the sold event for this listing */
-  onMarkSold?: () => void;
 };
 
 function ProductRow({
@@ -103,7 +120,6 @@ function ProductRow({
   onDecrement,
   onRemove,
   onMoveToCart,
-  onMarkSold,
 }: CartRowProps) {
   const isSold = Boolean(entry.sold);
   const rowTotal = listing.price * entry.qty;
@@ -124,17 +140,19 @@ function ProductRow({
         <div className="cart-row-middle">
           {/* Product image + info */}
           <div className="cart-row-product">
-            <img
-              className="cart-row-image"
-              src={listing.images[0] || '/images/IMG_9097.jpeg'}
-              alt={listing.name}
-            />
+            <a href={`/product/${listing.id}`} className="cart-row-image-link">
+              <img
+                className="cart-row-image"
+                src={listing.images[0] || '/images/IMG_9097.jpeg'}
+                alt={listing.name}
+              />
+            </a>
             <div className="cart-row-info">
               <div className="cart-row-name-row">
-                <span className="cart-row-name">{listing.name}</span>
+                <a href={`/product/${listing.id}`} className="cart-row-name">{listing.name}</a>
                 {isSold && <span className="cart-sold-badge">Sold</span>}
               </div>
-              <span className="cart-row-price">${listing.price.toFixed(2)}</span>
+              <span className="cart-row-price">${listing.price.toFixed(2)} {listing.priceUnit}</span>
             </div>
           </div>
 
@@ -142,6 +160,7 @@ function ProductRow({
           <div className="cart-row-qty-total">
             <div className="cart-row-qty-control">
               <button
+                type="button"
                 className="cart-row-qty-btn"
                 onClick={onIncrement}
                 disabled={isSold}
@@ -151,6 +170,7 @@ function ProductRow({
               </button>
               <span className="cart-row-qty-value">{entry.qty}</span>
               <button
+                type="button"
                 className="cart-row-qty-btn"
                 onClick={onDecrement}
                 disabled={isSold}
@@ -167,6 +187,7 @@ function ProductRow({
             <div className="cart-row-actions">
               {onMoveToCart && (
                 <button
+                  type="button"
                   className="cart-row-move-btn"
                   onClick={onMoveToCart}
                   disabled={isSold}
@@ -176,22 +197,13 @@ function ProductRow({
                 </button>
               )}
               <button
+                type="button"
                 className="cart-row-remove-btn"
                 onClick={onRemove}
                 aria-label={onMoveToCart ? 'Remove from watchlist' : 'Remove from cart'}
               >
                 Remove
               </button>
-              {/* Demo control — fires the sold CustomEvent so both cart & watchlist respond */}
-              {onMarkSold && !isSold && (
-                <button
-                  className="cart-demo-sold-btn"
-                  onClick={onMarkSold}
-                  title="Demo: dispatch mme:listing-sold event for this item"
-                >
-                  Mark&nbsp;Sold
-                </button>
-              )}
             </div>
           </div>
         </div>
@@ -208,6 +220,17 @@ export function Cart() {
   const [watchlistItems, setWatchlistItems] = useState<WatchlistEntry[]>([]);
   const [checkedCart, setCheckedCart] = useState<Set<number>>(new Set());
   const [checkedWatchlist, setCheckedWatchlist] = useState<Set<number>>(new Set());
+
+  // Checkout modal & confirmation state
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [fulfillment, setFulfillment] = useState<FulfillmentMethod>('freight');
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [deliveryAddress, setDeliveryAddress] = useState('');
+  const [poNumber, setPoNumber] = useState('');
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+  const [confirmedOrder, setConfirmedOrder] = useState<StoredOrder | null>(null);
+  const [recentOrderBanner, setRecentOrderBanner] = useState<StoredOrder | null>(null);
 
   // ── Hydrate from localStorage (or seed) after mount ──────────────────────────
   useEffect(() => {
@@ -226,6 +249,26 @@ export function Cart() {
 
     if (!storedCart || cart.length !== rawCart.length) persistCart(cart);
     if (!storedWatchlist || watchlist.length !== rawWatchlist.length) persistWatchlist(watchlist);
+
+    const profile = safeParseJSON<{
+      contactName?: string;
+      email?: string;
+      address?: string;
+    } | null>(localStorage.getItem('mme_account_profile'), null);
+    const session = safeParseJSON<{ email?: string; name?: string } | null>(
+      localStorage.getItem('mme_session'),
+      null,
+    );
+
+    if (profile?.contactName || session?.name) {
+      setContactName(profile?.contactName ?? session?.name ?? '');
+    }
+    if (profile?.email || session?.email) {
+      setContactEmail(profile?.email ?? session?.email ?? '');
+    }
+    if (profile?.address) {
+      setDeliveryAddress(profile.address);
+    }
 
     setCartItems(cart);
     setWatchlistItems(watchlist);
@@ -262,6 +305,18 @@ export function Cart() {
     };
   }, [mounted]);
 
+  useEffect(() => {
+    if (!checkoutOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setCheckoutOpen(false);
+        setConfirmedOrder(null);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [checkoutOpen]);
+
   // ── Sold-item event listener ──────────────────────────────────────────────────
   // The app (or any external system) can fire:
   //   window.dispatchEvent(new CustomEvent('mme:listing-sold', { detail: { listingId: N } }))
@@ -270,7 +325,9 @@ export function Cart() {
   // a "Sold" badge.
   useEffect(() => {
     function handleListingSold(e: Event) {
-      const { listingId } = (e as CustomEvent<{ listingId: number }>).detail;
+      const detail = (e as CustomEvent<{ listingId?: number }>).detail;
+      const listingId = detail?.listingId;
+      if (typeof listingId !== 'number') return;
 
       setWatchlistItems((prev) => {
         const updated = prev.map((item) =>
@@ -303,6 +360,7 @@ export function Cart() {
           : item,
       );
       persistCart(updated);
+      window.dispatchEvent(new Event('mme:storage-sync'));
       return updated;
     });
   }
@@ -311,6 +369,7 @@ export function Cart() {
     setCartItems((prev) => {
       const updated = prev.filter((item) => item.listingId !== listingId);
       persistCart(updated);
+      window.dispatchEvent(new Event('mme:storage-sync'));
       return updated;
     });
     setCheckedCart((prev) => {
@@ -350,6 +409,7 @@ export function Cart() {
     setWatchlistItems((prev) => {
       const updated = prev.filter((item) => item.listingId !== listingId);
       persistWatchlist(updated);
+      window.dispatchEvent(new Event('mme:storage-sync'));
       return updated;
     });
     setCheckedWatchlist((prev) => {
@@ -384,6 +444,7 @@ export function Cart() {
         updated = [...prev, { listingId, qty }];
       }
       persistCart(updated);
+      window.dispatchEvent(new Event('mme:storage-sync'));
       return updated;
     });
     removeFromWatchlist(listingId);
@@ -396,7 +457,7 @@ export function Cart() {
   function moveCheckedToCart() {
     const toMove = watchlistItems.filter((item) => {
       if (item.sold) return false;
-      if (checkedWatchlist.size === 0) return true; // move all when nothing checked
+      if (checkedWatchlist.size === 0) return true;
       return checkedWatchlist.has(item.listingId);
     });
 
@@ -415,6 +476,7 @@ export function Cart() {
         }
       }
       persistCart(updated);
+      window.dispatchEvent(new Event('mme:storage-sync'));
       return updated;
     });
 
@@ -422,21 +484,31 @@ export function Cart() {
     setWatchlistItems((prev) => {
       const updated = prev.filter((item) => !movedIds.has(item.listingId));
       persistWatchlist(updated);
+      window.dispatchEvent(new Event('mme:storage-sync'));
       return updated;
     });
     setCheckedWatchlist(new Set());
   }
 
-  /** Fire the sold CustomEvent so the event listener above picks it up */
-  function fireSoldEvent(listingId: number) {
-    window.dispatchEvent(
-      new CustomEvent('mme:listing-sold', { detail: { listingId } }),
-    );
-  }
+  // ── Totals & Checkout selection ───────────────────────────────────────────────
 
-  // ── Totals ────────────────────────────────────────────────────────────────────
+  const availableCartItems = cartItems.filter(
+    (item) => !item.sold && Boolean(getListing(item.listingId)),
+  );
+  const checkedAvailableCart = availableCartItems.filter((item) =>
+    checkedCart.has(item.listingId),
+  );
+  const itemsToCheckout =
+    checkedCart.size > 0 ? checkedAvailableCart : availableCartItems;
 
-  const cartTotal = cartItems.reduce((sum, item) => {
+  const cartTotal = cartItems
+    .filter((item) => !item.sold)
+    .reduce((sum, item) => {
+      const listing = getListing(item.listingId);
+      return sum + (listing ? listing.price * item.qty : 0);
+    }, 0);
+
+  const checkoutTotal = itemsToCheckout.reduce((sum, item) => {
     const listing = getListing(item.listingId);
     return sum + (listing ? listing.price * item.qty : 0);
   }, 0);
@@ -449,6 +521,93 @@ export function Cart() {
     }, 0);
 
   const allWatchlistSold = watchlistItems.length > 0 && watchlistItems.every((i) => i.sold);
+
+  function openCheckoutModal() {
+    if (itemsToCheckout.length === 0) return;
+    setCheckoutError(null);
+    setConfirmedOrder(null);
+    setCheckoutOpen(true);
+  }
+
+  function closeCheckoutModal() {
+    setCheckoutOpen(false);
+    setConfirmedOrder(null);
+    setCheckoutError(null);
+  }
+
+  function handleCheckoutSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const trimmedName = contactName.trim();
+    const trimmedEmail = contactEmail.trim();
+    const trimmedAddress = deliveryAddress.trim();
+
+    if (!trimmedName) {
+      setCheckoutError('Please enter the primary buyer contact name.');
+      return;
+    }
+    if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      setCheckoutError('Please enter a valid business email address.');
+      return;
+    }
+    if (fulfillment === 'freight' && !trimmedAddress) {
+      setCheckoutError('Please enter the licensed receiving facility address for freight delivery.');
+      return;
+    }
+
+    const existingOrders = safeParseJSON<StoredOrder[]>(
+      localStorage.getItem('mme_orders'),
+      [],
+    );
+    const nextNum = 4102 + existingOrders.length;
+    const orderItems: StoredOrderItem[] = itemsToCheckout.flatMap((entry) => {
+      const listing = getListing(entry.listingId);
+      if (!listing) return [];
+      return [
+        {
+          listingId: listing.id,
+          name: listing.name,
+          seller: listing.seller,
+          qty: entry.qty,
+          unitPrice: listing.price,
+          priceUnit: listing.priceUnit,
+          lotVolume: listing.qty,
+        },
+      ];
+    });
+
+    const newOrder: StoredOrder = {
+      orderId: `MME-ORD-2026-${nextNum}`,
+      createdAt: new Date().toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+      status: 'Pending Seller Confirmation',
+      fulfillment,
+      contactName: trimmedName,
+      contactEmail: trimmedEmail,
+      deliveryAddress:
+        fulfillment === 'freight' ? trimmedAddress : 'Buyer-arranged facility pickup',
+      poNumber: poNumber.trim() || undefined,
+      total: checkoutTotal,
+      items: orderItems,
+    };
+
+    localStorage.setItem('mme_orders', JSON.stringify([newOrder, ...existingOrders]));
+
+    const purchasedIds = new Set(itemsToCheckout.map((i) => i.listingId));
+    setCartItems((prev) => {
+      const remaining = prev.filter((item) => !purchasedIds.has(item.listingId));
+      persistCart(remaining);
+      return remaining;
+    });
+    setCheckedCart(new Set());
+    window.dispatchEvent(new Event('mme:storage-sync'));
+
+    setCheckoutError(null);
+    setConfirmedOrder(newOrder);
+    setRecentOrderBanner(newOrder);
+  }
 
   // ── Render ────────────────────────────────────────────────────────────────────
 
@@ -477,6 +636,23 @@ export function Cart() {
                 <p className="cart-section-title">Your Cart</p>
                 <a href="/marketplace" className="cart-continue-link">Continue shopping</a>
               </div>
+              {recentOrderBanner && (
+                <div className="cart-order-banner" role="status">
+                  <div className="cart-order-banner-text">
+                    <strong>Order request {recentOrderBanner.orderId} submitted.</strong>{' '}
+                    Confirmation sent to {recentOrderBanner.contactEmail} (${recentOrderBanner.total.toFixed(2)} USD).{' '}
+                    <a href="/account#orders">View in My Orders →</a>
+                  </div>
+                  <button
+                    type="button"
+                    className="cart-order-banner-dismiss"
+                    onClick={() => setRecentOrderBanner(null)}
+                    aria-label="Dismiss order confirmation"
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
               <ColumnHeaders />
             </div>
           </div>
@@ -502,7 +678,6 @@ export function Cart() {
                   onIncrement={() => updateCartQty(item.listingId, 1)}
                   onDecrement={() => updateCartQty(item.listingId, -1)}
                   onRemove={() => removeFromCart(item.listingId)}
-                  onMarkSold={() => fireSoldEvent(item.listingId)}
                 />
               );
             })
@@ -512,15 +687,23 @@ export function Cart() {
             <div className="cart-section-footer-rule" />
             <div className="cart-section-totals">
               <div className="cart-estimated-total">
-                <span className="cart-estimated-label">Estimated total</span>
-                <span className="cart-estimated-value">${cartTotal.toFixed(2)} USD</span>
+                <span className="cart-estimated-label">
+                  {checkedCart.size > 0
+                    ? `Selected total (${itemsToCheckout.length})`
+                    : 'Estimated total'}
+                </span>
+                <span className="cart-estimated-value">
+                  ${(checkedCart.size > 0 ? checkoutTotal : cartTotal).toFixed(2)} USD
+                </span>
               </div>
               <p className="cart-taxes-note">
                 Taxes, discounts and shipping calculated at checkout.
               </p>
               <button
+                type="button"
                 className="cart-action-btn"
-                disabled={cartItems.length === 0 || cartItems.every((i) => i.sold)}
+                onClick={openCheckoutModal}
+                disabled={itemsToCheckout.length === 0}
               >
                 Checkout
               </button>
@@ -563,7 +746,6 @@ export function Cart() {
                   onDecrement={() => updateWatchlistQty(item.listingId, -1)}
                   onRemove={() => removeFromWatchlist(item.listingId)}
                   onMoveToCart={() => moveOneToCart(item.listingId, item.qty)}
-                  onMarkSold={() => fireSoldEvent(item.listingId)}
                 />
               );
             })
@@ -580,6 +762,7 @@ export function Cart() {
                 Taxes, discounts and shipping calculated at checkout.
               </p>
               <button
+                type="button"
                 className="cart-action-btn"
                 onClick={moveCheckedToCart}
                 disabled={watchlistItems.length === 0 || allWatchlistSold}
@@ -597,6 +780,7 @@ export function Cart() {
           <div className="cart-return-top-section">
             <div className="cart-section-footer-rule" />
             <button
+              type="button"
               className="cart-return-top-btn"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
@@ -606,6 +790,244 @@ export function Cart() {
         </div>
 
       </div>
+
+      {/* ══ CHECKOUT / ORDER REQUEST MODAL ═════════════════════════════════════ */}
+      {checkoutOpen && (
+        <div
+          className="cart-checkout-backdrop"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeCheckoutModal();
+          }}
+        >
+          <div
+            className="cart-checkout-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="checkout-modal-title"
+          >
+            {confirmedOrder ? (
+              <div className="cart-checkout-confirmed">
+                <div className="cart-checkout-header">
+                  <div>
+                    <p className="cart-checkout-eyebrow">Order request submitted</p>
+                    <h2 id="checkout-modal-title" className="cart-checkout-title">
+                      Thank you — your order is in review
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    className="cart-checkout-close"
+                    onClick={closeCheckoutModal}
+                    aria-label="Close checkout dialog"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="cart-checkout-notice">
+                  <p>
+                    <strong>Reference ID:</strong> {confirmedOrder.orderId}
+                  </p>
+                  <p>
+                    Each verified seller has been notified to confirm lot availability,
+                    applicable tax, and{' '}
+                    {confirmedOrder.fulfillment === 'freight'
+                      ? 'freight quote details'
+                      : 'dock pickup scheduling'}{' '}
+                    within 1 business day.
+                  </p>
+                </div>
+
+                <div className="cart-checkout-summary">
+                  <p className="cart-checkout-section-label">Items requested</p>
+                  {confirmedOrder.items.map((item) => (
+                    <div className="cart-checkout-line" key={item.listingId}>
+                      <div>
+                        <p className="cart-checkout-item-name">{item.name}</p>
+                        <p className="cart-checkout-item-meta">
+                          {item.seller} · {item.lotVolume} × {item.qty}
+                        </p>
+                      </div>
+                      <span className="cart-checkout-item-price">
+                        ${(item.unitPrice * item.qty).toFixed(2)}
+                      </span>
+                    </div>
+                  ))}
+                  <div className="cart-checkout-total-row">
+                    <span>Estimated subtotal</span>
+                    <strong>${confirmedOrder.total.toFixed(2)} USD</strong>
+                  </div>
+                </div>
+
+                <div className="cart-checkout-actions">
+                  <a href="/account#orders" className="cart-checkout-primary-link">
+                    View in My Orders
+                  </a>
+                  <a href="/marketplace" className="cart-checkout-secondary-link">
+                    Continue Shopping
+                  </a>
+                  <button
+                    type="button"
+                    className="cart-checkout-tertiary-btn"
+                    onClick={closeCheckoutModal}
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form className="cart-checkout-form" onSubmit={handleCheckoutSubmit} noValidate>
+                <div className="cart-checkout-header">
+                  <div>
+                    <p className="cart-checkout-eyebrow">Verified B2B Checkout</p>
+                    <h2 id="checkout-modal-title" className="cart-checkout-title">
+                      Submit Order Request
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    className="cart-checkout-close"
+                    onClick={closeCheckoutModal}
+                    aria-label="Close checkout dialog"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="cart-checkout-summary">
+                  <p className="cart-checkout-section-label">Order summary</p>
+                  {itemsToCheckout.map((entry) => {
+                    const listing = getListing(entry.listingId);
+                    if (!listing) return null;
+                    return (
+                      <div className="cart-checkout-line" key={listing.id}>
+                        <div>
+                          <p className="cart-checkout-item-name">{listing.name}</p>
+                          <p className="cart-checkout-item-meta">
+                            {listing.seller} ({listing.location}) · {listing.qty} · Qty {entry.qty}
+                          </p>
+                        </div>
+                        <span className="cart-checkout-item-price">
+                          ${(listing.price * entry.qty).toFixed(2)}
+                        </span>
+                      </div>
+                    );
+                  })}
+                  <div className="cart-checkout-total-row">
+                    <span>Estimated subtotal (excl. freight &amp; tax)</span>
+                    <strong>${checkoutTotal.toFixed(2)} USD</strong>
+                  </div>
+                </div>
+
+                <div className="cart-checkout-fields">
+                  <div className="cart-checkout-row">
+                    <label className="cart-checkout-field">
+                      <span>Primary contact name *</span>
+                      <input
+                        type="text"
+                        placeholder="e.g. Jordan Miller"
+                        value={contactName}
+                        onChange={(e) => {
+                          setContactName(e.target.value);
+                          if (checkoutError) setCheckoutError(null);
+                        }}
+                      />
+                    </label>
+                    <label className="cart-checkout-field">
+                      <span>Business email *</span>
+                      <input
+                        type="email"
+                        placeholder="purchasing@yourmill.com"
+                        value={contactEmail}
+                        onChange={(e) => {
+                          setContactEmail(e.target.value);
+                          if (checkoutError) setCheckoutError(null);
+                        }}
+                      />
+                    </label>
+                  </div>
+
+                  <div className="cart-checkout-field">
+                    <span>Fulfillment preference *</span>
+                    <div className="cart-checkout-fulfillment">
+                      <button
+                        type="button"
+                        className={`cart-fulfillment-pill${fulfillment === 'freight' ? ' is-selected' : ''}`}
+                        onClick={() => {
+                          setFulfillment('freight');
+                          if (checkoutError) setCheckoutError(null);
+                        }}
+                      >
+                        Seller-Arranged Freight
+                      </button>
+                      <button
+                        type="button"
+                        className={`cart-fulfillment-pill${fulfillment === 'pickup' ? ' is-selected' : ''}`}
+                        onClick={() => {
+                          setFulfillment('pickup');
+                          if (checkoutError) setCheckoutError(null);
+                        }}
+                      >
+                        Buyer Facility Pickup
+                      </button>
+                    </div>
+                  </div>
+
+                  {fulfillment === 'freight' && (
+                    <label className="cart-checkout-field">
+                      <span>Licensed receiving facility address *</span>
+                      <input
+                        type="text"
+                        placeholder="Street address, City, State, ZIP (no P.O. boxes)"
+                        value={deliveryAddress}
+                        onChange={(e) => {
+                          setDeliveryAddress(e.target.value);
+                          if (checkoutError) setCheckoutError(null);
+                        }}
+                      />
+                    </label>
+                  )}
+
+                  <label className="cart-checkout-field">
+                    <span>PO / internal reference (optional)</span>
+                    <input
+                      type="text"
+                      placeholder="e.g. PO-2026-1184"
+                      value={poNumber}
+                      onChange={(e) => setPoNumber(e.target.value)}
+                    />
+                  </label>
+                </div>
+
+                {checkoutError && (
+                  <p className="cart-checkout-error" role="alert">
+                    {checkoutError}
+                  </p>
+                )}
+
+                <p className="cart-checkout-footnote">
+                  Buyers pay only the listed price plus applicable sales tax and agreed freight.
+                  COA, SDS, and spec sheets accompany every shipment.
+                </p>
+
+                <div className="cart-checkout-actions">
+                  <button type="submit" className="cart-checkout-submit-btn">
+                    Submit Order Request
+                  </button>
+                  <button
+                    type="button"
+                    className="cart-checkout-tertiary-btn"
+                    onClick={closeCheckoutModal}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );

@@ -143,7 +143,11 @@ export function Header() {
                   </>
                 )}
               </li>
-              <li><a href="/registration">Sign Up/Login</a></li>
+              <li className="nav-auth-item">
+                <a href="/registration">Sign Up</a>
+                <span aria-hidden="true">/</span>
+                <a href="/login">Login</a>
+              </li>
             </ul>
           </div>
           <button className="contact-button" onClick={() => { window.location.href = '/contact'; }}>Contact Us</button>

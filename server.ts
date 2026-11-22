@@ -46,12 +46,20 @@ function renderDocument<K extends PageName>(
     .join('\n  ');
   const safeProps = JSON.stringify(props).replace(/</g, '\\u003c');
 
+  const description =
+    'Verified B2B agricultural microingredient marketplace for FDA-licensed operations and licensed feed mills.';
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)}</title>
+  <meta name="description" content="${escapeHtml(description)}">
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/mme-logo.png">
   <link rel="icon" type="image/png" href="/images/small-mme-logo.png">
   <link rel="stylesheet" href="/css/global.css">
   ${styles}
@@ -159,6 +167,14 @@ async function main() {
     res.send(renderDocument('cart', {}));
   });
 
+  app.get('/login', (_req, res) => {
+    res.send(renderDocument('login', {}));
+  });
+
+  app.get('/signin', (_req, res) => {
+    res.redirect('/login');
+  });
+
   app.get('/registration', (_req, res) => {
     res.send(renderDocument('registration', {}));
   });
@@ -172,6 +188,10 @@ async function main() {
   });
 
   app.get('/contact', (_req, res) => {
+    res.send(renderDocument('contact', {}));
+  });
+
+  app.get('/contactpage', (_req, res) => {
     res.send(renderDocument('contact', {}));
   });
 

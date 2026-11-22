@@ -21,13 +21,13 @@ export function RegistrationSuccessObserver() {
       <div className="page-body">
         <section className="reg-success-section">
 
-          {/* Verification notice */}
+          {/* Observer confirmation notice */}
           <div className="disclosure-container reg-success-notice">
             <ul className="reg-success-notice-list">
               <li className="reg-success-notice-text">
-                All trading accounts require verification before activation. Our team will review
-                your documentation and approve or follow up within 2 business days. Third-party
-                memberships are approved automatically upon email confirmation.
+                Your Industry Expert observer account has been created. Please confirm your email
+                address to keep view-only marketplace access active. Observer memberships allow
+                viewing verified listings and live auctions without buying or selling privileges.
               </li>
             </ul>
           </div>

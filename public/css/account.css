@@ -138,6 +138,529 @@
   transform: translateY(-2px);
 }
 
+.account-card-link {
+  text-decoration: none;
+}
+
+.account-card-button {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.account-card--active {
+  background-color: rgba(155, 184, 191, 0.42);
+  border: 2px solid var(--brandSlate);
+}
+
+.account-hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.account-session-badge {
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 18px;
+  padding: 6px 14px;
+  font-family: var(--fb);
+  font-size: 15px;
+  color: var(--textWhite);
+}
+
+.account-signout-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 18px;
+  border: 1px solid var(--brandGold);
+  background: transparent;
+  color: var(--brandGold);
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.account-signin-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(240, 193, 66, 0.75);
+  color: var(--brandGold);
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.account-panel-card {
+  width: 100%;
+  background: var(--textWhite);
+  border-radius: 30px;
+  box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.14);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  scroll-margin-top: 110px;
+}
+
+.account-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(45, 55, 72, 0.14);
+}
+
+.account-panel-eyebrow {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brandGold);
+}
+
+.account-panel-title {
+  font-family: var(--fh);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  margin-top: 4px;
+}
+
+.account-panel-close {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandLightSlate);
+  background: transparent;
+  color: var(--brandSlate);
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.account-messages-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+}
+
+.account-thread-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-thread-item {
+  width: 100%;
+  height: auto;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(45, 55, 72, 0.18);
+  background-color: var(--surfacePg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+}
+
+.account-thread-item.is-active {
+  background-color: var(--brandLightSand);
+  border-color: var(--brandDarkSand);
+}
+
+.account-thread-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--fh);
+  font-size: 16px;
+  color: var(--brandSlate);
+}
+
+.account-unread-dot {
+  background-color: var(--brandGold);
+  color: var(--brandSlate);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.account-thread-topic {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  line-height: 1.4;
+}
+
+.account-thread-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-thread-subject {
+  font-family: var(--fh);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-message-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-message-bubble {
+  background-color: var(--surfacePg);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.account-message-bubble.is-self {
+  background-color: rgba(155, 184, 191, 0.3);
+  border: 1px solid rgba(45, 55, 72, 0.2);
+}
+
+.account-message-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--fb);
+  font-size: 13px;
+  color: var(--textMutedCaptions);
+}
+
+.account-message-meta strong {
+  color: var(--brandSlate);
+}
+
+.account-message-bubble p {
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--textBody);
+  line-height: 1.5;
+}
+
+.account-reply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-reply-form textarea {
+  width: 100%;
+  min-height: 92px;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandLightSlate);
+  font-family: var(--fb);
+  font-size: 16px;
+  color: var(--textHeadings);
+  resize: vertical;
+}
+
+.account-panel-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.account-subblock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-subblock h4,
+.account-form-grid h4 {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-subblock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.account-text-link {
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  text-decoration: underline;
+}
+
+.account-muted-note {
+  font-family: var(--fb);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  line-height: 1.5;
+}
+
+.account-list-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-list-row {
+  background-color: var(--surfacePg);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.account-row-title {
+  font-family: var(--fh);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--brandSlate);
+  text-decoration: none;
+}
+
+a.account-row-title:hover {
+  text-decoration: underline;
+}
+
+.account-row-meta {
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--textMutedCaptions);
+  margin-top: 2px;
+}
+
+.account-row-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.account-status-pill {
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-family: var(--fh);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-row-btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.account-mini-btn {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid var(--brandLightSlate);
+  background: var(--textWhite);
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-mini-btn--danger {
+  border-color: rgba(197, 48, 48, 0.45);
+  color: #9b2c2c;
+}
+
+.account-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.account-field span {
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--textHeadings);
+}
+
+.account-field input {
+  width: 100%;
+  height: 46px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandLightSlate);
+  font-family: var(--fb);
+  font-size: 16px;
+  color: var(--textHeadings);
+  background: var(--textWhite);
+}
+
+.account-pill-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.account-choice-btn {
+  flex: 1;
+  min-width: 220px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandLightSlate);
+  background: var(--textWhite);
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brandSlate);
+}
+
+.account-choice-btn.is-selected {
+  background-color: rgba(155, 184, 191, 0.38);
+  border: 2px solid var(--brandSlate);
+}
+
+.account-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--fb);
+  font-size: 16px;
+  color: var(--textBody);
+  cursor: pointer;
+}
+
+.account-checkbox-row input {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.account-inline-status {
+  background-color: var(--brandLightSand);
+  border: 1px solid var(--brandDarkSand);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--brandSlate);
+}
+
+.account-inline-error {
+  background-color: rgba(197, 48, 48, 0.08);
+  border: 1px solid rgba(197, 48, 48, 0.45);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 500;
+  color: #9b2c2c;
+}
+
+.account-panel-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.account-primary-btn {
+  height: 48px;
+  padding: 0 22px;
+  border-radius: var(--radius);
+  border: none;
+  background-color: var(--brandSlate);
+  color: var(--textWhite);
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.account-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brandGold);
+  color: var(--brandGold);
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .account-messages-layout,
+  .account-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .account-row-right {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .account-panel-card {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .account-panel-header {
+    flex-direction: column;
+  }
+}
+
 /* Card title — Onest SemiBold 28px, brandSlate */
 .account-card-title {
   font-family: var(--fh);

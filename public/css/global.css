@@ -453,6 +453,12 @@ nav {
   font-weight: 500;
 }
 
+.nav-links li.nav-auth-item a:hover {
+  color: var(--brandSlate);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .nav-links li.nav-account-item {
   position: relative;
   padding: 0;
@@ -1140,6 +1146,19 @@ img.card-img-icon {
   border-color: var(--textHeadings);
 }
 
+.infopage-membership-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.infopage-membership-link:hover {
+  border-color: var(--brandGold);
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.22);
+}
+
 .full-membership h2,
 .third-party-membership h2 {
   color: #1A202C;
@@ -1530,6 +1549,28 @@ footer hr {
 }
 
 .footer-bottom a:hover {
+  color: var(--brandGold);
+}
+
+.icons a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-reset-btn {
+  height: auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: var(--fb);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--brandLightSlate);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-reset-btn:hover {
   color: var(--brandGold);
 }
 
