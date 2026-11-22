@@ -136,11 +136,6 @@ export function Header(_props?: HeaderProps) {
                   </a>
                 </li>
                 <li>
-                  <a href="/list-product" onClick={closeAllMenus}>
-                    List a product
-                  </a>
-                </li>
-                <li>
                   <a href="/infopage" onClick={closeAllMenus}>
                     FAQ
                   </a>
