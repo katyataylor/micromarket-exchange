@@ -14,11 +14,12 @@
   justify-content: center;
   background-image: linear-gradient(to bottom, #2d3748, #6d85ae);
   color: var(--textWhite);
-  padding: 96px 0;
+  padding: 96px 20px;
 }
 
 .store-hero-content {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   display: flex;
   flex-direction: column;
 }
@@ -108,7 +109,8 @@
 }
 
 .shop-contents {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -132,7 +134,8 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  width: 328px;
+  width: 100%;
+  max-width: 328px;
 }
 
 .sf-group {
@@ -867,5 +870,107 @@
 @media (max-width: 600px) {
   .featured-stock-container .product-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 960px) {
+  .store-hero-bg {
+    padding: 56px 20px;
+  }
+
+  .store-hero-text .display {
+    font-size: clamp(30px, 8vw, 42px);
+    line-height: 1.15;
+  }
+
+  .store-hero-text .p2 {
+    font-size: 20px;
+  }
+
+  .hero-stats-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 24px;
+    height: auto;
+  }
+
+  .hero-stat-sep {
+    display: none;
+  }
+
+  .store-hero-button {
+    margin: 0;
+  }
+
+  .shop-frame {
+    padding: 16px;
+  }
+
+  .shop-contents {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .shop-sidebar {
+    width: 100%;
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .shop-filters {
+    max-width: 100%;
+  }
+
+  .sf-price-input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shop-main {
+    width: 100%;
+    padding: 0;
+  }
+
+  .shop-results-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .shop-search-bar {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .shop-search-input {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .shop-sort-select {
+    max-width: 100%;
+  }
+
+  .featured-card {
+    padding: 24px 20px;
+  }
+
+  .featured-content {
+    flex-direction: column;
+  }
+
+  .featured-price-block {
+    text-align: left;
+  }
+
+  .featured-actions {
+    flex-direction: column;
   }
 }

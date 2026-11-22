@@ -4,7 +4,10 @@
   "description": "B2B Agricultural Microingredient Marketplace",
   "main": "server.ts",
   "scripts": {
-    "start": "tsx server.ts",
+    "build:client": "esbuild views/client.tsx --bundle --format=iife --platform=browser --jsx=automatic --minify --outfile=public/js/app.js",
+    "build:server": "esbuild server.ts --bundle --platform=node --packages=external --format=cjs --jsx=automatic --outfile=dist/server.cjs",
+    "build": "npm run build:client && npm run build:server",
+    "start": "node dist/server.cjs",
     "dev": "tsx watch server.ts",
     "typecheck": "tsc --noEmit"
   },

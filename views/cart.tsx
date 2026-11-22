@@ -206,6 +206,7 @@ export function Cart() {
   const [mounted, setMounted] = useState(false);
   const [cartItems, setCartItems] = useState<CartEntry[]>([]);
   const [watchlistItems, setWatchlistItems] = useState<WatchlistEntry[]>([]);
+  const [checkedCart, setCheckedCart] = useState<Set<number>>(new Set());
   const [checkedWatchlist, setCheckedWatchlist] = useState<Set<number>>(new Set());
 
   // ── Hydrate from localStorage (or seed) after mount ──────────────────────────
@@ -213,15 +214,18 @@ export function Cart() {
     const storedCart = localStorage.getItem('mme_cart');
     const storedWatchlist = localStorage.getItem('mme_watchlist');
 
-    const cart: CartEntry[] = storedCart
+    const rawCart: CartEntry[] = storedCart
       ? safeParseJSON<CartEntry[]>(storedCart, SEED_CART)
       : SEED_CART;
-    const watchlist: WatchlistEntry[] = storedWatchlist
+    const rawWatchlist: WatchlistEntry[] = storedWatchlist
       ? safeParseJSON<WatchlistEntry[]>(storedWatchlist, SEED_WATCHLIST)
       : SEED_WATCHLIST;
 
-    if (!storedCart) persistCart(cart);
-    if (!storedWatchlist) persistWatchlist(watchlist);
+    const cart = rawCart.filter((item) => Boolean(getListing(item.listingId)));
+    const watchlist = rawWatchlist.filter((item) => Boolean(getListing(item.listingId)));
+
+    if (!storedCart || cart.length !== rawCart.length) persistCart(cart);
+    if (!storedWatchlist || watchlist.length !== rawWatchlist.length) persistWatchlist(watchlist);
 
     setCartItems(cart);
     setWatchlistItems(watchlist);
@@ -308,6 +312,23 @@ export function Cart() {
       const updated = prev.filter((item) => item.listingId !== listingId);
       persistCart(updated);
       return updated;
+    });
+    setCheckedCart((prev) => {
+      const next = new Set(prev);
+      next.delete(listingId);
+      return next;
+    });
+  }
+
+  function toggleCartCheck(listingId: number) {
+    setCheckedCart((prev) => {
+      const next = new Set(prev);
+      if (next.has(listingId)) {
+        next.delete(listingId);
+      } else {
+        next.add(listingId);
+      }
+      return next;
     });
   }
 
@@ -476,6 +497,8 @@ export function Cart() {
                   key={item.listingId}
                   entry={item}
                   listing={listing}
+                  checked={checkedCart.has(item.listingId)}
+                  onCheckChange={() => toggleCartCheck(item.listingId)}
                   onIncrement={() => updateCartQty(item.listingId, 1)}
                   onDecrement={() => updateCartQty(item.listingId, -1)}
                   onRemove={() => removeFromCart(item.listingId)}

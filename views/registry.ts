@@ -6,6 +6,7 @@ import { Homepage } from './homepage';
 import { InfoPage } from './infoPage';
 import { ListProduct } from './listProduct';
 import { Marketplace } from './marketplace';
+import { NotFound } from './notFound';
 import { ProductPage } from './product-page';
 import { Registration } from './registration';
 import { RegistrationSuccess } from './registrationSuccess';
@@ -24,6 +25,7 @@ export const pages: { [K in PageName]: ComponentType<PagePropsMap[K]> } = {
   registrationSuccessObserver: RegistrationSuccessObserver,
   contact: ContactPage,
   infopage: InfoPage,
+  notFound: NotFound,
 };
 
 export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
@@ -38,4 +40,5 @@ export const pageMeta: Record<PageName, { title: string; styles: string[] }> = {
   registrationSuccessObserver: { title: 'Account Created — MicroMarket Exchange', styles: ['/css/registration.css', '/css/registration-success.css'] },
   contact: { title: 'Contact Us — MicroMarket Exchange', styles: ['/css/contactpage.css'] },
   infopage: { title: 'Sign Up', styles: [] },
+  notFound: { title: 'Page Not Found — MicroMarket Exchange', styles: ['/css/marketplace.css'] },
 };

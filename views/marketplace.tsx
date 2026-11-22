@@ -1,9 +1,20 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Footer } from './partials/footer';
 import { Header } from './partials/header';
 import { ProductCard } from './partials/productCard';
 import { mockListings, featuredListing } from './data/mockListings';
 import type { Listing, ListingType, UnitOfMeasure } from './types';
+
+type WatchlistEntry = { listingId: number; qty: number; sold: boolean };
+
+function readWatchlist(): WatchlistEntry[] {
+  try {
+    const raw = localStorage.getItem('mme_watchlist');
+    return raw ? (JSON.parse(raw) as WatchlistEntry[]) : [];
+  } catch {
+    return [];
+  }
+}
 
 /* ── filter-state shape ───────────────────────────────────────── */
 type FilterState = {
@@ -22,14 +33,11 @@ const INITIAL_FILTERS: FilterState = {
   maxPrice: '',
 };
 
-const SELLER_STATES: [string, number][] = [
-  ['Texas', 72], ['Iowa', 25], ['Kansas', 14],
-  ['Nebraska', 13], ['Minnesota', 11], ['California', 9], ['Washington', 8],
-];
+const SELLER_STATE_NAMES = [
+  'Texas', 'Iowa', 'Kansas', 'Nebraska', 'Minnesota', 'California', 'Washington',
+] as const;
 
-const UNITS: [UnitOfMeasure, number][] = [
-  ['pounds', 52], ['kilograms', 34], ['grams', 27],
-];
+const UNIT_ORDER: UnitOfMeasure[] = ['pounds', 'kilograms', 'grams'];
 
 const UNIT_LABELS: Record<UnitOfMeasure, string> = {
   pounds: 'Pounds', kilograms: 'Kilograms', grams: 'Grams',
@@ -60,12 +68,14 @@ function applyFilters(listings: Listing[], f: FilterState, search: string, sort:
   if (sort === 'price-asc')  result = [...result].sort((a, b) => a.price - b.price);
   if (sort === 'price-desc') result = [...result].sort((a, b) => b.price - a.price);
   if (sort === 'ending')     result = [...result].sort((a, b) => a.expires.localeCompare(b.expires));
+  if (sort === 'newest')     result = [...result].sort((a, b) => b.id - a.id);
 
   return result;
 }
 
 export function Marketplace({ listings }: { listings?: Listing[] }) {
   const source = listings && listings.length > 0 ? listings : mockListings;
+  const featured = source[0] ?? featuredListing;
 
   /* ── ui state ─────────────────────────────────────────────── */
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
@@ -73,6 +83,38 @@ export function Marketplace({ listings }: { listings?: Listing[] }) {
   const [pendingMax, setPendingMax] = useState('');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('default');
+  const [featuredWatched, setFeaturedWatched] = useState(false);
+
+  useEffect(() => {
+    const syncFeatured = () => {
+      setFeaturedWatched(readWatchlist().some((w) => w.listingId === featured.id));
+    };
+    syncFeatured();
+    window.addEventListener('mme:storage-sync', syncFeatured);
+    window.addEventListener('storage', syncFeatured);
+    return () => {
+      window.removeEventListener('mme:storage-sync', syncFeatured);
+      window.removeEventListener('storage', syncFeatured);
+    };
+  }, [featured.id]);
+
+  function toggleFeaturedWatchlist() {
+    const wl = readWatchlist();
+    if (featuredWatched) {
+      localStorage.setItem(
+        'mme_watchlist',
+        JSON.stringify(wl.filter((w) => w.listingId !== featured.id)),
+      );
+      setFeaturedWatched(false);
+    } else {
+      localStorage.setItem(
+        'mme_watchlist',
+        JSON.stringify([...wl, { listingId: featured.id, qty: 1, sold: false }]),
+      );
+      setFeaturedWatched(true);
+    }
+    window.dispatchEvent(new Event('mme:storage-sync'));
+  }
 
   /* ── derived values ───────────────────────────────────────── */
   const filtered = useMemo(
@@ -241,7 +283,8 @@ export function Marketplace({ listings }: { listings?: Listing[] }) {
               <div className="sf-group">
                 <div className="sf-label">Seller State</div>
                 <div className="sf-items">
-                  {SELLER_STATES.map(([state, count]) => {
+                  {SELLER_STATE_NAMES.map((state) => {
+                    const count = source.filter((l) => l.state === state).length;
                     const checked = filters.states.has(state);
                     return (
                       <div className="sf-row" key={state} onClick={() => toggleState(state)}>
@@ -264,7 +307,8 @@ export function Marketplace({ listings }: { listings?: Listing[] }) {
               <div className="sf-group">
                 <div className="sf-label">Unit of Measure</div>
                 <div className="sf-items">
-                  {UNITS.map(([unit, count]) => {
+                  {UNIT_ORDER.map((unit) => {
+                    const count = source.filter((l) => l.unit === unit).length;
                     const checked = filters.units.has(unit);
                     return (
                       <div className="sf-row" key={unit} onClick={() => toggleUnit(unit)}>
@@ -327,22 +371,34 @@ export function Marketplace({ listings }: { listings?: Listing[] }) {
             {/* Featured listing */}
             <div className="featured-card">
               <div className="featured-eyebrow">Featured Listing</div>
-              <div className="featured-content">
+              <div
+                className="featured-content"
+                style={{ cursor: 'pointer' }}
+                onClick={() => { window.location.href = `/product/${featured.id}`; }}
+              >
                 <div className="featured-seller-info">
-                  <h2 className="featured-name">{featuredListing.name}</h2>
+                  <h2 className="featured-name">{featured.name}</h2>
                   <div className="featured-small-text">
-                    <span className="featured-seller">{featuredListing.seller}</span>
-                    <span className="seller-location">{featuredListing.location}</span>
+                    <span className="featured-seller">{featured.seller}</span>
+                    <span className="seller-location">{featured.location}</span>
                   </div>
                 </div>
                 <div className="featured-price-block">
-                  <div className="featured-price">${featuredListing.price.toFixed(2)}</div>
-                  <div className="featured-unit">{featuredListing.priceUnit}</div>
+                  <div className="featured-price">${featured.price.toFixed(2)}</div>
+                  <div className="featured-unit">{featured.priceUnit}</div>
                 </div>
               </div>
               <div className="featured-actions">
-                <button id="btn-watchlist">Add to Watchlist</button>
-                <button id="btn-bid">Place Bid</button>
+                <button id="btn-watchlist" type="button" onClick={toggleFeaturedWatchlist}>
+                  {featuredWatched ? 'In Watchlist ✓' : 'Add to Watchlist'}
+                </button>
+                <button
+                  id="btn-bid"
+                  type="button"
+                  onClick={() => { window.location.href = `/product/${featured.id}`; }}
+                >
+                  Place Bid
+                </button>
               </div>
             </div>
 

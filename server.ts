@@ -1,31 +1,28 @@
+import { timingSafeEqual } from 'crypto';
 import esbuild from 'esbuild';
 import express from 'express';
+import fs from 'fs';
 import path from 'path';
 import { createElement, type ComponentType } from 'react';
 import { renderToString } from 'react-dom/server';
+import { mockListings } from './views/data/mockListings';
 import { pageMeta, pages } from './views/registry';
-import type { Listing, PageName, PagePropsMap } from './views/types';
+import type { PageName, PagePropsMap } from './views/types';
 
-const PORT = 3000;
-// const root = process.cwd();
-const root = __dirname;
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = '0.0.0.0';
+const root = fs.existsSync(path.join(__dirname, 'public'))
+  ? __dirname
+  : path.resolve(__dirname, '..');
 
-async function main() {
-await esbuild.build({
-  entryPoints: [path.join(root, 'views','client.tsx')],
-  bundle: true,
-  outfile: path.join(root, 'public/js/app.js'),
-  format: 'iife',
-  platform: 'browser',
-  jsx: 'automatic',
-  logLevel: 'warning',
-});
-
-const mockListings: Listing[] = [
-  { id: 101, name: 'USP Grade Citric Acid Powder', seller: 'Demo Seller', location: 'Austin, TX', state: 'Texas', qty: '450 lbs', unit: 'pounds', packaging: 'Bags', price: 1.20, priceUnit: 'per lb', listingType: 'auction', images: ['/images/IMG_9097.jpeg'], expires: '2027-04-12' },
-  { id: 102, name: 'Organic Xanthan Gum Batch B', seller: 'Demo Seller', location: 'Iowa City, IA', state: 'Iowa', qty: '200 lbs', unit: 'pounds', packaging: 'Bags', price: 2.40, priceUnit: 'per lb', listingType: 'fixed', images: ['/images/IMG_9098.jpeg'], expires: '2026-11-30' },
-  { id: 103, name: 'Pure Ascorbic Acid (Vitamin C)', seller: 'Demo Seller', location: 'Wichita, KS', state: 'Kansas', qty: '600 lbs', unit: 'pounds', packaging: 'Bulk', price: 4.10, priceUnit: 'per lb', listingType: 'auction', images: ['/images/IMG_9099.jpeg'], expires: '2027-01-15' },
-];
+function matchesPassword(candidate: string, expected: string): boolean {
+  const candidateBuf = Buffer.from(candidate, 'utf8');
+  const expectedBuf = Buffer.from(expected, 'utf8');
+  return (
+    candidateBuf.length === expectedBuf.length &&
+    timingSafeEqual(candidateBuf, expectedBuf)
+  );
+}
 
 function escapeHtml(value: string) {
   return value
@@ -35,21 +32,27 @@ function escapeHtml(value: string) {
     .replace(/"/g, '&quot;');
 }
 
-function renderDocument<K extends PageName>(name: K, props: PagePropsMap[K]) {
+function renderDocument<K extends PageName>(
+  name: K,
+  props: PagePropsMap[K],
+  titleOverride?: string,
+) {
   const Page = pages[name] as ComponentType<PagePropsMap[K]>;
   const meta = pageMeta[name];
+  const title = titleOverride ?? meta.title;
   const body = renderToString(createElement(Page, props));
   const styles = meta.styles
     .map((href) => `<link rel="stylesheet" href="${escapeHtml(href)}">`)
     .join('\n  ');
   const safeProps = JSON.stringify(props).replace(/</g, '\\u003c');
-  
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(meta.title)}</title>
+  <title>${escapeHtml(title)}</title>
+  <link rel="icon" type="image/png" href="/images/small-mme-logo.png">
   <link rel="stylesheet" href="/css/global.css">
   ${styles}
 </head>
@@ -61,70 +64,129 @@ function renderDocument<K extends PageName>(name: K, props: PagePropsMap[K]) {
 </html>`;
 }
 
-const app = express();
+async function main() {
+  if (process.env.NODE_ENV !== 'production') {
+    await esbuild.build({
+      entryPoints: [path.join(root, 'views', 'client.tsx')],
+      bundle: true,
+      outfile: path.join(root, 'public/js/app.js'),
+      format: 'iife',
+      platform: 'browser',
+      jsx: 'automatic',
+      minify: true,
+      logLevel: 'warning',
+    });
+  }
 
-app.use(express.static(path.join(root, 'public')));
+  const app = express();
 
-app.get('/homepage', (_req, res) => {
-  res.send(renderDocument('homepage', {}));
-});
+  const reviewPassword = process.env.REVIEW_PASSWORD ?? '';
+  if (reviewPassword.length > 0) {
+    app.use((req, res, next) => {
+      const authHeader = req.headers.authorization ?? '';
+      const [scheme, encoded] = authHeader.split(' ');
+      let providedPassword = '';
+      if (scheme === 'Basic' && encoded) {
+        try {
+          const decoded = Buffer.from(encoded, 'base64').toString('utf8');
+          const colonIdx = decoded.indexOf(':');
+          providedPassword = colonIdx >= 0 ? decoded.slice(colonIdx + 1) : decoded;
+        } catch {
+          providedPassword = '';
+        }
+      }
 
-app.get('/marketplace', (_req, res) => {
-  res.send(renderDocument('marketplace', { listings: mockListings }));
-});
+      if (matchesPassword(providedPassword, reviewPassword)) {
+        next();
+        return;
+      }
 
-app.get('/product/:id', (req, res) => {
-  res.send(renderDocument('product', { productId: req.params.id }));
-});
+      res.setHeader('WWW-Authenticate', 'Basic realm="MicroMarket Exchange Preview"');
+      res.status(401).send('Password required');
+    });
+  }
 
-app.get('/sell/list', (_req, res) => {
-  res.send(renderDocument('listProduct', {}));
-});
+  app.get('/favicon.ico', (_req, res) => {
+    res.sendFile(path.join(root, 'public/images/small-mme-logo.png'));
+  });
 
-app.get('/list-product', (_req, res) => {
-  res.send(renderDocument('listProduct', {}));
-});
+  app.use(express.static(path.join(root, 'public')));
 
-app.get('/listProduct', (_req, res) => {
-  res.redirect('/list-product');
-});
+  app.get('/', (_req, res) => {
+    res.redirect('/homepage');
+  });
 
-app.get('/account', (_req, res) => {
-  res.send(renderDocument('account', {}));
-});
+  app.get('/homepage', (_req, res) => {
+    res.send(renderDocument('homepage', {}));
+  });
 
-app.get('/cart', (_req, res) => {
-  res.send(renderDocument('cart', {}));
-});
+  app.get('/marketplace', (_req, res) => {
+    res.send(renderDocument('marketplace', { listings: mockListings }));
+  });
 
-app.get('/registration', (_req, res) => {
-  res.send(renderDocument('registration', {}));
-});
+  app.get('/product/:id', (req, res) => {
+    const listing = mockListings.find((item) => String(item.id) === req.params.id);
+    if (!listing) {
+      res.status(404).send(renderDocument('notFound', {}));
+      return;
+    }
+    res.send(
+      renderDocument(
+        'product',
+        { productId: req.params.id, listing },
+        `${listing.name} — MicroMarket Exchange`,
+      ),
+    );
+  });
 
-app.get('/registration/success', (_req, res) => {
-  res.send(renderDocument('registrationSuccess', {}));
-});
+  app.get('/sell/list', (_req, res) => {
+    res.send(renderDocument('listProduct', {}));
+  });
 
-app.get('/registration/success-observer', (_req, res) => {
-  res.send(renderDocument('registrationSuccessObserver', {}));
-});
+  app.get('/list-product', (_req, res) => {
+    res.send(renderDocument('listProduct', {}));
+  });
 
-app.get('/contact', (_req, res) => {
-  res.send(renderDocument('contact', {}));
-});
+  app.get('/listProduct', (_req, res) => {
+    res.redirect('/list-product');
+  });
 
-app.get('/infopage', (_req, res) => {
-  res.send(renderDocument('infopage', {}));
-});
+  app.get('/account', (_req, res) => {
+    res.send(renderDocument('account', {}));
+  });
 
-app.get('/test-product', (_req, res) => {
-  res.send(renderDocument('registration', {}));
-});
+  app.get('/cart', (_req, res) => {
+    res.send(renderDocument('cart', {}));
+  });
 
-app.listen(PORT, () => {
-  console.log('\n🚀 Ag Marketplace Platform Live!');
-  console.log(`🔗 Access locally at: http://localhost:${PORT}/homepage\n`);
-});
+  app.get('/registration', (_req, res) => {
+    res.send(renderDocument('registration', {}));
+  });
+
+  app.get('/registration/success', (_req, res) => {
+    res.send(renderDocument('registrationSuccess', {}));
+  });
+
+  app.get('/registration/success-observer', (_req, res) => {
+    res.send(renderDocument('registrationSuccessObserver', {}));
+  });
+
+  app.get('/contact', (_req, res) => {
+    res.send(renderDocument('contact', {}));
+  });
+
+  app.get('/infopage', (_req, res) => {
+    res.send(renderDocument('infopage', {}));
+  });
+
+  app.use((_req, res) => {
+    res.status(404).send(renderDocument('notFound', {}));
+  });
+
+  app.listen(PORT, HOST, () => {
+    console.log('\n🚀 Ag Marketplace Platform Live!');
+    console.log(`🔗 Listening on http://${HOST}:${PORT}/homepage\n`);
+  });
 }
 
 main().catch((error: unknown) => {

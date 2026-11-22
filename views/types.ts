@@ -16,6 +16,10 @@ export type Listing = {
   images: string[];
   expires: string;
   category?: string;
+  manufacturer?: string;
+  lotNumber?: string;
+  coaExpiry?: string;
+  description?: string;
 };
 
 
@@ -30,13 +34,14 @@ export type PageName =
   | 'registrationSuccess'
   | 'registrationSuccessObserver'
   | 'contact'
-  | 'infopage';
+  | 'infopage'
+  | 'notFound';
 
 
 export type PagePropsMap = {
   homepage: Record<string, never>;
   marketplace: { listings: Listing[] };
-  product: { productId: string };
+  product: { productId: string; listing?: Listing };
   listProduct: Record<string, never>;
   account: Record<string, never>;
   cart: Record<string, never>;
@@ -45,4 +50,5 @@ export type PagePropsMap = {
   registrationSuccessObserver: Record<string, never>;
   contact: Record<string, never>;
   infopage: Record<string, never>;
+  notFound: Record<string, never>;
 };

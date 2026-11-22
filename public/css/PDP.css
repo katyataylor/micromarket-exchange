@@ -46,7 +46,8 @@
 }
 
 .page-contents {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   margin: 0 auto;
   padding: 48px 0 64px;
   display: flex;
@@ -64,7 +65,9 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
-  width: 760px;
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
   flex-shrink: 0;
 }
 
@@ -86,8 +89,10 @@
 
 /* Main hero image — 700×700, rounded-35px */
 .photos-container > img:first-child {
-  width: 700px;
-  height: 700px;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 35px;
   display: block;
@@ -424,7 +429,8 @@ button.download:hover {
    ========================================== */
 
 .sidebar {
-  width: 368px;
+  width: 100%;
+  max-width: 368px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -702,8 +708,10 @@ button.download:hover {
 }
 
 .featured-stock-container {
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -721,4 +729,84 @@ button.download:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+@media (max-width: 1180px) {
+  .page-contents {
+    padding: 32px 20px 48px;
+  }
+
+  .product-content {
+    flex: 1;
+  }
+}
+
+@media (max-width: 960px) {
+  .page-contents {
+    flex-direction: column;
+  }
+
+  .product-content,
+  .sidebar {
+    max-width: 100%;
+    width: 100%;
+    position: static;
+  }
+
+  .featured-stock-container .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .page-container h2 {
+    font-size: 30px;
+  }
+
+  .photos-container > img:first-child {
+    border-radius: 24px;
+  }
+
+  .photos-group img {
+    width: 96px;
+    height: 96px;
+    border-radius: 14px;
+  }
+
+  .info-container,
+  .docs-container,
+  .about-seller-container,
+  .actions-container,
+  .listing-details-container {
+    padding: 24px 20px;
+  }
+
+  .header-section-subheader {
+    flex-wrap: wrap;
+  }
+
+  .seller-tag {
+    margin-left: 0;
+  }
+
+  .grid-box {
+    flex: 1 1 calc(50% - 10px);
+    width: auto;
+    min-width: 130px;
+  }
+
+  .doc-block {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .about-text-container,
+  .details-text-container {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .featured-stock-container .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
